@@ -40,6 +40,10 @@ _start:
 		sta	$0202
 		sta	$020a
 
+		; center screen
+		lda	#$ff
+		sta	$0200
+
 		setln	#$0
 
 		DSUB_MODE_PSUB
@@ -77,6 +81,11 @@ _start:
 
 
 	.skip_sound_init_delay:
+		; clear out the 2 lines related to the
+		; 'delay for sound cpu init..' message
+		SEEK_XY	0, SCREEN_START_Y
+		PSUB	print_clear_line
+
 		SEEK_XY	0, (SCREEN_START_Y + 2)
 		PSUB	print_clear_line
 
