@@ -27,7 +27,7 @@ bg_tile_viewer:
 		ret
 
 seek_xy_cb:
-		ld	hl, BG_TILE_RAM + $20
+		ld	hl, BG_TILE_BASE + $20
 		ld	a, b
 
 		; y offset
@@ -61,9 +61,9 @@ draw_tile_cb:
 		ret
 
 bg_tile_viewer_palette_setup:
-		ld	hl, BG_TILE_PALETTE + (BG_TILE_PALETTE_SIZE / 2)
+		ld	hl, BG_TILE_PALETTE_BASE + (BG_TILE_PALETTE_ENTRY_SIZE / 2)
 		ld	de, d_palette_data
-		ld	c, BG_TILE_PALETTE_SIZE
+		ld	c, BG_TILE_PALETTE_ENTRY_SIZE
 		call	palette_copy
 		ret
 

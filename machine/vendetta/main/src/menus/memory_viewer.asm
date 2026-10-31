@@ -11,17 +11,33 @@ memory_viewer_menu:
 		jsr	menu_handler
 		rts
 
+view_layer_a_tile_ram:
+		ldx	#LAYER_A_TILE_BASE
+		bra	view_memory
+
+view_layer_a_tile_attr_ram:
+		ldx	#LAYER_A_TILE_ATTR_BASE
+		bra	view_memory
+
+view_layer_b_tile_ram:
+		ldx	#LAYER_B_TILE_BASE
+		bra	view_memory
+
+view_layer_b_tile_attr_ram:
+		ldx	#LAYER_B_TILE_ATTR_BASE
+		bra	view_memory
+
 view_mmio_input:
 		ldx	#$5fc0
 		bra	view_memory
 
 view_palette_ram:
-		ldx	#PALETTE_RAM
+		ldx	#PALETTE_BASE
 		ldy	#read_memory_banked_cb
 		bra	view_memory_cb
 
 view_rom_space:
-		ldx	#$8000
+		ldx	#ROM_BASE
 		bra	view_memory
 
 view_rom_bank_space:
@@ -29,28 +45,26 @@ view_rom_bank_space:
 		bra	view_memory
 
 view_sprite_ram:
-		ldx	#SPRITE_RAM
+		ldx	#SPRITE_BASE
 		ldy	#read_memory_banked_cb
 		bra	view_memory_cb
 
-view_tile_ram:
-		ldx	#TILE_RAM
+view_txt_tile_ram:
+		ldx	#TXT_TILE_BASE
 		bra	view_memory
 
-view_tile_attr_ram:
-		ldx	#TILE_ATTR_RAM
+view_txt_tile_attr_ram:
+		ldx	#TXT_TILE_ATTR_BASE
 		bra	view_memory
 
 view_work_ram:
-		ldx	#WORK_RAM
-		bra	view_memory
+		ldx	#WORK_RAM_BASE
 
 view_memory:
 		ldy	#$0			; no callback
 view_memory_cb:
 		jsr	memory_viewer_handler
 		rts
-
 
 ; tile1/sprite and tile2/palette rams show the same address
 ; space and you have to bank switch them in/out as ended. So
@@ -72,23 +86,31 @@ read_memory_banked_cb:
 	section data
 
 d_menu_list:
+	MENU_ENTRY view_layer_a_tile_ram, d_str_layer_a_tile_ram, ME_FLAG_NONE
+	MENU_ENTRY view_layer_a_tile_attr_ram, d_str_layer_a_tile_attr_ram, ME_FLAG_NONE
+	MENU_ENTRY view_layer_b_tile_ram, d_str_layer_b_tile_ram, ME_FLAG_NONE
+	MENU_ENTRY view_layer_b_tile_attr_ram, d_str_layer_b_tile_attr_ram, ME_FLAG_NONE
 	MENU_ENTRY view_mmio_input, d_str_mmio_input, ME_FLAG_NONE
 	MENU_ENTRY view_palette_ram, d_str_palette_ram, ME_FLAG_NONE
 	MENU_ENTRY view_rom_space, d_str_rom_space, ME_FLAG_NONE
 	MENU_ENTRY view_rom_bank_space, d_str_rom_bank_space, ME_FLAG_NONE
 	MENU_ENTRY view_sprite_ram, d_str_sprite_ram, ME_FLAG_NONE
-	MENU_ENTRY view_tile_ram, d_str_tile_ram, ME_FLAG_NONE
-	MENU_ENTRY view_tile_attr_ram, d_str_tile_attr_ram, ME_FLAG_NONE
+	MENU_ENTRY view_txt_tile_ram, d_str_txt_tile_ram, ME_FLAG_NONE
+	MENU_ENTRY view_txt_tile_attr_ram, d_str_txt_tile_attr_ram, ME_FLAG_NONE
 	MENU_ENTRY view_work_ram, d_str_work_ram, ME_FLAG_NONE
 	MENU_LIST_END
 
-d_str_menu_title:	STRING "MEMORY VIEWER MENU"
+d_str_menu_title:		STRING "MEMORY VIEWER MENU"
 
-d_str_mmio_input:	STRING "MMIO INPUT"
-d_str_palette_ram:	STRING "PALETTE RAM"
-d_str_rom_space:	STRING "ROM SPACE"
-d_str_rom_bank_space:	STRING "ROM BANK SPACE"
-d_str_sprite_ram:	STRING "SPRITE RAM"
-d_str_tile_ram:		STRING "TILE RAM"
-d_str_tile_attr_ram:	STRING "TILE ATTR RAM"
-d_str_work_ram:		STRING "WORK RAM"
+d_str_layer_a_tile_ram:		STRING "LAYER A TILE RAM"
+d_str_layer_a_tile_attr_ram:	STRING "LAYER A TILE ATTR RAM"
+d_str_layer_b_tile_ram:		STRING "LAYER B TILE RAM"
+d_str_layer_b_tile_attr_ram:	STRING "LAYER B TILE ATTR RAM"
+d_str_mmio_input:		STRING "MMIO INPUT"
+d_str_palette_ram:		STRING "PALETTE RAM"
+d_str_rom_space:		STRING "ROM SPACE"
+d_str_rom_bank_space:		STRING "ROM BANK SPACE"
+d_str_sprite_ram:		STRING "SPRITE RAM"
+d_str_txt_tile_ram:		STRING "TXT TILE RAM"
+d_str_txt_tile_attr_ram:	STRING "TXT TILE ATTR RAM"
+d_str_work_ram:			STRING "WORK RAM"

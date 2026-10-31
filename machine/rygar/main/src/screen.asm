@@ -8,38 +8,38 @@
 screen_init_dsub:
 		exx
 
-		ld	hl, PALETTE_RAM
-		ld	de, PALETTE_RAM_SIZE
+		ld	hl, PALETTE_BASE
+		ld	de, PALETTE_SIZE
 		ld	c, $0
 		NSUB	memory_fill
 
 		ld	a, $ff
-		ld	(FIX_TILE_PALETTE + $e), a
-		ld	(FIX_TILE_PALETTE + $f), a
+		ld	(TXT_TILE_PALETTE_BASE + $e), a
+		ld	(TXT_TILE_PALETTE_BASE + $f), a
 
 
-		ld	hl, FIX_TILE
-		ld	de, FIX_TILE_SIZE
+		ld	hl, TXT_TILE_BASE
+		ld	de, TXT_TILE_SIZE
 		ld	c, $20
 		NSUB	memory_fill
 
-		ld	hl, FIX_TILE_ATTR
-		ld	de, FIX_TILE_ATTR_SIZE
+		ld	hl, TXT_TILE_ATTR_BASE
+		ld	de, TXT_TILE_ATTR_SIZE
 		ld	c, $00
 		NSUB	memory_fill
 
-		ld	hl, BG_TILE_RAM
-		ld	de, BG_TILE_RAM_SIZE
+		ld	hl, BG_TILE_BASE
+		ld	de, BG_TILE_SIZE
 		ld	c, $00
 		NSUB	memory_fill
 
-		ld	hl, FG_TILE_RAM
-		ld	de, FG_TILE_RAM_SIZE
+		ld	hl, FG_TILE_BASE
+		ld	de, FG_TILE_SIZE
 		ld	c, $0
 		NSUB	memory_fill
 
-		ld	hl, SPRITE_RAM
-		ld	de, SPRITE_RAM_SIZE
+		ld	hl, SPRITE_BASE
+		ld	de, SPRITE_SIZE
 		ld	c, $0
 		NSUB	memory_fill
 

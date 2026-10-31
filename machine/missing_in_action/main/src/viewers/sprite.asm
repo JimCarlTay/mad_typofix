@@ -49,16 +49,16 @@ sprite_viewer:
 ; *   6  | -------x | x position (high bit)
 ; *   7  | xxxxxxxx | x position (low 8 bits)
 value_changed_cb:
-		move.b	#$ff, SPRITE_RAM
+		move.b	#$ff, SPRITE_BASE
 
 		move.b	r_sprite_size, d0
 		lsl.b	#$5, d0
 		or.b	r_sprite_num, d0
-		move.b	d0, SPRITE_RAM + 1
+		move.b	d0, SPRITE_BASE + 1
 
-		move.b	r_sprite_num + 1, SPRITE_RAM + 2
+		move.b	r_sprite_num + 1, SPRITE_BASE + 2
 
-		clr.b	SPRITE_RAM + 3
+		clr.b	SPRITE_BASE + 3
 
 		move.b	r_sprite_zoom_y, d0
 		lsl.b	#$2, d0
@@ -67,8 +67,8 @@ value_changed_cb:
 		beq	.skip_sprite_flip_y
 		or.b	#$02, d0
 	.skip_sprite_flip_y:
-		move.b	d0, SPRITE_RAM + 4
-		move.b	r_sprite_pos_y + 1, SPRITE_RAM + 5
+		move.b	d0, SPRITE_BASE + 4
+		move.b	r_sprite_pos_y + 1, SPRITE_BASE + 5
 
 		move.b	r_sprite_zoom_x, d0
 		lsl.b	#$2, d0
@@ -77,8 +77,8 @@ value_changed_cb:
 		beq	.skip_sprite_flip_x
 		or.b	#$02, d0
 	.skip_sprite_flip_x:
-		move.b	d0, SPRITE_RAM + 6
-		move.b	r_sprite_pos_x + 1, SPRITE_RAM + 7
+		move.b	d0, SPRITE_BASE + 6
+		move.b	r_sprite_pos_x + 1, SPRITE_BASE + 7
 		rts
 
 loop_input_cb:
@@ -86,8 +86,8 @@ loop_input_cb:
 
 sprite_viewer_palette_setup:
 		lea	d_palette_data, a0
-		lea	SPRITE_PALETTE, a1
-		moveq	#(PALETTE_SIZE / 2) - 1, d0
+		lea	SPRITE_PALETTE_BASE, a1
+		moveq	#(PALETTE_ENTRY_SIZE / 2) - 1, d0
 
 	.loop_next_byte:
 		addq.l	#$1, a1

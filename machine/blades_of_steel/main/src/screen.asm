@@ -6,44 +6,44 @@
 	section code
 
 screen_init_dsub:
-		ldx	#LAYER_A_TILE_ATTR
+		ldx	#LAYER_A_TILE_ATTR_BASE
 		ldw	#LAYER_A_TILE_ATTR_SIZE
 		lda	#$0f
 		DSUB	memory_fill
 
-		ldx	#LAYER_B_TILE_ATTR
+		ldx	#LAYER_B_TILE_ATTR_BASE
 		ldw	#LAYER_B_TILE_ATTR_SIZE
 		lda	#$0f
 		DSUB	memory_fill
 
-		ldx	#LAYER_A_TILE
+		ldx	#LAYER_A_TILE_BASE
 		ldw	#LAYER_A_TILE_SIZE
 		lda	#$10		; space
 		DSUB	memory_fill
 
-		ldx	#LAYER_B_TILE
+		ldx	#LAYER_B_TILE_BASE
 		ldw	#LAYER_B_TILE_SIZE
 		lda	#$10		; space
 		DSUB	memory_fill
 
-		ldx	#SPRITE_RAM
-		ldw	#SPRITE_RAM_SIZE
+		ldx	#SPRITE_BASE
+		ldw	#SPRITE_SIZE
 		lda	#$0
 		DSUB	memory_fill
 
-		ldx	#SCROLL_RAM
-		ldw	#SCROLL_RAM_SIZE
+		ldx	#LAYER_A_TILE_SCROLL_BASE
+		ldw	#LAYER_A_TILE_SCROLL_SIZE
 		lda	#$0
 		DSUB	memory_fill
 
-		ldx	#PALETTE_RAM
-		ldw	#PALETTE_RAM_SIZE
+		ldx	#PALETTE_BASE
+		ldw	#PALETTE_SIZE
 		lda	#$00
 		DSUB	memory_fill
 
 		; txt color
 		ldd	#$ffff
-		std	LAYER_A_TILE_PALETTE + $c
+		std	LAYER_A_TILE_PALETTE_BASE + $c
 
 		SEEK_XY	1, 0
 		ldy	#d_str_version

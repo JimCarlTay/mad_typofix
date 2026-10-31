@@ -12,8 +12,8 @@ SCREEN_BYTES_PER_ROW		equ (SCREEN_BYTES_PER_TILE * SCREEN_TILES_PER_ROW)
 	; rows 0 - 4 are in hdr tile ram and the rest of the screen is in fg tile ram
 	macro	SEEK_XY
 	if \2 >= 5
-		ldx	#(K007121_10E_TILE_A + $3a0 + ((\2 - 5) * SCREEN_BYTES_PER_TILE) - (\1 * SCREEN_BYTES_PER_ROW))
+		ldx	#(K007121_10E_LAYER_A_TILE_BASE + $3a0 + ((\2 - 5) * SCREEN_BYTES_PER_TILE) - (\1 * SCREEN_BYTES_PER_ROW))
 	else
-		ldx	#(K007121_10E_TILE_B + $3a0 + (\2 * SCREEN_BYTES_PER_TILE) - (\1 * SCREEN_BYTES_PER_ROW))
+		ldx	#(K007121_10E_LAYER_B_TILE_BASE + $3a0 + (\2 * SCREEN_BYTES_PER_TILE) - (\1 * SCREEN_BYTES_PER_ROW))
 	endif
 	endm

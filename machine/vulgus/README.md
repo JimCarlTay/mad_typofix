@@ -15,7 +15,7 @@
 
 ## MAD Pictures
 ![mad vulgus main menu](docs/images/mad_vulgus_main_menu.png)
-![mad vulgus fix tile viewer](docs/images/mad_vulgus_fix_tile_viewer.png)
+![mad vulgus txt tile viewer](docs/images/mad_vulgus_txt_tile_viewer.png)
 ![mad vulgus sprite viewer](docs/images/mad_vulgus_sprite_viewer.png)
 
 ## PCB Pictures
@@ -55,8 +55,8 @@ Unfortunately it takes 4x 27c64 roms to use mad on this board.
 | RAM | Location | Type |
 | -------- | :------- | ----- |
 | BG Tile RAM | A10 on Graphics Board | TMM2016AP-15 (2k x 8bit) |
-| Fix Tile RAM | H2 on CPU Board | TMM2116AP-10 (2k x 8bit) |
 | Sound RAM | C10 on CPU Board | TMM2116AP-10 (2k x 8bit) |
+| TXT Tile RAM | H2 on CPU Board | TMM2116AP-10 (2k x 8bit) |
 | Work RAM | N9 on CPU Board | TMM2116AP-10 (2k x 8bit) |
 | Work High RAM | N10 on CPU Board | TMM2116AP-10 (2k x 8bit) |
 
@@ -86,11 +86,11 @@ Z80 CPU are are 6 bits.
 | 0x03 |      3 | 0000 0011 |      0110 0001 1xxx xxxx       | BG TILE RAM MARCH              |
 | 0x04 |      4 | 0000 0100 |      0110 0010 0xxx xxxx       | BG TILE RAM OUTPUT             |
 | 0x05 |      5 | 0000 0101 |      0110 0010 1xxx xxxx       | BG TILE RAM WRITE              |
-| 0x06 |      6 | 0000 0110 |      0110 0011 0xxx xxxx       | FIX TILE RAM ADDRESS           |
-| 0x07 |      7 | 0000 0111 |      0110 0011 1xxx xxxx       | FIX TILE RAM DATA              |
-| 0x08 |      8 | 0000 1000 |      0110 0100 0xxx xxxx       | FIX TILE RAM MARCH             |
-| 0x09 |      9 | 0000 1001 |      0110 0100 1xxx xxxx       | FIX TILE RAM OUTPUT            |
-| 0x0a |     10 | 0000 1010 |      0110 0101 0xxx xxxx       | FIX TILE RAM WRITE             |
+| 0x06 |      6 | 0000 0110 |      0110 0011 0xxx xxxx       | TXT TILE RAM ADDRESS           |
+| 0x07 |      7 | 0000 0111 |      0110 0011 1xxx xxxx       | TXT TILE RAM DATA              |
+| 0x08 |      8 | 0000 1000 |      0110 0100 0xxx xxxx       | TXT TILE RAM MARCH             |
+| 0x09 |      9 | 0000 1001 |      0110 0100 1xxx xxxx       | TXT TILE RAM OUTPUT            |
+| 0x0a |     10 | 0000 1010 |      0110 0101 0xxx xxxx       | TXT TILE RAM WRITE             |
 | 0x0b |     11 | 0000 1011 |      0110 0101 1xxx xxxx       | WORK RAM ADDRESS               |
 | 0x0c |     12 | 0000 1100 |      0110 0110 0xxx xxxx       | WORK RAM DATA                  |
 | 0x0d |     13 | 0000 1101 |      0110 0110 1xxx xxxx       | WORK RAM MARCH                 |
@@ -104,7 +104,7 @@ Z80 CPU are are 6 bits.
 | 0x3e |     62 | 0011 1110 |      0111 1111 0xxx xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 | 0011 1111 |      0111 1111 1xxx xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2026-06-12 @ 04:23 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-18 @ 01:16 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU

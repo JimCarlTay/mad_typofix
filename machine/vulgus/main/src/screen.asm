@@ -8,22 +8,22 @@
 screen_init_dsub:
 		exx
 
-		ld	hl, FIX_TILE
-		ld	de, FIX_TILE_SIZE
+		ld	hl, TXT_TILE_BASE
+		ld	de, TXT_TILE_SIZE
 		ld	c, $20
 		NSUB	memory_fill
 
-		ld	hl, FIX_TILE_ATTR
-		ld	de, FIX_TILE_ATTR_SIZE
+		ld	hl, TXT_TILE_ATTR_BASE
+		ld	de, TXT_TILE_ATTR_SIZE
 		ld	c, $01
 		NSUB	memory_fill
 
-		ld	hl, BG_TILE
+		ld	hl, BG_TILE_BASE
 		ld	de, BG_TILE_SIZE
 		ld	c, $ff
 		NSUB	memory_fill
 
-		ld	hl, BG_TILE_ATTR
+		ld	hl, BG_TILE_ATTR_BASE
 		ld	de, BG_TILE_ATTR_SIZE
 		ld	c, $80
 		NSUB	memory_fill

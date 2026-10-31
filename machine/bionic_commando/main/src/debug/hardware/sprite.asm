@@ -18,7 +18,7 @@ sprite_debug:
 		CPU_INTS_ENABLE
 
 		move.l	#d_palette_data, r_vblank_copy_src
-		move.l	#FIX_TILE_PALETTE + FIX_TILE_PALETTE_SIZE, r_vblank_copy_dst
+		move.l	#TXT_TILE_PALETTE_BASE + TXT_TILE_PALETTE_ENTRY_SIZE, r_vblank_copy_dst
 		move.w	#$4, r_vblank_copy_size
 		jsr	wait_vblank_copy
 
@@ -44,7 +44,7 @@ highlight_cb:
 		rts
 
 write_memory_cb:
-		lea	SPRITE_RAM + $800, a0
+		lea	SPRITE_BASE, a0
 		jsr	memory_write_generic_write
 		move.b	#$1, r_sprite_dma_req
 loop_cb:

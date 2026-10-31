@@ -9,7 +9,7 @@ tile_debug:
 		ld	de, d_screen_xys_list
 		call	print_xy_string_list
 
-		ld	hl, TILE_ATTR_RAM
+		ld	hl, TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 
 		; setup initial values

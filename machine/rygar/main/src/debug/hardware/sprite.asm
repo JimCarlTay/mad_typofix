@@ -10,10 +10,10 @@ HIGHLIGHT_PALETTE_NUM	equ $1
 sprite_debug:
 		call	sprite_viewer_palette_setup
 
-		ld	hl, FIX_TILE_ATTR
+		ld	hl, TXT_TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 		ld	a, $f0
-		ld	(FIX_TILE_PALETTE + PALETTE_SIZE + $f), a
+		ld	(TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $f), a
 
 		; setup initial values
 		ld	ix, r_mw_buffer
@@ -45,7 +45,7 @@ highlight_cb:
 		ret
 
 write_memory_cb:
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 		call	memory_write_generic_write
 loop_cb:
 		ret

@@ -20,22 +20,22 @@ video_dac_test:
 		; Palette Layout
 		;  xxxx RRRR GGGG BBBB
 		; red palette setup
-		ld	ix, PALETTE_RAM + (PALETTE_SIZE * 2)
+		ld	ix, PALETTE_BASE + (PALETTE_ENTRY_SIZE * 2)
 		ld	bc, $0f00
 		call	palette_color_setup
 
 		; blue palette setup
-		ld	ix, PALETTE_RAM + (PALETTE_SIZE * 3)
+		ld	ix, PALETTE_BASE + (PALETTE_ENTRY_SIZE * 3)
 		ld	bc, $00f0
 		call	palette_color_setup
 
 		; green palette setup
-		ld	ix, PALETTE_RAM + (PALETTE_SIZE * 4)
+		ld	ix, PALETTE_BASE + (PALETTE_ENTRY_SIZE * 4)
 		ld	bc, $000f
 		call	palette_color_setup
 
 		; white/all palette setup
-		ld	ix, PALETTE_RAM + (PALETTE_SIZE * 5)
+		ld	ix, PALETTE_BASE + (PALETTE_ENTRY_SIZE * 5)
 		ld	bc, $0fff
 		call	palette_color_setup
 
@@ -95,9 +95,9 @@ full_screen:
 		ld	b, (ix)		; palette number
 		ld	c, (ix + 1)	; tile number
 
-		ld	ix, TILE_ATTR_RAM
-		ld	iy, TILE_RAM
-		ld	de, TILE_ATTR_RAM_SIZE
+		ld	ix, TILE_ATTR_BASE
+		ld	iy, TILE_BASE
+		ld	de, TILE_ATTR_SIZE
 
 	.loop_next_address:
 		ld	(ix), b		; palette number to color ram

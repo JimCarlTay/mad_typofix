@@ -16,11 +16,11 @@ view_mmio_input:
 		bra	view_memory
 
 view_palette_ram:
-		ldx	#PALETTE_RAM
+		ldx	#PALETTE_BASE
 		bra	view_memory
 
 view_rom_space:
-		ldx	#$8000
+		ldx	#ROM_BASE
 		bra	view_memory
 
 view_rom_bank_space:
@@ -28,16 +28,19 @@ view_rom_bank_space:
 		bra	view_memory
 
 view_sprite_ram:
-		ldx	#SPRITE_RAM
+		ldx	#SPRITE_BASE
 		bra	view_memory
 
 view_tile_ram:
-		ldx	#TILE_RAM
+		ldx	#TILE_BASE
+		bra	view_memory
+
+view_tile_attr_ram:
+		ldx	#TILE_ATTR_BASE
 		bra	view_memory
 
 view_work_ram:
-		ldx	#WORK_RAM
-		bra	view_memory
+		ldx	#WORK_RAM_BASE
 
 view_memory:
 		ldy	#$0			; no callback
@@ -53,6 +56,7 @@ d_menu_list:
 	MENU_ENTRY view_rom_bank_space, d_str_rom_bank_space, ME_FLAG_NONE
 	MENU_ENTRY view_sprite_ram, d_str_sprite_ram, ME_FLAG_NONE
 	MENU_ENTRY view_tile_ram, d_str_tile_ram, ME_FLAG_NONE
+	MENU_ENTRY view_tile_attr_ram, d_str_tile_attr_ram, ME_FLAG_NONE
 	MENU_ENTRY view_work_ram, d_str_work_ram, ME_FLAG_NONE
 	MENU_LIST_END
 
@@ -64,4 +68,5 @@ d_str_rom_space:	STRING "ROM SPACE"
 d_str_rom_bank_space:	STRING "ROM BANK SPACE"
 d_str_sprite_ram:	STRING "SPRITE RAM"
 d_str_tile_ram:		STRING "TILE RAM"
+d_str_tile_attr_ram:	STRING "TILE ATTR RAM"
 d_str_work_ram:		STRING "WORK RAM"

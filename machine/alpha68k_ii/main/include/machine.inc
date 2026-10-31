@@ -1,35 +1,50 @@
 	include "romset.inc"
 
-TILE_RAM			equ $100000
-TILE_RAM_SIZE			equ $1000
-TILE_RAM_ADDRESS_LINES		equ 12
-TILE_RAM_MASK			equ $ff
-TILE_PALETTE			equ PALETTE_RAM
+ROM_BASE			equ $000000
+ROM_SIZE			equ $20000
 
-PALETTE_RAM			equ $400000
-PALETTE_RAM_MASK		equ $ffff
-PALETTE_RAM_SIZE		equ $1000
-PALETTE_RAM_ADDRESS_LINES	equ 12
-PALETTE_SIZE			equ $20		; size of an individual palette
+; RAM CHIPS
+PALETTE_RC_BASE			equ $400000
+PALETTE_RC_SIZE			equ $1000
+PALETTE_RC_ADDR_LINES		equ 12
+PALETTE_RC_MASK			equ $ffff
 
-SPRITE_RAM			equ $200000
-SPRITE_RAM_SIZE			equ $8000
-SPRITE_RAM_ADDRESS_LINES	equ 14
-SPRITE_RAM_MASK			equ $ff
+SPRITE_RC_BASE			equ $200000
+SPRITE_RC_SIZE			equ $8000
+SPRITE_RC_ADDR_LINES		equ 14
+SPRITE_RC_MASK			equ $ff
+
+TILE_RC_BASE			equ $100000
+TILE_RC_SIZE			equ $1000
+TILE_RC_ADDR_LINES		equ 12
+TILE_RC_MASK			equ $ff
+
+WORK_RC_BASE			equ $040000
+WORK_RC_SIZE			equ $1000
+WORK_RC_ADDR_LINES		equ 12
+WORK_RC_MASK			equ $ffff
+
+; MEMORY REGIONS
+PALETTE_BASE			equ PALETTE_RC_BASE
+PALETTE_SIZE			equ PALETTE_RC_SIZE
+PALETTE_ENTRY_SIZE		equ $20
+
+SPRITE_BASE			equ SPRITE_RC_BASE
+SPRITE_SIZE			equ SPRITE_RC_SIZE
 ; Sprites can access any palette in the palette ram.
 ; Adding $100 so we dont accidently conflict with tile's
 ; palettte.  When setting up sprites need to start at
 ; palette $8.
-SPRITE_PALETTE			equ PALETTE_RAM + $100
+SPRITE_PALETTE_BASE		equ PALETTE_BASE + $100
 
-WORK_RAM			equ $040000
-WORK_RAM_SIZE			equ $1000
-WORK_RAM_ADDRESS_LINES		equ 12
-WORK_RAM_MASK			equ $ffff
+TILE_BASE			equ TILE_RC_BASE
+TILE_SIZE			equ TILE_RC_SIZE
+TILE_PALETTE_BASE		equ PALETTE_BASE
 
-ROM_START			equ $000000
-ROM_SIZE			equ $20000
+WORK_RAM_BASE			equ WORK_RC_BASE
+WORK_RAM_SIZE			equ WORK_RC_SIZE
 
+; REG/IO
 REG_SOUND			equ $080001
 REG_IRQ1_ACK			equ $0e0000
 REG_IRQ3_ACK			equ $0d8000
@@ -48,14 +63,14 @@ CHAR_COLON			equ ':'
 
 SOUND_NUM_STOP			equ $0f
 
+	macro WATCHDOG
+		tst.b	REG_WATCHDOG
+	endm
+
 	macro SOUND_PLAY
 		move.b	d0, REG_SOUND
 	endm
 
 	macro SOUND_STOP
 		move.b	#SOUND_NUM_STOP, REG_SOUND
-	endm
-
-	macro WATCHDOG
-		tst.b	REG_WATCHDOG
 	endm

@@ -11,17 +11,16 @@ debug_hardware_menu:
 		jsr	menu_handler
 		rts
 
-
-ram_find_k005885_tile_a:
-		ldx	#K005885_TILE_A
+ram_find_layer_a_tile:
+		ldx	#LAYER_A_TILE_BASE
 		jmp	ram_find
 
-ram_find_k005885_tile_b:
-		ldx	#K005885_TILE_B
+ram_find_layer_b_tile:
+		ldx	#LAYER_B_TILE_BASE
 		jmp	ram_find
 
-ram_find_k005885_sprite:
-		ldx	#K005885_SPRITE
+ram_find_sprite:
+		ldx	#SPRITE_BASE
 		jmp	ram_find
 
 ram_find_work:
@@ -33,22 +32,22 @@ ram_find_work:
 
 d_menu_list:
 	MENU_ENTRY k005885_reg_debug, d_str_k005885_reg_debug, ME_FLAG_NONE
-	MENU_ENTRY k005885_sprite_debug, d_str_k005885_sprite_debug, ME_FLAG_NONE
+	MENU_ENTRY sprite_debug, d_str_sprite_debug, ME_FLAG_NONE
 	MENU_ENTRY ram_find_none, d_str_ram_find_none, ME_FLAG_NONE
-	MENU_ENTRY ram_find_k005885_sprite, d_str_ram_find_k005885_sprite, ME_FLAG_NONE
-	MENU_ENTRY ram_find_k005885_tile_a, d_str_ram_find_k005885_tile_a, ME_FLAG_NONE
-	MENU_ENTRY ram_find_k005885_tile_b, d_str_ram_find_k005885_tile_b, ME_FLAG_NONE
+	MENU_ENTRY ram_find_sprite, d_str_ram_find_sprite, ME_FLAG_NONE
+	MENU_ENTRY ram_find_layer_a_tile, d_str_ram_find_layer_a_tile, ME_FLAG_NONE
+	MENU_ENTRY ram_find_layer_b_tile, d_str_ram_find_layer_b_tile, ME_FLAG_NONE
 	MENU_ENTRY ram_find_work, d_str_ram_find_work, ME_FLAG_NONE
 	MENU_LIST_END
 
 d_str_menu_title:		STRING "DEBUG HARDWARE MENU"
 
 d_str_k005885_reg_debug:	STRING "K005885 REG DEBUG"
-d_str_k005885_sprite_debug:	STRING "K005885 SPRITE DEBUG"
+d_str_sprite_debug:		STRING "SPRITE DEBUG"
 
-d_str_ram_find_k005885_sprite:	STRING "RAM FIND K005885 SPRITE"
-d_str_ram_find_k005885_tile_a:	STRING "RAM FIND K005885 TILE A"
-d_str_ram_find_k005885_tile_b:	STRING "RAM FIND K005885 TILE B"
+d_str_ram_find_sprite:		STRING "RAM FIND SPRITE"
+d_str_ram_find_layer_a_tile:	STRING "RAM FIND LAYER A TILE"
+d_str_ram_find_layer_b_tile:	STRING "RAM FIND LAYER B TILE"
 d_str_ram_find_none:		STRING "RAM FIND NONE"
 d_str_ram_find_work:		STRING "RAM FIND WORK"
 

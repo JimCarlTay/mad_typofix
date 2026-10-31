@@ -53,21 +53,21 @@ value_changed_cb:
 
 		move.w	r_sprite_pos_x, d0
 		or.w	#$4000, d0		; priority
-		move.w	d0, OBJECT_RAM
+		move.w	d0, OBJECT_BASE
 
 		move.l	r_sprite_num, d0
-		move.w	d0, OBJECT_RAM + 4
+		move.w	d0, OBJECT_BASE + 4
 
 		; deal with upper 2 bits of sprite num
 		lsr.l	#$3, d0
 		and.w	#$6000, d0
 		or.w	r_sprite_pos_y, d0
-		move.w	d0, OBJECT_RAM + 2
+		move.w	d0, OBJECT_BASE + 2
 
 		move.b	r_sprite_size_y, d0
 		lsl.b	#$4, d0
 		or.b	r_sprite_size_x, d0
-		move.b	d0, OBJECT_RAM + 6
+		move.b	d0, OBJECT_BASE + 6
 
 		moveq	#$0, d0
 		tst.b	r_sprite_flip_x
@@ -80,7 +80,7 @@ value_changed_cb:
 		or.b	#$40, d0
 
 	.skip_sprite_flip_y:
-		move.b	d0, OBJECT_RAM + 7
+		move.b	d0, OBJECT_BASE + 7
 
 		move.b	#$1, REG_OBJECT_RAM_BANK
 		rts
@@ -90,8 +90,8 @@ loop_input_cb:
 
 sprite_viewer_palette_setup:
 		lea	d_palette_data, a0
-		lea	OBJECT_PALETTE, a1
-		moveq	#(PALETTE_SIZE / 2) - 1, d0
+		lea	OBJECT_PALETTE_BASE, a1
+		moveq	#(PALETTE_ENTRY_SIZE / 2) - 1, d0
 
 	.loop_next_byte:
 		move.w	(a0)+, (a1)+

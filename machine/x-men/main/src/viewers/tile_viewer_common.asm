@@ -13,7 +13,7 @@ tvc_init:
 		clr.b	r_tvc_bank_num
 
 		lea	d_palette_data, a1
-		moveq	#PALETTE_SIZE / 2, d0
+		moveq	#PALETTE_ENTRY_SIZE / 2, d0
 	.loop_next_byte:
 		move.w	(a1)+, (a0)+
 		dbra	d0, .loop_next_byte

@@ -134,7 +134,7 @@ high or low, but 99% of the time.
 | 0x7e |    126 | 0111 1110 |  000 0000 0011 0111 1110 xxxx  | MAD ROM ADDRESS                |
 | 0x7f |    127 | 0111 1111 |  000 0000 0011 0111 1111 xxxx  | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-12-11 @ 03:59 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-25 @ 01:31 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU
@@ -158,7 +158,7 @@ On z80 the error address is `$2000 | error_code << 7`.  Error codes on z80 are 6
 | 0x3e |     62 |      0011 1111 0xxx xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 |      0011 1111 1xxx xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-12-11 @ 04:00 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-15 @ 18:21 UTC</sup>
 <!-- ec_table_sound_end -->
 
 ## MAD Notes

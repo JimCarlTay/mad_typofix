@@ -8,18 +8,18 @@
 screen_init_dsub:
 		exx
 
-		ld	hl, FIX_TILE
-		ld	de, FIX_TILE_SIZE
+		ld	hl, TXT_TILE_BASE
+		ld	de, TXT_TILE_SIZE
 		ld	c, $24
 		NSUB	memory_fill
 
-		ld	hl, FIX_TILE_ATTR
-		ld	de, FIX_TILE_ATTR_SIZE
+		ld	hl, TXT_TILE_ATTR_BASE
+		ld	de, TXT_TILE_ATTR_SIZE
 		ld	c, $0
 		NSUB	memory_fill
 
-		ld	hl, SPRITE_RAM
-		ld	de, SPRITE_RAM_SIZE
+		ld	hl, SPRITE_BASE
+		ld	de, SPRITE_SIZE
 		ld	c, $0
 		NSUB	memory_fill
 

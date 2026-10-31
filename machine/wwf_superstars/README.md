@@ -43,8 +43,8 @@ Schematics don't seem to exist.
 ## RAM Locations
 | RAM | Location | Type |
 | -------- | :------- | ----- |
-| BG RAM | IC24 on graphics PCB | TMM2018AP-35 (2k x 8bit) |
-| FG RAM | IC22 on CPU PCB | MB8416A-15L-SK (2k x 8bit) |
+| BG Tile RAM | IC24 on graphics PCB | TMM2018AP-35 (2k x 8bit) |
+| FG Tile RAM | IC22 on CPU PCB | MB8416A-15L-SK (2k x 8bit) |
 | Palette RAM Lower | IC19 on CPU PCB | CXK5814P-35L (2k x 8bit) |
 | Palette RAM Upper| IC20 on CPU PCB | CXK5814P-35L (2k x 8bit) |
 | Sound CPU RAM | IC23 on CPU PCB | MB8416A-15L-SK (2k x 8bit) |
@@ -72,16 +72,16 @@ are 7 bits.
 <!-- ec_table_main_start -->
 | Hex  | Number | Beep Code |     Error Address (A23..A1)    |           Error Text           |
 | ---: | -----: | --------: | :----------------------------: | :----------------------------- |
-| 0x01 |      1 | 0000 0001 |  000 0000 0011 0000 0001 xxxx  | BG RAM ADDRESS                 |
-| 0x02 |      2 | 0000 0010 |  000 0000 0011 0000 0010 xxxx  | BG RAM DATA                    |
-| 0x05 |      5 | 0000 0101 |  000 0000 0011 0000 0101 xxxx  | BG RAM MARCH                   |
-| 0x08 |      8 | 0000 1000 |  000 0000 0011 0000 1000 xxxx  | BG RAM OUTPUT                  |
-| 0x0b |     11 | 0000 1011 |  000 0000 0011 0000 1011 xxxx  | BG RAM WRITE                   |
-| 0x0e |     14 | 0000 1110 |  000 0000 0011 0000 1110 xxxx  | FG RAM ADDRESS                 |
-| 0x0f |     15 | 0000 1111 |  000 0000 0011 0000 1111 xxxx  | FG RAM DATA                    |
-| 0x12 |     18 | 0001 0010 |  000 0000 0011 0001 0010 xxxx  | FG RAM MARCH                   |
-| 0x15 |     21 | 0001 0101 |  000 0000 0011 0001 0101 xxxx  | FG RAM OUTPUT                  |
-| 0x18 |     24 | 0001 1000 |  000 0000 0011 0001 1000 xxxx  | FG RAM WRITE                   |
+| 0x01 |      1 | 0000 0001 |  000 0000 0011 0000 0001 xxxx  | BG TILE RAM ADDRESS            |
+| 0x02 |      2 | 0000 0010 |  000 0000 0011 0000 0010 xxxx  | BG TILE RAM DATA               |
+| 0x05 |      5 | 0000 0101 |  000 0000 0011 0000 0101 xxxx  | BG TILE RAM MARCH              |
+| 0x08 |      8 | 0000 1000 |  000 0000 0011 0000 1000 xxxx  | BG TILE RAM OUTPUT             |
+| 0x0b |     11 | 0000 1011 |  000 0000 0011 0000 1011 xxxx  | BG TILE RAM WRITE              |
+| 0x0e |     14 | 0000 1110 |  000 0000 0011 0000 1110 xxxx  | FG TILE RAM ADDRESS            |
+| 0x0f |     15 | 0000 1111 |  000 0000 0011 0000 1111 xxxx  | FG TILE RAM DATA               |
+| 0x12 |     18 | 0001 0010 |  000 0000 0011 0001 0010 xxxx  | FG TILE RAM MARCH              |
+| 0x15 |     21 | 0001 0101 |  000 0000 0011 0001 0101 xxxx  | FG TILE RAM OUTPUT             |
+| 0x18 |     24 | 0001 1000 |  000 0000 0011 0001 1000 xxxx  | FG TILE RAM WRITE              |
 | 0x1b |     27 | 0001 1011 |  000 0000 0011 0001 1011 xxxx  | PALETTE RAM ADDRESS            |
 | 0x1c |     28 | 0001 1100 |  000 0000 0011 0001 1100 xxxx  | PALETTE RAM DATA LOWER         |
 | 0x1d |     29 | 0001 1101 |  000 0000 0011 0001 1101 xxxx  | PALETTE RAM DATA UPPER         |
@@ -116,7 +116,7 @@ are 7 bits.
 | 0x7e |    126 | 0111 1110 |  000 0000 0011 0111 1110 xxxx  | MAD ROM ADDRESS                |
 | 0x7f |    127 | 0111 1111 |  000 0000 0011 0111 1111 xxxx  | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-12-07 @ 02:46 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-29 @ 03:49 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU

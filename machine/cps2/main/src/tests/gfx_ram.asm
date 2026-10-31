@@ -8,7 +8,7 @@
 	section data
 	align 1
 
-; fix me based on ram chips
+; txt me based on ram chips
 d_memory_address_list:
-	MEMORY_ADDRESS_ENTRY GFX_RAM
+	MEMORY_ADDRESS_ENTRY GFX_RC_BASE
 	MEMORY_ADDRESS_LIST_END

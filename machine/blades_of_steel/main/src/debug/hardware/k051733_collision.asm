@@ -8,12 +8,12 @@
 k051733_collision_debug:
 		; highlight color
 		ldd	#$001f
-		std	LAYER_A_TILE_PALETTE + $18
+		std	LAYER_A_TILE_PALETTE_BASE + $18
 
 		ldy	#d_xys_screen_list
 		jsr	print_xy_string_list
 
-		ldd	#LAYER_A_TILE
+		ldd	#LAYER_A_TILE_BASE
 		std	r_old_highlight
 
 		; setup initial values
@@ -27,7 +27,7 @@ k051733_collision_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:

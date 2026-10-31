@@ -16,7 +16,7 @@
 ## MAD Pictures
 ![mad xmen main menu](docs/images/mad_xmen_main_menu.png)
 ![mad xmen video dac test](docs/images/mad_xmen_video_dac_test.png)<br>
-![mad xmen fix tile viewer](docs/images/mad_xmen_fix_tile_viewer.png)
+![mad xmen txt tile viewer](docs/images/mad_xmen_txt_tile_viewer.png)
 ![mad xmen sprite viewer](docs/images/mad_xmen_sprite_viewer.png)
 
 ## PCB Pictures
@@ -133,7 +133,7 @@ still be viable to use with a logic probe.  It just means address lines not be
 | 0x7e |    126 | 0111 1110 |  000 0000 0011 0111 1110 xxxx  | MAD ROM ADDRESS                |
 | 0x7f |    127 | 0111 1111 |  000 0000 0011 0111 1111 xxxx  | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-12-26 @ 18:33 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-29 @ 20:29 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU
@@ -147,7 +147,7 @@ reads it can result in a board crash and watchdog reset.  It will definitely
 cause a crash/reset when viewing any of the tile RAM.
 
 ### Tile Layers
-There are 3 tile layers (fix, layer a, and layer b).  They each use the same set
+There are 3 tile layers (txt, layer a, and layer b).  They each use the same set
 of tiles.  When you use the tile viewer for each they will display the same
 tiles, but are on the corresponding layer.
 

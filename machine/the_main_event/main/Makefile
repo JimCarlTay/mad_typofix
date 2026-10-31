@@ -77,11 +77,11 @@ OBJS += $(OBJ_DIR)/tests/tile_ram.o
 OBJS += $(OBJ_DIR)/tests/tile_attr_ram.o
 OBJS += $(OBJ_DIR)/tests/tile_scroll.o
 OBJS += $(OBJ_DIR)/tests/video_dac.o
-OBJS += $(OBJ_DIR)/viewers/fix_tile.o
 OBJS += $(OBJ_DIR)/viewers/layer_a_tile.o
 OBJS += $(OBJ_DIR)/viewers/layer_b_tile.o
 OBJS += $(OBJ_DIR)/viewers/sprite.o
 OBJS += $(OBJ_DIR)/viewers/tile_viewer_common.o
+OBJS += $(OBJ_DIR)/viewers/txt_tile.o
 
 ifneq (,$(findstring _DEBUG_HARDWARE_,$(BUILD_FLAGS)))
 OBJS += $(OBJ_DIR)/cpu/6x09/src/debug/hardware/watchdog_time.o

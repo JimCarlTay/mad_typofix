@@ -21,27 +21,27 @@ video_dac_test:
 		;  GGGG RRRR (palette ram)
 		;  xxxx BBBB (palette ext ram)
 		; red palette setup
-		lea	PALETTE_RAM+PALETTE_SIZE, a0
+		lea	PALETTE_BASE+PALETTE_ENTRY_SIZE, a0
 		move.w	#$ff, d0
 		bsr	palette_setup_color
 
 		; green palette setup
-		lea	PALETTE_RAM+(PALETTE_SIZE*4), a0
+		lea	PALETTE_BASE+(PALETTE_ENTRY_SIZE*4), a0
 		move.w	#$ff00, d0
 		bsr	palette_setup_color
 
 		; blue palette setup
-		lea	PALETTE_EXT_RAM+(PALETTE_SIZE*7), a0
+		lea	PALETTE_EXT_BASE+(PALETTE_ENTRY_SIZE*7), a0
 		move.w	#$ff, d0
 		bsr	palette_setup_color
 
 		; combined/all palette setup
-		lea	PALETTE_RAM+(PALETTE_SIZE*10), a0
+		lea	PALETTE_BASE+(PALETTE_ENTRY_SIZE*10), a0
 		move.w	#$ffff, d0
 		bsr	palette_setup_color
 
 		; combined/all palette setup
-		lea	PALETTE_EXT_RAM+(PALETTE_SIZE*10), a0
+		lea	PALETTE_EXT_BASE+(PALETTE_ENTRY_SIZE*10), a0
 		move.w	#$ff, d0
 		bsr	palette_setup_color
 
@@ -90,8 +90,8 @@ full_screen:
 		add.w	d5, d4
 
 		move.w	(a1, d4.w), d1
-		lea	TILE1_RAM, a0
-		move.l	#(TILE1_RAM_SIZE / 2) - 1, d0
+		lea	TILE1_BASE, a0
+		move.l	#(TILE1_SIZE / 2) - 1, d0
 
 	.loop_next_address:
 		move.w	d1, (a0)+
@@ -249,10 +249,10 @@ palette_setup_color:
 		move.w	d2, (VD_TILE_B25A_PAL_OFFSET2, a0)
 	endif
 
-		add.l	#PALETTE_SIZE, a0
+		add.l	#PALETTE_ENTRY_SIZE, a0
 		dbra	d6, .loop_next_group_of_three
 
-		sub.l	#PALETTE_SIZE, a0		; rewrite the last one to be without the mask
+		sub.l	#PALETTE_ENTRY_SIZE, a0		; rewrite the last one to be without the mask
 		move.w	d0, (a0, d1.w)
 
 	ifd _ROMSET_HBARREL_

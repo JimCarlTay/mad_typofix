@@ -91,14 +91,14 @@ value_changed_cb:
 
 	.skip_sprite_flip_x:
 		ora	r_sprite_size
-		sta	SPRITE_RAM
+		sta	SPRITE_BASE
 
 		; For some reason with mad on hardware it won't draw the
 		; sprite with a #$0 zcode, but works ok with >= $1.  The
 		; original game code has a sprite with $0 zcode.  There
 		; must be some min zcode value init some place on hardware.
 		lda	#$01
-		sta	SPRITE_RAM + 1
+		sta	SPRITE_BASE + 1
 
 		ldd	r_sprite_num
 		aslb
@@ -113,16 +113,16 @@ value_changed_cb:
 		rola
 		aslb
 		rola
-		std	SPRITE_RAM + 2
+		std	SPRITE_BASE + 2
 
 		ldd	r_sprite_pos_y
-		std	SPRITE_RAM + 4
+		std	SPRITE_BASE + 4
 		ldd	r_sprite_pos_x
-		std	SPRITE_RAM + 6
+		std	SPRITE_BASE + 6
 		ldd	r_sprite_zoom_y
-		std	SPRITE_RAM + 8
+		std	SPRITE_BASE + 8
 		ldd	r_sprite_zoom_x
-		std	SPRITE_RAM + 10
+		std	SPRITE_BASE + 10
 
 		lda	r_sprite_shadow
 		asla
@@ -139,7 +139,7 @@ value_changed_cb:
 		ora	#$40
 
 	.skip_sprite_mirror_x:
-		sta	SPRITE_RAM + 12
+		sta	SPRITE_BASE + 12
 
 		lda	#CTRL_SPRITE_RENDER
 		sta	REG_CONTROL
@@ -153,8 +153,8 @@ sprite_viewer_palette_setup:
 		sta	REG_CONTROL
 
 		ldx	#d_palette_data
-		ldy	#SPRITE_PALETTE
-		ldb	#PALETTE_SIZE
+		ldy	#SPRITE_PALETTE_BASE
+		ldb	#PALETTE_ENTRY_SIZE
 
 	.loop_next_byte:
 		lda	,x+

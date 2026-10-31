@@ -8,28 +8,28 @@
 fc0000_debug:
 		jsr	bg_tile_viewer_palette_setup
 		jsr	fg_tile_viewer_palette_setup
-		jsr	fix_tile_viewer_palette_setup
+		jsr	txt_tile_viewer_palette_setup
 		jsr	sprite_viewer_palette_setup
 
 		SEEK_XY SCREEN_START_X, (SCREEN_START_Y + 14)
 		lea	d_str_last_written, a0
 		RSUB	print_string
 
-		move.w	#$f00f, FIX_TILE_PALETTE + (FIX_TILE_PALETTE_SIZE * 2) + 2
-		move.w	#$f00f, FIX_TILE_PALETTE + (FIX_TILE_PALETTE_SIZE * 2) + 4
+		move.w	#$f00f, TXT_TILE_PALETTE_BASE + (TXT_TILE_PALETTE_ENTRY_SIZE * 2) + 2
+		move.w	#$f00f, TXT_TILE_PALETTE_BASE + (TXT_TILE_PALETTE_ENTRY_SIZE * 2) + 4
 
-		move.l	#FIX_TILE_RAM, r_old_highlight
+		move.l	#TXT_TILE_BASE, r_old_highlight
 
 		move.w	#$0000, r_mw_buffer
 		move.w	#$0000, r_mw_buffer + 2
 		move.b	#$00, r_mw_buffer + 4
 
-		move.w	#$10d0, FIX_TILE_RAM + $342
-		move.w	#$0070, FG_TILE_RAM + $440
-		move.w	#$0071, BG_TILE_RAM + $540
+		move.w	#$10d0, TXT_TILE_BASE + $342
+		move.w	#$0070, FG_TILE_BASE + $440
+		move.w	#$0071, BG_TILE_BASE + $540
 
-		move.l	#$00b70000, SPRITE_RAM
-		move.l	#$00700100, SPRITE_RAM + 4
+		move.l	#$00b70000, SPRITE_BASE
+		move.l	#$00700100, SPRITE_BASE + 4
 		move.w	#$0, REG_SPRITE_COPY_REQUEST
 
 		lea	d_mw_settings, a0

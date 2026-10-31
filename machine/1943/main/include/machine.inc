@@ -1,27 +1,29 @@
-ROM_START			equ $0
+ROM_BASE			equ $0
 ROM_SIZE			equ $8000
 
-TILE_RAM			equ $d000
-TILE_RAM_SIZE			equ $800
-TILE_RAM_ADDRESS_LINES		equ 11
+; RAM CHIPS
+TXT_TILE_RC_BASE		equ $d000
+TXT_TILE_RC_SIZE		equ $800
+TXT_TILE_RC_ADDR_LINES		equ 11
 
-FIX_TILE			equ $d000
-FIX_TILE_SIZE			equ $400
+WORK_RC_BASE			equ $e000
+WORK_RC_SIZE			equ $2000
+WORK_RC_ADDR_LINES		equ 13
 
-FIX_TILE_ATTR			equ $d400
-FIX_TILE_ATTR_SIZE		equ $400
+; MEMORY REGIONS
+SPRITE_BASE			equ WORK_RC_BASE + $1000
+SPRITE_SIZE			equ $1000
 
-WORK_RAM_CHIP			equ $e000
-WORK_RAM_CHIP_SIZE		equ $2000
-WORK_RAM_CHIP_ADDRESS_LINES	equ 13
+TXT_TILE_BASE			equ TXT_TILE_RC_BASE
+TXT_TILE_SIZE			equ $400
 
-; work and sprite share the same phsyical ram chip
-WORK_RAM			equ $e000
+TXT_TILE_ATTR_BASE		equ TXT_TILE_RC_BASE + $400
+TXT_TILE_ATTR_SIZE		equ $400
+
+WORK_RAM_BASE			equ WORK_RC_BASE
 WORK_RAM_SIZE			equ $1000
 
-SPRITE_RAM			equ $f000
-SPRITE_RAM_SIZE			equ $1000
-
+; REG/IO
 REG_SPRITE_COPY_REQUEST		equ $c806
 REG_SOUND			equ $c800
 
@@ -45,9 +47,7 @@ REG_BG2_SCROLL_X		equ $d803
 
 CHAR_COLON			equ $2c
 
-
 	macro WATCHDOG
-;		ld	($c806), a
 	endm
 
 	; Sound commands are sent through a latch, but the main CPU
@@ -74,7 +74,6 @@ CHAR_COLON			equ $2c
 
 		ld	a, b
 		ld	(REG_SOUND), a
-
 	endm
 
 	macro SOUND_STOP

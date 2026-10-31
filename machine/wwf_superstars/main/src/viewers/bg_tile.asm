@@ -26,12 +26,12 @@ bg_tile_viewer:
 ;  xxxx BBBB GGGG RRRR
 bg_palette_setup:
 
-		; bg tile's palettes start at PALETTE_SIZE * 16.
+		; bg tile's palettes start at PALETTE_ENTRY_SIZE * 16.
 		; going to the next one because the first one is used
 		; for the main bg color
-		lea	BG_PALETTE + PALETTE_SIZE, a0
+		lea	BG_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE, a0
 		lea	d_palette_data, a1
-		moveq	#(PALETTE_SIZE/2 - 1), d0
+		moveq	#(PALETTE_ENTRY_SIZE/2 - 1), d0
 
 	.loop_next_color:
 		move.w	(a1)+, d1
@@ -44,7 +44,7 @@ bg_palette_setup:
 ;  d0 = x
 ;  d1 = y
 bg_seek_xy_cb:
-		lea	BG_RAM, a6
+		lea	BG_TILE_BASE, a6
 		and.l	#$ff, d0
 		and.l	#$ff, d1
 

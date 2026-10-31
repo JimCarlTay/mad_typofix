@@ -85,8 +85,8 @@ full_screen:
 		add.w	d5, d4
 
 		move.w	(a1, d4.w), d1
-		lea	FIX_TILE, a0
-		move.l	#(FIX_TILE_SIZE / 2) - 1, d0
+		lea	TXT_TILE_BASE, a0
+		move.l	#(TXT_TILE_SIZE / 2) - 1, d0
 
 		move.w	d1, d5
 		lsr.w	#$8, d5
@@ -249,13 +249,13 @@ palette_setup:
 		bsr	palette_setup_color
 
 		; blue palette setup
-		lea	r_palette_data + (FIX_TILE_PALETTE_SIZE * VD_NUM_BITS_PER_COLOR), a0
+		lea	r_palette_data + (TXT_TILE_PALETTE_ENTRY_SIZE * VD_NUM_BITS_PER_COLOR), a0
 		move.w	#$f0, d0
 		move.w	#VD_TILE1_PAL_OFFSET, d1
 		bsr	palette_setup_color
 
 		; combined/all palette setup
-		lea	r_palette_data + (FIX_TILE_PALETTE_SIZE * VD_NUM_BITS_PER_COLOR), a0
+		lea	r_palette_data + (TXT_TILE_PALETTE_ENTRY_SIZE * VD_NUM_BITS_PER_COLOR), a0
 		move.w	#$fff0, d0
 		move.w	#VD_TILE2_PAL_OFFSET, d1
 		bsr	palette_setup_color
@@ -263,8 +263,8 @@ palette_setup:
 		CPU_INTS_ENABLE
 
 		move.l	#r_palette_data, r_vblank_copy_src
-		move.l	#(FIX_TILE_PALETTE + FIX_TILE_PALETTE_SIZE), r_vblank_copy_dst
-		move.w	#(FIX_TILE_PALETTE_SIZE * VD_NUM_COLORS * VD_NUM_BITS_PER_COLOR / 2), r_vblank_copy_size
+		move.l	#(TXT_TILE_PALETTE_BASE + TXT_TILE_PALETTE_ENTRY_SIZE), r_vblank_copy_dst
+		move.w	#(TXT_TILE_PALETTE_ENTRY_SIZE * VD_NUM_COLORS * VD_NUM_BITS_PER_COLOR / 2), r_vblank_copy_size
 		jsr	wait_vblank_copy
 
 		CPU_INTS_DISABLE
@@ -288,7 +288,7 @@ palette_setup_color:
 		or.w	d3, d2				; add in brightness value
 		move.w	d2, (a0, d6.w)	; individual b0 to b3
 		lsl.w	#1, d4				; shift bit mask to get the next bit
-		adda.l	#FIX_TILE_PALETTE_SIZE, a0
+		adda.l	#TXT_TILE_PALETTE_ENTRY_SIZE, a0
 		dbra	d5, .loop_next_offset
 
 		or.w	d3, d0				; add in brightness value
@@ -310,5 +310,5 @@ d_screen_xys_list:
 	align 1
 
 r_tiles_table:		dcb.w VD_NUM_COLORS*VD_NUM_BITS_PER_COLOR
-r_palette_data:		dcb.b FIX_TILE_PALETTE_SIZE*VD_NUM_COLORS*VD_NUM_BITS_PER_COLOR
+r_palette_data:		dcb.b TXT_TILE_PALETTE_ENTRY_SIZE*VD_NUM_COLORS*VD_NUM_BITS_PER_COLOR
 r_brightness:		dcb.b 1

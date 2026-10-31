@@ -12,31 +12,31 @@ debug_hardware_menu:
 		ret
 
 ram_find_bg_tile:
-		ld	ix, BG_TILE_RAM
+		ld	ix, BG_TILE_BASE
 		jp	ram_find
 
-ram_find_fix_tile:
-		ld	ix, FIX_TILE
+ram_find_txt_tile:
+		ld	ix, TXT_TILE_BASE
 		jp	ram_find
 
-ram_find_fix_tile_attr:
-		ld	ix, FIX_TILE_ATTR
+ram_find_txt_tile_attr:
+		ld	ix, TXT_TILE_ATTR_BASE
 		jp	ram_find
 
 ram_find_palette:
-		ld	ix, PALETTE_RAM
+		ld	ix, PALETTE_BASE
 		jp	ram_find
 
 ram_find_palette_ext:
-		ld	ix, PALETTE_EXT_RAM
+		ld	ix, PALETTE_EXT_BASE
 		jp	ram_find
 
 ram_find_sprite:
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 		jp	ram_find
 
 ram_find_work:
-		ld	ix, WORK_RAM
+		ld	ix, WORK_RAM_BASE
 		jp	ram_find
 
 	section data
@@ -46,8 +46,8 @@ d_menu_list:
 	MENU_ENTRY sprite_debug, d_str_sprite_debug, ME_FLAG_NONE
 	MENU_ENTRY ram_find_none, d_str_ram_find_none, ME_FLAG_NONE
 	MENU_ENTRY ram_find_bg_tile, d_str_ram_find_bg_tile, ME_FLAG_NONE
-	MENU_ENTRY ram_find_fix_tile, d_str_ram_find_fix_tile, ME_FLAG_NONE
-	MENU_ENTRY ram_find_fix_tile_attr, d_str_ram_find_fix_tile_attr, ME_FLAG_NONE
+	MENU_ENTRY ram_find_txt_tile, d_str_ram_find_txt_tile, ME_FLAG_NONE
+	MENU_ENTRY ram_find_txt_tile_attr, d_str_ram_find_txt_tile_attr, ME_FLAG_NONE
 	MENU_ENTRY ram_find_palette, d_str_ram_find_palette, ME_FLAG_NONE
 	MENU_ENTRY ram_find_palette_ext, d_str_ram_find_palette_ext, ME_FLAG_NONE
 	MENU_ENTRY ram_find_sprite, d_str_ram_find_sprite, ME_FLAG_NONE
@@ -60,8 +60,8 @@ d_str_io_debug:			STRING "IO DEBUG"
 d_str_sprite_debug:		STRING "SPRITE DEBUG"
 
 d_str_ram_find_bg_tile:		STRING "RAM FIND BG TILE"
-d_str_ram_find_fix_tile:	STRING "RAM FIND FIX TILE"
-d_str_ram_find_fix_tile_attr:	STRING "RAM FIND FIX TILE ATTR"
+d_str_ram_find_txt_tile:	STRING "RAM FIND TXT TILE"
+d_str_ram_find_txt_tile_attr:	STRING "RAM FIND TXT TILE ATTR"
 d_str_ram_find_none:		STRING "RAM FIND NONE"
 d_str_ram_find_palette:		STRING "RAM FIND PALETTE"
 d_str_ram_find_palette_ext:	STRING "RAM FIND PALETTE EXT"

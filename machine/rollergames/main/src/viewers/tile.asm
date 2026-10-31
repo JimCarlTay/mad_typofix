@@ -35,8 +35,8 @@ d_str_title:	STRING "TILE VIEWER"
 palette_setup:
 
 		ldx	#d_palette_data
-		ldy	#TILE_PALETTE + (PALETTE_SIZE * PALETTE_NUM)
-		ldb	#PALETTE_SIZE
+		ldy	#TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * PALETTE_NUM)
+		ldb	#PALETTE_ENTRY_SIZE
 	.loop_next_color:
 		lda	,x+
 		sta	,y+

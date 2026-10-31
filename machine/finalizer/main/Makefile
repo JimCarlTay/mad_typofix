@@ -71,14 +71,14 @@ OBJS += $(OBJ_DIR)/tests/ram.o
 OBJS += $(OBJ_DIR)/tests/sound_m58715.o
 OBJS += $(OBJ_DIR)/tests/sound_sn76489a.o
 OBJS += $(OBJ_DIR)/tests/tile_scroll.o
-OBJS += $(OBJ_DIR)/viewers/k005885_tile_a.o
-OBJS += $(OBJ_DIR)/viewers/k005885_sprite.o
+OBJS += $(OBJ_DIR)/viewers/layer_a_tile.o
+OBJS += $(OBJ_DIR)/viewers/sprite.o
 
 ifneq (,$(findstring _DEBUG_HARDWARE_,$(BUILD_FLAGS)))
 OBJS += $(OBJ_DIR)/cpu/6x09/src/debug/hardware/ram_find.o
 OBJS += $(OBJ_DIR)/cpu/6x09/src/handlers/memory_write.o
 OBJS += $(OBJ_DIR)/debug/hardware/k005885_reg.o
-OBJS += $(OBJ_DIR)/debug/hardware/k005885_sprite.o
+OBJS += $(OBJ_DIR)/debug/hardware/sprite.o
 OBJS += $(OBJ_DIR)/menus/debug_hardware.o
 endif
 

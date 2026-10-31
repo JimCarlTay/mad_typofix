@@ -12,27 +12,27 @@ memory_viewer_menu:
 		ret
 
 view_palette_ram:
-		ld	ix, PALETTE_RAM
+		ld	ix, PALETTE_BASE
 		jr	view_memory
 
 view_rom_space:
-		ld	ix, $0
+		ld	ix, ROM_BASE
 		jr	view_memory
 
 view_sprite_ram:
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 		ld	iy, read_memory_sprite_cb
 		jr	view_memory_cb
 
 view_tile_ram:
-		ld	ix, TILE_RAM
+		ld	ix, TILE_BASE
 		jr	view_memory
 
 view_tile_attr_ram:
-		ld	ix, TILE_ATTR_RAM
+		ld	ix, TILE_ATTR_BASE
 		jr	view_memory
 view_work_ram:
-		ld	ix, WORK_RAM
+		ld	ix, WORK_RAM_BASE
 
 view_memory:
 		ld	iy, $0			; no callback

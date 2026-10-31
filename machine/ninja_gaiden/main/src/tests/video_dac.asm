@@ -15,22 +15,22 @@ video_dac_test:
 		;  xxxx BBBB GGGG RRRR
 		; red palette setup
 		; palette #0 seems to start at $200
-		lea	TXT_PALETTE + PALETTE_SIZE, a0
+		lea	TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE, a0
 		move.w	#$f, d0
 		bsr	palette_setup_color
 
 		; green palette setup
-		lea	TXT_PALETTE + (PALETTE_SIZE*2), a0
+		lea	TXT_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE*2), a0
 		move.w	#$f0, d0
 		bsr	palette_setup_color
 
 		; blue palette setup
-		lea	TXT_PALETTE + (PALETTE_SIZE*3), a0
+		lea	TXT_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE*3), a0
 		move.w	#$f00, d0
 		bsr	palette_setup_color
 
 		; combined/all palette setup
-		lea	TXT_PALETTE + (PALETTE_SIZE*4), a0
+		lea	TXT_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE*4), a0
 		move.w	#$fff, d0
 		bsr	palette_setup_color
 
@@ -83,8 +83,8 @@ full_screen:
 		move.w	(a1, d4.w), d1
 		and.w	#$fff, d1
 
-		lea	TXT_RAM + $800, a0
-		move.l	#(TXT_RAM_SIZE / 4) - 1, d0
+		lea	TXT_TILE_BASE + $800, a0
+		move.l	#(TXT_TILE_SIZE / 4) - 1, d0
 	.loop_next_tile_address:
 		move.w	d1, (a0)+
 		dbra	d0, .loop_next_tile_address
@@ -95,8 +95,8 @@ full_screen:
 		and.w	#$f000, d1
 		lsr.w	#8, d1
 
-		lea	TXT_RAM, a0
-		move.l	#(TXT_RAM_SIZE / 4) - 1, d0
+		lea	TXT_TILE_BASE, a0
+		move.l	#(TXT_TILE_SIZE / 4) - 1, d0
 	.loop_next_palette_address:
 		move.w	d1, (a0)+
 		dbra	d0, .loop_next_palette_address

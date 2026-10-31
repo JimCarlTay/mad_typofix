@@ -54,20 +54,20 @@ value_changed_cb:
 		move.b	r_sprite_offset_x, d0
 		lsl.b	#$4, d0
 		or.b	r_sprite_offset_y, d0
-		move.w	d0, SPRITE_RAM
+		move.w	d0, SPRITE_BASE
 
 		move.w	r_sprite_num, d0
 		or.w	#(PALETTE_NUM << 12), d0
-		move.w	d0, SPRITE_RAM + 2
+		move.w	d0, SPRITE_BASE + 2
 
 		move.w	r_sprite_num, d0
 		and.w	#$1000, d0
 		lsl.w	#$3, d0
 
 		or.w	r_sprite_pos_x, d0
-		move.w	d0, SPRITE_RAM + 4
+		move.w	d0, SPRITE_BASE + 4
 
-		move.w	r_sprite_pos_y, SPRITE_RAM + 6
+		move.w	r_sprite_pos_y, SPRITE_BASE + 6
 		move.b	#$1, r_sprite_copy_req
 		rts
 
@@ -78,9 +78,9 @@ loop_input_cb:
 ;  xxxx BBBB GGGG RRRR
 sprite_viewer_palette_setup:
 
-		lea	SPRITE_PALETTE + (PALETTE_SIZE * PALETTE_NUM), a0
+		lea	SPRITE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * PALETTE_NUM), a0
 		lea	d_palette_data, a1
-		moveq	#(PALETTE_SIZE/2 - 1), d0
+		moveq	#(PALETTE_ENTRY_SIZE/2 - 1), d0
 
 	.loop_next_color:
 		move.w	(a1)+, d1

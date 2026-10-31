@@ -82,7 +82,7 @@ still be viable to use with a logic probe. It just means address lines not be
 | 0x3e |     62 |      1111 0011 1110 xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 |      1111 0011 1111 xxxx       | MAD ROM CRC16                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2026-09-05 @ 02:25 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-20 @ 17:42 UTC</sup>
 <!-- ec_table_main_end -->
 
 <a name="sound-cpu"></a>

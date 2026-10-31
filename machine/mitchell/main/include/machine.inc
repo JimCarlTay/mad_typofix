@@ -1,41 +1,55 @@
 	include "global/include/oki/msm6295.inc"
 	include "romset.inc"
 
-ROM_START			equ $0
+ROM_BASE			equ $0
 ROM_SIZE			equ $8000
 
-TILE_ATTR_RAM			equ $c800
-TILE_ATTR_RAM_SIZE		equ $800
-TILE_ATTR_RAM_ADDRESS_LINES	equ 11
+; RAM CHIPS
+PALETTE_RC_BASE			equ $c000
+PALETTE_RC_SIZE			equ $800
+PALETTE_RC_ADDR_LINES		equ 11
 
-SPRITE_RAM			equ $d000
-SPRITE_RAM_SIZE			equ $1000
-SPRITE_RAM_ADDRESS_LINES	equ 12
-; tiles and sprite share the same palettes
-; so just making sprites use number 3
-SPRITE_PALETTE_NUM		equ 3
-SPRITE_PALETTE			equ PALETTE_RAM + (SPRITE_PALETTE_NUM * PALETTE_SIZE)
+; sprite/tile ram are the same address space and have to be bank switched to
+; switch between them
+SPRITE_RC_BASE			equ $d000
+SPRITE_RC_SIZE			equ $1000
+SPRITE_RC_ADDR_LINES		equ 12
 
-PALETTE_RAM			equ $c000
-PALETTE_RAM_SIZE		equ $800
-PALETTE_RAM_ADDRESS_LINES	equ 11
-PALETTE_SIZE			equ $20
+TILE_RC_BASE			equ $d000
+TILE_RC_SIZE			equ $1000
+TILE_RC_ADDR_LINES		equ 12
 
-; sprite/tile ram are the same address space
-; and have to be bank switched to switch
-; between them
-TILE_RAM			equ $d000
-TILE_RAM_SIZE			equ $1000
-TILE_RAM_ADDRESS_LINES		equ 12
-TILE_PALETTE			equ PALETTE_RAM
+TILE_ATTR_RC_BASE		equ $c800
+TILE_ATTR_RC_SIZE		equ $800
+TILE_ATTR_RC_ADDR_LINES		equ 11
 
-WORK_RAM_CHIP			equ $e000
-WORK_RAM_CHIP_SIZE		equ $2000
-WORK_RAM_CHIP_ADDRESS_LINES	equ 13
+WORK_RC_BASE			equ $e000
+WORK_RC_SIZE			equ $2000
+WORK_RC_ADDR_LINES		equ 13
 
-WORK_RAM			equ WORK_RAM_CHIP
-WORK_RAM_SIZE			equ WORK_RAM_CHIP_SIZE
+; MEMORY REGIONS
+PALETTE_BASE			equ PALETTE_RC_BASE
+PALETTE_SIZE			equ PALETTE_RC_SIZE
+PALETTE_ENTRY_SIZE		equ $20
 
+SPRITE_BASE			equ SPRITE_RC_BASE
+SPRITE_SIZE			equ SPRITE_RC_SIZE
+
+; tiles and sprite share the same palettes so just making sprites use number 3
+SPRITE_PALETTE_NUM		equ $3
+SPRITE_PALETTE_BASE		equ PALETTE_BASE + (SPRITE_PALETTE_NUM * PALETTE_ENTRY_SIZE)
+
+TILE_BASE			equ TILE_RC_BASE
+TILE_SIZE			equ TILE_RC_SIZE
+TILE_PALETTE_BASE		equ PALETTE_BASE
+
+TILE_ATTR_BASE			equ TILE_ATTR_RC_BASE
+TILE_ATTR_SIZE			equ TILE_ATTR_RC_SIZE
+
+WORK_RAM_BASE			equ WORK_RC_BASE
+WORK_RAM_SIZE			equ WORK_RC_SIZE
+
+; REG/IO
 IO_INPUT_P1			equ $01
 IO_INPUT_P2			equ $02
 IO_INPUT_SYS1			equ $00
@@ -59,7 +73,7 @@ VIDEO_BANK_TILE			equ $0
 VIDEO_BANK_SPRITE		equ $1
 
 IO_YM2413_DATA			equ $03
-IO_YM2413_ADDRESS		equ $04
+IO_YM2413_ADDR		equ $04
 IO_MSM6295			equ $05
 
 	macro WATCHDOG

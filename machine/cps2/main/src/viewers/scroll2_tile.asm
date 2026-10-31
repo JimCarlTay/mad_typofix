@@ -14,7 +14,7 @@ scroll2_tile_viewer:
 		move.w	#$18, REGA_SCROLL2_Y
 	endif
 
-		lea	SCROLL2_PALETTE + (PALETTE_SIZE * TVC_PALETTE_NUM), a0
+		lea	SCROLL2_PALETTE_BASE + (PALETTE_ENTRY_SIZE * TVC_PALETTE_NUM), a0
 		bsr	tvc_init
 
 		moveq	#0, d0
@@ -34,7 +34,7 @@ scroll2_seek_xy_cb:
 		and.l	#$ff, d1
 
 	ifd _SCREEN_TATE_
-		lea	SCROLL2_RAM + $5c4, a6
+		lea	SCROLL2_BASE + $5c4, a6
 		lsl.l	#1, d0
 		lsl.l	#5, d1
 		adda.l	d0, a6

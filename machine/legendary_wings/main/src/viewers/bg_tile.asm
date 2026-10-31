@@ -17,18 +17,18 @@ bg_tile_viewer:
 
 		ld	hl, d_palette_data
 		ld	(r_nmi_copy_src), hl
-		ld	hl, BG_TILE_PALETTE
+		ld	hl, BG_TILE_PALETTE_BASE
 		ld	(r_nmi_copy_dst), hl
-		ld	a, BG_TILE_PALETTE_SIZE / 2
+		ld	a, BG_TILE_PALETTE_ENTRY_SIZE / 2
 		ld	(r_nmi_copy_size), a
 
 		call	wait_nmi_copy
 
 		ld	hl, d_palette_ext_data
 		ld	(r_nmi_copy_src), hl
-		ld	hl, BG_TILE_PALETTE_EXT
+		ld	hl, BG_TILE_PALETTE_EXT_BASE
 		ld	(r_nmi_copy_dst), hl
-		ld	a, BG_TILE_PALETTE_SIZE / 2
+		ld	a, BG_TILE_PALETTE_ENTRY_SIZE / 2
 		ld	(r_nmi_copy_size), a
 
 		call	wait_nmi_copy

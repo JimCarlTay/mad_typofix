@@ -7,25 +7,25 @@
 	section code
 
 screen_init_dsub:
-		ldx	#SCROLL_RAM
-		ldy	#SCROLL_RAM_SIZE * 2
+		ldx	#TILE_SCROLL_BASE
+		ldy	#TILE_SCROLL_SIZE
 		lda	#$0
 		DSUB	memory_fill
 
 
 screen_init_no_scroll_clear_dsub:
-		ldx	#TILE_RAM
-		ldy	#TILE_RAM_SIZE
+		ldx	#TILE_BASE
+		ldy	#TILE_SIZE
 		lda	#$10
 		DSUB	memory_fill
 
-		ldx	#TILE_RAM_ATTR
-		ldy	#TILE_RAM_ATTR_SIZE
+		ldx	#TILE_ATTR_BASE
+		ldy	#TILE_ATTR_SIZE
 		lda	#$0
 		DSUB	memory_fill
 
-		ldx	#SPRITE_RAM
-		ldy	#SPRITE_RAM_SIZE
+		ldx	#SPRITE_BASE
+		ldy	#SPRITE_SIZE
 		lda	#$0
 		DSUB	memory_fill
 

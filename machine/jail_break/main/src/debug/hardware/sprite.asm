@@ -9,7 +9,7 @@ sprite_debug:
 		ldy	#d_screen_xys_list
 		jsr	print_xy_string_list
 
-		ldd	#TILE_RAM
+		ldd	#TILE_BASE
 		std	r_old_highlight
 
 		; setup initial values
@@ -29,7 +29,7 @@ sprite_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:
@@ -44,34 +44,34 @@ highlight_cb:
 
 write_memory_cb:
 		lda	r_mw_buffer
-		sta	SPRITE_RAM
+		sta	SPRITE_BASE
 
 		inca
-		sta	SPRITE_RAM + $100
+		sta	SPRITE_BASE + $100
 		deca
 
 		SEEK_XY	SCREEN_START_X, (SCREEN_START_Y + 15)
 		RSUB	print_hex_byte
 
 		lda	r_mw_buffer + 1
-		sta	SPRITE_RAM + 1
-		sta	SPRITE_RAM + $100 + 1
+		sta	SPRITE_BASE + 1
+		sta	SPRITE_BASE + $100 + 1
 		SEEK_XY	(SCREEN_START_X + 3), (SCREEN_START_Y + 15)
 		RSUB	print_hex_byte
 
 		lda	r_mw_buffer + 2
-		sta	SPRITE_RAM + 2
+		sta	SPRITE_BASE + 2
 
 		adda	#$10
-		sta	SPRITE_RAM + $100 + 2
+		sta	SPRITE_BASE + $100 + 2
 		suba	#$10
 
 		SEEK_XY	(SCREEN_START_X + 6), (SCREEN_START_Y + 15)
 		RSUB	print_hex_byte
 
 		lda	r_mw_buffer + 3
-		sta	SPRITE_RAM + 3
-		sta	SPRITE_RAM + $100 + 3
+		sta	SPRITE_BASE + 3
+		sta	SPRITE_BASE + $100 + 3
 		SEEK_XY	(SCREEN_START_X + 9), (SCREEN_START_Y + 15)
 		RSUB	print_hex_byte
 

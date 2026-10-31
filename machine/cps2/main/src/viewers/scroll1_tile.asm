@@ -6,7 +6,7 @@
 
 scroll1_tile_viewer:
 
-		lea	SCROLL1_PALETTE + (PALETTE_SIZE * TVC_PALETTE_NUM), a0
+		lea	SCROLL1_PALETTE_BASE + (PALETTE_ENTRY_SIZE * TVC_PALETTE_NUM), a0
 		bsr	tvc_init
 
 		moveq	#0, d0

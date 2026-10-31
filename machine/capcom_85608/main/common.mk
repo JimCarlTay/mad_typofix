@@ -63,17 +63,16 @@ OBJS += $(OBJ_DIR)/menus/memory_viewer.o
 OBJS += $(OBJ_DIR)/menus/ram_tests.o
 OBJS += $(OBJ_DIR)/tests/auto.o
 OBJS += $(OBJ_DIR)/tests/bg_tile_ram.o
-OBJS += $(OBJ_DIR)/tests/fix_tile_ram.o
 OBJS += $(OBJ_DIR)/tests/input.o
 OBJS += $(OBJ_DIR)/tests/sound_fm.o
 OBJS += $(OBJ_DIR)/tests/sound_adpcm.o
+OBJS += $(OBJ_DIR)/tests/txt_tile_ram.o
 OBJS += $(OBJ_DIR)/viewers/bg_image.o
 OBJS += $(OBJ_DIR)/viewers/bg_tile.o
-OBJS += $(OBJ_DIR)/viewers/fix_tile.o
 OBJS += $(OBJ_DIR)/viewers/sprite.o
+OBJS += $(OBJ_DIR)/viewers/txt_tile.o
 
 ifneq (,$(findstring _DEBUG_HARDWARE_,$(BUILD_FLAGS)))
-OBJS += $(OBJ_DIR)/cpu/z80/src/debug/hardware/watchdog_time.o
 OBJS += $(OBJ_DIR)/cpu/z80/src/handlers/memory_write.o
 OBJS += $(OBJ_DIR)/debug/hardware/sprite.o
 OBJS += $(OBJ_DIR)/menus/debug_hardware.o

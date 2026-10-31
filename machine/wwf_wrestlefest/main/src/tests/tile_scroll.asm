@@ -20,16 +20,16 @@ tile_scroll_test:
 		move.w	d0, r_layer_b_y
 
 		; tile is a solid 16x16 color
-		move.w	#$d06, LAYER_A_TILE + $422
-		move.w	#$d06, LAYER_B_TILE + $212
+		move.w	#$d06, LAYER_A_TILE_BASE + $422
+		move.w	#$d06, LAYER_B_TILE_BASE + $212
 
 		; colors on layer a/b tile
-		move.w	#$000f, LAYER_A_TILE_PALETTE + $2	; red
-		move.W	#$00f0, LAYER_B_TILE_PALETTE + $2	; green
+		move.w	#$000f, LAYER_A_TILE_PALETTE_BASE + $2	; red
+		move.W	#$00f0, LAYER_B_TILE_PALETTE_BASE + $2	; green
 
-		; colors for the A/B text on the fix layer
-		move.w	#$000f, FIX_TILE_PALETTE + PALETTE_SIZE + $1e
-		move.w	#$00f0, FIX_TILE_PALETTE + (2 * PALETTE_SIZE) + $1e
+		; colors for the A/B text on the txt layer
+		move.w	#$000f, TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $1e
+		move.w	#$00f0, TXT_TILE_PALETTE_BASE + (2 * PALETTE_ENTRY_SIZE) + $1e
 
 	.loop_test:
 		WATCHDOG
@@ -50,26 +50,26 @@ tile_scroll_test:
 		move.w	r_layer_a_x, d0
 		and.w	#$1ff, d0
 		move.w	d0, r_layer_a_x
-		move.w	d0, REG_LAYER_A_SCROLL_X
+		move.w	d0, REG_LAYER_A_TILE_SCROLL_X
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 4)
 		RSUB	print_hex_word
 
 		move.w	r_layer_a_y, d0
 		and.w	#$1ff, d0
-		move.w	d0, REG_LAYER_A_SCROLL_Y
+		move.w	d0, REG_LAYER_A_TILE_SCROLL_Y
 		SEEK_XY	(SCREEN_START_X + 13), (SCREEN_START_Y + 4)
 		RSUB	print_hex_word
 
 		move.w	r_layer_b_x, d0
 		and.w	#$1ff, d0
 		move.w	d0, r_layer_b_x
-		move.w	d0, REG_LAYER_B_SCROLL_X
+		move.w	d0, REG_LAYER_B_TILE_SCROLL_X
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 5)
 		RSUB	print_hex_word
 
 		move.w	r_layer_b_y, d0
 		and.w	#$1ff, d0
-		move.w	d0, REG_LAYER_B_SCROLL_Y
+		move.w	d0, REG_LAYER_B_TILE_SCROLL_Y
 		SEEK_XY	(SCREEN_START_X + 13), (SCREEN_START_Y + 5)
 		RSUB	print_hex_word
 

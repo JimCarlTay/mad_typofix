@@ -11,7 +11,7 @@ unknown_regs_debug:
 		jsr	sprite_viewer_palette_setup
 
 		; highlight color on 2nd pallette
-		move.w	#$1f, TXT_PALETTE + PALETTE_SIZE + $e
+		move.w	#$1f, TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $e
 
 		; test fg tile
 		move.w	#$10, $72386
@@ -22,15 +22,15 @@ unknown_regs_debug:
 		move.w	#$80, $75388
 
 		; test sprite
-		move.l	#$004517d0, SPRITE_RAM
-		move.l	#$00120090, SPRITE_RAM + 4
-		move.l	#$02640000, SPRITE_RAM + 8
-		move.l	#$0, SPRITE_RAM + 12
+		move.l	#$004517d0, SPRITE_BASE
+		move.l	#$00120090, SPRITE_BASE + 4
+		move.l	#$02640000, SPRITE_BASE + 8
+		move.l	#$0, SPRITE_BASE + 12
 
 		lea	d_screen_xys_list, a0
 		RSUB	print_xy_string_list
 
-		move.l	#TXT_PALETTE, r_old_highlight
+		move.l	#TXT_TILE_PALETTE_BASE, r_old_highlight
 
 		move.l	#$000f0010, r_mw_buffer
 		move.l	#$00ef0001, r_mw_buffer + 4

@@ -9,13 +9,13 @@ sprite_debug:
 		jsr	sprite_viewer_palette_setup
 
 		ldd	#$001f
-		std	TILE_PALETTE + PALETTE_SIZE + $2
+		std	TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $2
 
 		SEEK_XY	(SCREEN_START_X + 16), (SCREEN_START_Y + 14)
 		ldy	#d_str_last_written
 		RSUB	print_string
 
-		ldd	#TILE_RAM
+		ldd	#TILE_BASE
 		std	r_old_highlight
 
 		; setup initial values
@@ -40,7 +40,7 @@ sprite_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:
@@ -56,7 +56,7 @@ highlight_cb:
 		rts
 
 write_memory_cb:
-		ldx	#SPRITE_RAM
+		ldx	#SPRITE_BASE
 		ldy	#r_mw_buffer
 		lda	#$4
 		sta	r_scratch

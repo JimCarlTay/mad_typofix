@@ -79,10 +79,10 @@ auto_mad_rom_crc32_test_dsub:
 		PSUB	print_string
 
 		; vasm doesnt seem to like doing
-		; ldd	#(MAD_ROM_MIRROR_ADDRESS - MAD_ROM_START)
+		; ldd	#(MAD_ROM_MIRROR_ADDRESS - MAD_ROM_BASE)
 		ldd	#MAD_ROM_MIRROR_ADDRESS
-		subd	#MAD_ROM_START
-		ldx	#MAD_ROM_START
+		subd	#MAD_ROM_BASE
+		ldx	#MAD_ROM_BASE
 
 		; crc32 uses all registers except for v, making it
 		; impossible for us to do a nested dsub to it. We can

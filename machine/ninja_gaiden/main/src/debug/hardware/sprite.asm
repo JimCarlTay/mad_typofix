@@ -13,8 +13,8 @@ sprite_debug:
 		RSUB	print_string
 
 		; highlight color on 2nd pallette
-		move.w	#$1f, TXT_PALETTE + PALETTE_SIZE + $e
-		move.l	#TXT_PALETTE, r_old_highlight
+		move.w	#$1f, TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $e
+		move.l	#TXT_TILE_PALETTE_BASE, r_old_highlight
 
 		; initial values
 		move.l	#$000417d0, r_mw_buffer
@@ -44,7 +44,7 @@ write_memory_cb:
 		moveq	#$f, d5
 		moveq	#(SCREEN_START_Y + 4), d4
 		lea	r_mw_buffer, a0
-		lea	SPRITE_RAM, a1
+		lea	SPRITE_BASE, a1
 
 	.loop_next_byte:
 		moveq	#(SCREEN_START_X + 14), d0

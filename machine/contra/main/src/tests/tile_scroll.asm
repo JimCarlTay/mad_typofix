@@ -39,9 +39,9 @@ tile_scroll_test:
 
 		; setup block color for 10e/18e
 		ldd	#$1f00		; red
-		std	K007121_10E_TILE_A_PALETTE + $2
+		std	K007121_10E_LAYER_A_TILE_PALETTE_BASE + $2
 		ldd	#$e003		; green
-		std	K007121_18E_TILE_A_PALETTE + $2
+		std	K007121_18E_LAYER_A_TILE_PALETTE_BASE + $2
 
 	.loop_test:
 		WATCHDOG

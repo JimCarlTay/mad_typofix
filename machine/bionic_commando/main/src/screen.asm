@@ -43,24 +43,24 @@ screen_seek_xy_dsub:
 
 
 palette_init_no_irq_dsub:
-		lea	PALETTE_RAM, a0
-		move.l	#PALETTE_RAM_SIZE, d0
+		lea	PALETTE_BASE, a0
+		move.l	#PALETTE_SIZE, d0
 		moveq	#$0, d1
 		DSUB	memory_fill
 
-		move.w	#$ffff, FIX_TILE_PALETTE + 2
+		move.w	#$ffff, TXT_TILE_PALETTE_BASE + 2
 		DSUB_RETURN
 
 palette_init_irq:
 		CPU_INTS_ENABLE
 
-		move.l	#PALETTE_RAM, r_vblank_fill_addr
-		move.w	#(PALETTE_RAM_SIZE / 2), r_vblank_fill_size
+		move.l	#PALETTE_BASE, r_vblank_fill_addr
+		move.w	#(PALETTE_SIZE / 2), r_vblank_fill_size
 		move.w	#$0, r_vblank_fill_data
 		jsr	wait_vblank_fill
 
 		move.l	#d_palette_data, r_vblank_copy_src
-		move.l	#FIX_TILE_PALETTE + 2, r_vblank_copy_dst
+		move.l	#TXT_TILE_PALETTE_BASE + 2, r_vblank_copy_dst
 		move.w	#$1, r_vblank_copy_size
 		jsr	wait_vblank_copy
 
@@ -71,11 +71,11 @@ palette_init_irq:
 	align 1
 
 d_memory_fill_list
-	MEMORY_FILL_ENTRY FIX_TILE, FIX_TILE_SIZE, $20
-	MEMORY_FILL_ENTRY FIX_TILE_ATTR, FIX_TILE_ATTR_SIZE, $0
-	MEMORY_FILL_ENTRY BG_TILE_RAM, BG_TILE_RAM_SIZE, $0
-	MEMORY_FILL_ENTRY FG_TILE_RAM, FG_TILE_RAM_SIZE, $0
-	MEMORY_FILL_ENTRY SPRITE_RAM, SPRITE_RAM_SIZE, $0
+	MEMORY_FILL_ENTRY TXT_TILE_BASE, TXT_TILE_SIZE, $20
+	MEMORY_FILL_ENTRY TXT_TILE_ATTR_BASE, TXT_TILE_ATTR_SIZE, $0
+	MEMORY_FILL_ENTRY BG_TILE_BASE, BG_TILE_SIZE, $0
+	MEMORY_FILL_ENTRY FG_TILE_BASE, FG_TILE_SIZE, $0
+	MEMORY_FILL_ENTRY SPRITE_BASE, SPRITE_SIZE, $0
 	MEMORY_FILL_LIST_END
 
 d_palette_data:

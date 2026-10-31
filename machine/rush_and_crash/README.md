@@ -89,7 +89,7 @@ On 6809 CPU the error address is `$f000 | error_code << 4`.  Error codes on the
 | 0x3e |     62 |      1111 0011 1110 xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 |      1111 0011 1111 xxxx       | MAD ROM CRC16                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2026-07-06 @ 00:33 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-22 @ 00:55 UTC</sup>
 <!-- ec_table_main_end -->
 
 <a name="sound-cpu"></a>

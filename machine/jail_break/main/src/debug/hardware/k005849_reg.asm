@@ -9,7 +9,7 @@ k005849_reg_debug:
 		ldy	#d_screen_xys_list
 		jsr	print_xy_string_list
 
-		ldd	#TILE_RAM
+		ldd	#TILE_BASE
 		std	r_old_highlight
 
 		CPU_INTS_ENABLE
@@ -43,7 +43,7 @@ k005849_reg_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:

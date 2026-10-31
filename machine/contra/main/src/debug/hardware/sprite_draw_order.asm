@@ -28,7 +28,7 @@ sprite_draw_order:
 		; copy over our 5 sprite sized sprites
 		; to the location right after the last
 		; drawn sprite
-		ldy	#K007121_18E_SPRITE
+		ldy	#K007121_18E_SPRITE_BASE
 		leay	5 * 132, y
 		ldx	#d_draw_sprites
 		lda	#5 * 5
@@ -38,7 +38,7 @@ sprite_draw_order:
 		deca
 		bne	.loop_next_byte
 
-		ldy	#K007121_18E_SPRITE
+		ldy	#K007121_18E_SPRITE_BASE
 	.loop_input:
 		WATCHDOG
 		jsr	input_update

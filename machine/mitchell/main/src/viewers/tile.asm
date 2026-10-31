@@ -32,8 +32,8 @@ palette_setup:
 		RSUB	delay
 
 		ld	hl, d_palette_data
-		ld	de, TILE_PALETTE + (PALETTE_SIZE * PALETTE_NUM)
-		ld	bc, PALETTE_SIZE
+		ld	de, TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * PALETTE_NUM)
+		ld	bc, PALETTE_ENTRY_SIZE
 		ldir
 
 		ld	a, CTRL_ENABLE_SPRITE_ROMS|CTRL_ENABLE_TILE_ROMS

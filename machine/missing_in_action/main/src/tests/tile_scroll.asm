@@ -30,9 +30,9 @@ tile_scroll_test:
 		RSUB	print_string
 
 		; setup text color on layer a/b
-		move.b	#$1f, LAYER_A_TILE_PALETTE + $3f	; red
-		move.b	#$03, LAYER_B_TILE_PALETTE + $3d	; green
-		move.b	#$e0, LAYER_B_TILE_PALETTE + $3f
+		move.b	#$1f, LAYER_A_TILE_PALETTE_BASE + $3f	; red
+		move.b	#$03, LAYER_B_TILE_PALETTE_BASE + $3d	; green
+		move.b	#$e0, LAYER_B_TILE_PALETTE_BASE + $3f
 
 	.loop_test:
 		WATCHDOG
@@ -53,16 +53,16 @@ tile_scroll_test:
 		and.w	#$1ff, d0
 		move.w	d0, r_layer_a_x
 		move.w	d0, d1
-		move.b	d0, REG_LAYER_A_SCROLL_X_LOW
+		move.b	d0, REG_LAYER_A_TILE_SCROLL_X_LOW
 		lsr.w	#$8, d0
-		move.b	d0, REG_LAYER_A_SCROLL_X_HIGH
+		move.b	d0, REG_LAYER_A_TILE_SCROLL_X_HIGH
 		move.w	d1, d0
 
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 4)
 		RSUB	print_hex_word
 
 		move.b	r_layer_a_y, d0
-		move.b	d0, REG_LAYER_A_SCROLL_Y
+		move.b	d0, REG_LAYER_A_TILE_SCROLL_Y
 		SEEK_XY	(SCREEN_START_X + 13), (SCREEN_START_Y + 4)
 		RSUB	print_hex_byte
 
@@ -70,15 +70,15 @@ tile_scroll_test:
 		and.w	#$1ff, d0
 		move.w	d0, r_layer_b_x
 		move.w	d0, d1
-		move.b	d0, REG_LAYER_B_SCROLL_X_LOW
+		move.b	d0, REG_LAYER_B_TILE_SCROLL_X_LOW
 		lsr.w	#$8, d0
-		move.b	d0, REG_LAYER_B_SCROLL_X_HIGH
+		move.b	d0, REG_LAYER_B_TILE_SCROLL_X_HIGH
 		move.w	d1, d0
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 5)
 		RSUB	print_hex_word
 
 		move.b	r_layer_b_y, d0
-		move.b	d0, REG_LAYER_B_SCROLL_Y
+		move.b	d0, REG_LAYER_B_TILE_SCROLL_Y
 		SEEK_XY	(SCREEN_START_X + 13), (SCREEN_START_Y + 5)
 		RSUB	print_hex_byte
 

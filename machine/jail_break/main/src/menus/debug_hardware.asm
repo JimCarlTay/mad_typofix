@@ -11,16 +11,16 @@ debug_hardware_menu:
 		jsr	menu_handler
 		rts
 
-ram_find_scroll:
-		ldx	#SCROLL_RAM
-		jmp	ram_find
-
 ram_find_sprite:
-		ldx	#SPRITE_RAM
+		ldx	#SPRITE_BASE
 		jmp	ram_find
 
 ram_find_tile:
-		ldx	#TILE_RAM
+		ldx	#TILE_BASE
+		jmp	ram_find
+
+ram_find_tile_scroll:
+		ldx	#TILE_SCROLL_BASE
 		jmp	ram_find
 
 ram_find_work:
@@ -35,9 +35,9 @@ d_menu_list:
 	MENU_ENTRY sprite_debug, d_str_sprite_debug, ME_FLAG_NONE
 	MENU_ENTRY tile_debug, d_str_tile_debug, ME_FLAG_NONE
 	MENU_ENTRY ram_find_none, d_str_ram_find_none, ME_FLAG_NONE
-	MENU_ENTRY ram_find_scroll, d_str_ram_find_scroll, ME_FLAG_NONE
 	MENU_ENTRY ram_find_sprite, d_str_ram_find_sprite, ME_FLAG_NONE
 	MENU_ENTRY ram_find_tile, d_str_ram_find_tile, ME_FLAG_NONE
+	MENU_ENTRY ram_find_tile_scroll, d_str_ram_find_tile_scroll, ME_FLAG_NONE
 	MENU_ENTRY ram_find_work, d_str_ram_find_work, ME_FLAG_NONE
 	MENU_LIST_END
 
@@ -47,11 +47,11 @@ d_str_k005849_reg_debug:	STRING "K005849 REG DEBUG"
 d_str_sprite_debug:		STRING "SPRITE DEBUG"
 d_str_tile_debug:		STRING "TILE DEBUG"
 
-d_str_ram_find_none:		STRING "RAM FIND NONE"
-d_str_ram_find_scroll:		STRING "RAM FIND SCROLL"
-d_str_ram_find_sprite:		STRING "RAM FIND SPRITE"
-d_str_ram_find_tile:		STRING "RAM FIND TILE"
-d_str_ram_find_work:		STRING "RAM FIND WORK"
+d_str_ram_find_none:		STRING "BASE FIND NONE"
+d_str_ram_find_sprite:		STRING "BASE FIND SPRITE"
+d_str_ram_find_tile:		STRING "BASE FIND TILE"
+d_str_ram_find_tile_scroll:	STRING "BASE FIND TILE SCROLL"
+d_str_ram_find_work:		STRING "BASE FIND WORK"
 
 	section bss
 

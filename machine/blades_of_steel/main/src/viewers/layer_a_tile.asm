@@ -9,7 +9,7 @@ TILE_OFFSET_MASK	equ $1fff
 layer_a_tile_viewer:
 		RSUB	screen_init
 
-		ldy	#LAYER_A_TILE_PALETTE
+		ldy	#LAYER_A_TILE_PALETTE_BASE
 		jsr	tvc_init
 
 		SEEK_XY	SCREEN_START_X, SCREEN_START_Y

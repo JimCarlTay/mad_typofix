@@ -18,7 +18,7 @@ k005849_reg_debug:
 
 		ei
 
-		ld	hl, TILE_ATTR_RAM
+		ld	hl, TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 
 		; setup initial values

@@ -16,19 +16,27 @@ view_mmio_space:
 		jr	view_memory
 
 view_rom_space:
-		ld	ix, $0
+		ld	ix, ROM_BASE
 		jr	view_memory
 
+;view_scroll_ram:
+;		ld	ix, SCROLL_BASE
+;		jr	view_memory
+
 view_sprite_ram:
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 		jr	view_memory
 
 view_tile_ram:
-		ld	ix, TILE_RAM
+		ld	ix, TILE_BASE
 		jr	view_memory
 
+;view_tile_attr_ram:
+;		ld	ix, TILE_ATTR_BASE
+;		jr	view_memory
+
 view_work_ram:
-		ld	ix, WORK_RAM
+		ld	ix, WORK_RAM_BASE
 
 view_memory:
 		ld	iy, $0			; no callback
@@ -40,8 +48,10 @@ view_memory:
 d_menu_list:
 	MENU_ENTRY view_mmio_space, d_str_mmio_space, ME_FLAG_NONE
 	MENU_ENTRY view_rom_space, d_str_rom_space, ME_FLAG_NONE
+;	MENU_ENTRY view_scroll_ram, d_str_scroll_ram, ME_FLAG_NONE
 	MENU_ENTRY view_sprite_ram, d_str_sprite_ram, ME_FLAG_NONE
 	MENU_ENTRY view_tile_ram, d_str_tile_ram, ME_FLAG_NONE
+;	MENU_ENTRY view_tile_attr_ram, d_str_tile_attr_ram, ME_FLAG_NONE
 	MENU_ENTRY view_work_ram, d_str_work_ram, ME_FLAG_NONE
 	MENU_LIST_END
 
@@ -49,6 +59,8 @@ d_str_menu_title:	STRING "MEMORY VIEWER MENU"
 
 d_str_mmio_space:	STRING "MMIO SPACE"
 d_str_rom_space:	STRING "ROM SPACE"
+;d_str_scroll_ram:	STRING "SCROLL RAM"
 d_str_sprite_ram:	STRING "SPRITE RAM"
 d_str_tile_ram:		STRING "TILE RAM"
+;d_str_tile_attr_ram:	STRING "TILE ATTR RAM"
 d_str_work_ram:		STRING "WORK RAM"

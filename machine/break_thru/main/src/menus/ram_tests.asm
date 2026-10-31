@@ -14,13 +14,13 @@ ram_tests_menu:
 	section data
 
 d_menu_list:
-	MENU_ENTRY manual_fg_ram_tests, d_str_fg_ram, ME_FLAG_NONE
 	MENU_ENTRY manual_sprite_ram_tests, d_str_sprite_ram, ME_FLAG_NONE
-	MENU_ENTRY manual_work_ram_tests, d_str_work_and_bg_ram, ME_FLAG_NONE
+	MENU_ENTRY manual_txt_tile_ram_tests, d_str_txt_tile_ram, ME_FLAG_NONE
+	MENU_ENTRY manual_work_ram_tests, d_str_work_and_bg_tile_ram, ME_FLAG_NONE
 	MENU_LIST_END
 
 d_str_menu_title:		STRING "RAM TESTS"
 
-d_str_fg_ram:			STRING "FG RAM"
 d_str_sprite_ram:		STRING "SPRITE RAM"
-d_str_work_and_bg_ram:		STRING "WORK AND BG RAM"
+d_str_txt_tile_ram:		STRING "TXT TILE RAM"
+d_str_work_and_bg_tile_ram:	STRING "WORK AND BG TILE RAM"

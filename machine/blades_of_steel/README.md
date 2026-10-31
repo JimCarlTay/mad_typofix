@@ -15,7 +15,7 @@
 ## MAD Pictures
 ![mad blades of steel main menu](docs/images/mad_blades_of_steel_main_menu.png)
 ![mad blades of steel video dac test](docs/images/mad_blades_of_steel_video_dac_test.png)<br>
-![mad blades of steel fix tile viewer](docs/images/mad_blades_of_steel_layer_a_tile_viewer.png)
+![mad blades of steel layer a tile viewer](docs/images/mad_blades_of_steel_layer_a_tile_viewer.png)
 ![mad blades of steel sprite viewer](docs/images/mad_blades_of_steel_sprite_viewer.png)
 
 ## PCB Pictures
@@ -93,7 +93,7 @@ still be viable to use with a logic probe.  It just means address lines not be
 | 0x3e |     62 | 0011 1110 |      1111 0011 1110 xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 | 0011 1111 |      1111 0011 1111 xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-06-01 @ 01:16 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-18 @ 19:12 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU

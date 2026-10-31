@@ -74,11 +74,11 @@ still be viable to use with a logic probe. It just means address lines not be
 <!-- ec_table_main_start -->
 | Hex  | Number |     Error Address (A15..A0)    |           Error Text           |
 | ---: | -----: | :----------------------------: | :----------------------------- |
-| 0x01 |      1 |      1111 0000 0001 xxxx       | SCROLL RAM ADDRESS             |
-| 0x02 |      2 |      1111 0000 0010 xxxx       | SCROLL RAM DATA                |
-| 0x03 |      3 |      1111 0000 0011 xxxx       | SCROLL RAM MARCH               |
-| 0x04 |      4 |      1111 0000 0100 xxxx       | SCROLL RAM OUTPUT              |
-| 0x05 |      5 |      1111 0000 0101 xxxx       | SCROLL RAM WRITE               |
+| 0x01 |      1 |      1111 0000 0001 xxxx       | TILE SCROLL RAM ADDRESS        |
+| 0x02 |      2 |      1111 0000 0010 xxxx       | TILE SCROLL RAM DATA           |
+| 0x03 |      3 |      1111 0000 0011 xxxx       | TILE SCROLL RAM MARCH          |
+| 0x04 |      4 |      1111 0000 0100 xxxx       | TILE SCROLL RAM OUTPUT         |
+| 0x05 |      5 |      1111 0000 0101 xxxx       | TILE SCROLL RAM WRITE          |
 | 0x06 |      6 |      1111 0000 0110 xxxx       | WORK RAM ADDRESS               |
 | 0x07 |      7 |      1111 0000 0111 xxxx       | WORK RAM DATA                  |
 | 0x08 |      8 |      1111 0000 1000 xxxx       | WORK RAM MARCH                 |
@@ -87,7 +87,7 @@ still be viable to use with a logic probe. It just means address lines not be
 | 0x3e |     62 |      1111 0011 1110 xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 |      1111 0011 1111 xxxx       | MAD ROM CRC16                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2026-09-16 @ 16:50 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-20 @ 18:00 UTC</sup>
 <!-- ec_table_main_end -->
 
 <a name="sound-cpu"></a>

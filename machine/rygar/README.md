@@ -13,7 +13,7 @@
 
 ## MAD Pictures
 ![mad rygar main menu](docs/images/mad_rygar_main_menu.png)
-![mad rygar fix tile viewer](docs/images/mad_rygar_fix_tile_viewer.png)<bnr>
+![mad rygar txt tile viewer](docs/images/mad_rygar_txt_tile_viewer.png)<bnr>
 ![mad rygar sprite viewer](docs/images/mad_rygar_sprite_viewer.png)
 
 ## PCB Pictures
@@ -42,12 +42,12 @@ The CPU and Graphics PCB have their solder sides facing each other.
 | -------- | :------- | ----- |
 | BG Tile RAM | 6T on Graphics Board | D4016C-3 (2k x 8bit) |
 | FG Tile RAM | 6A on Graphics Board | D4016C-3 (2k x 8bit) |
-| Fix Tile RAM | 7L on CPU Board | D4016C-3 (2k x 8bit) |
 | Palette RAM (Even Addresses, Low Nibble, Blue) | 7A on CPU Board | MBM2148L-55 (1k x 4bit) |
 | Palette RAM (Odd Addresses, Low Nibble, Green) | 7C on CPU Board | MBM2148L-55 (1k x 4bit) |
 | Palette RAM (Odd Addresses, High Nibble, Red) | 7B on CPU Board | MBM2148L-55 (1k x 4bit) |
 | Sound RAM | 4E on CPU Board | D4016C-3 (2k x 8bit) |
 | Sprite RAM | 3B on Graphics Board | D4016C-3 (2k x 8bit) |
+| TXT Tile RAM | 7L on CPU Board | D4016C-3 (2k x 8bit) |
 | Work RAM | 10E on CPU Board | HM6264LP-16 (8k x 8bit) |
 
 Palette RAM consists of 3x 4bit RAM chips.  The high nibble on even addresses
@@ -98,21 +98,21 @@ time and 1% HIGH.  So you hear/see it being LOW with and occasional HIGH pulse.
 | 0x08 |      8 | 0000 1000 |      0110 0100 0xxx xxxx       | FG TILE RAM MARCH              |
 | 0x09 |      9 | 0000 1001 |      0110 0100 1xxx xxxx       | FG TILE RAM OUTPUT             |
 | 0x0a |     10 | 0000 1010 |      0110 0101 0xxx xxxx       | FG TILE RAM WRITE              |
-| 0x0b |     11 | 0000 1011 |      0110 0101 1xxx xxxx       | FIX TILE RAM ADDRESS           |
-| 0x0c |     12 | 0000 1100 |      0110 0110 0xxx xxxx       | FIX TILE RAM DATA              |
-| 0x0d |     13 | 0000 1101 |      0110 0110 1xxx xxxx       | FIX TILE RAM MARCH             |
-| 0x0e |     14 | 0000 1110 |      0110 0111 0xxx xxxx       | FIX TILE RAM OUTPUT            |
-| 0x0f |     15 | 0000 1111 |      0110 0111 1xxx xxxx       | FIX TILE RAM WRITE             |
-| 0x10 |     16 | 0001 0000 |      0110 1000 0xxx xxxx       | PALETTE RAM ADDRESS            |
-| 0x11 |     17 | 0001 0001 |      0110 1000 1xxx xxxx       | PALETTE RAM DATA               |
-| 0x12 |     18 | 0001 0010 |      0110 1001 0xxx xxxx       | PALETTE RAM MARCH              |
-| 0x13 |     19 | 0001 0011 |      0110 1001 1xxx xxxx       | PALETTE RAM OUTPUT             |
-| 0x14 |     20 | 0001 0100 |      0110 1010 0xxx xxxx       | PALETTE RAM WRITE              |
-| 0x15 |     21 | 0001 0101 |      0110 1010 1xxx xxxx       | SPRITE RAM ADDRESS             |
-| 0x16 |     22 | 0001 0110 |      0110 1011 0xxx xxxx       | SPRITE RAM DATA                |
-| 0x17 |     23 | 0001 0111 |      0110 1011 1xxx xxxx       | SPRITE RAM MARCH               |
-| 0x18 |     24 | 0001 1000 |      0110 1100 0xxx xxxx       | SPRITE RAM OUTPUT              |
-| 0x19 |     25 | 0001 1001 |      0110 1100 1xxx xxxx       | SPRITE RAM WRITE               |
+| 0x0b |     11 | 0000 1011 |      0110 0101 1xxx xxxx       | PALETTE RAM ADDRESS            |
+| 0x0c |     12 | 0000 1100 |      0110 0110 0xxx xxxx       | PALETTE RAM DATA               |
+| 0x0d |     13 | 0000 1101 |      0110 0110 1xxx xxxx       | PALETTE RAM MARCH              |
+| 0x0e |     14 | 0000 1110 |      0110 0111 0xxx xxxx       | PALETTE RAM OUTPUT             |
+| 0x0f |     15 | 0000 1111 |      0110 0111 1xxx xxxx       | PALETTE RAM WRITE              |
+| 0x10 |     16 | 0001 0000 |      0110 1000 0xxx xxxx       | SPRITE RAM ADDRESS             |
+| 0x11 |     17 | 0001 0001 |      0110 1000 1xxx xxxx       | SPRITE RAM DATA                |
+| 0x12 |     18 | 0001 0010 |      0110 1001 0xxx xxxx       | SPRITE RAM MARCH               |
+| 0x13 |     19 | 0001 0011 |      0110 1001 1xxx xxxx       | SPRITE RAM OUTPUT              |
+| 0x14 |     20 | 0001 0100 |      0110 1010 0xxx xxxx       | SPRITE RAM WRITE               |
+| 0x15 |     21 | 0001 0101 |      0110 1010 1xxx xxxx       | TXT TILE RAM ADDRESS           |
+| 0x16 |     22 | 0001 0110 |      0110 1011 0xxx xxxx       | TXT TILE RAM DATA              |
+| 0x17 |     23 | 0001 0111 |      0110 1011 1xxx xxxx       | TXT TILE RAM MARCH             |
+| 0x18 |     24 | 0001 1000 |      0110 1100 0xxx xxxx       | TXT TILE RAM OUTPUT            |
+| 0x19 |     25 | 0001 1001 |      0110 1100 1xxx xxxx       | TXT TILE RAM WRITE             |
 | 0x1a |     26 | 0001 1010 |      0110 1101 0xxx xxxx       | WORK RAM ADDRESS               |
 | 0x1b |     27 | 0001 1011 |      0110 1101 1xxx xxxx       | WORK RAM DATA                  |
 | 0x1c |     28 | 0001 1100 |      0110 1110 0xxx xxxx       | WORK RAM MARCH                 |
@@ -121,7 +121,7 @@ time and 1% HIGH.  So you hear/see it being LOW with and occasional HIGH pulse.
 | 0x3e |     62 | 0011 1110 |      0111 1111 0xxx xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 | 0011 1111 |      0111 1111 1xxx xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2026-05-25 @ 02:35 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-17 @ 02:16 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU
@@ -130,7 +130,7 @@ The sound CPU is a z80.  No MAD rom exists yet for the sound CPU.
 ## MAD Notes
 ### No Video DAC Test
 It should be possible to make one, but will be a pita to do as there aren't any
-solid color fix tiles.
+solid color txt tiles.
 
 ## MAME vs Hardware
 Nothing that required a MAME specific build

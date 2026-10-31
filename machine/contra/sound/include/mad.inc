@@ -1,2 +1,2 @@
-MAD_ROM_START		equ $e000
+MAD_ROM_BASE		equ $e000
 MAD_ROM_SIZE		equ $2000

@@ -32,13 +32,13 @@ loop_input_cb:
 		ret
 
 bg_image_palette_setup:
-		ld	hl, BG_IMAGE_PALETTE
+		ld	hl, BG_IMAGE_PALETTE_BASE
 		ld	b, $b
 	.loop_next_palette_block:
 		ld	de, d_palette_data
 		ld	(r_nmi_copy_src), de
 		ld	(r_nmi_copy_dst), hl
-		ld	a, BG_IMAGE_PALETTE_SIZE / 2
+		ld	a, BG_IMAGE_PALETTE_ENTRY_SIZE / 2
 		ld	(r_nmi_copy_size), a
 		call	wait_nmi_copy
 
@@ -49,14 +49,14 @@ bg_image_palette_setup:
 
 		djnz	.loop_next_palette_block
 
-		ld	hl, BG_IMAGE_PALETTE_EXT
+		ld	hl, BG_IMAGE_PALETTE_EXT_BASE
 		ld	(r_nmi_copy_dst), hl
 		ld	b, $b
 	.loop_next_palette_ext_block:
 		ld	de, d_palette_ext_data
 		ld	(r_nmi_copy_src), de
 		ld	(r_nmi_copy_dst), hl
-		ld	a, BG_IMAGE_PALETTE_SIZE / 2
+		ld	a, BG_IMAGE_PALETTE_ENTRY_SIZE / 2
 		ld	(r_nmi_copy_size), a
 		call	wait_nmi_copy
 

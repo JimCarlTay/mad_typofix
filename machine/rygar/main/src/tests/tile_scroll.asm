@@ -26,21 +26,21 @@ tile_scroll_test:
 		ld	(REG_FG_SCROLL_Y), a
 
 		; todo setup palette
-		ld	hl, BG_TILE_PALETTE
-		ld	de, PALETTE_SIZE
+		ld	hl, BG_TILE_PALETTE_BASE
+		ld	de, PALETTE_ENTRY_SIZE
 		ld	bc, $00f
 		RSUB	memory_fill_word
 
 		ld	a, $07
-		ld	(BG_TILE_RAM + $109), a
+		ld	(BG_TILE_BASE + $109), a
 
-		ld	hl, FG_TILE_PALETTE
-		ld	de, PALETTE_SIZE
+		ld	hl, FG_TILE_PALETTE_BASE
+		ld	de, PALETTE_ENTRY_SIZE
 		ld	bc, $0f0
 		RSUB	memory_fill_word
 
 		ld	a, $07
-		ld	(FG_TILE_RAM + $10a), a
+		ld	(FG_TILE_BASE + $10a), a
 
 	.loop_test:
 		WATCHDOG

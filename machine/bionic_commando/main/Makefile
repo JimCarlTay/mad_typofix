@@ -72,19 +72,19 @@ OBJS += $(OBJ_DIR)/menus/video_tests.o
 OBJS += $(OBJ_DIR)/tests/auto.o
 OBJS += $(OBJ_DIR)/tests/bg_tile_ram.o
 OBJS += $(OBJ_DIR)/tests/fg_tile_ram.o
-OBJS += $(OBJ_DIR)/tests/fix_tile_ram.o
-OBJS += $(OBJ_DIR)/tests/sprite_ram.o
 OBJS += $(OBJ_DIR)/tests/input.o
+OBJS += $(OBJ_DIR)/tests/sprite_ram.o
+OBJS += $(OBJ_DIR)/tests/txt_tile_ram.o
 OBJS += $(OBJ_DIR)/tests/video_dac.o
 OBJS += $(OBJ_DIR)/viewers/bg_tile.o
 OBJS += $(OBJ_DIR)/viewers/fg_tile.o
-OBJS += $(OBJ_DIR)/viewers/fix_tile.o
 OBJS += $(OBJ_DIR)/viewers/sprite.o
+OBJS += $(OBJ_DIR)/viewers/txt_tile.o
 
 ifneq (,$(findstring _DEBUG_HARDWARE_,$(BUILD_FLAGS)))
 OBJS += $(OBJ_DIR)/cpu/68000/src/handlers/memory_write.o
-OBJS += $(OBJ_DIR)/debug/hardware/fix_tile.o
 OBJS += $(OBJ_DIR)/debug/hardware/sprite.o
+OBJS += $(OBJ_DIR)/debug/hardware/txt_tile.o
 OBJS += $(OBJ_DIR)/menus/debug_hardware.o
 endif
 

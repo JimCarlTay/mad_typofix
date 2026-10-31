@@ -49,7 +49,7 @@ sprite_viewer:
 ; *   2  | xxxxxxxx | y pos
 ; *   3  | xxxxxxxx | x pos
 value_changed_cb:
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 
 		ld	bc, (r_sprite_num)
 		ld	(ix), c
@@ -87,9 +87,9 @@ loop_input_cb:
 		ret
 
 sprite_viewer_palette_setup:
-		ld	hl, SPRITE_PALETTE + (SPRITE_PALETTE_SIZE / 2)
+		ld	hl, SPRITE_PALETTE_BASE + (SPRITE_PALETTE_ENTRY_SIZE / 2)
 		ld	de, d_palette_data
-		ld	c, SPRITE_PALETTE_SIZE
+		ld	c, SPRITE_PALETTE_ENTRY_SIZE
 		call	palette_copy
 		ret
 

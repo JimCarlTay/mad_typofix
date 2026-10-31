@@ -26,9 +26,9 @@ fg_tile_viewer:
 ;  xxxx BBBB GGGG RRRR
 fg_palette_setup:
 
-		lea	PALETTE_RAM+(PALETTE_SIZE*PALETTE_NUM), a0
+		lea	FG_TILE_PALETTE_BASE+(PALETTE_ENTRY_SIZE*PALETTE_NUM), a0
 		lea	d_palette_data, a1
-		moveq	#(PALETTE_SIZE/2 - 1), d0
+		moveq	#(PALETTE_ENTRY_SIZE/2 - 1), d0
 
 	.loop_next_color:
 		move.w	(a1)+, d1

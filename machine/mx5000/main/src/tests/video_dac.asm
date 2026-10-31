@@ -14,22 +14,22 @@ video_dac_test:
 		; Palette Layout
 		;  xBBB BBGG GGGR RRRR
 		; red palette setup
-		ldx	#K007121_TILE_A_PALETTE + PALETTE_SIZE
+		ldx	#LAYER_A_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE
 		ldd	#$001f
 		jsr	palette_color_setup
 
 		; green palette setup
-		ldx	#K007121_TILE_A_PALETTE + (PALETTE_SIZE * 2)
+		ldx	#LAYER_A_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * 2)
 		ldd	#$03e0
 		jsr	palette_color_setup
 
 		; blue palette setup
-		ldx	#K007121_TILE_A_PALETTE + (PALETTE_SIZE * 3)
+		ldx	#LAYER_A_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * 3)
 		ldd	#$7c00
 		jsr	palette_color_setup
 
 		; combined/all palette setup
-		ldx	#K007121_TILE_A_PALETTE + (PALETTE_SIZE * 4)
+		ldx	#LAYER_A_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * 4)
 		ldd	#$7fff
 		jsr	palette_color_setup
 
@@ -85,10 +85,10 @@ full_screen:
 		addr	b, a
 		ldd	a, y
 
-		ldx	#K007121_TILE_A
+		ldx	#LAYER_A_TILE_BASE
 		jsr	fill_tile_layer
 
-		ldx	#K007121_TILE_B
+		ldx	#LAYER_B_TILE_BASE
 		jsr	fill_tile_layer
 		pulsw
 
@@ -140,7 +140,7 @@ full_screen:
 ;  a = data for LAYER_X_TILE_ATTR
 ;  b = data for LAYER_X_TILE
 fill_tile_layer:
-		ldw	#K007121_TILE_A_SIZE
+		ldw	#LAYER_A_TILE_SIZE
 	.loop_next_address:
 		sta	-$400, x
 		stb	, x+

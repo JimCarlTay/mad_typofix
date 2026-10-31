@@ -1,4 +1,4 @@
-MAD_ROM_START		equ $c000
+MAD_ROM_BASE		equ $c000
 MAD_ROM_SIZE		equ $4000
 
 CURSOR_CHAR		equ $0a	; (c)

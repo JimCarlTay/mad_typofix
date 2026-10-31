@@ -69,7 +69,7 @@ manual_object_ram_tests:
 
 
 object_ram_bank_switch_test_dsub:
-		lea	OBJECT_RAM, a0
+		lea	OBJECT_BASE, a0
 		move.w	#$ffff, d1
 
 		move.b	#$0, REG_OBJECT_RAM_BANK
@@ -94,6 +94,6 @@ object_ram_bank_switch_test_dsub:
 	align 1
 
 d_mt_data:
-		MT_PARAMS OBJECT_RAM, MT_NULL_ADDRESS_LIST, OBJECT_RAM_SIZE, OBJECT_RAM_ADDRESS_LINES, OBJECT_RAM_MASK, OBJECT_RAM_BASE_EC, MT_FLAG_NONE
+		MT_PARAMS OBJECT_RC_BASE, MT_NULL_ADDRESS_LIST, OBJECT_RC_SIZE, OBJECT_RC_ADDR_LINES, OBJECT_RC_MASK, EC_OBJECT_RC_BASE, MT_FLAG_NONE
 
 d_str_b1_pause:		STRING "B1 - PAUSE"

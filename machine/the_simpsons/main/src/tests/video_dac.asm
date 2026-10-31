@@ -12,32 +12,32 @@ video_dac_test:
 		jsr	print_b2_return_to_menu
 
 		; Each layer has 4 palettes, but the text on the
-		; fix layer takes up most color indexes, so we are
+		; txt layer takes up most color indexes, so we are
 		; useing layer 'a' for the color blocks.
 
-		; shift over layer a so its the same offset as fix
+		; shift over layer a so its the same offset as txt
 		lda	#$6
-		sta	REG_LAYER_A_SCROLL_X
+		sta	REG_LAYER_A_TILE_SCROLL_X
 
 		; Palette Layout
 		;  xBBB BBGG GGGR RRRR
 		; red palette setup
-		ldx	#LAYER_A_TILE_PALETTE
+		ldx	#LAYER_A_TILE_PALETTE_BASE
 		ldd	#$001f
 		jsr	palette_color_setup
 
 		; green palette setup
-		ldx	#LAYER_A_TILE_PALETTE + PALETTE_SIZE
+		ldx	#LAYER_A_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE
 		ldd	#$03e0
 		jsr	palette_color_setup
 
 		; blue palette setup
-		ldx	#LAYER_A_TILE_PALETTE + (PALETTE_SIZE*2)
+		ldx	#LAYER_A_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE*2)
 		ldd	#$7c00
 		jsr	palette_color_setup
 
 		; combined/all palette setup
-		ldx	#LAYER_A_TILE_PALETTE + (PALETTE_SIZE*3)
+		ldx	#LAYER_A_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE*3)
 		ldd	#$7fff
 		jsr	palette_color_setup
 
@@ -65,13 +65,13 @@ video_dac_test:
 MAX_COLOR_INDEX		equ (VD_NUM_COLORS - 1)
 MAX_COLOR_BIT_INDEX	equ (VD_NUM_BITS_PER_COLOR - 1)
 full_screen:
-		; clear fix layer so layer a will show through
-		ldy	#FIX_TILE
-		ldx	#(FIX_TILE_SIZE / 2)
+		; clear txt layer so layer a will show through
+		ldy	#TXT_TILE_BASE
+		ldx	#(TXT_TILE_SIZE / 2)
 		ldd	#$1010
-	.loop_next_fix_address:
+	.loop_next_txt_address:
 		std	, y++
-		dxjnz	.loop_next_fix_address
+		dxjnz	.loop_next_txt_address
 
 		; Treat r_tiles_table as a multidimensional array of
 		;  word[VD_NUM_COLORS][VD_NUM_BITS_PER_COLOR]
@@ -107,7 +107,7 @@ full_screen:
 		pshs	y
 
 		; fill entire screen with the tile
-		ldy	#LAYER_A_TILE
+		ldy	#LAYER_A_TILE_BASE
 		ldx	#LAYER_A_TILE_SIZE
 	.loop_next_address:
 		sta	-$2000, y

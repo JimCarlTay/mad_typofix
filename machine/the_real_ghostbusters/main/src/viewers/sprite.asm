@@ -63,7 +63,7 @@ value_changed_cb:
 	.skip_sprite_size:
 		ora	r_sprite_pos_y
 		ldb	r_sprite_pos_y + 1
-		std	SPRITE_RAM
+		std	SPRITE_BASE
 
 		anda	#$08		; extract sprite size
 		asla
@@ -79,10 +79,10 @@ value_changed_cb:
 		ora	#$02
 
 	.skip_sprite_flip_y:
-		sta	SPRITE_RAM + 3
+		sta	SPRITE_BASE + 3
 
 		ldd	r_sprite_pos_x
-		std	SPRITE_RAM + 4
+		std	SPRITE_BASE + 4
 
 		lda	r_sprite_palette_num
 		asla
@@ -91,7 +91,7 @@ value_changed_cb:
 		asla
 		ora	r_sprite_num
 		ldb	r_sprite_num + 1
-		std	SPRITE_RAM + 6
+		std	SPRITE_BASE + 6
 		RSUB	sprite_trigger_copy
 		rts
 

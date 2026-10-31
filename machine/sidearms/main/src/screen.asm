@@ -14,25 +14,25 @@ screen_init_dsub:
 		ld	(REG_PAL_WRITE_ERROR_CLEAR), a
 
 		ld	a, $ff
-		ld	(FIX_TILE_PALETTE + 1), a
-		ld	(FIX_TILE_PALETTE_EXT + 1), a
+		ld	(TXT_TILE_PALETTE_BASE + 1), a
+		ld	(TXT_TILE_PALETTE_EXT_BASE + 1), a
 
 		ld	a, (REG_INPUT_SYS)
 		bit	SYS_PAL_WRITE_ERROR_BIT, a
 		jr	z, .loop_palette_write_error
 
-		ld	hl, FIX_TILE
-		ld	de, FIX_TILE_SIZE
+		ld	hl, TXT_TILE_BASE
+		ld	de, TXT_TILE_SIZE
 		ld	c, $27
 		NSUB	memory_fill
 
-		ld	hl, FIX_TILE_ATTR
-		ld	de, FIX_TILE_ATTR_SIZE
+		ld	hl, TXT_TILE_ATTR_BASE
+		ld	de, TXT_TILE_ATTR_SIZE
 		ld	c, $0
 		NSUB	memory_fill
 
-		ld	hl, SPRITE_RAM
-		ld	de, SPRITE_RAM_SIZE
+		ld	hl, SPRITE_BASE
+		ld	de, SPRITE_SIZE
 		ld	c, $0
 		NSUB	memory_fill
 
@@ -84,7 +84,7 @@ screen_seek_xy_dsub:
 palette_memory_fill_dsub:
 		exx
 
-		ld	hl, PALETTE_RAM
+		ld	hl, PALETTE_BASE
 		ld	d, h
 		ld	e, l
 		ld	c, $10		; number chunks

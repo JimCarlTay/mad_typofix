@@ -86,7 +86,7 @@ still be viable to use with a logic probe. It just means address lines not be
 | 0x3e |     62 | 0011 1110 |      0111 1111 0xxx xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 | 0011 1111 |      0111 1111 1xxx xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2026-09-19 @ 21:23 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-16 @ 23:23 UTC</sup>
 <!-- ec_table_main_end -->
 
 <a name="sound-cpu"></a>

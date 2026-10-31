@@ -6,35 +6,35 @@
 	section code
 
 screen_init_dsub:
-		ldx	#PALETTE_RAM
-		ldw	#PALETTE_RAM_SIZE
+		ldx	#PALETTE_BASE
+		ldw	#PALETTE_SIZE
 		lda	#$00
 		DSUB	memory_fill
 
 		; header / top 5 lines
-		ldx	#K007121_TILE_B
-		ldw	#K007121_TILE_B_SIZE
+		ldx	#LAYER_B_TILE_BASE
+		ldw	#LAYER_B_TILE_SIZE
 		lda	#$10
 		DSUB	memory_fill
 
-		ldx	#K007121_TILE_B_ATTR
-		ldw	#K007121_TILE_B_ATTR_SIZE
+		ldx	#LAYER_B_TILE_ATTR_BASE
+		ldw	#LAYER_B_TILE_ATTR_SIZE
 		lda	#$00
 		DSUB	memory_fill
 
 		; fg tiles
-		ldx	#K007121_TILE_A
-		ldw	#K007121_TILE_A_SIZE
+		ldx	#LAYER_A_TILE_BASE
+		ldw	#LAYER_A_TILE_SIZE
 		lda	#$10
 		DSUB	memory_fill
 
-		ldx	#K007121_TILE_A_ATTR
-		ldw	#K007121_TILE_A_ATTR_SIZE
+		ldx	#LAYER_A_TILE_ATTR_BASE
+		ldw	#LAYER_A_TILE_ATTR_SIZE
 		lda	#$00
 		DSUB	memory_fill
 
-		ldx	#K007121_SPRITE
-		ldw	#K007121_SPRITE_SIZE
+		ldx	#SPRITE_BASE
+		ldw	#SPRITE_SIZE
 		lda	#$00
 		DSUB	memory_fill
 
@@ -45,7 +45,7 @@ screen_init_dsub:
 
 		; txt color
 		ldd	#$ffff
-		std	(K007121_TILE_A_PALETTE + $1e)
+		std	(LAYER_A_TILE_PALETTE_BASE + $1e)
 
 		SEEK_XY	2, 0
 		ldy	#d_str_version

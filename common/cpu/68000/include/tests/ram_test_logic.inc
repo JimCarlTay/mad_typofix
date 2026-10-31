@@ -97,9 +97,9 @@ manual_\1_ram_tests:
 
 d_mt_data:
 	if \3 & RTL_FLAG_ADDRESS_LIST
-		MT_PARAMS \2_RAM, d_memory_address_list, \2_RAM_SIZE, \2_RAM_ADDRESS_LINES, \2_RAM_MASK, \2_RAM_BASE_EC, \4
+		MT_PARAMS \2_RC_BASE, d_memory_address_list, \2_RC_SIZE, \2_RC_ADDR_LINES, \2_RC_MASK, EC_\2_RC_BASE, \4
 	else
-		MT_PARAMS \2_RAM, MT_NULL_ADDRESS_LIST, \2_RAM_SIZE, \2_RAM_ADDRESS_LINES, \2_RAM_MASK, \2_RAM_BASE_EC, \4
+		MT_PARAMS \2_RC_BASE, MT_NULL_ADDRESS_LIST, \2_RC_SIZE, \2_RC_ADDR_LINES, \2_RC_MASK, EC_\2_RC_BASE, \4
 	endif
 
 d_screen_xys_list:

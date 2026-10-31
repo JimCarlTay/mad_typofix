@@ -15,93 +15,93 @@
 
 		; output test is untested.  There are 2x 74LS245's
 		; between the palette ram and the cpu.
-		ld	hl, PALETTE_RAM
+		ld	hl, PALETTE_RC_BASE
 		RSUB	palette_output_even_test
 		cp	0
 		jp	nz, .test_failed_output
 
-		ld	hl, PALETTE_RAM + 1
+		ld	hl, PALETTE_RC_BASE + 1
 		RSUB	memory_output_test
 		cp	0
 		jp	nz, .test_failed_output
 
-		ld	hl, PALETTE_RAM
+		ld	hl, PALETTE_RC_BASE
 		ld	c, $f
 		RSUB	palette_write_test
 		cp	0
 		jr	nz, .test_failed_write
 
-		ld	hl, PALETTE_RAM + 1
+		ld	hl, PALETTE_RC_BASE + 1
 		ld	c, $f
 		RSUB	palette_write_test
 		cp	0
 		jr	nz, .test_failed_write
 
-		ld	hl, PALETTE_RAM + 1
+		ld	hl, PALETTE_RC_BASE + 1
 		ld	c, $f0
 		RSUB	palette_write_test
 		cp	0
 		jr	nz, .test_failed_write
 
-		ld	hl, PALETTE_RAM
-		ld	de, PALETTE_RAM_SIZE
+		ld	hl, PALETTE_RC_BASE
+		ld	de, PALETTE_RC_SIZE
 		ld	b, $00
 		RSUB	palette_data_pattern_test
 		cp	0
 		jr	nz, .test_failed_data
 
-		ld	hl, PALETTE_RAM
-		ld	de, PALETTE_RAM_SIZE
+		ld	hl, PALETTE_RC_BASE
+		ld	de, PALETTE_RC_SIZE
 		ld	b, $55
 		RSUB	palette_data_pattern_test
 		cp	0
 		jr	nz, .test_failed_data
 
-		ld	hl, PALETTE_RAM
-		ld	de, PALETTE_RAM_SIZE
+		ld	hl, PALETTE_RC_BASE
+		ld	de, PALETTE_RC_SIZE
 		ld	b, $aa
 		RSUB	palette_data_pattern_test
 		cp	0
 		jr	nz, .test_failed_data
 
-		ld	hl, PALETTE_RAM
-		ld	de, PALETTE_RAM_SIZE
+		ld	hl, PALETTE_RC_BASE
+		ld	de, PALETTE_RC_SIZE
 		ld	b, $ff
 		RSUB	palette_data_pattern_test
 		cp	0
 		jr	nz, .test_failed_data
 
-		ld	hl, PALETTE_RAM
-		ld	b, PALETTE_RAM_ADDRESS_LINES
+		ld	hl, PALETTE_RC_BASE
+		ld	b, PALETTE_RC_ADDR_LINES
 		RSUB	palette_address_test
 		cp	0
 		jr	nz, .test_failed_address
 
-		ld	hl, PALETTE_RAM
-		ld	de, PALETTE_RAM_SIZE
+		ld	hl, PALETTE_RC_BASE
+		ld	de, PALETTE_RC_SIZE
 		RSUB	palette_march_test
 		cp	0
 		jr	nz, .test_failed_march
 		ret
 
 	.test_failed_address:
-		ld	a, EC_PALETTE_RAM_ADDRESS
+		ld	a, EC_PALETTE_RC_ADDRESS
 		ret
 
 	.test_failed_data:
-		ld	a, EC_PALETTE_RAM_DATA
+		ld	a, EC_PALETTE_RC_DATA
 		ret
 
 	.test_failed_march:
-		ld	a, EC_PALETTE_RAM_MARCH
+		ld	a, EC_PALETTE_RC_MARCH
 		ret
 
 	.test_failed_output:
-		ld	a, EC_PALETTE_RAM_OUTPUT
+		ld	a, EC_PALETTE_RC_OUTPUT
 		ret
 
 	.test_failed_write:
-		ld	a, EC_PALETTE_RAM_WRITE
+		ld	a, EC_PALETTE_RC_WRITE
 		ret
 
 	manual_palette_ram_tests:

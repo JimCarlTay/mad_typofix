@@ -7,12 +7,12 @@
 
 txt_offset_debug:
 		; highlight color on 2nd pallette
-		move.w	#$1f, TXT_PALETTE + PALETTE_SIZE + $e
+		move.w	#$1f, TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $e
 
 		lea	d_screen_xys_list, a0
 		RSUB	print_xy_string_list
 
-		move.l	#TXT_PALETTE, r_old_highlight
+		move.l	#TXT_TILE_PALETTE_BASE, r_old_highlight
 
 	ifd _SCREEN_FLIP_
 		move.l	#$004d0000, r_mw_buffer

@@ -10,8 +10,8 @@ screen_init_dsub:
 		lea	d_memory_fill_list, a0
 		DSUB	memory_fill_list
 
-		move.w	#$ffff, FIX_TILE_PALETTE
-		move.w	#$ffff, FIX_TILE_PALETTE + 4
+		move.w	#$ffff, TXT_TILE_PALETTE_BASE
+		move.w	#$ffff, TXT_TILE_PALETTE_BASE + 4
 
 		SEEK_XY	5, 0
 		lea	d_str_version, a0
@@ -42,6 +42,6 @@ screen_seek_xy_dsub:
 	align 1
 
 d_memory_fill_list
-	MEMORY_FILL_ENTRY FIX_TILE_RAM, FIX_TILE_RAM_SIZE, $20
-	MEMORY_FILL_ENTRY PALETTE_RAM, PALETTE_RAM_SIZE, $0
+	MEMORY_FILL_ENTRY TXT_TILE_BASE, TXT_TILE_SIZE, $20
+	MEMORY_FILL_ENTRY PALETTE_BASE, PALETTE_SIZE, $0
 	MEMORY_FILL_LIST_END

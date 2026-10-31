@@ -6,28 +6,28 @@
 	section code
 
 screen_init_dsub:
-		ldx	#K005885_TILE_B
-		ldy	#K005885_TILE_B_SIZE
+		ldx	#LAYER_B_TILE_BASE
+		ldy	#LAYER_B_TILE_SIZE
 		lda	#$10
 		DSUB	memory_fill
 
-		ldx	#K005885_TILE_B_ATTR
-		ldy	#K005885_TILE_B_ATTR_SIZE
+		ldx	#LAYER_B_TILE_ATTR_BASE
+		ldy	#LAYER_B_TILE_ATTR_SIZE
 		lda	#$0
 		DSUB	memory_fill
 
-		ldx	#K005885_TILE_A
-		ldy	#K005885_TILE_A_SIZE
+		ldx	#LAYER_A_TILE_BASE
+		ldy	#LAYER_A_TILE_SIZE
 		lda	#$10
 		DSUB	memory_fill
 
-		ldx	#K005885_TILE_A_ATTR
-		ldy	#K005885_TILE_A_ATTR_SIZE
+		ldx	#LAYER_A_TILE_ATTR_BASE
+		ldy	#LAYER_A_TILE_ATTR_SIZE
 		lda	#$0
 		DSUB	memory_fill
 
-		ldx	#K005885_SPRITE
-		ldy	#K005885_SPRITE_SIZE
+		ldx	#SPRITE_BASE
+		ldy	#SPRITE_SIZE
 		lda	#$0
 		DSUB	memory_fill
 

@@ -12,11 +12,11 @@ SPRITE_Y_POS		equ $00
 
 sprite_max_column:
 		ldd	#$e003		; green
-		std	K007121_18E_SPRITE_PALETTE + $10	; for sprite 02
+		std	K007121_18E_SPRITE_PALETTE_BASE + $10	; for sprite 02
 		ldd	#$1f00		; red
-		std	K007121_18E_SPRITE_PALETTE + $18	; for sprite 03
+		std	K007121_18E_SPRITE_PALETTE_BASE + $18	; for sprite 03
 
-		ldy	#K007121_18E_SPRITE
+		ldy	#K007121_18E_SPRITE_BASE
 		lde	#$e0		; start x position
 		ldf	#$68		; columns/sprites to draw * 2
 

@@ -84,7 +84,7 @@ manual_\1_ram_tests:
 	section data
 
 d_mt_data:
-	MT_PARAMS \2_RAM, \2_RAM_SIZE, \2_RAM_ADDRESS_LINES, \2_RAM_BASE_EC, \4
+	MT_PARAMS \2_RC_BASE, \2_RC_SIZE, \2_RC_ADDR_LINES, EC_\2_RC_BASE, \4
 
 d_screen_xys_list:
 	if \3 & RTL_FLAG_PAUSE_REDRAW

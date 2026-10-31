@@ -8,10 +8,10 @@ _start:
 		CPU_INTS_DISABLE
 
 		move.b	#$0, $fc4001
-		move.w	#$0, REG_BG_SCROLL_X
-		move.w	#$0, REG_BG_SCROLL_Y
-		move.w	#$0, REG_FG_SCROLL_X
-		move.w	#$0, REG_FG_SCROLL_Y
+		move.w	#$0, REG_BG_TILE_SCROLL_X
+		move.w	#$0, REG_BG_TILE_SCROLL_Y
+		move.w	#$0, REG_FG_TILE_SCROLL_X
+		move.w	#$0, REG_FG_TILE_SCROLL_Y
 
 		DSUB_MODE_PSUB
 		PSUB	screen_init

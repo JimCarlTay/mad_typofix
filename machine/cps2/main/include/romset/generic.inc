@@ -32,7 +32,7 @@ VD_TILE_BA_PAL_OFFSET		equ $8
 		; we don't know what color indexes make up the font
 		; so we just doing most of them to hopefully get readable
 		; text
-		lea	SCROLL1_PALETTE + $2, a0
+		lea	SCROLL1_PALETTE_BASE + $2, a0
 		moveq	#$6, d0
 
 	.loop_next_palette_address:
@@ -40,7 +40,7 @@ VD_TILE_BA_PAL_OFFSET		equ $8
 		move.w	#PALETTE_TEXT_COLOR, (a0)+
 		dbra	d0, .loop_next_palette_address
 
-		move.w	#PALETTE_BACKGROUND_COLOR, PALETTE_RAM + $13fe
+		move.w	#PALETTE_BACKGROUND_COLOR, PALETTE_BASE + $13fe
 	endm
 
 ; tile viewer
@@ -53,14 +53,14 @@ RS_TV_TILE_OFFSET_MASK	equ $ffff
 ; sprite debug setup
 	macro RS_SD_SETUP
 		; highlight for mw
-		lea	SCROLL1_PALETTE + PALETTE_SIZE + $2, a0
+		lea	SCROLL1_PALETTE_BASE + PALETTE_ENTRY_SIZE + $2, a0
 		moveq	#$6, d0
 
 	.loop_next_palette_address:
 		move.w	#$ff00, ($10, a0)
 		move.w	#$ff00, (a0)+
 		dbra	d0, .loop_next_palette_address
-		move.w	#$ff00, SCROLL1_PALETTE + PALETTE_SIZE + $1c
+		move.w	#$ff00, SCROLL1_PALETTE_BASE + PALETTE_ENTRY_SIZE + $1c
 
 		; init data
 		move.l	#$40f00030, r_mw_buffer

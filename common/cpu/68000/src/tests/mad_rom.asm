@@ -6,7 +6,7 @@
 	section code
 
 auto_mad_rom_crc32_test_dsub:
-		lea	ROM_START, a0
+		lea	ROM_BASE, a0
 		move.l	#MAD_ROM_SIZE, d0
 		subq.l	#5, d0
 

@@ -19,17 +19,17 @@ VD_TILE_BA_PAL_OFFSET	equ $a
 
 ; screen init
 	macro RS_SI_PALETTE_SETUP
-		move.w	#PALETTE_TEXT_COLOR, PALETTE_RAM + $2
-		move.w	#PALETTE_TEXT_COLOR, PALETTE_RAM + $4
-		move.w	#PALETTE_TEXT_COLOR, PALETTE_RAM + $6
+		move.w	#PALETTE_TEXT_COLOR, PALETTE_BASE + $2
+		move.w	#PALETTE_TEXT_COLOR, PALETTE_BASE + $4
+		move.w	#PALETTE_TEXT_COLOR, PALETTE_BASE + $6
 	endm
 
 ; sprite debug setup
 	macro RS_SD_SETUP
 		; highlight for mw
-		move.w	#$f00, TILE_PALETTE + PALETTE_SIZE + $2
-		move.w	#$f00, TILE_PALETTE + PALETTE_SIZE + $4
-		move.w	#$f00, TILE_PALETTE + PALETTE_SIZE + $6
+		move.w	#$f00, TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $2
+		move.w	#$f00, TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $4
+		move.w	#$f00, TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $6
 
 		; init data
 		move.l	#$ff2c81d7, r_mw_buffer

@@ -19,7 +19,7 @@ tile_scroll_test:
 		sta	r_layer_b_x
 		std	r_layer_b_y
 
-		ldx	#LAYER_A_TILE_ATTR
+		ldx	#LAYER_A_TILE_ATTR_BASE
 		ldw	#LAYER_A_TILE_ATTR_SIZE
 		lda	#$40
 		RSUB	memory_fill
@@ -36,9 +36,9 @@ tile_scroll_test:
 
 		; setup text color on layer a/b
 		ldd	#$1f
-		std	LAYER_A_TILE_PALETTE + PALETTE_SIZE + $2
+		std	LAYER_A_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $2
 		ldd	#$3e0
-		std	LAYER_B_TILE_PALETTE + $2
+		std	LAYER_B_TILE_PALETTE_BASE + $2
 
 	.loop_test:
 		WATCHDOG
@@ -54,28 +54,28 @@ tile_scroll_test:
 		RSUB	print_char
 
 		lda	r_layer_a_x
-		sta	REG_LAYER_A_SCROLL_X
+		sta	REG_LAYER_A_TILE_SCROLL_X
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 4)
 		RSUB	print_hex_byte
 
 		ldd	r_layer_a_y
 		anda	#$1
 		std	r_layer_a_y
-		sta	REG_LAYER_A_SCROLL_Y + 1
-		stb	REG_LAYER_A_SCROLL_Y
+		sta	REG_LAYER_A_TILE_SCROLL_Y + 1
+		stb	REG_LAYER_A_TILE_SCROLL_Y
 		SEEK_XY	(SCREEN_START_X + 11), (SCREEN_START_Y + 4)
 		RSUB	print_hex_word
 
 		lda	r_layer_b_x
-		sta	REG_LAYER_B_SCROLL_X
+		sta	REG_LAYER_B_TILE_SCROLL_X
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 5)
 		RSUB	print_hex_byte
 
 		ldd	r_layer_b_y
 		anda	#$1
 		std	r_layer_b_y
-		sta	REG_LAYER_B_SCROLL_Y + 1
-		stb	REG_LAYER_B_SCROLL_Y
+		sta	REG_LAYER_B_TILE_SCROLL_Y + 1
+		stb	REG_LAYER_B_TILE_SCROLL_Y
 		SEEK_XY	(SCREEN_START_X + 11), (SCREEN_START_Y + 5)
 		RSUB	print_hex_word
 

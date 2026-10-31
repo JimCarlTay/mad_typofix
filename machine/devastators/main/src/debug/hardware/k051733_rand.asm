@@ -21,13 +21,13 @@
 k051733_rand_debug:
 		; highlight color
 		ldd	#$001f
-		std	FIX_TILE_PALETTE + PALETTE_SIZE + $2
+		std	TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $2
 
 		SEEK_XY	SCREEN_START_X, (SCREEN_START_Y + 13)
 		ldy	#d_str_results
 		RSUB	print_string
 
-		ldd	#FIX_TILE
+		ldd	#TXT_TILE_BASE
 		std	r_old_highlight
 
 		; setup initial values
@@ -38,7 +38,7 @@ k051733_rand_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:

@@ -18,7 +18,7 @@ tvc_init:
 		sta	REG_CONTROL
 
 		ldx	#d_palette_data
-		ldb	#PALETTE_SIZE
+		ldb	#PALETTE_ENTRY_SIZE
 
 	.loop_next_color:
 		lda	,x+

@@ -34,10 +34,10 @@ CTRL_RS_BASE		equ $0
 	endm
 
 ; fix tile viewer
-	macro RS_FIX_TV_PALETTE_DATA
+	macro RS_TXT_TV_PALETTE_DATA
 		dc.b	$06, $0a, $04, $00
 	endm
-	macro RS_FIX_TV_PALETTE_EXT_DATA
+	macro RS_TXT_TV_PALETTE_EXT_DATA
 		dc.b	$50, $70, $50, $00
 	endm
 

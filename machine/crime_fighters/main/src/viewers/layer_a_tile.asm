@@ -9,7 +9,7 @@ TILE_OFFSET_MASK	equ $3fff
 layer_a_tile_viewer:
 		RSUB	screen_init
 
-		ldy	#LAYER_A_TILE_PALETTE + (PALETTE_SIZE * TVC_PALETTE_NUM)
+		ldy	#LAYER_A_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * TVC_PALETTE_NUM)
 		jsr	tvc_init
 
 		SEEK_XY	SCREEN_START_X, SCREEN_START_Y
@@ -25,7 +25,7 @@ layer_a_tile_viewer:
 layer_a_seek_xy_cb:
 		RSUB	screen_seek_xy
 
-		; convert fix location to layer a
+		; convert txt location to layer a
 		leax	$800, x
 		rts
 

@@ -8,8 +8,8 @@
 
 screen_init_dsub:
 		exx
-		ld	hl, SCROLL_RAM
-		ld	de, SCROLL_RAM_SIZE * 2
+		ld	hl, SCROLL_BASE
+		ld	de, SCROLL_SIZE * 2
 		ld	c, $0
 		NSUB	memory_fill
 		exx
@@ -17,18 +17,18 @@ screen_init_dsub:
 screen_init_no_scroll_clear_dsub:
 		exx
 
-		ld	hl, TILE_ATTR_RAM
-		ld	de, TILE_ATTR_RAM_SIZE
+		ld	hl, TILE_ATTR_BASE
+		ld	de, TILE_ATTR_SIZE
 		ld	c, $a
 		NSUB	memory_fill
 
-		ld	hl, TILE_RAM
-		ld	de, TILE_RAM_SIZE
+		ld	hl, TILE_BASE
+		ld	de, TILE_SIZE
 		ld	c, $10
 		NSUB	memory_fill
 
-		ld	hl, SPRITE_RAM
-		ld	de, SPRITE_RAM_SIZE
+		ld	hl, SPRITE_BASE
+		ld	de, SPRITE_SIZE
 		ld	c, $0
 		NSUB	memory_fill
 

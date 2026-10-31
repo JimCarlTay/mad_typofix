@@ -9,11 +9,11 @@ TILE_OFFSET_MASK	equ $fff
 layer_b_tile_viewer:
 		RSUB	screen_init
 
-		; shift over layer b so its the same offset as fix
+		; shift over layer b so its the same offset as txt
 		lda	#$6
-		sta	REG_LAYER_B_SCROLL_X
+		sta	REG_LAYER_B_TILE_SCROLL_X
 
-		ldy	#LAYER_B_TILE_PALETTE + (PALETTE_SIZE * TVC_PALETTE_NUM)
+		ldy	#LAYER_B_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * TVC_PALETTE_NUM)
 		jsr	tvc_init
 
 		SEEK_XY	SCREEN_START_X, SCREEN_START_Y
@@ -29,7 +29,7 @@ layer_b_tile_viewer:
 layer_b_seek_xy_cb:
 		RSUB	screen_seek_xy
 
-		; convert fix location to layer b
+		; convert txt location to layer b
 		leax	$1000, x
 		rts
 

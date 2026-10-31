@@ -14,22 +14,22 @@ video_dac_test:
 		; Palette Layout
 		;  xBBB BBGG GGGR RRRR
 		; red palette setup
-		lea	FIX_TILE_PALETTE + PALETTE_SIZE, a0
+		lea	TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE, a0
 		move.w	#$1f, d0
 		bsr	palette_setup_color
 
 		; green palette setup
-		lea	FIX_TILE_PALETTE + (PALETTE_SIZE * 2), a0
+		lea	TXT_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * 2), a0
 		move.w	#$3e0, d0
 		bsr	palette_setup_color
 
 		; blue palette setup
-		lea	FIX_TILE_PALETTE + (PALETTE_SIZE * 3), a0
+		lea	TXT_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * 3), a0
 		move.w	#$7c00, d0
 		bsr	palette_setup_color
 
 		; combined/all palette setup
-		lea	FIX_TILE_PALETTE + (PALETTE_SIZE * 4), a0
+		lea	TXT_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * 4), a0
 		move.w	#$ffff, d0
 		bsr	palette_setup_color
 
@@ -83,8 +83,8 @@ full_screen:
 		move.b	1(a1, d4.w), d6
 		and.w	#$ff, d6
 
-		lea	TILE_RAM, a0
-		move.w	#($2000 / 2) - 1, d0
+		lea	TXT_TILE_BASE, a0
+		move.w	#(TXT_TILE_SIZE / 2) - 1, d0
 
 		; hardware requires byte writes for tile ram
 	.loop_next_address:

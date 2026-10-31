@@ -19,13 +19,13 @@ io_debug:
 		out	(IO_PAL_WRITE_ERROR_CLEAR), a
 		ld	a, $f0
 
-		ld	(FIX_TILE_PALETTE + (FIX_TILE_PALETTE_SIZE / 2) + 1), a
+		ld	(TXT_TILE_PALETTE_BASE + (TXT_TILE_PALETTE_ENTRY_SIZE / 2) + 1), a
 
 		in	a, (IO_INPUT_SYS)
 		bit	SYS_PAL_WRITE_ERROR_BIT, a
 		jr	z, .loop_palette_write_error
 
-		ld	hl, FIX_TILE_ATTR
+		ld	hl, TXT_TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 
 		; setup initial values
@@ -33,13 +33,13 @@ io_debug:
 		ld	(ix + 0), $00	; io 04
 		ld	(ix + 1), $00	; io 0c
 
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 		ld	(ix + 0), $22
 		ld	(ix + 1), $01
 		ld	(ix + 2), $80
 		ld	(ix + 3), $80
 
-		ld	ix, BG_TILE_RAM + $10c
+		ld	ix, BG_TILE_BASE + $10c
 		ld	(ix + 0), $23
 		ld	(ix + 1), $08
 
@@ -76,8 +76,6 @@ write_memory_cb:
 		SEEK_XY	(SCREEN_START_X + 18), (SCREEN_START_Y + 5)
 		ld	c, a
 		RSUB	print_hex_byte
-;		ld	ix, SPRITE_RAM
-;		call	memory_write_generic_write
 loop_cb:
 		ret
 

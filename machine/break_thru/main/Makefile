@@ -67,12 +67,12 @@ OBJS += $(OBJ_DIR)/menus/main.o
 OBJS += $(OBJ_DIR)/menus/memory_viewer.o
 OBJS += $(OBJ_DIR)/menus/ram_tests.o
 OBJS += $(OBJ_DIR)/tests/auto.o
-OBJS += $(OBJ_DIR)/tests/fg_ram.o
+OBJS += $(OBJ_DIR)/tests/txt_tile_ram.o
 OBJS += $(OBJ_DIR)/tests/input.o
 OBJS += $(OBJ_DIR)/tests/sound.o
 OBJS += $(OBJ_DIR)/tests/sprite_ram.o
 OBJS += $(OBJ_DIR)/viewers/bg_tile.o
-OBJS += $(OBJ_DIR)/viewers/fg_tile.o
+OBJS += $(OBJ_DIR)/viewers/txt_tile.o
 OBJS += $(OBJ_DIR)/viewers/sprite.o
 
 ifneq (,$(findstring _DEBUG_HARDWARE_,$(BUILD_FLAGS)))

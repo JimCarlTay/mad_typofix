@@ -33,8 +33,8 @@ sprite_viewer:
 		call	values_edit_handler
 
 		ld	bc, $f8
-		ld	(SPRITE_RAM), bc
-		ld	(SPRITE_RAM + 2), bc
+		ld	(SPRITE_BASE), bc
+		ld	(SPRITE_BASE + 2), bc
 
 		ld	bc, $3ff
 		RSUB	delay
@@ -58,7 +58,7 @@ sprite_viewer:
 ; *   2  | xxxxxxxx | y pos
 ; *   3  | xxxxxxxx | x pos
 value_changed_cb:
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 
 		ld	bc, (r_sprite_num)
 		ld	(ix), c
@@ -93,18 +93,18 @@ sprite_viewer_palette_setup:
 
 		ld	hl, d_palette_data
 		ld	(r_nmi_copy_src), hl
-		ld	hl, SPRITE_PALETTE
+		ld	hl, SPRITE_PALETTE_BASE
 		ld	(r_nmi_copy_dst), hl
-		ld	a, SPRITE_PALETTE_SIZE / 2
+		ld	a, SPRITE_PALETTE_ENTRY_SIZE / 2
 		ld	(r_nmi_copy_size), a
 
 		call	wait_nmi_copy
 
 		ld	hl, d_palette_ext_data
 		ld	(r_nmi_copy_src), hl
-		ld	hl, SPRITE_PALETTE_EXT
+		ld	hl, SPRITE_PALETTE_EXT_BASE
 		ld	(r_nmi_copy_dst), hl
-		ld	a, SPRITE_PALETTE_SIZE / 2
+		ld	a, SPRITE_PALETTE_ENTRY_SIZE / 2
 		ld	(r_nmi_copy_size), a
 
 		call	wait_nmi_copy

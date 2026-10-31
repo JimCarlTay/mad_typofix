@@ -6,23 +6,23 @@
 	section code
 
 screen_init_dsub:
-		lea	FIX_TILE, a0
-		move.l	#FIX_TILE_SIZE, d0
+		lea	TXT_TILE_BASE, a0
+		move.l	#TXT_TILE_SIZE, d0
 		move.w	#$10, d1
 		DSUB	memory_fill_tile
 
-		lea	LAYER_A_TILE, a0
+		lea	LAYER_A_TILE_BASE, a0
 		move.l	#LAYER_A_TILE_SIZE, d0
 		move.w	#$10, d1
 		DSUB	memory_fill_tile
 
-		lea	LAYER_B_TILE, a0
+		lea	LAYER_B_TILE_BASE, a0
 		move.l	#LAYER_B_TILE_SIZE, d0
 		move.w	#$10, d1
 		DSUB	memory_fill_tile
 
-		lea	LAYER_A_SCROLL, a0
-		move.l	#LAYER_A_SCROLL_SIZE + LAYER_B_SCROLL_SIZE, d0
+		lea	LAYER_A_TILE_SCROLL_BASE, a0
+		move.l	#LAYER_A_TILE_SCROLL_SIZE + LAYER_B_TILE_SCROLL_SIZE, d0
 		moveq	#$0, d1
 		DSUB	memory_fill_tile
 
@@ -32,19 +32,19 @@ screen_init_dsub:
 		move.b	#$0, $106c00
 		move.b	#$0, $0c0001
 
-		lea	SPRITE_RAM, a0
-		move.l	#SPRITE_RAM_SIZE, d0
+		lea	SPRITE_BASE, a0
+		move.l	#SPRITE_SIZE, d0
 		moveq	#$0, d1
 		DSUB	memory_fill_tile
 
-		lea	PALETTE_RAM, a0
-		move.l	#PALETTE_RAM_SIZE, d0
+		lea	PALETTE_BASE, a0
+		move.l	#PALETTE_SIZE, d0
 		moveq	#$0, d1
 		DSUB	memory_fill
 
 		; text color
-		move.b	#$ff, PALETTE_RAM + $3d
-		move.b	#$ff, PALETTE_RAM + $3f
+		move.b	#$ff, PALETTE_BASE + $3d
+		move.b	#$ff, PALETTE_BASE + $3f
 
 		SEEK_XY 9, 0
 		lea	d_str_version, a0

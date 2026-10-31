@@ -30,7 +30,7 @@ tile_scroll_test:
 
 		; setup text color on layer a/b
 		ldd	#$3e0	; green
-		std	LAYER_B_TILE_PALETTE + $c
+		std	LAYER_B_TILE_PALETTE_BASE + $c
 
 	.loop_test:
 		WATCHDOG

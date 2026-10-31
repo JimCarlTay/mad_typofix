@@ -13,16 +13,16 @@ sprite_debug:
 
 		ldd	#d_palette_data
 		std	r_vblank_copy_src
-		ldd	#FG_TILE_PALETTE + FG_TILE_PALETTE_SIZE
+		ldd	#TXT_TILE_PALETTE_BASE + TXT_TILE_PALETTE_ENTRY_SIZE
 		std	r_vblank_copy_dst
-		ldd	#FG_TILE_PALETTE_SIZE
+		ldd	#TXT_TILE_PALETTE_ENTRY_SIZE
 		std	r_vblank_copy_size
 
 		jsr	wait_vblank_copy
 
 		CPU_INTS_DISABLE
 
-		ldd	#FG_TILE_RAM
+		ldd	#TXT_TILE_BASE
 		std	r_old_highlight
 
 		; setup initial values
@@ -35,12 +35,12 @@ sprite_debug:
 		jsr	memory_write_handler
 
 		ldd	#$0
-		std	SPRITE_RAM
-		std	SPRITE_RAM + 2
+		std	SPRITE_BASE
+		std	SPRITE_BASE + 2
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:
@@ -54,7 +54,7 @@ highlight_cb:
 		rts
 
 write_memory_cb:
-		ldx	#SPRITE_RAM
+		ldx	#SPRITE_BASE
 		jsr	memory_write_generic_write
 loop_cb:
 		rts

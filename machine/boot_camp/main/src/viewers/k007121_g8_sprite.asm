@@ -63,11 +63,11 @@ value_changed_cb:
 		sta	REG_CONTROL
 
 		ldd	r_sprite_num
-		stb	K007121_G8_SPRITE
+		stb	K007121_G8_SPRITE_BASE
 
 		tfr	a, b
 		andb	#$f
-		stb	K007121_G8_SPRITE + 1
+		stb	K007121_G8_SPRITE_BASE + 1
 
 		anda	#$f0
 		asla
@@ -88,12 +88,12 @@ value_changed_cb:
 		stb	r_scratch
 		ora	r_scratch
 		ora	r_sprite_pos_x
-		sta	K007121_G8_SPRITE + 4
+		sta	K007121_G8_SPRITE_BASE + 4
 
 		lda	r_sprite_pos_x + 1
-		sta	K007121_G8_SPRITE + 3
+		sta	K007121_G8_SPRITE_BASE + 3
 		lda	r_sprite_pos_y
-		sta	K007121_G8_SPRITE + 2
+		sta	K007121_G8_SPRITE_BASE + 2
 
 		lda	#REG_CTRL_K007121_G15
 		sta	REG_CONTROL
@@ -107,8 +107,8 @@ loop_input_cb:
 ;  xBBB BBGG GGGR RRRR
 k007121_g8_sprite_viewer_palette_setup:
 		ldx	#d_palette_data
-		ldy	#K007121_G8_SPRITE_PALETTE
-		ldb	#PALETTE_SIZE
+		ldy	#K007121_G8_SPRITE_PALETTE_BASE
+		ldb	#PALETTE_ENTRY_SIZE
 
 	.loop_next_color:
 		lda	,x+

@@ -13,7 +13,7 @@
 
 ## MAD Pictures
 ![mad lastduel main menu](docs/images/mad_lastduel_main_menu.png)
-![mad lastduel fix tile viewer](docs/images/mad_lastduel_fix_tile_viewer.png)
+![mad lastduel txt tile viewer](docs/images/mad_lastduel_txt_tile_viewer.png)
 ![mad lastduel sprite viewer](docs/images/mad_lastduel_sprite_viewer.png)
 
 ## PCB Pictures
@@ -43,17 +43,17 @@ Schematics don't seem to exist.
 ## RAM Locations
 | RAM | Location | Type |
 | -------- | :------- | ----- |
-| BG RAM Lower | 4H on Graphics PCB | D4364CX-10LL (8k x 8bit) |
-| BG RAM Upper | 3H on Graphics PCB | D4364CX-10LL (8k x 8bit) |
-| FG RAM Lower | 8H on Graphics PCB | D4364CX-10LL (8k x 8bit) |
-| FG RAM Upper | 7H on Graphics PCB | D4364CX-10LL (8k x 8bit) |
-| Fix RAM Lower | 7G on CPU PCB | D4016CX-15 (2k x 8bit) |
-| Fix RAM Upper | 8G on CPU PCB | D4016CX-15 (2k x 8bit) |
+| BG Tile RAM Lower | 4H on Graphics PCB | D4364CX-10LL (8k x 8bit) |
+| BG Tile RAM Upper | 3H on Graphics PCB | D4364CX-10LL (8k x 8bit) |
+| FG Tile RAM Lower | 8H on Graphics PCB | D4364CX-10LL (8k x 8bit) |
+| FG Tile RAM Upper | 7H on Graphics PCB | D4364CX-10LL (8k x 8bit) |
 | Palette RAM Lower | 7E on CPU PCB | CXK5814P-35L (2k x 8bit) |
 | Palette RAM Upper | 6E on CPU PCB | CXK5814P-35L (2k x 8bit) |
 | Sound CPU RAM | 15H on CPU PCB | D4016CX-15 (2k x 8bit) |
 | Sprite RAM Lower | 2H on CPU PCB | D4016CX-15 (2k x 8bit) |
 | Sprite RAM Upper | 3H on CPU PCB | D4016CX-15 (2k x 8bit) |
+| TXT Tile RAM Lower | 7G on CPU PCB | D4016CX-15 (2k x 8bit) |
+| TXT Tile RAM Upper | 8G on CPU PCB | D4016CX-15 (2k x 8bit) |
 | Work RAM 0xff8000 to 0xffbfff Lower | 4K on CPU PCB | D4364CX-10LL (8k x 8bit) |
 | Work RAM 0xff8000 to 0xffbfff Upper | 5K on CPU PCB | D4364CX-10LL (8k x 8bit) |
 | Work RAM 0xffc000 to 0xffffff Lower | 2K on CPU PCB | D4364CX-10LL (8k x 8bit) |
@@ -108,45 +108,45 @@ are 7 bits.
 | 0x18 |     24 | 0001 1000 |  000 0000 0011 0001 1000 xxxx  | FG TILE RAM WRITE LOWER        |
 | 0x19 |     25 | 0001 1001 |  000 0000 0011 0001 1001 xxxx  | FG TILE RAM WRITE UPPER        |
 | 0x1a |     26 | 0001 1010 |  000 0000 0011 0001 1010 xxxx  | FG TILE RAM WRITE BOTH         |
-| 0x1b |     27 | 0001 1011 |  000 0000 0011 0001 1011 xxxx  | FIX TILE RAM ADDRESS           |
-| 0x1c |     28 | 0001 1100 |  000 0000 0011 0001 1100 xxxx  | FIX TILE RAM DATA LOWER        |
-| 0x1d |     29 | 0001 1101 |  000 0000 0011 0001 1101 xxxx  | FIX TILE RAM DATA UPPER        |
-| 0x1e |     30 | 0001 1110 |  000 0000 0011 0001 1110 xxxx  | FIX TILE RAM DATA BOTH         |
-| 0x1f |     31 | 0001 1111 |  000 0000 0011 0001 1111 xxxx  | FIX TILE RAM MARCH LOWER       |
-| 0x20 |     32 | 0010 0000 |  000 0000 0011 0010 0000 xxxx  | FIX TILE RAM MARCH UPPER       |
-| 0x21 |     33 | 0010 0001 |  000 0000 0011 0010 0001 xxxx  | FIX TILE RAM MARCH BOTH        |
-| 0x22 |     34 | 0010 0010 |  000 0000 0011 0010 0010 xxxx  | FIX TILE RAM OUTPUT LOWER      |
-| 0x23 |     35 | 0010 0011 |  000 0000 0011 0010 0011 xxxx  | FIX TILE RAM OUTPUT UPPER      |
-| 0x24 |     36 | 0010 0100 |  000 0000 0011 0010 0100 xxxx  | FIX TILE RAM OUTPUT BOTH       |
-| 0x25 |     37 | 0010 0101 |  000 0000 0011 0010 0101 xxxx  | FIX TILE RAM WRITE LOWER       |
-| 0x26 |     38 | 0010 0110 |  000 0000 0011 0010 0110 xxxx  | FIX TILE RAM WRITE UPPER       |
-| 0x27 |     39 | 0010 0111 |  000 0000 0011 0010 0111 xxxx  | FIX TILE RAM WRITE BOTH        |
-| 0x28 |     40 | 0010 1000 |  000 0000 0011 0010 1000 xxxx  | PALETTE RAM ADDRESS            |
-| 0x29 |     41 | 0010 1001 |  000 0000 0011 0010 1001 xxxx  | PALETTE RAM DATA LOWER         |
-| 0x2a |     42 | 0010 1010 |  000 0000 0011 0010 1010 xxxx  | PALETTE RAM DATA UPPER         |
-| 0x2b |     43 | 0010 1011 |  000 0000 0011 0010 1011 xxxx  | PALETTE RAM DATA BOTH          |
-| 0x2c |     44 | 0010 1100 |  000 0000 0011 0010 1100 xxxx  | PALETTE RAM MARCH LOWER        |
-| 0x2d |     45 | 0010 1101 |  000 0000 0011 0010 1101 xxxx  | PALETTE RAM MARCH UPPER        |
-| 0x2e |     46 | 0010 1110 |  000 0000 0011 0010 1110 xxxx  | PALETTE RAM MARCH BOTH         |
-| 0x2f |     47 | 0010 1111 |  000 0000 0011 0010 1111 xxxx  | PALETTE RAM OUTPUT LOWER       |
-| 0x30 |     48 | 0011 0000 |  000 0000 0011 0011 0000 xxxx  | PALETTE RAM OUTPUT UPPER       |
-| 0x31 |     49 | 0011 0001 |  000 0000 0011 0011 0001 xxxx  | PALETTE RAM OUTPUT BOTH        |
-| 0x32 |     50 | 0011 0010 |  000 0000 0011 0011 0010 xxxx  | PALETTE RAM WRITE LOWER        |
-| 0x33 |     51 | 0011 0011 |  000 0000 0011 0011 0011 xxxx  | PALETTE RAM WRITE UPPER        |
-| 0x34 |     52 | 0011 0100 |  000 0000 0011 0011 0100 xxxx  | PALETTE RAM WRITE BOTH         |
-| 0x35 |     53 | 0011 0101 |  000 0000 0011 0011 0101 xxxx  | SPRITE RAM ADDRESS             |
-| 0x36 |     54 | 0011 0110 |  000 0000 0011 0011 0110 xxxx  | SPRITE RAM DATA LOWER          |
-| 0x37 |     55 | 0011 0111 |  000 0000 0011 0011 0111 xxxx  | SPRITE RAM DATA UPPER          |
-| 0x38 |     56 | 0011 1000 |  000 0000 0011 0011 1000 xxxx  | SPRITE RAM DATA BOTH           |
-| 0x39 |     57 | 0011 1001 |  000 0000 0011 0011 1001 xxxx  | SPRITE RAM MARCH LOWER         |
-| 0x3a |     58 | 0011 1010 |  000 0000 0011 0011 1010 xxxx  | SPRITE RAM MARCH UPPER         |
-| 0x3b |     59 | 0011 1011 |  000 0000 0011 0011 1011 xxxx  | SPRITE RAM MARCH BOTH          |
-| 0x3c |     60 | 0011 1100 |  000 0000 0011 0011 1100 xxxx  | SPRITE RAM OUTPUT LOWER        |
-| 0x3d |     61 | 0011 1101 |  000 0000 0011 0011 1101 xxxx  | SPRITE RAM OUTPUT UPPER        |
-| 0x3e |     62 | 0011 1110 |  000 0000 0011 0011 1110 xxxx  | SPRITE RAM OUTPUT BOTH         |
-| 0x3f |     63 | 0011 1111 |  000 0000 0011 0011 1111 xxxx  | SPRITE RAM WRITE LOWER         |
-| 0x40 |     64 | 0100 0000 |  000 0000 0011 0100 0000 xxxx  | SPRITE RAM WRITE UPPER         |
-| 0x41 |     65 | 0100 0001 |  000 0000 0011 0100 0001 xxxx  | SPRITE RAM WRITE BOTH          |
+| 0x1b |     27 | 0001 1011 |  000 0000 0011 0001 1011 xxxx  | PALETTE RAM ADDRESS            |
+| 0x1c |     28 | 0001 1100 |  000 0000 0011 0001 1100 xxxx  | PALETTE RAM DATA LOWER         |
+| 0x1d |     29 | 0001 1101 |  000 0000 0011 0001 1101 xxxx  | PALETTE RAM DATA UPPER         |
+| 0x1e |     30 | 0001 1110 |  000 0000 0011 0001 1110 xxxx  | PALETTE RAM DATA BOTH          |
+| 0x1f |     31 | 0001 1111 |  000 0000 0011 0001 1111 xxxx  | PALETTE RAM MARCH LOWER        |
+| 0x20 |     32 | 0010 0000 |  000 0000 0011 0010 0000 xxxx  | PALETTE RAM MARCH UPPER        |
+| 0x21 |     33 | 0010 0001 |  000 0000 0011 0010 0001 xxxx  | PALETTE RAM MARCH BOTH         |
+| 0x22 |     34 | 0010 0010 |  000 0000 0011 0010 0010 xxxx  | PALETTE RAM OUTPUT LOWER       |
+| 0x23 |     35 | 0010 0011 |  000 0000 0011 0010 0011 xxxx  | PALETTE RAM OUTPUT UPPER       |
+| 0x24 |     36 | 0010 0100 |  000 0000 0011 0010 0100 xxxx  | PALETTE RAM OUTPUT BOTH        |
+| 0x25 |     37 | 0010 0101 |  000 0000 0011 0010 0101 xxxx  | PALETTE RAM WRITE LOWER        |
+| 0x26 |     38 | 0010 0110 |  000 0000 0011 0010 0110 xxxx  | PALETTE RAM WRITE UPPER        |
+| 0x27 |     39 | 0010 0111 |  000 0000 0011 0010 0111 xxxx  | PALETTE RAM WRITE BOTH         |
+| 0x28 |     40 | 0010 1000 |  000 0000 0011 0010 1000 xxxx  | SPRITE RAM ADDRESS             |
+| 0x29 |     41 | 0010 1001 |  000 0000 0011 0010 1001 xxxx  | SPRITE RAM DATA LOWER          |
+| 0x2a |     42 | 0010 1010 |  000 0000 0011 0010 1010 xxxx  | SPRITE RAM DATA UPPER          |
+| 0x2b |     43 | 0010 1011 |  000 0000 0011 0010 1011 xxxx  | SPRITE RAM DATA BOTH           |
+| 0x2c |     44 | 0010 1100 |  000 0000 0011 0010 1100 xxxx  | SPRITE RAM MARCH LOWER         |
+| 0x2d |     45 | 0010 1101 |  000 0000 0011 0010 1101 xxxx  | SPRITE RAM MARCH UPPER         |
+| 0x2e |     46 | 0010 1110 |  000 0000 0011 0010 1110 xxxx  | SPRITE RAM MARCH BOTH          |
+| 0x2f |     47 | 0010 1111 |  000 0000 0011 0010 1111 xxxx  | SPRITE RAM OUTPUT LOWER        |
+| 0x30 |     48 | 0011 0000 |  000 0000 0011 0011 0000 xxxx  | SPRITE RAM OUTPUT UPPER        |
+| 0x31 |     49 | 0011 0001 |  000 0000 0011 0011 0001 xxxx  | SPRITE RAM OUTPUT BOTH         |
+| 0x32 |     50 | 0011 0010 |  000 0000 0011 0011 0010 xxxx  | SPRITE RAM WRITE LOWER         |
+| 0x33 |     51 | 0011 0011 |  000 0000 0011 0011 0011 xxxx  | SPRITE RAM WRITE UPPER         |
+| 0x34 |     52 | 0011 0100 |  000 0000 0011 0011 0100 xxxx  | SPRITE RAM WRITE BOTH          |
+| 0x35 |     53 | 0011 0101 |  000 0000 0011 0011 0101 xxxx  | TXT TILE RAM ADDRESS           |
+| 0x36 |     54 | 0011 0110 |  000 0000 0011 0011 0110 xxxx  | TXT TILE RAM DATA LOWER        |
+| 0x37 |     55 | 0011 0111 |  000 0000 0011 0011 0111 xxxx  | TXT TILE RAM DATA UPPER        |
+| 0x38 |     56 | 0011 1000 |  000 0000 0011 0011 1000 xxxx  | TXT TILE RAM DATA BOTH         |
+| 0x39 |     57 | 0011 1001 |  000 0000 0011 0011 1001 xxxx  | TXT TILE RAM MARCH LOWER       |
+| 0x3a |     58 | 0011 1010 |  000 0000 0011 0011 1010 xxxx  | TXT TILE RAM MARCH UPPER       |
+| 0x3b |     59 | 0011 1011 |  000 0000 0011 0011 1011 xxxx  | TXT TILE RAM MARCH BOTH        |
+| 0x3c |     60 | 0011 1100 |  000 0000 0011 0011 1100 xxxx  | TXT TILE RAM OUTPUT LOWER      |
+| 0x3d |     61 | 0011 1101 |  000 0000 0011 0011 1101 xxxx  | TXT TILE RAM OUTPUT UPPER      |
+| 0x3e |     62 | 0011 1110 |  000 0000 0011 0011 1110 xxxx  | TXT TILE RAM OUTPUT BOTH       |
+| 0x3f |     63 | 0011 1111 |  000 0000 0011 0011 1111 xxxx  | TXT TILE RAM WRITE LOWER       |
+| 0x40 |     64 | 0100 0000 |  000 0000 0011 0100 0000 xxxx  | TXT TILE RAM WRITE UPPER       |
+| 0x41 |     65 | 0100 0001 |  000 0000 0011 0100 0001 xxxx  | TXT TILE RAM WRITE BOTH        |
 | 0x42 |     66 | 0100 0010 |  000 0000 0011 0100 0010 xxxx  | WORK RAM ADDRESS               |
 | 0x43 |     67 | 0100 0011 |  000 0000 0011 0100 0011 xxxx  | WORK RAM DATA LOWER            |
 | 0x44 |     68 | 0100 0100 |  000 0000 0011 0100 0100 xxxx  | WORK RAM DATA UPPER            |
@@ -163,7 +163,7 @@ are 7 bits.
 | 0x7e |    126 | 0111 1110 |  000 0000 0011 0111 1110 xxxx  | MAD ROM ADDRESS                |
 | 0x7f |    127 | 0111 1111 |  000 0000 0011 0111 1111 xxxx  | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2026-02-27 @ 02:09 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-27 @ 19:38 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU
@@ -171,7 +171,7 @@ The sound CPU is a z80.  No MAD rom exists yet for the sound CPU.
 
 ## MAD Notes
 ### No Video DAC Test
-It should be possible to make one, but will be a pita to do.  Fix tile only has
+It should be possible to make one, but will be a pita to do.  TXT tile only has
 3 colors per palette.
 
 ## MAME vs Hardware

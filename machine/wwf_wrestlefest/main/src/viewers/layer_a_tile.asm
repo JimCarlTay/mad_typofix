@@ -7,11 +7,11 @@
 TILE_OFFSET_MASK	equ $fff
 
 layer_a_tile_viewer:
-		lea	LAYER_A_TILE_PALETTE, a0
+		lea	LAYER_A_TILE_PALETTE_BASE, a0
 		bsr	tvc_palette_setup
 
-		move.w	#$1fc, REG_LAYER_A_SCROLL_X
-		move.w	#$1fc, REG_LAYER_A_SCROLL_Y
+		move.w	#$1fc, REG_LAYER_A_TILE_SCROLL_X
+		move.w	#$1fc, REG_LAYER_A_TILE_SCROLL_Y
 
 		moveq	#$0, d0
 		move.w	#TILE_OFFSET_MASK, d1
@@ -19,15 +19,15 @@ layer_a_tile_viewer:
 		lea	layer_a_tile_draw_tile_cb, a1
 		bsr	tile_16x16_viewer_handler
 
-		move.w	#$0, REG_LAYER_A_SCROLL_X
-		move.w	#$0, REG_LAYER_A_SCROLL_Y
+		move.w	#$0, REG_LAYER_A_TILE_SCROLL_X
+		move.w	#$0, REG_LAYER_A_TILE_SCROLL_Y
 		rts
 
 ; params:
 ;  d0 = x
 ;  d1 = y
 layer_a_tile_seek_xy_cb:
-		lea	LAYER_A_TILE, a6
+		lea	LAYER_A_TILE_BASE, a6
 		and.l	#$ff, d0
 		and.l	#$ff, d1
 

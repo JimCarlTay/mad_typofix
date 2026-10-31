@@ -9,7 +9,7 @@ tile_debug:
 		ldy	#d_screen_xys_list
 		jsr	print_xy_string_list
 
-		ldd	#TILE_RAM
+		ldd	#TILE_BASE
 		std	r_old_highlight
 
 		; setup initial values
@@ -26,7 +26,7 @@ tile_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:
@@ -62,8 +62,8 @@ loop_cb:
 d_mw_settings:		MW_SETTINGS 3, r_mw_buffer, highlight_cb, write_memory_cb, loop_cb
 
 d_screen_xys_list:
-	XY_STRING (SCREEN_START_X + 13), (SCREEN_START_Y + 4), "VIDEO RAM"
-	XY_STRING (SCREEN_START_X + 13), (SCREEN_START_Y + 5), "COLOR RAM"
+	XY_STRING (SCREEN_START_X + 13), (SCREEN_START_Y + 4), "VIDEO BASE"
+	XY_STRING (SCREEN_START_X + 13), (SCREEN_START_Y + 5), "COLOR BASE"
 	XY_STRING (SCREEN_START_X + 13), (SCREEN_START_Y + 6), "REG 2043"
 	XY_STRING SCREEN_START_X, (SCREEN_START_Y + 13), "LAST WRITTEN"
 	XY_STRING_LIST_END

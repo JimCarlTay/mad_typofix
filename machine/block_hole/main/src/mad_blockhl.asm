@@ -36,8 +36,9 @@ _start:
 
 		setln	#(SETLN_WATCHDOG_POLL|SETLN_SELECT_RAM_WORK)
 
-		MEMORY_FILL16 #WORK_RAM, #($2000 / 2), #$0
+		MEMORY_FILL16 #WORK_RAM_BASE, #($2000 / 2), #$0
 		WATCHDOG
+
 		DSUB_MODE_PSUB
 
 		PSUB	screen_init
@@ -70,4 +71,4 @@ _start:
 
 	section data
 
-d_str_testing_work_ram: 	STRING "TESTING WORK RAM"
+d_str_testing_work_ram:		STRING "TESTING WORK RAM"

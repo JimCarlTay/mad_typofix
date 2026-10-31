@@ -15,7 +15,7 @@ bg_tile_viewer:
 		rts
 
 bg_seek_xy_cb:
-		ldx	#BG_RAM
+		ldx	#BG_TILE_BASE
 		leax	b, x
 		tfr	a, b
 		clra

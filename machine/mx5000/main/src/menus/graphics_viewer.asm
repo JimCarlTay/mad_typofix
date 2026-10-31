@@ -14,11 +14,11 @@ graphics_viewer_menu:
 	section data
 
 d_menu_list:
-	MENU_ENTRY k007121_sprite_viewer, d_str_k007121_sprite, ME_FLAG_NONE
-	MENU_ENTRY k007121_tile_viewer, d_str_k007121_tile, ME_FLAG_NONE
+	MENU_ENTRY layer_a_tile_viewer, d_str_layer_a_tile, ME_FLAG_NONE
+	MENU_ENTRY sprite_viewer, d_str_sprite, ME_FLAG_NONE
 	MENU_LIST_END
 
 d_str_menu_title:		STRING "GRAPHICS VIEWER"
 
-d_str_k007121_sprite:		STRING "K007121 SPRITE"
-d_str_k007121_tile:		STRING "K007121 TILE"
+d_str_layer_a_tile:		STRING "LAYER A TILE"
+d_str_sprite:			STRING "SPRITE"

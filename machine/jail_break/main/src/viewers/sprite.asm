@@ -44,7 +44,7 @@ sprite_viewer:
 value_changed_cb:
 
 		lda	r_sprite_num + 1
-		sta	SPRITE_RAM
+		sta	SPRITE_BASE
 
 		clrb
 
@@ -69,13 +69,13 @@ value_changed_cb:
 
 	.skip_sprite_flip_y:
 		orb	r_sprite_palette_num
-		stb	SPRITE_RAM + 1
+		stb	SPRITE_BASE + 1
 
 		lda	r_sprite_pos_x + 1
-		sta	SPRITE_RAM + 3
+		sta	SPRITE_BASE + 3
 
 		lda	r_sprite_pos_y
-		sta	SPRITE_RAM + 2
+		sta	SPRITE_BASE + 2
 		rts
 
 

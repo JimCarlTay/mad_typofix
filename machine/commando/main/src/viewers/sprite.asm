@@ -37,8 +37,8 @@ sprite_viewer:
 		; zero out what we changed, and request a copy
 		; to remove the sprite from the screen
 		ld	bc, $0
-		ld	(SPRITE_RAM), bc
-		ld	(SPRITE_RAM + 2), bc
+		ld	(SPRITE_BASE), bc
+		ld	(SPRITE_BASE + 2), bc
 		call	wait_sprite_copy_request
 		ret
 
@@ -58,7 +58,7 @@ sprite_viewer:
 ; *   3  | xxxxxxxx | x pos
 value_changed_cb:
 
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 
 		ld	bc, (r_sprite_num)
 		ld	(ix + 0), c

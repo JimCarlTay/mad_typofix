@@ -11,7 +11,7 @@ sprite_debug:
 		ld	bc, $3ff
 		RSUB	delay
 
-		ld	hl, FIX_TILE_ATTR
+		ld	hl, TXT_TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 
 		; setup initial values
@@ -50,7 +50,7 @@ highlight_cb:
 		ret
 
 write_memory_cb:
-		ld	ix, SPRITE_RAM + $200
+		ld	ix, SPRITE_BASE + $200
 		call	memory_write_generic_write
 loop_cb:
 		ret

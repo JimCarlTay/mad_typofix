@@ -6,7 +6,7 @@
 	section code
 
 sprite_debug:
-		ldd	#FG_RAM + $400
+		ldd	#TXT_TILE_BASE + $400
 		std	r_old_highlight
 
 		; setup initial values
@@ -20,7 +20,7 @@ sprite_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:
@@ -43,7 +43,7 @@ highlight_cb:
 		rts
 
 write_memory_cb:
-		ldx	#SPRITE_RAM
+		ldx	#SPRITE_BASE
 		jsr	memory_write_generic_write
 loop_cb:
 		rts

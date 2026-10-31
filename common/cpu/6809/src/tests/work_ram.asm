@@ -22,7 +22,7 @@ work_ram_address_test_dsub:
 		ldd	#$1
 		tfr	d, y		; d = addr offset, y = counter
 
-		ldx	#WORK_RAM_CHIP
+		ldx	#WORK_RC_BASE
 		stb	, x+		; 0 address requires special processing
 
 	.loop_next_write_address:
@@ -38,15 +38,15 @@ work_ram_address_test_dsub:
 		rola
 
 		; add base work ram address
-	;	ora	#(WORK_RAM_CHIP >> 8)
-		adda	#(WORK_RAM_CHIP >> 8)
-		orb	#(WORK_RAM_CHIP & $ff)
+	;	ora	#(WORK_RC_BASE >> 8)
+		adda	#(WORK_RC_BASE >> 8)
+		orb	#(WORK_RC_BASE & $ff)
 		tfr	d, x
 		; recover addr offset
-		eora	#(WORK_RAM_CHIP >> 8)
-		eorb	#(WORK_RAM_CHIP & $ff)
+		eora	#(WORK_RC_BASE >> 8)
+		eorb	#(WORK_RC_BASE & $ff)
 
-		cmpx	#(WORK_RAM_CHIP + WORK_RAM_CHIP_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		blt	.loop_next_write_address
 
 
@@ -54,7 +54,7 @@ work_ram_address_test_dsub:
 		ldd	#$1
 		tfr	d, y		; d = counter, y = addr offset
 
-		ldx	#WORK_RAM_CHIP
+		ldx	#WORK_RC_BASE
 		cmpb	, x+		; 0 address requires special processing
 		bne	.test_failed
 
@@ -74,15 +74,15 @@ work_ram_address_test_dsub:
 		rola
 
 		; add base work ram address
-		;ora	#(WORK_RAM_CHIP >> 8)
-		adda	#(WORK_RAM_CHIP >> 8)
-		orb	#(WORK_RAM_CHIP & $ff)
+		;ora	#(WORK_RC_BASE >> 8)
+		adda	#(WORK_RC_BASE >> 8)
+		orb	#(WORK_RC_BASE & $ff)
 		tfr	d, x
 		; recover addr offset
-		eora	#(WORK_RAM_CHIP >> 8)
-		eorb	#(WORK_RAM_CHIP & $ff)
+		eora	#(WORK_RC_BASE >> 8)
+		eorb	#(WORK_RC_BASE & $ff)
 
-		cmpx	#(WORK_RAM_CHIP + WORK_RAM_CHIP_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		blt	.loop_next_read_address
 		DSUB_RETURN
 
@@ -97,11 +97,11 @@ work_ram_address_test_dsub:
 		ldy	#d_str_work_ram_address
 		PSUB	print_string
 
-		lda	#EC_WORK_RAM_ADDRESS
+		lda	#EC_WORK_RC_ADDRESS
 		PSUB	sound_play_byte
 	endif
 
-		lda	#EC_WORK_RAM_ADDRESS
+		lda	#EC_WORK_RC_ADDRESS
 		jmp	error_address
 
 work_ram_data_test_dsub:
@@ -111,17 +111,17 @@ work_ram_data_test_dsub:
 		WATCHDOG
 		ldb	,y+
 
-		ldx	#WORK_RAM_CHIP
+		ldx	#WORK_RC_BASE
 	.loop_next_write_address:
 		stb	,x+
-		cmpx	#(WORK_RAM_CHIP + WORK_RAM_CHIP_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		bne	.loop_next_write_address
 
-		ldx	#WORK_RAM_CHIP
+		ldx	#WORK_RC_BASE
 	.loop_next_read_address:
 		cmpb	,x+
 		bne	.test_failed
-		cmpx	#(WORK_RAM_CHIP + WORK_RAM_CHIP_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		bne	.loop_next_read_address
 
 		cmpb	#$ff	; last pattern
@@ -143,11 +143,11 @@ work_ram_data_test_dsub:
 		ldy	#d_str_work_ram_data
 		PSUB	print_string
 
-		lda	#EC_WORK_RAM_DATA
+		lda	#EC_WORK_RC_DATA
 		PSUB	sound_play_byte
 	endif
 
-		lda	#EC_WORK_RAM_DATA
+		lda	#EC_WORK_RC_DATA
 		jmp	error_address
 
 
@@ -155,7 +155,7 @@ work_ram_data_test_dsub:
 ; 6809 will fill the destination register with
 ; the first byte of the next instruction
 work_ram_output_test_dsub:
-		ldx	#WORK_RAM_CHIP
+		ldx	#WORK_RC_BASE
 		ldb	#$64
 
 	.loop_next:
@@ -185,34 +185,34 @@ work_ram_output_test_dsub:
 		SEEK_XY	0, SCREEN_B2_Y
 		PSUB	print_clear_line
 
-		lda	#EC_WORK_RAM_OUTPUT
+		lda	#EC_WORK_RC_OUTPUT
 		PSUB	sound_play_byte
 	endif
 
-		lda	#EC_WORK_RAM_OUTPUT
+		lda	#EC_WORK_RC_OUTPUT
 		jmp	error_address
 
 
 work_ram_march_test_dsub:
 
-		ldx	#WORK_RAM_CHIP
+		ldx	#WORK_RC_BASE
 
 		lda	#$0
 	.loop_fill_zero:
 		sta	, x+
-		cmpx	#(WORK_RAM_CHIP + WORK_RAM_CHIP_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		bne	.loop_fill_zero
 		WATCHDOG
 
 		ldb	#$ff
-		ldx	#WORK_RAM_CHIP
+		ldx	#WORK_RC_BASE
 
 	.loop_up_test:
 		cmpa	, x
 		bne	.test_failed_up
 
 		stb	, x+
-		cmpx	#(WORK_RAM_CHIP + WORK_RAM_CHIP_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		bne	.loop_up_test
 		WATCHDOG
 
@@ -222,7 +222,7 @@ work_ram_march_test_dsub:
 		cmpb	, x
 		bne	.test_failed
 		leax	-1, x
-		cmpx	#(WORK_RAM_CHIP - 1)
+		cmpx	#(WORK_RC_BASE - 1)
 		bne	.loop_down_test
 		WATCHDOG
 		DSUB_RETURN
@@ -242,11 +242,11 @@ work_ram_march_test_dsub:
 		ldy	#d_str_work_ram_march
 		PSUB	print_string
 
-		lda	#EC_WORK_RAM_MARCH
+		lda	#EC_WORK_RC_MARCH
 		PSUB	sound_play_byte
 	endif
 
-		lda	#EC_WORK_RAM_MARCH
+		lda	#EC_WORK_RC_MARCH
 		jmp	error_address
 
 ; - reads a byte from the memory address
@@ -257,7 +257,7 @@ work_ram_march_test_dsub:
 work_ram_write_test_dsub:
 		WATCHDOG
 
-		ldx	#WORK_RAM_CHIP
+		ldx	#WORK_RC_BASE
 		lda	, x
 		tfr	a, b
 		comb
@@ -273,11 +273,11 @@ work_ram_write_test_dsub:
 		SEEK_XY	0, SCREEN_B2_Y
 		PSUB	print_clear_line
 
-		lda	#EC_WORK_RAM_OUTPUT
+		lda	#EC_WORK_RC_OUTPUT
 		PSUB	sound_play_byte
 	endif
 
-		lda	#EC_WORK_RAM_WRITE
+		lda	#EC_WORK_RC_WRITE
 		jmp	error_address
 
 	.test_passed:

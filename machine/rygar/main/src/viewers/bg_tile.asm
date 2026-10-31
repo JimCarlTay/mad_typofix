@@ -9,8 +9,8 @@ TILE_OFFSET_MASK_UPPER	equ $7
 
 bg_tile_viewer:
 		ld	hl, d_palette_data
-		ld	de, BG_TILE_PALETTE + (PALETTE_SIZE * PALETTE_NUM)
-		ld	bc, PALETTE_SIZE
+		ld	de, BG_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * PALETTE_NUM)
+		ld	bc, PALETTE_ENTRY_SIZE
 		ldir
 
 		ld	bc, $8
@@ -28,7 +28,7 @@ bg_tile_viewer:
 ; b = x
 ; c = y
 seek_xy_cb:
-		ld	hl, BG_TILE_RAM + $23
+		ld	hl, BG_TILE_BASE + $23
 		srl	b
 		srl	c
 		ld	a, b

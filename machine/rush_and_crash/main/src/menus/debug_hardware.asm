@@ -11,10 +11,10 @@ debug_hardware_menu:
 		jsr	menu_handler
 		rts
 
-; fills entire fg with the letter E
+; fills entire txt with the letter E
 screen_size_debug:
-		ldx	#FG_TILE_RAM
-		ldy	#FG_TILE_RAM_SIZE / 2
+		ldx	#TXT_TILE_BASE
+		ldy	#TXT_TILE_SIZE / 2
 		ldd	#$e
 		DSUB	memory_fill_word
 
@@ -23,25 +23,24 @@ screen_size_debug:
 
 		rts
 
-
 ram_find_bg_tile:
-		ldx	#BG_TILE_RAM
-		jmp	ram_find
-
-ram_find_fg_tile:
-		ldx	#FG_TILE_RAM
+		ldx	#BG_TILE_BASE
 		jmp	ram_find
 
 ram_find_palette_even:
-		ldx	#PALETTE_RAM
+		ldx	#PALETTE_BASE
 		jmp	ram_find
 
 ram_find_palette_odd:
-		ldx	#PALETTE_RAM + 1
+		ldx	#PALETTE_BASE + 1
 		jmp	ram_find
 
 ram_find_sprite:
-		ldx	#SPRITE_RAM
+		ldx	#SPRITE_BASE
+		jmp	ram_find
+
+ram_find_txt_tile:
+		ldx	#TXT_TILE_BASE
 		jmp	ram_find
 
 ram_find_work:
@@ -55,10 +54,10 @@ d_menu_list:
 	MENU_ENTRY sprite_debug, d_str_sprite_debug, ME_FLAG_NONE
 	MENU_ENTRY ram_find_none, d_str_ram_find_none, ME_FLAG_NONE
 	MENU_ENTRY ram_find_bg_tile, d_str_ram_find_bg_tile, ME_FLAG_NONE
-	MENU_ENTRY ram_find_fg_tile, d_str_ram_find_fg_tile, ME_FLAG_NONE
 	MENU_ENTRY ram_find_palette_even, d_str_ram_find_palette_even, ME_FLAG_NONE
 	MENU_ENTRY ram_find_palette_odd, d_str_ram_find_palette_odd, ME_FLAG_NONE
 	MENU_ENTRY ram_find_sprite, d_str_ram_find_sprite, ME_FLAG_NONE
+	MENU_ENTRY ram_find_txt_tile, d_str_ram_find_txt_tile, ME_FLAG_NONE
 	MENU_ENTRY ram_find_work, d_str_ram_find_work, ME_FLAG_NONE
 	MENU_LIST_END
 
@@ -68,11 +67,11 @@ d_str_screen_size_debug:	STRING "SCREEN SIZE DEBUG"
 d_str_sprite_debug:		STRING "SPRITE DEBUG"
 
 d_str_ram_find_bg_tile:		STRING "RAM FIND BG TILE"
-d_str_ram_find_fg_tile:		STRING "RAM FIND FG TILE"
 d_str_ram_find_none:		STRING "RAM FIND NONE"
 d_str_ram_find_palette_even:	STRING "RAM FIND PALETTE EVEN"
 d_str_ram_find_palette_odd:	STRING "RAM FIND PALETTE ODD"
 d_str_ram_find_sprite:		STRING "RAM FIND SPRITE"
+d_str_ram_find_txt_tile:	STRING "RAM FIND TXT TILE"
 d_str_ram_find_work:		STRING "RAM FIND WORK"
 
 	section bss

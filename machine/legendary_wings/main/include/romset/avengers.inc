@@ -33,11 +33,11 @@ CTRL_RS_BASE		equ CTRL_SCREEN_FLIP
 		dc.b	$20, $20, $00, $00, $20, $30, $50, $60
 	endm
 
-; fix tile viewer
-	macro RS_FIX_TV_PALETTE_DATA
+; txt tile viewer
+	macro RS_TXT_TV_PALETTE_DATA
 		dc.b	$06, $0a, $04, $00
 	endm
-	macro RS_FIX_TV_PALETTE_EXT_DATA
+	macro RS_TXT_TV_PALETTE_EXT_DATA
 		dc.b	$50, $70, $50, $00
 	endm
 

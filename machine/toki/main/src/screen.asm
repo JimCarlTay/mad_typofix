@@ -7,21 +7,18 @@
 	section code
 
 screen_init_dsub:
-		; clear everything but work ram
-		lea	NOT_WORK_RAM, a0
-		move.l	#NOT_WORK_RAM_SIZE, d0
-		moveq	#0, d1
-		DSUB	memory_fill
+		lea	d_memory_fill_list, a0
+		DSUB	memory_fill_list
 
 		; text color
-		move.w	#$fff, TXT_PALETTE + $16
+		move.w	#$fff, TXT_TILE_PALETTE_BASE + $16
 
 		; text shadow color
-		move.w	#$222, TXT_PALETTE + $8
+		move.w	#$222, TXT_TILE_PALETTE_BASE + $8
 
 		; background color
-		move.w	#0, PALETTE_RAM + $41c
-		move.w	#0, PALETTE_RAM + $61e
+		move.w	#0, PALETTE_BASE + $41c
+		move.w	#0, PALETTE_BASE + $61e
 
 		SEEK_XY	5, 0
 		lea	d_str_version, a0
@@ -60,3 +57,14 @@ screen_update_dsub:
 
 	.skip_update:
 		DSUB_RETURN
+
+	section data
+	align 1
+
+d_memory_fill_list:
+	MEMORY_FILL_ENTRY BG_TILE_BASE, BG_TILE_SIZE, $0
+	MEMORY_FILL_ENTRY FG_TILE_BASE, FG_TILE_SIZE, $0
+	MEMORY_FILL_ENTRY SPRITE_BASE, SPRITE_SIZE, $0
+	MEMORY_FILL_ENTRY TXT_TILE_BASE, TXT_TILE_SIZE, $0
+	MEMORY_FILL_ENTRY PALETTE_BASE, PALETTE_SIZE, $0
+	MEMORY_FILL_LIST_END

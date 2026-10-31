@@ -12,7 +12,7 @@ memory_viewer_menu:
 		rts
 
 view_palette_ram:
-		lea	PALETTE_RAM, a0
+		lea	PALETTE_BASE, a0
 		bra	view_memory
 
 view_rom_space:
@@ -20,15 +20,15 @@ view_rom_space:
 		bra	view_memory
 
 view_sprite_ram:
-		lea	SPRITE_RAM, a0
+		lea	SPRITE_BASE, a0
 		bra	view_memory
 
 view_tile_ram:
-		lea	TILE_RAM, a0
+		lea	TILE_BASE, a0
 		bra	view_memory
 
 view_work_ram:
-		lea	WORK_RAM, a0
+		lea	WORK_RAM_BASE, a0
 
 view_memory:
 		lea	$0, a1			; no callback

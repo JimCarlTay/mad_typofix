@@ -12,8 +12,8 @@ SCREEN_BYTES_PER_ROW		equ (SCREEN_BYTES_PER_TILE * SCREEN_TILES_PER_ROW)
 	; mimicking contra even though the game doesn't actuall do this
 	macro	SEEK_XY
 	if \2 >= 5
-		ldx	#(K007121_G15_TILE_A + $40 + (\1 * SCREEN_BYTES_PER_TILE) + (\2 * SCREEN_BYTES_PER_ROW))
+		ldx	#(K007121_G15_LAYER_A_TILE_BASE + $40 + (\1 * SCREEN_BYTES_PER_TILE) + (\2 * SCREEN_BYTES_PER_ROW))
 	else
-		ldx	#(K007121_G15_TILE_B + $40 + (\1 * SCREEN_BYTES_PER_TILE) + (\2 * SCREEN_BYTES_PER_ROW))
+		ldx	#(K007121_G15_LAYER_B_TILE_BASE + $40 + (\1 * SCREEN_BYTES_PER_TILE) + (\2 * SCREEN_BYTES_PER_ROW))
 	endif
 	endm

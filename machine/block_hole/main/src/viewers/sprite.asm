@@ -58,7 +58,7 @@ sprite_viewer:
 ; *   7  | xxxxxxxx | x position (low 8 bits)
 value_changed_cb:
 		lda	#$ff
-		sta	SPRITE_RAM
+		sta	SPRITE_BASE
 
 		lda	r_sprite_size
 		asla
@@ -68,9 +68,9 @@ value_changed_cb:
 		asla
 		ora	r_sprite_num
 		ldb	r_sprite_num + 1
-		std	SPRITE_RAM + 1
+		std	SPRITE_BASE + 1
 
-		clr	SPRITE_RAM + 3
+		clr	SPRITE_BASE + 3
 
 		lda	r_sprite_zoom_y
 		asla
@@ -82,7 +82,7 @@ value_changed_cb:
 	.skip_sprite_flip_y:
 		ora	r_sprite_pos_y
 		ldb	r_sprite_pos_y + 1
-		std	SPRITE_RAM + 4
+		std	SPRITE_BASE + 4
 
 		lda	r_sprite_zoom_x
 		asla
@@ -94,7 +94,7 @@ value_changed_cb:
 	.skip_sprite_flip_x:
 		ora	r_sprite_pos_x
 		ldb	r_sprite_pos_x + 1
-		std	SPRITE_RAM + 6
+		std	SPRITE_BASE + 6
 		rts
 
 loop_input_cb:
@@ -104,8 +104,8 @@ sprite_viewer_palette_setup:
 		setln	#(SETLN_WATCHDOG_POLL|SETLN_SELECT_RAM_PALETTE)
 
 		ldx	#d_palette_data
-		ldy	#SPRITE_PALETTE
-		ldb	#PALETTE_SIZE
+		ldy	#SPRITE_PALETTE_BASE
+		ldb	#PALETTE_ENTRY_SIZE
 
 	.loop_next_byte:
 		lda	,x+

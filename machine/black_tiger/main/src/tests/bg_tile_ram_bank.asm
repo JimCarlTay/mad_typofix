@@ -10,7 +10,7 @@ bg_tile_ram_bank_test:
 		ld	b, $4		; # of banks
 		ld	d, $0		; bank #
 		ld	a, $1		; value to write
-		ld	hl, BG_TILE_RAM
+		ld	hl, BG_TILE_BASE
 		ld	c, IO_BG_RAM_BANK
 
 	.loop_next_write:

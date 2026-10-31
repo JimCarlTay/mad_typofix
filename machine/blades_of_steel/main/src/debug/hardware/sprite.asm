@@ -9,8 +9,8 @@ sprite_debug:
 		jsr	sprite_viewer_palette_setup
 
 		ldd	#$1f
-		std	LAYER_A_TILE_PALETTE + $18
-		ldd	#LAYER_A_TILE
+		std	LAYER_A_TILE_PALETTE_BASE + $18
+		ldd	#LAYER_A_TILE_BASE
 		std	r_old_highlight
 
 		; setup initial values
@@ -29,7 +29,7 @@ sprite_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:
@@ -46,7 +46,7 @@ highlight_cb:
 		rts
 
 write_memory_cb:
-		ldx	#SPRITE_RAM
+		ldx	#SPRITE_BASE
 		jsr	memory_write_generic_write
 loop_cb:
 		rts

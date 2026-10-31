@@ -11,8 +11,8 @@ SPRITE_START_Y		equ $0
 
 smc_palette_setup:
 		ldd	#$e003		; green
-		ldw	#(PALETTE_SIZE - 2) / 2
-		ldx	#K007121_18E_SPRITE_PALETTE + $2
+		ldw	#(PALETTE_ENTRY_SIZE - 2) / 2
+		ldx	#K007121_18E_SPRITE_PALETTE_BASE + $2
 		PSUB	memory_fill_word
 		rts
 
@@ -22,7 +22,7 @@ smc_draw_sprites:
 		lda	#SPRITE_START_Y
 		sta	r_y_pos
 
-		ldy	#K007121_18E_SPRITE
+		ldy	#K007121_18E_SPRITE_BASE
 		lde	s_smc_num_rows, x
 
 	.loop_next_row:

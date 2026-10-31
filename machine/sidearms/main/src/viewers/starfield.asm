@@ -9,9 +9,9 @@ starfield_viewer:
 		ld	de, d_screen_xys_list
 		call	print_xy_string_list
 
-		ld	hl, STARFIELD_PALETTE
+		ld	hl, STARFIELD_PALETTE_BASE
 		ld	de, d_palette_data
-		ld	c, STARFIELD_PALETTE_SIZE
+		ld	c, STARFIELD_PALETTE_ENTRY_SIZE
 		call	palette_copy
 
 		ld	a, $0

@@ -16,7 +16,7 @@ mad_rom_crc32_test_dsub:
 		PSUB	print_string
 	endif
 
-		ld	bc, ROM_START
+		ld	bc, ROM_BASE
 		exx
 		ld	bc, MAD_ROM_SIZE - 5
 		exx

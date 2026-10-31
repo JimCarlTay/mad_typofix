@@ -14,13 +14,13 @@ sprite_debug:
 		out	(IO_PAL_WRITE_ERROR_CLEAR), a
 		ld	a, $f0
 
-		ld	(FIX_TILE_PALETTE + (FIX_TILE_PALETTE_SIZE / 2) + 1), a
+		ld	(TXT_TILE_PALETTE_BASE + (TXT_TILE_PALETTE_ENTRY_SIZE / 2) + 1), a
 
 		in	a, (IO_INPUT_SYS)
 		bit	SYS_PAL_WRITE_ERROR_BIT, a
 		jr	z, .loop_palette_write_error
 
-		ld	hl, FIX_TILE_ATTR
+		ld	hl, TXT_TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 
 		; setup initial values
@@ -51,7 +51,7 @@ highlight_cb:
 		ret
 
 write_memory_cb:
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 		call	memory_write_generic_write
 loop_cb:
 		ret

@@ -12,7 +12,7 @@ sprite_debug:
 		; advantage of it triggering a palette dma copy
 		jsr	sprite_viewer_palette_setup
 
-		move.l	#SCROLL1_RAM, r_old_highlight
+		move.l	#SCROLL1_BASE, r_old_highlight
 
 		lea	d_mw_settings, a0
 		jsr	memory_write_handler
@@ -34,7 +34,7 @@ highlight_cb:
 write_memory_cb:
 		move.b	#$0, REG_OBJECT_RAM_BANK
 
-		lea	OBJECT_RAM, a0
+		lea	OBJECT_BASE, a0
 		jsr	memory_write_generic_write
 
 		move.b	#$1, REG_OBJECT_RAM_BANK

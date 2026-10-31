@@ -57,20 +57,20 @@ sprite_viewer:
 ; *   7  | xxxxxxxx | unused
 value_changed_cb:
 		lda	r_sprite_pos_y
-		sta	SPRITE_RAM
+		sta	SPRITE_BASE
 
 		; sprite num is limited to $1ff. Lower byte goes to
 		; sprite ram.  Bit 8 picks bank 0/1 via bit 7 of
 		; REG_CONTROL
 		ldd	r_sprite_num
-		stb	SPRITE_RAM + 1
+		stb	SPRITE_BASE + 1
 
 		asra
 		rora
 		sta	REG_CONTROL
 
 		ldd	r_sprite_pos_x
-		stb	SPRITE_RAM + 3
+		stb	SPRITE_BASE + 3
 
 		cmpa	#$0
 		beq	.skip_sprite_num_high_bit
@@ -96,9 +96,9 @@ value_changed_cb:
 
 		; top 2 bits of zoom
 		ora	r_sprite_zoom
-		sta	SPRITE_RAM + 4
+		sta	SPRITE_BASE + 4
 		lda	r_sprite_zoom + 1
-		sta	SPRITE_RAM + 5
+		sta	SPRITE_BASE + 5
 		rts
 
 loop_input_cb:
@@ -106,8 +106,8 @@ loop_input_cb:
 
 sprite_viewer_palette_setup:
 		ldx	#d_palette_data
-		ldy	#SPRITE_PALETTE
-		ldb	#PALETTE_SIZE
+		ldy	#SPRITE_PALETTE_BASE
+		ldb	#PALETTE_ENTRY_SIZE
 
 	.loop_next_byte:
 		lda	,x+

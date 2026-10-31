@@ -9,7 +9,7 @@ sprite_debug:
 		ld	de, d_screen_xys_list
 		call	print_xy_string_list
 
-		ld	hl, TILE_ATTR_RAM
+		ld	hl, TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 
 		; setup initial values
@@ -43,10 +43,10 @@ highlight_cb:
 
 write_memory_cb:
 		ld	a, (r_mw_buffer)
-		ld	(SPRITE_RAM), a
+		ld	(SPRITE_BASE), a
 
 		inc	a
-		ld	(SPRITE_RAM + $100), a
+		ld	(SPRITE_BASE + $100), a
 		dec	a
 
 		ld	c, a
@@ -54,18 +54,18 @@ write_memory_cb:
 		RSUB	print_hex_byte
 
 		ld	a, (r_mw_buffer + 1)
-		ld	(SPRITE_RAM + 1), a
-		ld	(SPRITE_RAM + $100 + 1), a
+		ld	(SPRITE_BASE + 1), a
+		ld	(SPRITE_BASE + $100 + 1), a
 
 		ld	c, a
 		SEEK_XY	(SCREEN_START_X + 3), (SCREEN_START_Y + 15)
 		RSUB	print_hex_byte
 
 		ld	a, (r_mw_buffer + 2)
-		ld	(SPRITE_RAM + 2), a
+		ld	(SPRITE_BASE + 2), a
 
 		add	a, $10
-		ld	(SPRITE_RAM + $100 + 2), a
+		ld	(SPRITE_BASE + $100 + 2), a
 		sub	$10
 
 		ld	c, a
@@ -73,8 +73,8 @@ write_memory_cb:
 		RSUB	print_hex_byte
 
 		ld	a, (r_mw_buffer + 3)
-		ld	(SPRITE_RAM + 3), a
-		ld	(SPRITE_RAM + $100 + 3), a
+		ld	(SPRITE_BASE + 3), a
+		ld	(SPRITE_BASE + $100 + 3), a
 
 		ld	c, a
 		SEEK_XY	(SCREEN_START_X + 9), (SCREEN_START_Y + 15)

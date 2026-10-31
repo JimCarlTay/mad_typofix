@@ -10,9 +10,9 @@ sprite_debug:
 
 		; highlight color
 		ldd	#$001f
-		std	K007121_10E_TILE_B_PALETTE + $c
+		std	K007121_10E_LAYER_B_TILE_PALETTE_BASE + $b
 
-		ldd	#K007121_10E_TILE_B
+		ldd	#K007121_10E_LAYER_B_TILE_BASE
 		std	r_old_highlight
 
 		; setup initial values
@@ -29,7 +29,7 @@ sprite_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:
@@ -43,7 +43,7 @@ highlight_cb:
 		rts
 
 write_memory_cb:
-		ldx	#K007121_10E_SPRITE
+		ldx	#K007121_10E_SPRITE_BASE
 		jsr	memory_write_generic_write
 loop_cb:
 		rts

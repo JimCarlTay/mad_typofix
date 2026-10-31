@@ -31,8 +31,8 @@ tile_scroll_test:
 
 		; setup text color on layer a/b
 		setln	#(SETLN_WATCHDOG_POLL|SETLN_SELECT_RAM_PALETTE)
-		MEMORY_FILL16 #(LAYER_A_TILE_PALETTE + 2), #$7, #$1f
-		MEMORY_FILL16 #(LAYER_B_TILE_PALETTE + 2), #$7, #$3e0
+		MEMORY_FILL16 #(LAYER_A_TILE_PALETTE_BASE + 2), #$7, #$1f
+		MEMORY_FILL16 #(LAYER_B_TILE_PALETTE_BASE + 2), #$7, #$3e0
 		setln	#(SETLN_WATCHDOG_POLL|SETLN_SELECT_RAM_WORK)
 
 	.loop_test:
@@ -51,26 +51,26 @@ tile_scroll_test:
 		ldd	r_layer_a_x
 		anda	#$1
 		std	r_layer_a_x
-		sta	REG_LAYER_A_SCROLL_X + 1
-		stb	REG_LAYER_A_SCROLL_X
+		sta	REG_LAYER_A_TILE_SCROLL_X + 1
+		stb	REG_LAYER_A_TILE_SCROLL_X
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 4)
 		RSUB	print_hex_word
 
 		lda	r_layer_a_y
-		sta	REG_LAYER_A_SCROLL_Y
+		sta	REG_LAYER_A_TILE_SCROLL_Y
 		SEEK_XY	(SCREEN_START_X + 13), (SCREEN_START_Y + 4)
 		RSUB	print_hex_byte
 
 		ldd	r_layer_b_x
 		anda	#$1
 		sta	r_layer_b_x
-		sta	REG_LAYER_B_SCROLL_X + 1
-		stb	REG_LAYER_B_SCROLL_X
+		sta	REG_LAYER_B_TILE_SCROLL_X + 1
+		stb	REG_LAYER_B_TILE_SCROLL_X
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 5)
 		RSUB	print_hex_word
 
 		lda	r_layer_b_y
-		sta	REG_LAYER_B_SCROLL_Y
+		sta	REG_LAYER_B_TILE_SCROLL_Y
 		SEEK_XY	(SCREEN_START_X + 13), (SCREEN_START_Y + 5)
 		RSUB	print_hex_byte
 

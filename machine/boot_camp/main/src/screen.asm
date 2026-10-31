@@ -6,34 +6,34 @@
 	section code
 
 screen_init_dsub:
-		ldx	#PALETTE_RAM
-		ldw	#PALETTE_RAM_SIZE
+		ldx	#PALETTE_BASE
+		ldw	#PALETTE_SIZE
 		lda	#$00
 		DSUB	memory_fill
 
 		; bg1 tiles
-		ldx	#K007121_G15_TILE_A
-		ldw	#K007121_G15_TILE_A_SIZE
+		ldx	#K007121_G15_LAYER_A_TILE_BASE
+		ldw	#K007121_G15_LAYER_A_TILE_SIZE
 		lda	#$40
 		DSUB	memory_fill
 
-		ldx	#K007121_G15_TILE_A_ATTR
-		ldw	#K007121_G15_TILE_A_ATTR_SIZE
+		ldx	#K007121_G15_LAYER_A_TILE_ATTR_BASE
+		ldw	#K007121_G15_LAYER_A_TILE_ATTR_SIZE
 		lda	#$00
 		DSUB	memory_fill
 
-		; fix tiles
-		ldx	#K007121_G15_TILE_B
-		ldw	#K007121_G15_TILE_B_SIZE
+		; txt tiles
+		ldx	#K007121_G15_LAYER_B_TILE_BASE
+		ldw	#K007121_G15_LAYER_B_TILE_SIZE
 		lda	#$40
 		DSUB	memory_fill
 
-		ldx	#K007121_G15_TILE_B_ATTR
-		ldw	#K007121_G15_TILE_B_ATTR_SIZE
+		ldx	#K007121_G15_LAYER_B_TILE_ATTR_BASE
+		ldw	#K007121_G15_LAYER_B_TILE_ATTR_SIZE
 		lda	#$00
 		DSUB	memory_fill
 
-		ldx	#K007121_G15_SPRITE
+		ldx	#K007121_G15_SPRITE_BASE
 		ldw	#K007121_G15_SPRITE_SIZE
 		lda	#$00
 		DSUB	memory_fill
@@ -45,28 +45,28 @@ screen_init_dsub:
 		sta	REG_CONTROL
 
 		; bg2 tiles
-		ldx	#K007121_G8_TILE_A
-		ldw	#K007121_G8_TILE_A_SIZE
+		ldx	#K007121_G8_LAYER_A_TILE_BASE
+		ldw	#K007121_G8_LAYER_A_TILE_SIZE
 		lda	#$40
 		DSUB	memory_fill
 
-		ldx	#K007121_G8_TILE_A_ATTR
-		ldw	#K007121_G8_TILE_A_ATTR_SIZE
+		ldx	#K007121_G8_LAYER_A_TILE_ATTR_BASE
+		ldw	#K007121_G8_LAYER_A_TILE_ATTR_SIZE
 		lda	#$00
 		DSUB	memory_fill
 
 		; not used
-		ldx	#K007121_G8_TILE_B
-		ldw	#K007121_G8_TILE_B_SIZE
+		ldx	#K007121_G8_LAYER_B_TILE_BASE
+		ldw	#K007121_G8_LAYER_B_TILE_SIZE
 		lda	#$40
 		DSUB	memory_fill
 
-		ldx	#K007121_G8_TILE_B_ATTR
-		ldw	#K007121_G8_TILE_B_ATTR_SIZE
+		ldx	#K007121_G8_LAYER_B_TILE_ATTR_BASE
+		ldw	#K007121_G8_LAYER_B_TILE_ATTR_SIZE
 		lda	#$00
 		DSUB	memory_fill
 
-		ldx	#K007121_G8_SPRITE
+		ldx	#K007121_G8_SPRITE_BASE
 		ldw	#K007121_G8_SPRITE_SIZE
 		lda	#$00
 		DSUB	memory_fill
@@ -79,7 +79,7 @@ screen_init_dsub:
 
 		; txt color
 		ldd	#$ffff
-		std	(K007121_G15_TILE_B_PALETTE + $2)
+		std	(K007121_G15_LAYER_B_TILE_PALETTE_BASE + $2)
 
 		SEEK_XY	3, 0
 		ldy	#d_str_version

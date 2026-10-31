@@ -13,7 +13,7 @@ sprite_debug:
 		lea	d_screen_xys_list, a0
 		RSUB	print_xy_string_list
 
-		move.l	#TILE_RAM + 2, r_old_highlight
+		move.l	#TILE_BASE + 2, r_old_highlight
 
 		lea	d_mw_settings, a0
 		jsr	memory_write_handler
@@ -33,22 +33,22 @@ highlight_cb:
 
 write_memory_cb:
 		move.w	r_mw_buffer, d0
-		move.w	d0, SPRITE_RAM + 4
+		move.w	d0, SPRITE_BASE + 4
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 16)
 		RSUB	print_hex_word
 
 		move.w	r_mw_buffer + 2, d0
-		move.w	d0, SPRITE_RAM + 6
+		move.w	d0, SPRITE_BASE + 6
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 17)
 		RSUB	print_hex_word
 
 		move.w	r_mw_buffer + 4, d0
-		move.w	d0, SPRITE_RAM + $1004
+		move.w	d0, SPRITE_BASE + $1004
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 18)
 		RSUB	print_hex_word
 
 		move.w	r_mw_buffer + 6, d0
-		move.w	d0, SPRITE_RAM + $1006
+		move.w	d0, SPRITE_BASE + $1006
 		SEEK_XY	(SCREEN_START_X + 8), (SCREEN_START_Y + 19)
 		RSUB	print_hex_word
 loop_cb:

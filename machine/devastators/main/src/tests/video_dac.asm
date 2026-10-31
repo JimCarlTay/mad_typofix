@@ -18,22 +18,22 @@ video_dac_test:
 		; Palette Layout
 		;  xBBB BBGG GGGR RRRR
 		; red palette setup
-		ldx	#PALETTE_RAM
+		ldx	#PALETTE_BASE
 		ldd	#$001f
 		jsr	palette_color_setup
 
 		; green palette setup
-		ldx	#PALETTE_RAM+PALETTE_SIZE
+		ldx	#PALETTE_BASE+PALETTE_ENTRY_SIZE
 		ldd	#$03e0
 		jsr	palette_color_setup
 
 		; blue palette setup
-		ldx	#PALETTE_RAM+(PALETTE_SIZE*2)
+		ldx	#PALETTE_BASE+(PALETTE_ENTRY_SIZE*2)
 		ldd	#$7c00
 		jsr	palette_color_setup
 
 		; combined/all palette setup
-		ldx	#PALETTE_RAM+(PALETTE_SIZE*3)
+		ldx	#PALETTE_BASE+(PALETTE_ENTRY_SIZE*3)
 		ldd	#$7fff
 		jsr	palette_color_setup
 
@@ -89,8 +89,8 @@ full_screen:
 		addr	b, a
 		ldd	a, y
 
-		ldx	#TILE_RAM
-		ldw	#TILE_RAM_SIZE
+		ldx	#TXT_TILE_BASE
+		ldw	#TXT_TILE_SIZE
 	.loop_next_address:
 		sta	-$2000, x
 		stb	, x+

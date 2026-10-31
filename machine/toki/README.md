@@ -69,23 +69,23 @@ are 7 bits.
 <!-- ec_table_main_start -->
 | Hex  | Number | Beep Code |     Error Address (A23..A1)    |           Error Text           |
 | ---: | -----: | --------: | :----------------------------: | :----------------------------- |
-| 0x01 |      1 | 0000 0001 |  000 0000 0011 0000 0001 xxxx  | RAM ADDRESS                    |
-| 0x02 |      2 | 0000 0010 |  000 0000 0011 0000 0010 xxxx  | RAM DATA LOWER                 |
-| 0x03 |      3 | 0000 0011 |  000 0000 0011 0000 0011 xxxx  | RAM DATA UPPER                 |
-| 0x04 |      4 | 0000 0100 |  000 0000 0011 0000 0100 xxxx  | RAM DATA BOTH                  |
-| 0x05 |      5 | 0000 0101 |  000 0000 0011 0000 0101 xxxx  | RAM MARCH LOWER                |
-| 0x06 |      6 | 0000 0110 |  000 0000 0011 0000 0110 xxxx  | RAM MARCH UPPER                |
-| 0x07 |      7 | 0000 0111 |  000 0000 0011 0000 0111 xxxx  | RAM MARCH BOTH                 |
-| 0x08 |      8 | 0000 1000 |  000 0000 0011 0000 1000 xxxx  | RAM OUTPUT LOWER               |
-| 0x09 |      9 | 0000 1001 |  000 0000 0011 0000 1001 xxxx  | RAM OUTPUT UPPER               |
-| 0x0a |     10 | 0000 1010 |  000 0000 0011 0000 1010 xxxx  | RAM OUTPUT BOTH                |
-| 0x0b |     11 | 0000 1011 |  000 0000 0011 0000 1011 xxxx  | RAM WRITE LOWER                |
-| 0x0c |     12 | 0000 1100 |  000 0000 0011 0000 1100 xxxx  | RAM WRITE UPPER                |
-| 0x0d |     13 | 0000 1101 |  000 0000 0011 0000 1101 xxxx  | RAM WRITE BOTH                 |
+| 0x01 |      1 | 0000 0001 |  000 0000 0011 0000 0001 xxxx  | WORK RAM ADDRESS               |
+| 0x02 |      2 | 0000 0010 |  000 0000 0011 0000 0010 xxxx  | WORK RAM DATA LOWER            |
+| 0x03 |      3 | 0000 0011 |  000 0000 0011 0000 0011 xxxx  | WORK RAM DATA UPPER            |
+| 0x04 |      4 | 0000 0100 |  000 0000 0011 0000 0100 xxxx  | WORK RAM DATA BOTH             |
+| 0x05 |      5 | 0000 0101 |  000 0000 0011 0000 0101 xxxx  | WORK RAM MARCH LOWER           |
+| 0x06 |      6 | 0000 0110 |  000 0000 0011 0000 0110 xxxx  | WORK RAM MARCH UPPER           |
+| 0x07 |      7 | 0000 0111 |  000 0000 0011 0000 0111 xxxx  | WORK RAM MARCH BOTH            |
+| 0x08 |      8 | 0000 1000 |  000 0000 0011 0000 1000 xxxx  | WORK RAM OUTPUT LOWER          |
+| 0x09 |      9 | 0000 1001 |  000 0000 0011 0000 1001 xxxx  | WORK RAM OUTPUT UPPER          |
+| 0x0a |     10 | 0000 1010 |  000 0000 0011 0000 1010 xxxx  | WORK RAM OUTPUT BOTH           |
+| 0x0b |     11 | 0000 1011 |  000 0000 0011 0000 1011 xxxx  | WORK RAM WRITE LOWER           |
+| 0x0c |     12 | 0000 1100 |  000 0000 0011 0000 1100 xxxx  | WORK RAM WRITE UPPER           |
+| 0x0d |     13 | 0000 1101 |  000 0000 0011 0000 1101 xxxx  | WORK RAM WRITE BOTH            |
 | 0x7e |    126 | 0111 1110 |  000 0000 0011 0111 1110 xxxx  | MAD ROM ADDRESS                |
 | 0x7f |    127 | 0111 1111 |  000 0000 0011 0111 1111 xxxx  | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-12-02 @ 05:00 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-28 @ 22:21 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU

@@ -17,12 +17,12 @@ tile_scroll_test:
 		WATCHDOG
 
 		lda	r_x
-		sta	REG_K005885_SCROLL_X
+		sta	REG_LAYER_B_TILE_SCROLL_X
 		SEEK_XY	(SCREEN_START_X + 9), (SCREEN_START_Y + 4)
 		RSUB	print_hex_byte
 
 		lda	r_y
-		sta	REG_K005885_SCROLL_Y
+		sta	REG_LAYER_B_TILE_SCROLL_Y
 		SEEK_XY	(SCREEN_START_X + 12), (SCREEN_START_Y + 4)
 		RSUB	print_hex_byte
 
@@ -32,8 +32,8 @@ tile_scroll_test:
 		bita	#INPUT_B2
 		beq	.b2_not_pressed
 
-		clr	REG_K005885_SCROLL_X
-		clr	REG_K005885_SCROLL_Y
+		clr	REG_LAYER_B_TILE_SCROLL_X
+		clr	REG_LAYER_B_TILE_SCROLL_Y
 		rts
 
 	.b2_not_pressed:

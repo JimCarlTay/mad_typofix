@@ -8,7 +8,7 @@
 k053246_zoom_debug:
 		jsr	palette_setup
 
-		ldy	#TILE_RAM
+		ldy	#TILE_RAM_BASE
 		ldx	#TILE_RAM_SIZE
 		lda	#$2c
 	.loop_next_address:
@@ -32,22 +32,22 @@ k053246_zoom_debug:
 		sta	REG_CONTROL
 
 		ldd	#$8501
-		std	SPRITE_RAM
+		std	SPRITE_BASE
 
 		ldd	#$2440
-		std	SPRITE_RAM + 2
+		std	SPRITE_BASE + 2
 
 		ldd	#$0100
-		std	SPRITE_RAM + 4
+		std	SPRITE_BASE + 4
 
 		ldd	#$00c0
-		std	SPRITE_RAM + 6
+		std	SPRITE_BASE + 6
 
 		ldd	#$0040
-		std	SPRITE_RAM + 8
+		std	SPRITE_BASE + 8
 
 		ldd	#$0040
-		std	SPRITE_RAM + 10
+		std	SPRITE_BASE + 10
 
 		lda	#CTRL_SPRITE_RENDER
 		sta	REG_CONTROL
@@ -86,7 +86,7 @@ value_changed_cb:
 		lda	#(CTRL_SPRITE_BANK | CTRL_SPRITE_RENDER)
 		sta	REG_CONTROL
 
-		lda	SPRITE_RAM
+		lda	SPRITE_BASE
 		anda	#$b0
 
 		ldb	r_sprite_aspect_ratio
@@ -95,13 +95,13 @@ value_changed_cb:
 
 	.skip_sprite_aspect_ratio:
 		ora	r_sprite_size
-		sta	SPRITE_RAM
+		sta	SPRITE_BASE
 
 		ldd	r_sprite_zoom_y
-		std	SPRITE_RAM + 8
+		std	SPRITE_BASE + 8
 
 		ldd	r_sprite_zoom_x
-		std	SPRITE_RAM + 10
+		std	SPRITE_BASE + 10
 
 		lda	#CTRL_SPRITE_RENDER
 		sta	REG_CONTROL
@@ -112,8 +112,8 @@ palette_setup:
 		lda	#CTRL_PALETTE_BANK
 		sta	REG_CONTROL
 
-		ldx	#(PALETTE_SIZE / 2)
-		ldy	#SPRITE_PALETTE
+		ldx	#(PALETTE_ENTRY_SIZE / 2)
+		ldy	#SPRITE_PALETTE_BASE
 		ldd	#$1f
 
 	.loop_next_byte:

@@ -8,121 +8,107 @@
 	align 1
 
 d_ec_list:
-	EC_ENTRY EC_WORK_RAM_ADDRESS, PRINT_ERROR_MEMORY, d_str_work_ram_address
-	EC_ENTRY EC_WORK_RAM_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_work_ram_data_lower
-	EC_ENTRY EC_WORK_RAM_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_work_ram_data_upper
-	EC_ENTRY EC_WORK_RAM_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_work_ram_data_both
-	EC_ENTRY EC_WORK_RAM_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_work_ram_march_lower
-	EC_ENTRY EC_WORK_RAM_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_work_ram_march_upper
-	EC_ENTRY EC_WORK_RAM_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_work_ram_march_both
-	EC_ENTRY EC_WORK_RAM_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_work_ram_output_lower
-	EC_ENTRY EC_WORK_RAM_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_work_ram_output_upper
-	EC_ENTRY EC_WORK_RAM_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_work_ram_output_both
-	EC_ENTRY EC_WORK_RAM_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_work_ram_write_lower
-	EC_ENTRY EC_WORK_RAM_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_work_ram_write_upper
-	EC_ENTRY EC_WORK_RAM_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_work_ram_write_both
+	EC_ENTRY EC_PALETTE_RC_ADDRESS, PRINT_ERROR_MEMORY, d_str_palette_ram_address
+	EC_ENTRY EC_PALETTE_RC_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_palette_ram_data_lower
+	EC_ENTRY EC_PALETTE_RC_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_palette_ram_data_upper
+	EC_ENTRY EC_PALETTE_RC_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_palette_ram_data_both
+	EC_ENTRY EC_PALETTE_RC_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_palette_ram_march_lower
+	EC_ENTRY EC_PALETTE_RC_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_palette_ram_march_upper
+	EC_ENTRY EC_PALETTE_RC_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_palette_ram_march_both
+	EC_ENTRY EC_PALETTE_RC_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_palette_ram_output_lower
+	EC_ENTRY EC_PALETTE_RC_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_palette_ram_output_upper
+	EC_ENTRY EC_PALETTE_RC_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_palette_ram_output_both
+	EC_ENTRY EC_PALETTE_RC_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_palette_ram_write_lower
+	EC_ENTRY EC_PALETTE_RC_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_palette_ram_write_upper
+	EC_ENTRY EC_PALETTE_RC_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_palette_ram_write_both
 
-	EC_ENTRY EC_PALETTE_RAM_ADDRESS, PRINT_ERROR_MEMORY, d_str_palette_ram_address
-	EC_ENTRY EC_PALETTE_RAM_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_palette_ram_data_lower
-	EC_ENTRY EC_PALETTE_RAM_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_palette_ram_data_upper
-	EC_ENTRY EC_PALETTE_RAM_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_palette_ram_data_both
-	EC_ENTRY EC_PALETTE_RAM_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_palette_ram_march_lower
-	EC_ENTRY EC_PALETTE_RAM_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_palette_ram_march_upper
-	EC_ENTRY EC_PALETTE_RAM_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_palette_ram_march_both
-	EC_ENTRY EC_PALETTE_RAM_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_palette_ram_output_lower
-	EC_ENTRY EC_PALETTE_RAM_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_palette_ram_output_upper
-	EC_ENTRY EC_PALETTE_RAM_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_palette_ram_output_both
-	EC_ENTRY EC_PALETTE_RAM_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_palette_ram_write_lower
-	EC_ENTRY EC_PALETTE_RAM_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_palette_ram_write_upper
-	EC_ENTRY EC_PALETTE_RAM_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_palette_ram_write_both
+	EC_ENTRY EC_PALETTE_EXT_RC_ADDRESS, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_address
+	EC_ENTRY EC_PALETTE_EXT_RC_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_data_lower
+	EC_ENTRY EC_PALETTE_EXT_RC_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_data_upper
+	EC_ENTRY EC_PALETTE_EXT_RC_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_data_both
+	EC_ENTRY EC_PALETTE_EXT_RC_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_march_lower
+	EC_ENTRY EC_PALETTE_EXT_RC_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_march_upper
+	EC_ENTRY EC_PALETTE_EXT_RC_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_march_both
+	EC_ENTRY EC_PALETTE_EXT_RC_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_output_lower
+	EC_ENTRY EC_PALETTE_EXT_RC_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_output_upper
+	EC_ENTRY EC_PALETTE_EXT_RC_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_output_both
+	EC_ENTRY EC_PALETTE_EXT_RC_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_write_lower
+	EC_ENTRY EC_PALETTE_EXT_RC_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_write_upper
+	EC_ENTRY EC_PALETTE_EXT_RC_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_write_both
 
-	EC_ENTRY EC_PALETTE_EXT_RAM_ADDRESS, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_address
-	EC_ENTRY EC_PALETTE_EXT_RAM_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_data_lower
-	EC_ENTRY EC_PALETTE_EXT_RAM_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_data_upper
-	EC_ENTRY EC_PALETTE_EXT_RAM_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_data_both
-	EC_ENTRY EC_PALETTE_EXT_RAM_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_march_lower
-	EC_ENTRY EC_PALETTE_EXT_RAM_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_march_upper
-	EC_ENTRY EC_PALETTE_EXT_RAM_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_palette_ext_ram_march_both
-	EC_ENTRY EC_PALETTE_EXT_RAM_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_output_lower
-	EC_ENTRY EC_PALETTE_EXT_RAM_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_output_upper
-	EC_ENTRY EC_PALETTE_EXT_RAM_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_output_both
-	EC_ENTRY EC_PALETTE_EXT_RAM_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_write_lower
-	EC_ENTRY EC_PALETTE_EXT_RAM_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_write_upper
-	EC_ENTRY EC_PALETTE_EXT_RAM_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_palette_ext_ram_write_both
+	EC_ENTRY EC_SPRITE_RC_ADDRESS, PRINT_ERROR_MEMORY, d_str_sprite_ram_address
+	EC_ENTRY EC_SPRITE_RC_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_sprite_ram_data_lower
+	EC_ENTRY EC_SPRITE_RC_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_sprite_ram_data_upper
+	EC_ENTRY EC_SPRITE_RC_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_sprite_ram_data_both
+	EC_ENTRY EC_SPRITE_RC_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_sprite_ram_march_lower
+	EC_ENTRY EC_SPRITE_RC_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_sprite_ram_march_upper
+	EC_ENTRY EC_SPRITE_RC_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_sprite_ram_march_both
+	EC_ENTRY EC_SPRITE_RC_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_sprite_ram_output_lower
+	EC_ENTRY EC_SPRITE_RC_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_sprite_ram_output_upper
+	EC_ENTRY EC_SPRITE_RC_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_sprite_ram_output_both
+	EC_ENTRY EC_SPRITE_RC_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_sprite_ram_write_lower
+	EC_ENTRY EC_SPRITE_RC_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_sprite_ram_write_upper
+	EC_ENTRY EC_SPRITE_RC_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_sprite_ram_write_both
 
-	EC_ENTRY EC_SPRITE_RAM_ADDRESS, PRINT_ERROR_MEMORY, d_str_sprite_ram_address
-	EC_ENTRY EC_SPRITE_RAM_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_sprite_ram_data_lower
-	EC_ENTRY EC_SPRITE_RAM_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_sprite_ram_data_upper
-	EC_ENTRY EC_SPRITE_RAM_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_sprite_ram_data_both
-	EC_ENTRY EC_SPRITE_RAM_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_sprite_ram_march_lower
-	EC_ENTRY EC_SPRITE_RAM_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_sprite_ram_march_upper
-	EC_ENTRY EC_SPRITE_RAM_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_sprite_ram_march_both
-	EC_ENTRY EC_SPRITE_RAM_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_sprite_ram_output_lower
-	EC_ENTRY EC_SPRITE_RAM_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_sprite_ram_output_upper
-	EC_ENTRY EC_SPRITE_RAM_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_sprite_ram_output_both
-	EC_ENTRY EC_SPRITE_RAM_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_sprite_ram_write_lower
-	EC_ENTRY EC_SPRITE_RAM_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_sprite_ram_write_upper
-	EC_ENTRY EC_SPRITE_RAM_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_sprite_ram_write_both
+	EC_ENTRY EC_TILE1_RC_ADDRESS, PRINT_ERROR_MEMORY, d_str_tile1_ram_address
+	EC_ENTRY EC_TILE1_RC_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_tile1_ram_data_lower
+	EC_ENTRY EC_TILE1_RC_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_tile1_ram_data_upper
+	EC_ENTRY EC_TILE1_RC_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_tile1_ram_data_both
+	EC_ENTRY EC_TILE1_RC_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_tile1_ram_march_lower
+	EC_ENTRY EC_TILE1_RC_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_tile1_ram_march_upper
+	EC_ENTRY EC_TILE1_RC_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_tile1_ram_march_both
+	EC_ENTRY EC_TILE1_RC_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_tile1_ram_output_lower
+	EC_ENTRY EC_TILE1_RC_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_tile1_ram_output_upper
+	EC_ENTRY EC_TILE1_RC_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_tile1_ram_output_both
+	EC_ENTRY EC_TILE1_RC_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_tile1_ram_write_lower
+	EC_ENTRY EC_TILE1_RC_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_tile1_ram_write_upper
+	EC_ENTRY EC_TILE1_RC_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_tile1_ram_write_both
 
-	EC_ENTRY EC_TILE1_RAM_ADDRESS, PRINT_ERROR_MEMORY, d_str_tile1_ram_address
-	EC_ENTRY EC_TILE1_RAM_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_tile1_ram_data_lower
-	EC_ENTRY EC_TILE1_RAM_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_tile1_ram_data_upper
-	EC_ENTRY EC_TILE1_RAM_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_tile1_ram_data_both
-	EC_ENTRY EC_TILE1_RAM_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_tile1_ram_march_lower
-	EC_ENTRY EC_TILE1_RAM_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_tile1_ram_march_upper
-	EC_ENTRY EC_TILE1_RAM_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_tile1_ram_march_both
-	EC_ENTRY EC_TILE1_RAM_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_tile1_ram_output_lower
-	EC_ENTRY EC_TILE1_RAM_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_tile1_ram_output_upper
-	EC_ENTRY EC_TILE1_RAM_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_tile1_ram_output_both
-	EC_ENTRY EC_TILE1_RAM_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_tile1_ram_write_lower
-	EC_ENTRY EC_TILE1_RAM_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_tile1_ram_write_upper
-	EC_ENTRY EC_TILE1_RAM_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_tile1_ram_write_both
+	EC_ENTRY EC_TILE2_RC_ADDRESS, PRINT_ERROR_MEMORY, d_str_tile2_ram_address
+	EC_ENTRY EC_TILE2_RC_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_tile2_ram_data_lower
+	EC_ENTRY EC_TILE2_RC_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_tile2_ram_data_upper
+	EC_ENTRY EC_TILE2_RC_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_tile2_ram_data_both
+	EC_ENTRY EC_TILE2_RC_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_tile2_ram_march_lower
+	EC_ENTRY EC_TILE2_RC_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_tile2_ram_march_upper
+	EC_ENTRY EC_TILE2_RC_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_tile2_ram_march_both
+	EC_ENTRY EC_TILE2_RC_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_tile2_ram_output_lower
+	EC_ENTRY EC_TILE2_RC_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_tile2_ram_output_upper
+	EC_ENTRY EC_TILE2_RC_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_tile2_ram_output_both
+	EC_ENTRY EC_TILE2_RC_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_tile2_ram_write_lower
+	EC_ENTRY EC_TILE2_RC_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_tile2_ram_write_upper
+	EC_ENTRY EC_TILE2_RC_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_tile2_ram_write_both
 
-	EC_ENTRY EC_TILE2_RAM_ADDRESS, PRINT_ERROR_MEMORY, d_str_tile2_ram_address
-	EC_ENTRY EC_TILE2_RAM_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_tile2_ram_data_lower
-	EC_ENTRY EC_TILE2_RAM_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_tile2_ram_data_upper
-	EC_ENTRY EC_TILE2_RAM_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_tile2_ram_data_both
-	EC_ENTRY EC_TILE2_RAM_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_tile2_ram_march_lower
-	EC_ENTRY EC_TILE2_RAM_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_tile2_ram_march_upper
-	EC_ENTRY EC_TILE2_RAM_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_tile2_ram_march_both
-	EC_ENTRY EC_TILE2_RAM_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_tile2_ram_output_lower
-	EC_ENTRY EC_TILE2_RAM_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_tile2_ram_output_upper
-	EC_ENTRY EC_TILE2_RAM_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_tile2_ram_output_both
-	EC_ENTRY EC_TILE2_RAM_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_tile2_ram_write_lower
-	EC_ENTRY EC_TILE2_RAM_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_tile2_ram_write_upper
-	EC_ENTRY EC_TILE2_RAM_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_tile2_ram_write_both
+	EC_ENTRY EC_TILE3_RC_ADDRESS, PRINT_ERROR_MEMORY, d_str_tile3_ram_address
+	EC_ENTRY EC_TILE3_RC_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_tile3_ram_data_lower
+	EC_ENTRY EC_TILE3_RC_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_tile3_ram_data_upper
+	EC_ENTRY EC_TILE3_RC_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_tile3_ram_data_both
+	EC_ENTRY EC_TILE3_RC_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_tile3_ram_march_lower
+	EC_ENTRY EC_TILE3_RC_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_tile3_ram_march_upper
+	EC_ENTRY EC_TILE3_RC_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_tile3_ram_march_both
+	EC_ENTRY EC_TILE3_RC_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_tile3_ram_output_lower
+	EC_ENTRY EC_TILE3_RC_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_tile3_ram_output_upper
+	EC_ENTRY EC_TILE3_RC_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_tile3_ram_output_both
+	EC_ENTRY EC_TILE3_RC_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_tile3_ram_write_lower
+	EC_ENTRY EC_TILE3_RC_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_tile3_ram_write_upper
+	EC_ENTRY EC_TILE3_RC_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_tile3_ram_write_both
 
-	EC_ENTRY EC_TILE3_RAM_ADDRESS, PRINT_ERROR_MEMORY, d_str_tile3_ram_address
-	EC_ENTRY EC_TILE3_RAM_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_tile3_ram_data_lower
-	EC_ENTRY EC_TILE3_RAM_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_tile3_ram_data_upper
-	EC_ENTRY EC_TILE3_RAM_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_tile3_ram_data_both
-	EC_ENTRY EC_TILE3_RAM_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_tile3_ram_march_lower
-	EC_ENTRY EC_TILE3_RAM_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_tile3_ram_march_upper
-	EC_ENTRY EC_TILE3_RAM_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_tile3_ram_march_both
-	EC_ENTRY EC_TILE3_RAM_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_tile3_ram_output_lower
-	EC_ENTRY EC_TILE3_RAM_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_tile3_ram_output_upper
-	EC_ENTRY EC_TILE3_RAM_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_tile3_ram_output_both
-	EC_ENTRY EC_TILE3_RAM_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_tile3_ram_write_lower
-	EC_ENTRY EC_TILE3_RAM_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_tile3_ram_write_upper
-	EC_ENTRY EC_TILE3_RAM_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_tile3_ram_write_both
+	EC_ENTRY EC_WORK_RC_ADDRESS, PRINT_ERROR_MEMORY, d_str_work_ram_address
+	EC_ENTRY EC_WORK_RC_DATA_LOWER, PRINT_ERROR_MEMORY, d_str_work_ram_data_lower
+	EC_ENTRY EC_WORK_RC_DATA_UPPER, PRINT_ERROR_MEMORY, d_str_work_ram_data_upper
+	EC_ENTRY EC_WORK_RC_DATA_BOTH, PRINT_ERROR_MEMORY, d_str_work_ram_data_both
+	EC_ENTRY EC_WORK_RC_MARCH_LOWER, PRINT_ERROR_MEMORY, d_str_work_ram_march_lower
+	EC_ENTRY EC_WORK_RC_MARCH_UPPER, PRINT_ERROR_MEMORY, d_str_work_ram_march_upper
+	EC_ENTRY EC_WORK_RC_MARCH_BOTH, PRINT_ERROR_MEMORY, d_str_work_ram_march_both
+	EC_ENTRY EC_WORK_RC_OUTPUT_LOWER, PRINT_ERROR_ADDRESS, d_str_work_ram_output_lower
+	EC_ENTRY EC_WORK_RC_OUTPUT_UPPER, PRINT_ERROR_ADDRESS, d_str_work_ram_output_upper
+	EC_ENTRY EC_WORK_RC_OUTPUT_BOTH, PRINT_ERROR_ADDRESS, d_str_work_ram_output_both
+	EC_ENTRY EC_WORK_RC_WRITE_LOWER, PRINT_ERROR_ADDRESS, d_str_work_ram_write_lower
+	EC_ENTRY EC_WORK_RC_WRITE_UPPER, PRINT_ERROR_ADDRESS, d_str_work_ram_write_upper
+	EC_ENTRY EC_WORK_RC_WRITE_BOTH, PRINT_ERROR_ADDRESS, d_str_work_ram_write_both
 
 	EC_ENTRY EC_MAD_ROM_CRC32, PRINT_ERROR_CRC32, d_str_mad_rom_crc32
 	EC_ENTRY EC_MAD_ROM_ADDRESS, PRINT_ERROR_HEX_BYTE, d_str_mad_rom_address
 	EC_LIST_END
-
-d_str_work_ram_address:			STRING "WORK RAM ADDRESS"
-d_str_work_ram_data_lower:		STRING "WORK RAM DATA (LOWER)"
-d_str_work_ram_data_upper:		STRING "WORK RAM DATA (UPPER)"
-d_str_work_ram_data_both:		STRING "WORK RAM DATA (BOTH)"
-d_str_work_ram_march_lower:		STRING "WORK RAM MARCH (LOWER)"
-d_str_work_ram_march_upper:		STRING "WORK RAM MARCH (UPPER)"
-d_str_work_ram_march_both:		STRING "WORK RAM MARCH (BOTH)"
-d_str_work_ram_output_lower:		STRING "WORK RAM DEAD OUTPUT (LOWER)"
-d_str_work_ram_output_upper:		STRING "WORK RAM DEAD OUTPUT (UPPER)"
-d_str_work_ram_output_both:		STRING "WORK RAM DEAD OUTPUT (BOTH)"
-d_str_work_ram_write_lower:		STRING "WORK RAM WRITE (LOWER)"
-d_str_work_ram_write_upper:		STRING "WORK RAM WRITE (UPPER)"
-d_str_work_ram_write_both:		STRING "WORK RAM WRITE (BOTH)"
 
 d_str_palette_ram_address:		STRING "PALETTE RAM ADDRESS"
 d_str_palette_ram_data_lower:		STRING "PALETTE RAM DATA (LOWER)"
@@ -207,6 +193,20 @@ d_str_tile3_ram_output_both:		STRING "TILE3 RAM DEAD OUTPUT (BOTH)"
 d_str_tile3_ram_write_lower:		STRING "TILE3 RAM WRITE (LOWER)"
 d_str_tile3_ram_write_upper:		STRING "TILE3 RAM WRITE (UPPER)"
 d_str_tile3_ram_write_both:		STRING "TILE3 RAM WRITE (BOTH)"
+
+d_str_work_ram_address:			STRING "WORK RAM ADDRESS"
+d_str_work_ram_data_lower:		STRING "WORK RAM DATA (LOWER)"
+d_str_work_ram_data_upper:		STRING "WORK RAM DATA (UPPER)"
+d_str_work_ram_data_both:		STRING "WORK RAM DATA (BOTH)"
+d_str_work_ram_march_lower:		STRING "WORK RAM MARCH (LOWER)"
+d_str_work_ram_march_upper:		STRING "WORK RAM MARCH (UPPER)"
+d_str_work_ram_march_both:		STRING "WORK RAM MARCH (BOTH)"
+d_str_work_ram_output_lower:		STRING "WORK RAM DEAD OUTPUT (LOWER)"
+d_str_work_ram_output_upper:		STRING "WORK RAM DEAD OUTPUT (UPPER)"
+d_str_work_ram_output_both:		STRING "WORK RAM DEAD OUTPUT (BOTH)"
+d_str_work_ram_write_lower:		STRING "WORK RAM WRITE (LOWER)"
+d_str_work_ram_write_upper:		STRING "WORK RAM WRITE (UPPER)"
+d_str_work_ram_write_both:		STRING "WORK RAM WRITE (BOTH)"
 
 d_str_mad_rom_crc32:			STRING "MAD ROM CRC32 ERROR"
 d_str_mad_rom_address:			STRING "MAD ROM ADDRESS ERROR"

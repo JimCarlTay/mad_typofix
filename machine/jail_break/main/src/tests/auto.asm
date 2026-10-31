@@ -13,7 +13,7 @@ auto_func_tests:
 	section data
 
 d_auto_test_func_list:
-	AUTO_TEST_ENTRY auto_scroll_ram_tests, d_str_testing_scroll_ram
+	AUTO_TEST_ENTRY auto_tile_scroll_ram_tests, d_str_testing_tile_scroll_ram
 	AUTO_TEST_LIST_END
 
-d_str_testing_scroll_ram:		STRING "TESTING SCROLL RAM"
+d_str_testing_tile_scroll_ram:		STRING "TESTING TILE SCROLL RAM"

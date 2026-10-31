@@ -182,6 +182,11 @@ print_string_dsub:
 		bra	.do_print
 
 	.not_space:
+		cmpa	#'_'
+		bne	.not_underscore
+		lda	#$40
+
+	.not_underscore:
 		cmpa	#'-'
 		bne	.do_print
 		lda	#$3c

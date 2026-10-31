@@ -6,8 +6,8 @@
 
 ; fill sprite ram with $0000, then wait for a sprite dma copy
 sprite_ram_clear:
-		lea	SPRITE_RAM, a0
-		move.w	#SPRITE_RAM_SIZE, d0
+		lea	SPRITE_BASE, a0
+		move.w	#SPRITE_SIZE, d0
 		moveq	#$0, d1
 		RSUB	memory_fill
 

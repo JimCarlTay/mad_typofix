@@ -11,36 +11,36 @@ memory_viewer_menu:
 		jsr	menu_handler
 		rts
 
-view_k007121_sprite_ram:
-		ldx	#K007121_SPRITE
+view_layer_a_tile_ram:
+		ldx	#LAYER_A_TILE_BASE
 		bra	view_memory
 
-view_k007121_tile_a_ram:
-		ldx	#K007121_TILE_A
+view_layer_b_tile_ram:
+		ldx	#LAYER_B_TILE_BASE
 		bra	view_memory
 
-view_k007121_tile_b_ram:
-		ldx	#K007121_TILE_B
-		bra	view_memory
-
-view_mmio_input:
-		ldx	#$0400
-		bra	view_memory
+;view_mmio_input:
+;		ldx	#$0400
+;		bra	view_memory
 
 view_palette_ram:
-		ldx	#PALETTE_RAM
+		ldx	#PALETTE_BASE
 		bra	view_memory
 
 view_rom_space:
-		ldx	#$8000
+		ldx	#ROM_BASE
 		bra	view_memory
 
 view_rom_bank_space:
 		ldx	#$4000
 		bra	view_memory
 
+view_sprite_ram:
+		ldx	#SPRITE_BASE
+		bra	view_memory
+
 view_work_ram:
-		ldx	#WORK_RAM
+		ldx	#WORK_RAM_BASE
 		bra	view_memory
 
 view_memory:
@@ -51,24 +51,24 @@ view_memory:
 	section data
 
 d_menu_list:
-	MENU_ENTRY view_k007121_sprite_ram, d_str_k007121_sprite, ME_FLAG_NONE
-	MENU_ENTRY view_k007121_tile_a_ram, d_str_k007121_tile_a, ME_FLAG_NONE
-	MENU_ENTRY view_k007121_tile_b_ram, d_str_k007121_tile_b, ME_FLAG_NONE
+	MENU_ENTRY view_layer_a_tile_ram, d_str_layer_a_tile, ME_FLAG_NONE
+	MENU_ENTRY view_layer_b_tile_ram, d_str_layer_b_tile, ME_FLAG_NONE
 ;	reading the from 0x410? causes the screen to stop drawing
 ;	MENU_ENTRY view_mmio_input, d_str_mmio_input, ME_FLAG_NONE
 	MENU_ENTRY view_palette_ram, d_str_palette_ram, ME_FLAG_NONE
 	MENU_ENTRY view_rom_space, d_str_rom_space, ME_FLAG_NONE
 	MENU_ENTRY view_rom_bank_space, d_str_rom_bank_space, ME_FLAG_NONE
+	MENU_ENTRY view_sprite_ram, d_str_sprite, ME_FLAG_NONE
 	MENU_ENTRY view_work_ram, d_str_work_ram, ME_FLAG_NONE
 	MENU_LIST_END
 
 d_str_menu_title:		STRING "MEMORY VIEWER MENU"
 
-d_str_k007121_sprite:		STRING "K007121 SPRITE"
-d_str_k007121_tile_a:		STRING "K007121 TILE A"
-d_str_k007121_tile_b:		STRING "K007121 TILE B"
-d_str_mmio_input:		STRING "MMIO INPUT"
+d_str_layer_a_tile:		STRING "LAYER A TILE"
+d_str_layer_b_tile:		STRING "LAYER B TILE"
+;d_str_mmio_input:		STRING "MMIO INPUT"
 d_str_palette_ram:		STRING "PALETTE RAM"
 d_str_rom_space:		STRING "ROM SPACE"
 d_str_rom_bank_space:		STRING "ROM BANK SPACE"
+d_str_sprite:			STRING "SPRITE"
 d_str_work_ram:			STRING "WORK RAM"

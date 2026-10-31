@@ -25,20 +25,20 @@
 ; and address line tests.
 auto_palette_ram_tests:
 
-		lea	PALETTE_RAM, a0
+		lea	PALETTE_RC_BASE, a0
 		moveq	#1, d0
 		DSUB	memory_output_test
 		tst.b	d0
 		bne	.test_failed_output
 
-		lea	PALETTE_RAM, a0
+		lea	PALETTE_RC_BASE, a0
 		moveq	#1, d0
 		DSUB	memory_write_test
 		tst.b	d0
 		bne	.test_failed_write
 
-		lea	PALETTE_RAM, a0
-		move.l	#PALETTE_RAM_SIZE, d0
+		lea	PALETTE_RC_BASE, a0
+		move.l	#PALETTE_RC_SIZE, d0
 		move.w	#$ffff, d1
 		DSUB	palette_ram_data_test
 		tst.b	d0
@@ -46,15 +46,15 @@ auto_palette_ram_tests:
 
 		; not even going to try making a march
 		; test for the palette ram
-		;lea	PALETTE_RAM, a0
-		;move.l	#PALETTE_RAM_SIZE, d0
+		;lea	PALETTE_RC_BASE, a0
+		;move.l	#PALETTE_RC_BASE_SIZE, d0
 		;move.w	#$ffff, d1
 		;DSUB	memory_march_test
 		;tst.b	d0
 		;bne	.test_failed_march
 
-		lea	PALETTE_RAM, a0
-		move.w	#PALETTE_RAM_ADDRESS_LINES, d0
+		lea	PALETTE_RC_BASE, a0
+		move.w	#PALETTE_RC_ADDR_LINES, d0
 		move.w	#$ffff, d1
 		RSUB	palette_ram_address_test
 		tst.b	d0
@@ -63,27 +63,27 @@ auto_palette_ram_tests:
 
 
 	.test_failed_address:
-		moveq	#EC_PALETTE_RAM_ADDRESS, d0
+		moveq	#EC_PALETTE_RC_ADDRESS, d0
 		rts
 
 	.test_failed_data:
 		subq.b	#1, d0
-		add.b	#EC_PALETTE_RAM_DATA_LOWER, d0
+		add.b	#EC_PALETTE_RC_DATA_LOWER, d0
 		rts
 
 	.test_failed_march:
 		subq.b	#1, d0
-		add.b	#EC_PALETTE_RAM_MARCH_LOWER, d0
+		add.b	#EC_PALETTE_RC_MARCH_LOWER, d0
 		rts
 
 	.test_failed_output:
 		subq.b	#1, d0
-		add.b	#EC_PALETTE_RAM_OUTPUT_LOWER, d0
+		add.b	#EC_PALETTE_RC_OUTPUT_LOWER, d0
 		rts
 
 	.test_failed_write:
 		subq.b	#1, d0
-		add.b	#EC_PALETTE_RAM_WRITE_LOWER, d0
+		add.b	#EC_PALETTE_RC_WRITE_LOWER, d0
 		rts
 
 manual_palette_ram_tests:

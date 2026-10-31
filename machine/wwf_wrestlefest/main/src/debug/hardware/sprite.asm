@@ -9,13 +9,13 @@ sprite_debug:
 		jsr	sprite_viewer_palette_setup
 
 		; highlight color on 2nd pallette
-		move.w	#$1f, FIX_TILE_PALETTE + PALETTE_SIZE + $1e
+		move.w	#$1f, TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $1e
 
 		SEEK_XY SCREEN_START_X, (SCREEN_START_Y + 14)
 		lea	d_str_last_written, a0
 		RSUB	print_string
 
-		move.l	#FIX_TILE, r_old_highlight
+		move.l	#TXT_TILE_BASE, r_old_highlight
 
 		move.l	#$7881181b, r_mw_buffer
 		move.l	#$00c00000, r_mw_buffer + 4
@@ -40,7 +40,7 @@ highlight_cb:
 
 write_memory_cb:
 		lea	r_mw_buffer, a0
-		lea	SPRITE_RAM + 1, a1
+		lea	SPRITE_BASE + 1, a1
 		moveq	#$7, d3
 		move.b	#SCREEN_START_X, d5
 

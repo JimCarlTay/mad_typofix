@@ -44,8 +44,8 @@ Schematics don't seem to exist.
 ## RAM Locations
 | RAM | Location | Type | Notes |
 | -------- | :------- | ----- | ----- |
-| BG/Work RAM | B11H16 on CPU PCB | M5M5117P-15 (2k x 8bit) | |
-| FG RAM | B8 on Graphics PCB | M5M5117P-15 (2k x 8bit) | |
+| BG Tile/Work RAM | B11H16 on CPU PCB | M5M5117P-15 (2k x 8bit) | |
+| FG Tile RAM | B8 on Graphics PCB | M5M5117P-15 (2k x 8bit) | |
 | Sound RAM | D4 on CPU PCB | M5M5117P-15 (2k x 8bit) | |
 | Sprite RAM | B14 on Graphics PCB | CXK5813D-55L (2k x 8bit) | |
 
@@ -67,16 +67,16 @@ On 6809 CPU the error address is `$f000 | error_code << 4`.  Error codes on the
 <!-- ec_table_main_start -->
 | Hex  | Number |     Error Address (A15..A0)    |           Error Text           |
 | ---: | -----: | :----------------------------: | :----------------------------- |
-| 0x01 |      1 |      1111 0000 0001 xxxx       | FG RAM ADDRESS                 |
-| 0x02 |      2 |      1111 0000 0010 xxxx       | FG RAM DATA                    |
-| 0x03 |      3 |      1111 0000 0011 xxxx       | FG RAM MARCH                   |
-| 0x04 |      4 |      1111 0000 0100 xxxx       | FG RAM OUTPUT                  |
-| 0x05 |      5 |      1111 0000 0101 xxxx       | FG RAM WRITE                   |
-| 0x06 |      6 |      1111 0000 0110 xxxx       | SPRITE RAM ADDRESS             |
-| 0x07 |      7 |      1111 0000 0111 xxxx       | SPRITE RAM DATA                |
-| 0x08 |      8 |      1111 0000 1000 xxxx       | SPRITE RAM MARCH               |
-| 0x09 |      9 |      1111 0000 1001 xxxx       | SPRITE RAM OUTPUT              |
-| 0x0a |     10 |      1111 0000 1010 xxxx       | SPRITE RAM WRITE               |
+| 0x01 |      1 |      1111 0000 0001 xxxx       | SPRITE RAM ADDRESS             |
+| 0x02 |      2 |      1111 0000 0010 xxxx       | SPRITE RAM DATA                |
+| 0x03 |      3 |      1111 0000 0011 xxxx       | SPRITE RAM MARCH               |
+| 0x04 |      4 |      1111 0000 0100 xxxx       | SPRITE RAM OUTPUT              |
+| 0x05 |      5 |      1111 0000 0101 xxxx       | SPRITE RAM WRITE               |
+| 0x06 |      6 |      1111 0000 0110 xxxx       | TXT TILE RAM ADDRESS           |
+| 0x07 |      7 |      1111 0000 0111 xxxx       | TXT TILE RAM DATA              |
+| 0x08 |      8 |      1111 0000 1000 xxxx       | TXT TILE RAM MARCH             |
+| 0x09 |      9 |      1111 0000 1001 xxxx       | TXT TILE RAM OUTPUT            |
+| 0x0a |     10 |      1111 0000 1010 xxxx       | TXT TILE RAM WRITE             |
 | 0x0b |     11 |      1111 0000 1011 xxxx       | WORK RAM ADDRESS               |
 | 0x0c |     12 |      1111 0000 1100 xxxx       | WORK RAM DATA                  |
 | 0x0d |     13 |      1111 0000 1101 xxxx       | WORK RAM MARCH                 |
@@ -85,7 +85,7 @@ On 6809 CPU the error address is `$f000 | error_code << 4`.  Error codes on the
 | 0x3e |     62 |      1111 0011 1110 xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 |      1111 0011 1111 xxxx       | MAD ROM CRC16                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-12-21 @ 03:10 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-19 @ 04:19 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU

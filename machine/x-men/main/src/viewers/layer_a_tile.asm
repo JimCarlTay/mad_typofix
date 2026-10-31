@@ -7,12 +7,12 @@
 TILE_OFFSET_MASK	equ $ffff
 
 layer_a_tile_viewer:
-		; makes layer a align with fixed layer
-		move.b	#$6, REG_LAYER_A_SCROLL_X_LOW
-		clr.b	REG_LAYER_A_SCROLL_X_HIGH
-		clr.b	REG_LAYER_A_SCROLL_Y
+		; makes layer a align with txted layer
+		move.b	#$6, REG_LAYER_A_TILE_SCROLL_X_LOW
+		clr.b	REG_LAYER_A_TILE_SCROLL_X_HIGH
+		clr.b	REG_LAYER_A_TILE_SCROLL_Y
 
-		lea	LAYER_A_TILE_PALETTE + $60 + (PALETTE_SIZE * TVC_PALETTE_NUM), a0
+		lea	LAYER_A_TILE_PALETTE_BASE + $60 + (PALETTE_ENTRY_SIZE * TVC_PALETTE_NUM), a0
 		bsr	tvc_init
 
 		moveq	#$0, d0

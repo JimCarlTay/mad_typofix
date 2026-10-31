@@ -8,7 +8,7 @@
 HIGHLIGHT_PALETTE_NUM	equ $8
 
 sprite_debug:
-		ld	hl, FIX_TILE_ATTR
+		ld	hl, TXT_TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 
 		; setup initial values

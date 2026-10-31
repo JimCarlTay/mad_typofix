@@ -11,12 +11,12 @@ a0040_debug:
 		jsr	bg_tile_viewer_palette_setup
 		jsr	fg_tile_viewer_palette_setup
 
-		lea	FG_RAM + $80, a0
+		lea	FG_TILE_BASE + $80, a0
 		move.l	#$700, d0
 		move.w	#$1002, d1
 		DSUB	memory_fill
 
-		lea	BG_RAM + $80, a0
+		lea	BG_TILE_BASE + $80, a0
 		move.l	#$700, d0
 		move.w	#$1010, d1
 		DSUB	memory_fill
@@ -25,8 +25,8 @@ a0040_debug:
 		RSUB	print_xy_string_list
 
 		; highlight color on 2nd pallette
-		move.w	#$1f, TXT_PALETTE + PALETTE_SIZE + $16
-		move.l	#TXT_PALETTE, r_old_highlight
+		move.w	#$1f, TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $16
+		move.l	#TXT_TILE_PALETTE_BASE, r_old_highlight
 
 		; initial values
 		move.l	#$0, r_mw_buffer

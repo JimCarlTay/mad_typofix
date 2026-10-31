@@ -19,7 +19,7 @@ tvc_init:
 
 
 		ldx	#d_palette_data
-		ldb	#PALETTE_SIZE
+		ldb	#PALETTE_ENTRY_SIZE
 
 	.loop_next_color:
 		lda	,x+

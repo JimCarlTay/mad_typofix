@@ -11,7 +11,7 @@ bg_tile_debug:
 		ld	de, d_screen_xys_list
 		call	print_xy_string_list
 
-		ld	hl, FIX_TILE_ATTR
+		ld	hl, TXT_TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 
 		; setup initial values
@@ -38,13 +38,13 @@ write_memory_cb:
 		ld	iy, r_mw_buffer
 
 		ld	a, (iy + 0)
-		ld	(BG_TILE + $127), a
+		ld	(BG_TILE_BASE + $127), a
 		SEEK_XY	SCREEN_START_X, (SCREEN_START_Y + 15)
 		ld	c, a
 		RSUB	print_hex_byte
 
 		ld	a, (iy + 1)
-		ld	(BG_TILE + $527), a
+		ld	(BG_TILE_ATTR_BASE + $127), a
 		SEEK_XY	(SCREEN_START_X + 3), (SCREEN_START_Y + 15)
 		ld	c, a
 		RSUB	print_hex_byte

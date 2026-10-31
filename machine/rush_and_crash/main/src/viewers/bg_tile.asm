@@ -17,9 +17,9 @@ bg_tile_viewer:
 
 		ldd	#d_palette_data
 		std	r_vblank_copy_src
-		ldd	#BG_TILE_PALETTE + BG_TILE_PALETTE_SIZE
+		ldd	#BG_TILE_PALETTE_BASE + BG_TILE_PALETTE_ENTRY_SIZE
 		std	r_vblank_copy_dst
-		ldd	#BG_TILE_PALETTE_SIZE
+		ldd	#BG_TILE_PALETTE_ENTRY_SIZE
 		std	r_vblank_copy_size
 
 		jsr	wait_vblank_copy

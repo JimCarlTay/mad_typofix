@@ -16,7 +16,7 @@
 <a name="mad-pictures"></a>
 ## MAD Pictures
 ![mad bionic_commando main menu](docs/images/mad_bionic_commando_main_menu.png)
-![mad bionic_commando fix tile viewer](docs/images/mad_bionic_commando_fix_tile_viewer.png)<br>
+![mad bionic_commando txt tile viewer](docs/images/mad_bionic_commando_txt_tile_viewer.png)<br>
 ![mad bionic_commando sprite viewer](docs/images/mad_bionic_commando_sprite_viewer.png)
 ![mad bionic_commando video dac test](docs/images/mad_bionic_commando_video_dac_test.png)
 
@@ -53,12 +53,12 @@ face each other.
 ## RAM Locations
 | RAM | Location | Type |
 | -------- | :------- | ----- |
-| BG RAM Lower | 12J on CPU PCB | TMM2063P-15 (8k x 8bit) |
-| FG RAM Lower | 4E on Graphics PCB | TMM2063P-15 (8k x 8bit) |
-| Fix RAM Lower | 16J on CPU PCB | TMM2015BP-10 (2k x 8bit) |
+| BG Tile RAM Lower | 12J on CPU PCB | TMM2063P-15 (8k x 8bit) |
+| FG Tile RAM Lower | 4E on Graphics PCB | TMM2063P-15 (8k x 8bit) |
 | Sound CPU RAM | 15H on CPU PCB | TMM2015BP-10 (2k x 8bit) |
 | Sprite RAM Lower | 9H on CPU PCB | TMM2015BP-10 (2k x 8bit) |
 | Sprite RAM Upper | 9F on CPU PCB | TMM2015BP-10 (2k x 8bit) |
+| TXT Tile RAM Lower | 16J on CPU PCB | TMM2015BP-10 (2k x 8bit) |
 | Work RAM Lower | 8H on CPU PCB | TMM2063P-15 (8k x 8bit) |
 | Work RAM Upper | 8F on CPU PCB | TMM2063P-15 (8k x 8bit) |
 
@@ -95,24 +95,24 @@ are 7 bits.
 | 0x12 |     18 | 0001 0010 |  000 0000 0011 0001 0010 xxxx  | FG TILE RAM MARCH              |
 | 0x15 |     21 | 0001 0101 |  000 0000 0011 0001 0101 xxxx  | FG TILE RAM OUTPUT             |
 | 0x18 |     24 | 0001 1000 |  000 0000 0011 0001 1000 xxxx  | FG TILE RAM WRITE              |
-| 0x1b |     27 | 0001 1011 |  000 0000 0011 0001 1011 xxxx  | FIX TILE RAM ADDRESS           |
-| 0x1c |     28 | 0001 1100 |  000 0000 0011 0001 1100 xxxx  | FIX TILE RAM DATA              |
-| 0x1f |     31 | 0001 1111 |  000 0000 0011 0001 1111 xxxx  | FIX TILE RAM MARCH             |
-| 0x22 |     34 | 0010 0010 |  000 0000 0011 0010 0010 xxxx  | FIX TILE RAM OUTPUT            |
-| 0x25 |     37 | 0010 0101 |  000 0000 0011 0010 0101 xxxx  | FIX TILE RAM WRITE             |
-| 0x28 |     40 | 0010 1000 |  000 0000 0011 0010 1000 xxxx  | SPRITE RAM ADDRESS             |
-| 0x29 |     41 | 0010 1001 |  000 0000 0011 0010 1001 xxxx  | SPRITE RAM DATA LOWER          |
-| 0x2a |     42 | 0010 1010 |  000 0000 0011 0010 1010 xxxx  | SPRITE RAM DATA UPPER          |
-| 0x2b |     43 | 0010 1011 |  000 0000 0011 0010 1011 xxxx  | SPRITE RAM DATA BOTH           |
-| 0x2c |     44 | 0010 1100 |  000 0000 0011 0010 1100 xxxx  | SPRITE RAM MARCH LOWER         |
-| 0x2d |     45 | 0010 1101 |  000 0000 0011 0010 1101 xxxx  | SPRITE RAM MARCH UPPER         |
-| 0x2e |     46 | 0010 1110 |  000 0000 0011 0010 1110 xxxx  | SPRITE RAM MARCH BOTH          |
-| 0x2f |     47 | 0010 1111 |  000 0000 0011 0010 1111 xxxx  | SPRITE RAM OUTPUT LOWER        |
-| 0x30 |     48 | 0011 0000 |  000 0000 0011 0011 0000 xxxx  | SPRITE RAM OUTPUT UPPER        |
-| 0x31 |     49 | 0011 0001 |  000 0000 0011 0011 0001 xxxx  | SPRITE RAM OUTPUT BOTH         |
-| 0x32 |     50 | 0011 0010 |  000 0000 0011 0011 0010 xxxx  | SPRITE RAM WRITE LOWER         |
-| 0x33 |     51 | 0011 0011 |  000 0000 0011 0011 0011 xxxx  | SPRITE RAM WRITE UPPER         |
-| 0x34 |     52 | 0011 0100 |  000 0000 0011 0011 0100 xxxx  | SPRITE RAM WRITE BOTH          |
+| 0x1b |     27 | 0001 1011 |  000 0000 0011 0001 1011 xxxx  | SPRITE RAM ADDRESS             |
+| 0x1c |     28 | 0001 1100 |  000 0000 0011 0001 1100 xxxx  | SPRITE RAM DATA LOWER          |
+| 0x1d |     29 | 0001 1101 |  000 0000 0011 0001 1101 xxxx  | SPRITE RAM DATA UPPER          |
+| 0x1e |     30 | 0001 1110 |  000 0000 0011 0001 1110 xxxx  | SPRITE RAM DATA BOTH           |
+| 0x1f |     31 | 0001 1111 |  000 0000 0011 0001 1111 xxxx  | SPRITE RAM MARCH LOWER         |
+| 0x20 |     32 | 0010 0000 |  000 0000 0011 0010 0000 xxxx  | SPRITE RAM MARCH UPPER         |
+| 0x21 |     33 | 0010 0001 |  000 0000 0011 0010 0001 xxxx  | SPRITE RAM MARCH BOTH          |
+| 0x22 |     34 | 0010 0010 |  000 0000 0011 0010 0010 xxxx  | SPRITE RAM OUTPUT LOWER        |
+| 0x23 |     35 | 0010 0011 |  000 0000 0011 0010 0011 xxxx  | SPRITE RAM OUTPUT UPPER        |
+| 0x24 |     36 | 0010 0100 |  000 0000 0011 0010 0100 xxxx  | SPRITE RAM OUTPUT BOTH         |
+| 0x25 |     37 | 0010 0101 |  000 0000 0011 0010 0101 xxxx  | SPRITE RAM WRITE LOWER         |
+| 0x26 |     38 | 0010 0110 |  000 0000 0011 0010 0110 xxxx  | SPRITE RAM WRITE UPPER         |
+| 0x27 |     39 | 0010 0111 |  000 0000 0011 0010 0111 xxxx  | SPRITE RAM WRITE BOTH          |
+| 0x28 |     40 | 0010 1000 |  000 0000 0011 0010 1000 xxxx  | TXT TILE RAM ADDRESS           |
+| 0x29 |     41 | 0010 1001 |  000 0000 0011 0010 1001 xxxx  | TXT TILE RAM DATA              |
+| 0x2c |     44 | 0010 1100 |  000 0000 0011 0010 1100 xxxx  | TXT TILE RAM MARCH             |
+| 0x2f |     47 | 0010 1111 |  000 0000 0011 0010 1111 xxxx  | TXT TILE RAM OUTPUT            |
+| 0x32 |     50 | 0011 0010 |  000 0000 0011 0011 0010 xxxx  | TXT TILE RAM WRITE             |
 | 0x35 |     53 | 0011 0101 |  000 0000 0011 0011 0101 xxxx  | WORK RAM ADDRESS               |
 | 0x36 |     54 | 0011 0110 |  000 0000 0011 0011 0110 xxxx  | WORK RAM DATA LOWER            |
 | 0x37 |     55 | 0011 0111 |  000 0000 0011 0011 0111 xxxx  | WORK RAM DATA UPPER            |
@@ -129,7 +129,7 @@ are 7 bits.
 | 0x7e |    126 | 0111 1110 |  000 0000 0011 0111 1110 xxxx  | MAD ROM ADDRESS                |
 | 0x7f |    127 | 0111 1111 |  000 0000 0011 0111 1111 xxxx  | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2026-06-30 @ 01:42 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-24 @ 02:01 UTC</sup>
 <!-- ec_table_main_end -->
 
 <a name="sound-cpu"></a>

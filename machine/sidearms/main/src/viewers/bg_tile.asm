@@ -53,15 +53,15 @@ loop_input_cb:
 bg_tile_palette_setup:
 
 		ld	b, $20
-		ld	hl, BG_TILE_PALETTE
+		ld	hl, BG_TILE_PALETTE_BASE
 	.loop_next_palette:
 		push	bc
 		push	hl
 		ld	de, d_palette_data
-		ld	c, PALETTE_SIZE
+		ld	c, BG_TILE_PALETTE_ENTRY_SIZE
 		call	palette_copy
 		pop	hl
-		ld	bc, PALETTE_SIZE / 2
+		ld	bc, BG_TILE_PALETTE_ENTRY_SIZE / 2
 		add	hl, bc
 		pop	bc
 		dec	b

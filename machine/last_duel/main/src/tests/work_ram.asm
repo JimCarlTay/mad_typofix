@@ -52,12 +52,12 @@ manual_work_ram_tests:
 	align 1
 
 d_mt_data:
-	MT_PARAMS WORK_RAM, d_memory_address_list, WORK_RAM_SIZE, WORK_RAM_ADDRESS_LINES, WORK_RAM_MASK, WORK_RAM_BASE_EC, MT_FLAG_NONE
+	MT_PARAMS WORK_RC_BASE, d_memory_address_list, WORK_RC_SIZE, WORK_RC_ADDR_LINES, WORK_RC_MASK, EC_WORK_RC_BASE, MT_FLAG_NONE
 
 ; last duel has 4x work ram chips
 ; 2x are $ff8000 to $ffbfff
 ; 2x are $ffc000 to $ffffff 
 d_memory_address_list:
-	MEMORY_ADDRESS_ENTRY WORK_RAM
-	MEMORY_ADDRESS_ENTRY WORK_RAM + $4000
+	MEMORY_ADDRESS_ENTRY WORK_RC_BASE
+	MEMORY_ADDRESS_ENTRY WORK_RC_BASE + $4000
 	MEMORY_ADDRESS_LIST_END

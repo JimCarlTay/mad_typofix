@@ -94,7 +94,7 @@ still be viable to use with a logic probe.  It just means address lines not be
 | 0x3e |     62 | 0011 1110 |      1111 0011 1110 xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 | 0011 1111 |      1111 0011 1111 xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-06-07 @ 01:41 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-19 @ 19:10 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU
@@ -115,7 +115,7 @@ work right.
 | 0x3e |     62 |      1111 0011 1110 xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 |      1111 0011 1111 xxxx       | MAD ROM CRC16                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-06-07 @ 01:42 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-23 @ 04:20 UTC</sup>
 <!-- ec_table_sound_end -->
 
 ## MAD Notes

@@ -1,39 +1,39 @@
-; There are 2x 32kx8bit sram that everything
-; uses on the 68k ram
-RAM				equ $060000
-RAM_SIZE			equ $10000
-RAM_ADDRESS_LINES		equ 16
-RAM_MASK			equ $ffff
-
-NOT_WORK_RAM			equ $06d800
-NOT_WORK_RAM_SIZE		equ $2800
-
-WORK_RAM			equ $060000
-WORK_RAM_SIZE			equ $c000
-
-BG_RAM				equ $06e800
-BG_PALETTE			equ PALETTE_RAM + $400
-
-FG_RAM				equ $06f000
-FG_PALETTE			equ PALETTE_RAM + $600
-
-TXT_RAM				equ $06f800
-TXT_RAM_SIZE			equ $800
-TXT_PALETTE			equ PALETTE_RAM + $200
-
-SPRITE_RAM			equ $06d800
-SPRITE_PALETTE			equ PALETTE_RAM + $0
-
-PALETTE_RAM			equ $06e000
-PALETTE_RAM_SIZE		equ $800
-PALETTE_SIZE			equ $20		; size of individual palette
-
-SCROLL_RAM_SART			equ $0a0000
-SCROLL_RAM_SIZE			equ $d
-
-ROM_START			equ $000000
+ROM_BASE			equ $000000
 ROM_SIZE			equ $40000
 
+; RAM CHIPS
+; There are 2x 32kx8bit sram that everything
+; uses on the 68k ram
+WORK_RC_BASE			equ $060000
+WORK_RC_SIZE			equ $10000
+WORK_RC_ADDR_LINES		equ 16
+WORK_RC_MASK			equ $ffff
+
+; MEMORY REGIONS
+BG_TILE_BASE			equ WORK_RC_BASE + $e800
+BG_TILE_SIZE			equ $800
+BG_TILE_PALETTE_BASE		equ PALETTE_BASE + $400
+
+FG_TILE_BASE			equ WORK_RC_BASE + $f000
+FG_TILE_SIZE			equ $800
+FG_TILE_PALETTE_BASE		equ PALETTE_BASE + $600
+
+PALETTE_BASE			equ WORK_RC_BASE + $e000
+PALETTE_SIZE			equ $800
+PALETTE_ENTRY_SIZE		equ $20
+
+SPRITE_BASE			equ WORK_RC_BASE + $d800
+SPRITE_SIZE			equ $800
+SPRITE_PALETTE_BASE		equ PALETTE_BASE
+
+TXT_TILE_BASE			equ WORK_RC_BASE + $f800
+TXT_TILE_SIZE			equ $800
+TXT_TILE_PALETTE_BASE		equ PALETTE_BASE + $200
+
+WORK_RAM_BASE			equ WORK_RC_BASE
+WORK_RAM_SIZE			equ $c000
+
+; REG/IO
 ; the hardware doesn't seem to update video output
 ; unless a write happens to this address
 REG_SCREEN_UPDATE		equ $0a0040
@@ -69,6 +69,9 @@ CHAR_COLON			equ ':'
 
 SOUND_NUM_STOP			equ $ff
 
+	macro WATCHDOG
+	endm
+
 	; its unclear what sending #$80/$82 is doing
 	macro SOUND_PLAY
 		move.w	d0, REG_SOUND1
@@ -82,7 +85,4 @@ SOUND_NUM_STOP			equ $ff
 		move.w	#$82, REG_SOUND2
 		move.w	#$82, REG_SOUND7
 		move.w	#$82, REG_SOUND5
-	endm
-
-	macro WATCHDOG
 	endm

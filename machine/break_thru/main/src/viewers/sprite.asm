@@ -59,15 +59,15 @@ value_changed_cb:
 		ora	r_scratch
 
 		ora	#$9		; priority/enable
-		sta	SPRITE_RAM
+		sta	SPRITE_BASE
 
 		lda	r_sprite_num + 1
-		sta	SPRITE_RAM + 1
+		sta	SPRITE_BASE + 1
 
 		lda	r_sprite_pos_y
-		sta	SPRITE_RAM + 2
+		sta	SPRITE_BASE + 2
 		lda	r_sprite_pos_x
-		sta	SPRITE_RAM + 3
+		sta	SPRITE_BASE + 3
 		rts
 
 loop_input_cb:

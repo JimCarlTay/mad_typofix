@@ -43,9 +43,9 @@ sprite_viewer:
 ; *   2  | --------x xxxxxxxx | x position
 ; *   3  | --------x xxxxxxxx | y position
 value_changed_cb:
-		move.w	r_sprite_num, SPRITE_RAM + $800
-		move.w	r_sprite_pos_x, SPRITE_RAM + $804
-		move.w	r_sprite_pos_y, SPRITE_RAM + $806
+		move.w	r_sprite_num, SPRITE_BASE
+		move.w	r_sprite_pos_x, SPRITE_BASE + $4
+		move.w	r_sprite_pos_y, SPRITE_BASE + $6
 
 		clr.w	d0
 		tst.b	r_sprite_flip_x
@@ -58,7 +58,7 @@ value_changed_cb:
 		or.b	#$2, d0
 
 	.skip_sprite_flip_y:
-		move.w	d0, SPRITE_RAM + $802
+		move.w	d0, SPRITE_BASE + $2
 		move.b	#$1, r_sprite_dma_req
 		rts
 
@@ -69,8 +69,8 @@ sprite_viewer_palette_setup:
 		CPU_INTS_ENABLE
 
 		move.l	#d_palette_data, r_vblank_copy_src
-		move.l	#SPRITE_PALETTE, r_vblank_copy_dst
-		move.w	#(SPRITE_PALETTE_SIZE / 2), r_vblank_copy_size
+		move.l	#SPRITE_PALETTE_BASE, r_vblank_copy_dst
+		move.w	#(SPRITE_PALETTE_ENTRY_SIZE / 2), r_vblank_copy_size
 		jsr	wait_vblank_copy
 
 		CPU_INTS_DISABLE

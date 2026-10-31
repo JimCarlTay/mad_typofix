@@ -55,7 +55,7 @@ sprite_viewer:
 ; *    6  | -------- | unused
 ; *    7  | -------- | unused
 value_changed_cb:
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 
 		ld	bc, (r_sprite_num)
 		ld	(ix + 1), c
@@ -114,9 +114,9 @@ loop_input_cb:
 
 
 sprite_viewer_palette_setup:
-		ld	de, SPRITE_PALETTE
+		ld	de, SPRITE_PALETTE_BASE
 		ld	hl, d_palette_data
-		ld	bc, PALETTE_SIZE
+		ld	bc, PALETTE_ENTRY_SIZE
 		ldir
 		ret
 

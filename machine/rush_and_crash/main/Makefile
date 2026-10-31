@@ -72,8 +72,8 @@ OBJS += $(OBJ_DIR)/tests/bg_tile_ram.o
 OBJS += $(OBJ_DIR)/tests/input.o
 OBJS += $(OBJ_DIR)/tests/sound.o
 OBJS += $(OBJ_DIR)/viewers/bg_tile.o
-OBJS += $(OBJ_DIR)/viewers/fg_tile.o
 OBJS += $(OBJ_DIR)/viewers/sprite.o
+OBJS += $(OBJ_DIR)/viewers/txt_tile.o
 
 ifneq (,$(findstring _DEBUG_HARDWARE_,$(BUILD_FLAGS)))
 OBJS += $(OBJ_DIR)/cpu/6x09/src/debug/hardware/ram_find.o

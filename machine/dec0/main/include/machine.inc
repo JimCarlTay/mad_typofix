@@ -1,62 +1,86 @@
 	include "romset.inc"
 
-ROM_START			equ $0
+ROM_BASE			equ $0
 ROM_SIZE			equ $20000
 
-PALETTE_RAM			equ $310000
-PALETTE_RAM_SIZE		equ $800
-PALETTE_RAM_ADDRESS_LINES	equ 11
-PALETTE_RAM_MASK		equ $ffff
-PALETTE_SIZE			equ $20
+; RAM CHIPS
+PALETTE_RC_BASE			equ $310000
+PALETTE_RC_SIZE			equ $800
+PALETTE_RC_ADDR_LINES		equ 11
+PALETTE_RC_MASK			equ $ffff
 
-PALETTE_EXT_RAM			equ $314000
-PALETTE_EXT_RAM_SIZE		equ $800
-PALETTE_EXT_RAM_ADDRESS_LINES	equ 11
-PALETTE_EXT_RAM_MASK		equ $ff
+PALETTE_EXT_RC_BASE		equ $314000
+PALETTE_EXT_RC_SIZE		equ $800
+PALETTE_EXT_RC_ADDR_LINES	equ 11
+PALETTE_EXT_RC_MASK		equ $ff
 
-SPRITE_RAM			equ $ffc000
-SPRITE_RAM_SIZE			equ $800
-SPRITE_RAM_ADDRESS_LINES	equ 11
-SPRITE_RAM_MASK			equ $ffff
+SPRITE_RC_BASE			equ $ffc000
+SPRITE_RC_SIZE			equ $800
+SPRITE_RC_ADDR_LINES		equ 11
+SPRITE_RC_MASK			equ $ffff
 
-WORK_RAM			equ $ff8000
-WORK_RAM_SIZE			equ $4000
-WORK_RAM_ADDRESS_LINES		equ 14
-WORK_RAM_MASK			equ $ffff
+TILE1_RC_BASE			equ $242000
+TILE1_RC_SIZE			equ $4000
+TILE1_RC_ADDR_LINES		equ 13
+TILE1_RC_MASK			equ $ffff
 
+; Note: The 4k of ram is split up into 2x 2k blocks one starting at $248000
+; and the other at $24a000.  The first 2k block is mirrored 3 times.  By using
+; last mirror ($249800) as our start address it makes the full 4k contiguous,
+; which makes testing easier
+TILE2_RC_BASE			equ $249800
+TILE2_RC_SIZE			equ $1000
+TILE2_RC_ADDR_LINES		equ 11
+TILE2_RC_MASK			equ $ffff
+
+TILE3_RC_BASE			equ $24c800
+TILE3_RC_SIZE			equ $1000
+TILE3_RC_ADDR_LINES		equ 11
+TILE3_RC_MASK			equ $ffff
+
+WORK_RC_BASE			equ $ff8000
+WORK_RC_SIZE			equ $4000
+WORK_RC_ADDR_LINES		equ 14
+WORK_RC_MASK			equ $ffff
+
+; MEMORY REGIONS
+PALETTE_BASE			equ PALETTE_RC_BASE
+PALETTE_SIZE			equ PALETTE_RC_SIZE
+PALETTE_ENTRY_SIZE		equ $20
+
+PALETTE_EXT_BASE		equ PALETTE_EXT_RC_BASE
+PALETTE_EXT_SIZE		equ PALETTE_EXT_RC_SIZE
+
+SPRITE_BASE			equ SPRITE_RC_BASE
+SPRITE_SIZE			equ SPRITE_RC_SIZE
+
+TILE1_BASE			equ TILE1_RC_BASE
+TILE1_SIZE			equ TILE1_RC_SIZE
+
+TILE2_BASE			equ TILE2_RC_BASE
+TILE2_SIZE			equ TILE2_RC_SIZE
+
+TILE3_BASE			equ TILE3_RC_BASE
+TILE3_SIZE			equ TILE3_RC_SIZE
+
+WORK_RAM_BASE			equ WORK_RC_BASE
+WORK_RAM_SIZE			equ WORK_RC_SIZE
+
+; REG/IO
 REG_TILE1_CTRL1			equ $240000
 REG_TILE1_CTRL2			equ $240010
 REG_TILE1_COLUMN_SCROLL		equ $242000
 REG_TILE1_ROW_SCROLL		equ $242400
-TILE1_RAM			equ $242000
-TILE1_RAM_SIZE			equ $4000
-TILE1_RAM_ADDRESS_LINES		equ 13
-TILE1_RAM_MASK			equ $ffff
 
 REG_TILE2_CTRL1			equ $246000
 REG_TILE2_CTRL2			equ $246010
 REG_TILE2_COLUMN_SCROLL		equ $248000
 REG_TILE2_ROW_SCROLL		equ $248400
-; Note: The 4k of ram is split up into 2x
-; 2k blocks one starting at $248000 and the
-; other at $24a000.  The first 2k block is
-; mirrored 3 times.  By using last mirror
-; ($249800) as our start address it makes
-; the full 4k contiguous, which makes testing
-; easier
-TILE2_RAM			equ $249800
-TILE2_RAM_SIZE			equ $1000
-TILE2_RAM_ADDRESS_LINES		equ 11
-TILE2_RAM_MASK			equ $ffff
 
 REG_TILE3_CTRL1			equ $24c000
 REG_TILE3_CTRL2			equ $24c010
 REG_TILE3_COLUMN_SCROLL		equ $24c800
 REG_TILE3_ROW_SCROLL		equ $24cc00
-TILE3_RAM			equ $24c800
-TILE3_RAM_SIZE			equ $1000
-TILE3_RAM_ADDRESS_LINES		equ 11
-TILE3_RAM_MASK			equ $ffff
 
 REG_SOUND			equ $30c015
 REG_IRQ6_ACK			equ $30c018
@@ -76,13 +100,13 @@ CHAR_COLON			equ ':'
 
 SOUND_NUM_STOP			equ $01
 
+	macro WATCHDOG
+	endm
+
 	macro SOUND_PLAY
 		move.b	d0, REG_SOUND
 	endm
 
 	macro SOUND_STOP
 		move.b	#SOUND_NUM_STOP, REG_SOUND
-	endm
-
-	macro WATCHDOG
 	endm

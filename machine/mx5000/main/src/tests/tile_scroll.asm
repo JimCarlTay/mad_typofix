@@ -23,28 +23,27 @@ tile_scroll_test:
 		sta	$40, x
 		sta	$60, x
 
-		; setup block color for 10e/18e
 		ldd	#$1f00		; red
-		std	K007121_TILE_B_PALETTE + $2
+		std	LAYER_A_TILE_PALETTE_BASE + $2
 
 	.loop_test:
 		WATCHDOG
 
 		lda	r_x
-		sta	REG_K007121_SCROLL_X
+		sta	REG_LAYER_A_TILE_SCROLL_X
 		SEEK_XY	(SCREEN_START_X + 9), (SCREEN_START_Y + 4)
 		RSUB	print_hex_byte
 
 		ldd	r_y
 		anda	#$1
 		std	r_y
-		stb	REG_K007121_SCROLL_Y
+		stb	REG_LAYER_A_TILE_SCROLL_Y
 		SEEK_XY	(SCREEN_START_X + 12), (SCREEN_START_Y + 4)
 		RSUB	print_hex_word
 
 		; high bit
 		lda	r_y
-		sta	REG_K007121_SCROLL_Y_HI
+		sta	REG_LAYER_A_TILE_SCROLL_Y_HI
 
 		jsr	input_update
 		lda	r_input_edge
@@ -52,9 +51,9 @@ tile_scroll_test:
 		bita	#INPUT_B2
 		beq	.b2_not_pressed
 
-		clr	REG_K007121_SCROLL_Y_HI
-		clr	REG_K007121_SCROLL_X
-		clr	REG_K007121_SCROLL_Y
+		clr	REG_LAYER_A_TILE_SCROLL_Y_HI
+		clr	REG_LAYER_A_TILE_SCROLL_X
+		clr	REG_LAYER_A_TILE_SCROLL_Y
 		rts
 
 	.b2_not_pressed:

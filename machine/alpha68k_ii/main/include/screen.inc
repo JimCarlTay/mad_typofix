@@ -12,5 +12,5 @@ SCREEN_BYTES_PER_ROW		equ (SCREEN_BYTES_PER_TILE * SCREEN_TILES_PER_ROW)
 	; goto the correct tile memory location before printing text
 	; to the screen
 	macro SEEK_XY
-		lea	(TILE_RAM + $78 + (\2 * SCREEN_BYTES_PER_ROW) - (\1 * SCREEN_BYTES_PER_TILE)), a6
+		lea	(TILE_BASE + $78 + (\2 * SCREEN_BYTES_PER_ROW) - (\1 * SCREEN_BYTES_PER_TILE)), a6
 	endm

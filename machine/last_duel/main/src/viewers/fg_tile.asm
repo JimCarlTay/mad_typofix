@@ -8,8 +8,8 @@
 fg_tile_viewer:
 		bsr	fg_tile_viewer_palette_setup
 
-		move.w	#$8, REG_FG_SCROLL_Y
-		move.w	#$c, REG_FG_SCROLL_X
+		move.w	#$8, REG_FG_TILE_SCROLL_Y
+		move.w	#$c, REG_FG_TILE_SCROLL_X
 
 		moveq	#0, d0
 		move.w	#$fff, d1
@@ -17,15 +17,15 @@ fg_tile_viewer:
 		lea	draw_tile_cb, a1
 		bsr	tile_16x16_viewer_handler
 
-		move.w	#$0, REG_FG_SCROLL_Y
-		move.w	#$0, REG_FG_SCROLL_X
+		move.w	#$0, REG_FG_TILE_SCROLL_Y
+		move.w	#$0, REG_FG_TILE_SCROLL_X
 
 		rts
 
 fg_tile_viewer_palette_setup:
 		lea	d_palette_data, a0
-		lea	FG_TILE_PALETTE , a1
-		moveq	#FG_TILE_PALETTE_SIZE / 2, d0
+		lea	FG_TILE_PALETTE_BASE , a1
+		moveq	#FG_TILE_PALETTE_ENTRY_SIZE / 2, d0
 		bsr	memory_copy
 		rts
 

@@ -6,18 +6,18 @@
 	section code
 
 screen_init_dsub:
-		ldx	#FG_RAM
-		ldy	#FG_RAM_SIZE
+		ldx	#TXT_TILE_BASE
+		ldy	#TXT_TILE_SIZE
 		lda	#$0
 		DSUB	memory_fill
 
-		ldx	#BG_RAM
-		ldy	#BG_RAM_SIZE
+		ldx	#BG_TILE_BASE
+		ldy	#BG_TILE_SIZE
 		lda	#$0
 		DSUB	memory_fill
 
-		ldx	#SPRITE_RAM
-		ldy	#SPRITE_RAM_SIZE
+		ldx	#SPRITE_BASE
+		ldy	#SPRITE_SIZE
 		lda	#$0
 		DSUB	memory_fill
 

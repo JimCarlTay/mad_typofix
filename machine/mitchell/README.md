@@ -260,7 +260,7 @@ Z80 CPU are are 6 bits.
 | 0x3e |     62 | 0011 1110 |      0111 1111 0xxx xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 | 0011 1111 |      0111 1111 1xxx xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-07-28 @ 04:30 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-16 @ 19:32 UTC</sup>
 <!-- ec_table_main_end -->
 
 ## MAD Notes

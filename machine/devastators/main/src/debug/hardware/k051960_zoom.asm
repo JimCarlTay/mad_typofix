@@ -8,11 +8,11 @@
 k051960_zoom_debug:
 		; highlight color
 		ldd	#$001f
-		std	FIX_TILE_PALETTE + PALETTE_SIZE + $2
+		std	TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $2
 
 		; sprite palette
 		ldx	#d_palette_data
-		ldy	#SPRITE_PALETTE + (7 * PALETTE_SIZE)
+		ldy	#SPRITE_PALETTE_BASE + (7 * PALETTE_ENTRY_SIZE)
 		ldd	#$20
 		jsr	memory_copy
 
@@ -25,16 +25,16 @@ k051960_zoom_debug:
 		jsr	write_memory_cb
 
 		; grid color
-		ldx	#FIX_TILE_PALETTE + (2 * PALETTE_SIZE) + $2
+		ldx	#TXT_TILE_PALETTE_BASE + (2 * PALETTE_ENTRY_SIZE) + $2
 		ldd	#$1f
 		ldw	#$f
 		RSUB	memory_fill_word
 		clrd
-		std	FIX_TILE_PALETTE + (2 * PALETTE_SIZE) + $18
+		std	TXT_TILE_PALETTE_BASE + (2 * PALETTE_ENTRY_SIZE) + $18
 
-		; fix layer a so it aligns with fix layer
+		; txt layer a so it aligns with txt layer
 		lda	#$6
-		sta	REG_LAYER_A_SCROLL_Y
+		sta	REG_LAYER_A_TILE_SCROLL_Y
 
 		ldd	#$ad4f
 		lde	#SCREEN_START_Y + 3
@@ -44,7 +44,7 @@ k051960_zoom_debug:
 		lde	#SCREEN_START_Y + 12
 		jsr	draw_grid
 
-		ldd	#FIX_TILE
+		ldd	#TXT_TILE_BASE
 		std	r_old_highlight
 
 		ldx	#d_mw_settings
@@ -52,7 +52,7 @@ k051960_zoom_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:
@@ -67,7 +67,7 @@ highlight_cb:
 
 
 write_memory_cb:
-		ldx	#SPRITE_RAM
+		ldx	#SPRITE_BASE
 		ldy	#r_mw_buffer
 		ldb	#$10
 	.loop_next_sprite_address:
@@ -89,7 +89,7 @@ draw_grid:
 		lda	#SCREEN_START_X + 12
 		ldb	r_y_offset
 		RSUB	screen_seek_xy
-		leax	$800, x		; jump from fix to layer a
+		leax	$800, x		; jump from txt to layer a
 
 		ldf	#$d
 		ldd	r_scratch

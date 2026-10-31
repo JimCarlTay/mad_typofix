@@ -50,8 +50,8 @@ rst10_handler:
 		bit	SPRITE_REQ_CLEAR_BIT, a
 		jr	z, .skip_sprite_clear
 
-		ld	a, SPRITE_RAM_SIZE
-		ld	hl, SPRITE_RAM
+		ld	a, SPRITE_SIZE
+		ld	hl, SPRITE_BASE
 	.loop_next_byte:
 		ld	(hl), $0
 		inc	hl
@@ -64,16 +64,16 @@ rst10_handler:
 		jr	z, .skip_sprite_copy
 
 		ld	a, (r_sprite_data + 0)
-		ld	(SPRITE_RAM + 0), a
+		ld	(SPRITE_BASE + 0), a
 
 		ld	a, (r_sprite_data + 1)
-		ld	(SPRITE_RAM + 1), a
+		ld	(SPRITE_BASE + 1), a
 
 		ld	a, (r_sprite_data + 2)
-		ld	(SPRITE_RAM + 2), a
+		ld	(SPRITE_BASE + 2), a
 
 		ld	a, (r_sprite_data + 3)
-		ld	(SPRITE_RAM + 3), a
+		ld	(SPRITE_BASE + 3), a
 
 	.skip_sprite_copy:
 		ld	a, $0

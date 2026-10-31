@@ -46,7 +46,7 @@ value_changed_cb:
 		ld	a, VIDEO_BANK_SPRITE
 		out	(IO_VIDEO_BANK), a
 
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 
 		ld	bc, (r_sprite_num)
 		ld	(ix), c
@@ -85,8 +85,8 @@ sprite_viewer_palette_setup:
 		RSUB	delay
 
 		ld	hl, d_romset_sprite_palette_data
-		ld	de, SPRITE_PALETTE
-		ld	bc, PALETTE_SIZE
+		ld	de, SPRITE_PALETTE_BASE
+		ld	bc, PALETTE_ENTRY_SIZE
 		ldir
 
 		ld	a, CTRL_ENABLE_SPRITE_ROMS|CTRL_ENABLE_TILE_ROMS

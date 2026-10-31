@@ -12,8 +12,8 @@ SCREEN_BYTES_PER_ROW		equ (SCREEN_BYTES_PER_TILE * SCREEN_TILES_PER_ROW)
 	; rows 0 - 4 are in fg tile ram and the rest of the screen is in bg tile ram
 	macro	SEEK_XY
 	if \2 >= 5
-		ldx	#(K005885_TILE_A + $3a0 + ((\2 - 5) * SCREEN_BYTES_PER_TILE) - (\1 * SCREEN_BYTES_PER_ROW))
+		ldx	#(LAYER_A_TILE_BASE + $3a0 + ((\2 - 5) * SCREEN_BYTES_PER_TILE) - (\1 * SCREEN_BYTES_PER_ROW))
 	else
-		ldx	#(K005885_TILE_B + $3a0 + (\2 * SCREEN_BYTES_PER_TILE) - (\1 * SCREEN_BYTES_PER_ROW))
+		ldx	#(LAYER_B_TILE_BASE + $3a0 + (\2 * SCREEN_BYTES_PER_TILE) - (\1 * SCREEN_BYTES_PER_ROW))
 	endif
 	endm

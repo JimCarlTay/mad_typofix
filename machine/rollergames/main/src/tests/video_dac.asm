@@ -11,29 +11,29 @@ video_dac_test:
 		jsr	print_xy_string_list
 		jsr	print_b2_return_to_menu
 
-		; Game only has 4 palettes for fixed tiles use, so
+		; Game only has 4 palettes for txted tiles use, so
 		; we are forced to use the palette we also
 		; use for text.
 
 		; Palette Layout
 		;  xBBB BBGG GGGR RRRR
 		; red palette setup
-		ldx	#TILE_PALETTE
+		ldx	#TILE_PALETTE_BASE
 		ldd	#$001f
 		jsr	palette_color_setup
 
 		; green palette setup
-		ldx	#TILE_PALETTE + PALETTE_SIZE
+		ldx	#TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE
 		ldd	#$03e0
 		jsr	palette_color_setup
 
 		; blue palette setup
-		ldx	#TILE_PALETTE + (PALETTE_SIZE*2)
+		ldx	#TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE*2)
 		ldd	#$7c00
 		jsr	palette_color_setup
 
 		; combined/all palette setup
-		ldx	#TILE_PALETTE + (PALETTE_SIZE*3)
+		ldx	#TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE*3)
 		ldd	#$7fff
 		jsr	palette_color_setup
 
@@ -95,8 +95,8 @@ full_screen:
 		pshs	y
 
 		; fill entire screen with the tile
-		ldy	#TILE_RAM
-		ldx	#TILE_RAM_SIZE / 2
+		ldy	#TILE_BASE
+		ldx	#TILE_SIZE
 	.loop_next_address:
 		sta	$400, y
 		stb	, y+

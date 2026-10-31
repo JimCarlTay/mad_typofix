@@ -15,11 +15,11 @@ bac06_tile_scroll_test:
 		std	r_pos_y
 
 		ldd	#$408c
-		std	BAC06_RAM + $10e
+		std	BAC06_TILE_BASE + $10e
 		ldb	#$8d
-		std	BAC06_RAM + $12e
+		std	BAC06_TILE_BASE + $12e
 		ldb	#$8e
-		std	BAC06_RAM + $14e
+		std	BAC06_TILE_BASE + $14e
 
 	.loop_test:
 		WATCHDOG
@@ -27,14 +27,14 @@ bac06_tile_scroll_test:
 		ldd	r_pos_x
 		anda	#$1
 		std	r_pos_x
-		std	REG_BAC06_SCROLL_X
+		std	REG_BAC06_TILE_SCROLL_X
 		SEEK_XY	(SCREEN_START_X + 9), (SCREEN_START_Y + 4)
 		RSUB	print_hex_word
 
 		ldd	r_pos_y
 		anda	#$1
 		std	r_pos_y
-		std	REG_BAC06_SCROLL_Y
+		std	REG_BAC06_TILE_SCROLL_Y
 		SEEK_XY	(SCREEN_START_X + 9), (SCREEN_START_Y + 5)
 		RSUB	print_hex_word
 
@@ -79,8 +79,8 @@ bac06_tile_scroll_test:
 		lbeq	.loop_test
 
 		clrd
-		std	REG_BAC06_SCROLL_X
-		std	REG_BAC06_SCROLL_Y
+		std	REG_BAC06_TILE_SCROLL_X
+		std	REG_BAC06_TILE_SCROLL_Y
 		rts
 
 	section data

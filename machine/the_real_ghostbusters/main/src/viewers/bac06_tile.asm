@@ -25,7 +25,7 @@ bac06_tile_viewer:
 ;  a = x
 ;  b = y
 bac06_seek_xy_cb:
-		ldx	#BAC06_RAM
+		ldx	#BAC06_TILE_BASE
 		leax	a, x
 
 		tfr	b, a

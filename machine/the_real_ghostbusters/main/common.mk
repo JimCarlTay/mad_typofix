@@ -68,15 +68,15 @@ OBJS += $(OBJ_DIR)/menus/memory_viewer.o
 OBJS += $(OBJ_DIR)/menus/ram_tests.o
 OBJS += $(OBJ_DIR)/menus/video_tests.o
 OBJS += $(OBJ_DIR)/tests/auto.o
-OBJS += $(OBJ_DIR)/tests/bac06_ram.o
+OBJS += $(OBJ_DIR)/tests/bac06_tile_ram.o
 OBJS += $(OBJ_DIR)/tests/bac06_tile_scroll.o
 OBJS += $(OBJ_DIR)/tests/input.o
 OBJS += $(OBJ_DIR)/tests/sound.o
 OBJS += $(OBJ_DIR)/tests/sprite_ram.o
-OBJS += $(OBJ_DIR)/tests/video_ram.o
-OBJS += $(OBJ_DIR)/viewers/fix_tile.o
+OBJS += $(OBJ_DIR)/tests/txt_tile_ram.o
 OBJS += $(OBJ_DIR)/viewers/bac06_tile.o
 OBJS += $(OBJ_DIR)/viewers/sprite.o
+OBJS += $(OBJ_DIR)/viewers/txt_tile.o
 
 ifneq (,$(findstring _DEBUG_HARDWARE_,$(BUILD_FLAGS)))
 OBJS += $(OBJ_DIR)/cpu/6x09/src/handlers/memory_write.o

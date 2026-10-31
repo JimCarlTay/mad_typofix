@@ -10,8 +10,8 @@ bg_tile_viewer:
 		RSUB	print_xy_string_list
 
 		lea	d_palette_data, a0
-		lea	BG_TILE_PALETTE, a1
-		moveq	#(BG_TILE_PALETTE_SIZE / 2), d0
+		lea	BG_TILE_PALETTE_BASE, a1
+		moveq	#(BG_TILE_PALETTE_ENTRY_SIZE / 2), d0
 		jsr	memory_copy
 
 		; f1dream only seems to have bank 0 but leaving the code
@@ -20,8 +20,8 @@ bg_tile_viewer:
 		;move.w	#$0, r_bank
 		move.w	#$0, r_bg_scroll_x
 		move.w	#$0, r_bg_scroll_y
-		move.w	#$0, REG_BG_SCROLL_X
-		move.w	#$0, REG_BG_SCROLL_Y
+		move.w	#$0, REG_BG_TILE_SCROLL_X
+		move.w	#$0, REG_BG_TILE_SCROLL_Y
 
 		lea	d_ve_settings, a0
 		lea	d_ve_list, a1
@@ -30,8 +30,8 @@ bg_tile_viewer:
 
 		move.w	#$0, r_bg_scroll_x
 		move.w	#$0, r_bg_scroll_y
-		move.w	#$0, REG_BG_SCROLL_X
-		move.w	#$0, REG_BG_SCROLL_Y
+		move.w	#$0, REG_BG_TILE_SCROLL_X
+		move.w	#$0, REG_BG_TILE_SCROLL_Y
 		;move.w	#$0, REG_CONTROL
 		rts
 
@@ -48,10 +48,10 @@ value_changed_cb:
 
 	.scroll_update:
 		move.w	r_bg_scroll_x, d0
-		move.w	d0, REG_BG_SCROLL_X
+		move.w	d0, REG_BG_TILE_SCROLL_X
 
 		move.w	r_bg_scroll_y, d0
-		move.w	d0, REG_BG_SCROLL_Y
+		move.w	d0, REG_BG_TILE_SCROLL_Y
 		rts
 
 loop_input_cb:

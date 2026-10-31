@@ -8,13 +8,13 @@
 	section code
 
 screen_init_dsub:
-		ldx	#FG_TILE_RAM
-		ldy	#FG_TILE_RAM_SIZE / 2
+		ldx	#TXT_TILE_BASE
+		ldy	#TXT_TILE_SIZE / 2
 		ldd	#$20
 		DSUB	memory_fill_word
 
-		ldx	#BG_TILE_RAM
-		ldy	#BG_TILE_RAM_SIZE / 2
+		ldx	#BG_TILE_BASE
+		ldy	#BG_TILE_SIZE / 2
 		ldd	#$41
 		DSUB	memory_fill_word
 
@@ -57,13 +57,13 @@ screen_seek_xy_dsub:
 		DSUB_RETURN
 
 palette_init_no_irq_dsub:
-		ldx	#PALETTE_RAM
-		ldy	#PALETTE_RAM_SIZE
+		ldx	#PALETTE_BASE
+		ldy	#PALETTE_SIZE
 		lda	#$0
 		DSUB	memory_fill
 
 		ldd	#$ffff
-		std	FG_TILE_PALETTE + 4
+		std	TXT_TILE_PALETTE_BASE + 4
 		DSUB_RETURN
 
 
@@ -77,8 +77,8 @@ palette_init_irq:
 		CPU_INTS_ENABLE
 
 		jsr	wait_irq
-		ldd	#PALETTE_RAM_SIZE / $80
-		ldy	#PALETTE_RAM
+		ldy	#PALETTE_BASE
+		ldd	#PALETTE_SIZE / $80
 
 	.loop_next_block:
 		pshs	d,y
@@ -96,7 +96,7 @@ palette_init_irq:
 
 		ldd	#d_palette_data
 		std	r_vblank_copy_src
-		ldd	#FG_TILE_PALETTE + 4
+		ldd	#TXT_TILE_PALETTE_BASE + 4
 		std	r_vblank_copy_dst
 		ldd	#$2
 		std	r_vblank_copy_size

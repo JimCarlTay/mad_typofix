@@ -14,7 +14,7 @@
 
 ## MAD Pictures
 ![mad the real ghostbusters main menu](docs/images/mad_the_real_ghostbusters_main_menu.png)
-![mad the real ghostbusters fix tile viewer](docs/images/mad_the_real_ghostbusters_fix_tile_viewer.png)
+![mad the real ghostbusters txt tile viewer](docs/images/mad_the_real_ghostbusters_txt_tile_viewer.png)
 ![mad the real ghostbusters sprite viewer](docs/images/mad_the_real_ghostbusters_sprite_viewer.png)
 
 ## PCB Pictures
@@ -71,21 +71,21 @@ HD6309 CPU are are 6 bits.  The games does not have a watchdog.
 <!-- ec_table_main_start -->
 | Hex  | Number | Beep Code |     Error Address (A15..A0)    |           Error Text           |
 | ---: | -----: | --------: | :----------------------------: | :----------------------------- |
-| 0x01 |      1 | 0000 0001 |      1111 0000 0001 xxxx       | BAC06 RAM ADDRESS              |
-| 0x02 |      2 | 0000 0010 |      1111 0000 0010 xxxx       | BAC06 RAM DATA                 |
-| 0x03 |      3 | 0000 0011 |      1111 0000 0011 xxxx       | BAC06 RAM MARCH                |
-| 0x04 |      4 | 0000 0100 |      1111 0000 0100 xxxx       | BAC06 RAM OUTPUT               |
-| 0x05 |      5 | 0000 0101 |      1111 0000 0101 xxxx       | BAC06 RAM WRITE                |
+| 0x01 |      1 | 0000 0001 |      1111 0000 0001 xxxx       | BAC06 TILE RAM ADDRESS         |
+| 0x02 |      2 | 0000 0010 |      1111 0000 0010 xxxx       | BAC06 TILE RAM DATA            |
+| 0x03 |      3 | 0000 0011 |      1111 0000 0011 xxxx       | BAC06 TILE RAM MARCH           |
+| 0x04 |      4 | 0000 0100 |      1111 0000 0100 xxxx       | BAC06 TILE RAM OUTPUT          |
+| 0x05 |      5 | 0000 0101 |      1111 0000 0101 xxxx       | BAC06 TILE RAM WRITE           |
 | 0x06 |      6 | 0000 0110 |      1111 0000 0110 xxxx       | SPRITE RAM ADDRESS             |
 | 0x07 |      7 | 0000 0111 |      1111 0000 0111 xxxx       | SPRITE RAM DATA                |
 | 0x08 |      8 | 0000 1000 |      1111 0000 1000 xxxx       | SPRITE RAM MARCH               |
 | 0x09 |      9 | 0000 1001 |      1111 0000 1001 xxxx       | SPRITE RAM OUTPUT              |
 | 0x0a |     10 | 0000 1010 |      1111 0000 1010 xxxx       | SPRITE RAM WRITE               |
-| 0x0b |     11 | 0000 1011 |      1111 0000 1011 xxxx       | VIDEO RAM ADDRESS              |
-| 0x0c |     12 | 0000 1100 |      1111 0000 1100 xxxx       | VIDEO RAM DATA                 |
-| 0x0d |     13 | 0000 1101 |      1111 0000 1101 xxxx       | VIDEO RAM MARCH                |
-| 0x0e |     14 | 0000 1110 |      1111 0000 1110 xxxx       | VIDEO RAM OUTPUT               |
-| 0x0f |     15 | 0000 1111 |      1111 0000 1111 xxxx       | VIDEO RAM WRITE                |
+| 0x0b |     11 | 0000 1011 |      1111 0000 1011 xxxx       | TXT TILE RAM ADDRESS           |
+| 0x0c |     12 | 0000 1100 |      1111 0000 1100 xxxx       | TXT TILE RAM DATA              |
+| 0x0d |     13 | 0000 1101 |      1111 0000 1101 xxxx       | TXT TILE RAM MARCH             |
+| 0x0e |     14 | 0000 1110 |      1111 0000 1110 xxxx       | TXT TILE RAM OUTPUT            |
+| 0x0f |     15 | 0000 1111 |      1111 0000 1111 xxxx       | TXT TILE RAM WRITE             |
 | 0x10 |     16 | 0001 0000 |      1111 0001 0000 xxxx       | WORK RAM ADDRESS               |
 | 0x11 |     17 | 0001 0001 |      1111 0001 0001 xxxx       | WORK RAM DATA                  |
 | 0x12 |     18 | 0001 0010 |      1111 0001 0010 xxxx       | WORK RAM MARCH                 |
@@ -94,7 +94,7 @@ HD6309 CPU are are 6 bits.  The games does not have a watchdog.
 | 0x3e |     62 | 0011 1110 |      1111 0011 1110 xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 | 0011 1111 |      1111 0011 1111 xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-06-17 @ 01:51 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-22 @ 19:11 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU

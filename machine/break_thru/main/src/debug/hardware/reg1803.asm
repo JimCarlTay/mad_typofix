@@ -10,7 +10,7 @@ reg1803_debug:
 		ldy	#d_screen_xys_list
 		jsr	print_xy_string_list
 
-		ldd	#FG_RAM + $400
+		ldd	#TXT_TILE_BASE + $400
 		std	r_old_highlight
 
 		CPU_INTS_ENABLE
@@ -32,7 +32,7 @@ reg1803_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:

@@ -11,24 +11,20 @@ memory_viewer_menu:
 		jsr	menu_handler
 		rts
 
-view_k005885_sprite_ram:
-		ldx	#K005885_SPRITE
+view_layer_a_tile_ram:
+		ldx	#LAYER_A_TILE_BASE
 		bra	view_memory
 
-view_k005885_tile_a_ram:
-		ldx	#K005885_TILE_A
+view_layer_a_tile_attr_ram:
+		ldx	#LAYER_A_TILE_ATTR_BASE
 		bra	view_memory
 
-view_k005885_tile_a_attr_ram:
-		ldx	#K005885_TILE_A_ATTR
+view_layer_b_tile_ram:
+		ldx	#LAYER_B_TILE_BASE
 		bra	view_memory
 
-view_k005885_tile_b_ram:
-		ldx	#K005885_TILE_B
-		bra	view_memory
-
-view_k005885_tile_b_attr_ram:
-		ldx	#K005885_TILE_B_ATTR
+view_layer_b_tile_attr_ram:
+		ldx	#LAYER_B_TILE_ATTR_BASE
 		bra	view_memory
 
 view_mmio_input:
@@ -36,11 +32,15 @@ view_mmio_input:
 		bra	view_memory
 
 view_rom_space:
-		ldx	#$c000
+		ldx	#ROM_BASE
+		bra	view_memory
+
+view_sprite_ram:
+		ldx	#SPRITE_BASE
 		bra	view_memory
 
 view_work_ram:
-		ldx	#WORK_RAM
+		ldx	#WORK_RAM_BASE
 		bra	view_memory
 
 view_memory:
@@ -51,23 +51,23 @@ view_memory:
 	section data
 
 d_menu_list:
-	MENU_ENTRY view_k005885_sprite_ram, d_str_k005885_sprite_ram, ME_FLAG_NONE
-	MENU_ENTRY view_k005885_tile_a_ram, d_str_k005885_tile_a_ram, ME_FLAG_NONE
-	MENU_ENTRY view_k005885_tile_a_attr_ram, d_str_k005885_tile_a_attr_ram, ME_FLAG_NONE
-	MENU_ENTRY view_k005885_tile_b_ram, d_str_k005885_tile_b_ram, ME_FLAG_NONE
-	MENU_ENTRY view_k005885_tile_b_attr_ram, d_str_k005885_tile_b_attr_ram, ME_FLAG_NONE
+	MENU_ENTRY view_layer_a_tile_ram, d_str_layer_a_tile_ram, ME_FLAG_NONE
+	MENU_ENTRY view_layer_a_tile_attr_ram, d_str_layer_a_tile_attr_ram, ME_FLAG_NONE
+	MENU_ENTRY view_layer_b_tile_ram, d_str_layer_b_tile_ram, ME_FLAG_NONE
+	MENU_ENTRY view_layer_b_tile_attr_ram, d_str_layer_b_tile_attr_ram, ME_FLAG_NONE
 	MENU_ENTRY view_mmio_input, d_str_mmio_input, ME_FLAG_NONE
 	MENU_ENTRY view_rom_space, d_str_rom_space, ME_FLAG_NONE
+	MENU_ENTRY view_sprite_ram, d_str_sprite_ram, ME_FLAG_NONE
 	MENU_ENTRY view_work_ram, d_str_work_ram, ME_FLAG_NONE
 	MENU_LIST_END
 
 d_str_menu_title:		STRING "MEMORY VIEWER MENU"
 
-d_str_k005885_sprite_ram:	STRING "K005885 SPRITE RAM"
-d_str_k005885_tile_a_ram:	STRING "K005885 TILE A RAM"
-d_str_k005885_tile_a_attr_ram:	STRING "K005885 TILE A ATTR RAM"
-d_str_k005885_tile_b_ram:	STRING "K005885 TILE B RAM"
-d_str_k005885_tile_b_attr_ram:	STRING "K005885 TILE B ATTR RAM"
+d_str_layer_a_tile_ram:		STRING "LAYER A TILE RAM"
+d_str_layer_a_tile_attr_ram:	STRING "LAYER A TILE ATTR RAM"
+d_str_layer_b_tile_ram:		STRING "LAYER B TILE RAM"
+d_str_layer_b_tile_attr_ram:	STRING "LAYER B TILE ATTR RAM"
 d_str_mmio_input:		STRING "MMIO INPUT"
 d_str_rom_space:		STRING "ROM SPACE"
+d_str_sprite_ram:		STRING "SPRITE RAM"
 d_str_work_ram:			STRING "WORK RAM"

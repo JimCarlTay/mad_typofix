@@ -14,22 +14,22 @@ video_dac_test:
 		; Palette Layout
 		;  xBBB BBGG GGGR RRRR
 		; red palette setup
-		ldx	#FIX_TILE_PALETTE + PALETTE_SIZE
+		ldx	#TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE
 		ldd	#$001f
 		jsr	palette_color_setup
 
 		; green palette setup
-		ldx	#FIX_TILE_PALETTE + (PALETTE_SIZE*2)
+		ldx	#TXT_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE*2)
 		ldd	#$03e0
 		jsr	palette_color_setup
 
 		; blue palette setup
-		ldx	#FIX_TILE_PALETTE + (PALETTE_SIZE*3)
+		ldx	#TXT_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE*3)
 		ldd	#$7c00
 		jsr	palette_color_setup
 
 		; combined/all palette setup
-		ldx	#FIX_TILE_PALETTE + (PALETTE_SIZE*4)
+		ldx	#TXT_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE*4)
 		ldd	#$7fff
 		jsr	palette_color_setup
 
@@ -91,8 +91,8 @@ full_screen:
 		pshs	y
 
 		; fill entire screen with the tile
-		ldy	#FIX_TILE
-		ldx	#FIX_TILE_SIZE
+		ldy	#TXT_TILE_BASE
+		ldx	#TXT_TILE_SIZE
 	.loop_next_address:
 		sta	-$2000, y
 		stb	, y+

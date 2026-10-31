@@ -75,8 +75,8 @@ OBJS += $(OBJ_DIR)/tests/prog_bank.o
 OBJS += $(OBJ_DIR)/tests/sound.o
 OBJS += $(OBJ_DIR)/tests/tile_scroll.o
 OBJS += $(OBJ_DIR)/tests/video_dac.o
-OBJS += $(OBJ_DIR)/viewers/k007121_sprite.o
-OBJS += $(OBJ_DIR)/viewers/k007121_tile.o
+OBJS += $(OBJ_DIR)/viewers/layer_a_tile.o
+OBJS += $(OBJ_DIR)/viewers/sprite.o
 
 ifneq (,$(findstring _DEBUG_HARDWARE_,$(BUILD_FLAGS)))
 OBJS += $(OBJ_DIR)/cpu/6x09/src/debug/hardware/watchdog_time.o

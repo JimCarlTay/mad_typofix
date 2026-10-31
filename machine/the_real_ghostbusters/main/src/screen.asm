@@ -6,19 +6,19 @@
 	section code
 
 screen_init_dsub:
-		ldx	#BAC06_RAM
-		ldw	#BAC06_RAM_SIZE
+		ldx	#BAC06_TILE_BASE
+		ldw	#BAC06_TILE_SIZE
 		lda	#$0
 		DSUB	memory_fill
 
-		ldx	#SPRITE_RAM
-		ldw	#SPRITE_RAM_SIZE
+		ldx	#SPRITE_BASE
+		ldw	#SPRITE_SIZE
 		lda	#$0
 		DSUB	memory_fill
 		DSUB	sprite_trigger_copy
 
-		ldx	#VIDEO_RAM
-		ldw	#VIDEO_RAM_SIZE
+		ldx	#TXT_TILE_BASE
+		ldw	#TXT_TILE_SIZE
 		lda	#$0
 		DSUB	memory_fill
 

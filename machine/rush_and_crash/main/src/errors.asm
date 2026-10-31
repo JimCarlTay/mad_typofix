@@ -7,11 +7,11 @@
 	section data
 
 d_ec_list:
-	EC_ENTRY EC_BG_TILE_RAM_ADDRESS, PRINT_ERROR_MEMORY, d_str_bg_tile_ram_address
-	EC_ENTRY EC_BG_TILE_RAM_DATA, PRINT_ERROR_MEMORY, d_str_bg_tile_ram_data
-	EC_ENTRY EC_BG_TILE_RAM_MARCH, PRINT_ERROR_MEMORY, d_str_bg_tile_ram_march
-	EC_ENTRY EC_BG_TILE_RAM_OUTPUT, PRINT_ERROR_ADDRESS, d_str_bg_tile_ram_output
-	EC_ENTRY EC_BG_TILE_RAM_WRITE, PRINT_ERROR_ADDRESS, d_str_bg_tile_ram_write
+	EC_ENTRY EC_BG_TILE_RC_ADDRESS, PRINT_ERROR_MEMORY, d_str_bg_tile_ram_address
+	EC_ENTRY EC_BG_TILE_RC_DATA, PRINT_ERROR_MEMORY, d_str_bg_tile_ram_data
+	EC_ENTRY EC_BG_TILE_RC_MARCH, PRINT_ERROR_MEMORY, d_str_bg_tile_ram_march
+	EC_ENTRY EC_BG_TILE_RC_OUTPUT, PRINT_ERROR_ADDRESS, d_str_bg_tile_ram_output
+	EC_ENTRY EC_BG_TILE_RC_WRITE, PRINT_ERROR_ADDRESS, d_str_bg_tile_ram_write
 	EC_LIST_END
 
 d_str_bg_tile_ram_address:		STRING "BG TILE RAM ADDRESS"

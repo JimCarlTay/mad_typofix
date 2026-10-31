@@ -47,7 +47,7 @@ _start:
 
 		DSUB_MODE_RSUB
 
-		lds	#(WORK_RAM + WORK_RAM_SIZE - 2)
+		lds	#(WORK_RAM_BASE + WORK_RAM_SIZE - 2)
 		jsr	auto_func_tests
 
 		lda	#SOUND_NUM_SUCCESS

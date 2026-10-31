@@ -50,18 +50,18 @@ Schematics don't seem to exist.
 ## RAM Locations
 | RAM | Location | Type |
 | -------- | :------- | ----- |
-| BG RAM Lower | D1 on graphics PCB | TC5563APL-12 (8k x 8bit) |
-| BG RAM Upper | D3 on graphics PCB | TC5563APL-12 (8k x 8bit) |
-| FG RAM Lower | D4 on graphics PCB | TC5563APL-12 (8k x 8bit) |
-| FG RAM Upper | D6 on graphics PCB | TC5563APL-12 (8k x 8bit) |
+| BG Tile RAM Lower | D1 on graphics PCB | TC5563APL-12 (8k x 8bit) |
+| BG Tile RAM Upper | D3 on graphics PCB | TC5563APL-12 (8k x 8bit) |
+| FG Tile RAM Lower | D4 on graphics PCB | TC5563APL-12 (8k x 8bit) |
+| FG Tile RAM Upper | D6 on graphics PCB | TC5563APL-12 (8k x 8bit) |
 | Palette RAM Lower Nibble in Lower Byte | H3 on CPU PCB | MB81C68A-35 (4k x 4bit) |
 | Palette RAM Upper Nibble in Lower Byte | J3 on CPU PCB | MB81C68A-35 (4k x 4bit) |
 | Palette RAM Lower Nibble in Upper Byte | K3 on CPU PCB | MB81C68A-35 (4k x 4bit) |
 | Sound CPU RAM | D4 on CPU PCB | MB8464A-15L-SK (8k x 8bit) |
 | Sprite RAM Lower | M7 on graphics PCB | TC5563APL-12 (8k x 8bit) |
 | Sprite RAM Upper | N7 on graphics PCB | TC5563APL-12 (8k x 8bit) |
-| TXT RAM Lower | D7 on graphics PCB | LH5164-10L (8k x 8bit) |
-| TXT RAM Upper | C7 on graphics PCB | LH5164-10L (8k x 8bit) |
+| TXT Tile RAM Lower | D7 on graphics PCB | LH5164-10L (8k x 8bit) |
+| TXT Tile RAM Upper | C7 on graphics PCB | LH5164-10L (8k x 8bit) |
 | Work RAM Lower | U5 on CPU PCB | MB8464A-15L-SK (8k x 8bit) |
 | Work RAM Upper | U3 on CPU PCB | MB8464A-15L-SK (8k x 8bit) |
 
@@ -98,32 +98,32 @@ high or low, but 99% of the time.
 <!-- ec_table_main_start -->
 | Hex  | Number | Beep Code |     Error Address (A23..A1)    |           Error Text           |
 | ---: | -----: | --------: | :----------------------------: | :----------------------------- |
-| 0x01 |      1 | 0000 0001 |  000 0000 0011 0000 0001 xxxx  | BG RAM ADDRESS                 |
-| 0x02 |      2 | 0000 0010 |  000 0000 0011 0000 0010 xxxx  | BG RAM DATA LOWER              |
-| 0x03 |      3 | 0000 0011 |  000 0000 0011 0000 0011 xxxx  | BG RAM DATA UPPER              |
-| 0x04 |      4 | 0000 0100 |  000 0000 0011 0000 0100 xxxx  | BG RAM DATA BOTH               |
-| 0x05 |      5 | 0000 0101 |  000 0000 0011 0000 0101 xxxx  | BG RAM MARCH LOWER             |
-| 0x06 |      6 | 0000 0110 |  000 0000 0011 0000 0110 xxxx  | BG RAM MARCH UPPER             |
-| 0x07 |      7 | 0000 0111 |  000 0000 0011 0000 0111 xxxx  | BG RAM MARCH BOTH              |
-| 0x08 |      8 | 0000 1000 |  000 0000 0011 0000 1000 xxxx  | BG RAM OUTPUT LOWER            |
-| 0x09 |      9 | 0000 1001 |  000 0000 0011 0000 1001 xxxx  | BG RAM OUTPUT UPPER            |
-| 0x0a |     10 | 0000 1010 |  000 0000 0011 0000 1010 xxxx  | BG RAM OUTPUT BOTH             |
-| 0x0b |     11 | 0000 1011 |  000 0000 0011 0000 1011 xxxx  | BG RAM WRITE LOWER             |
-| 0x0c |     12 | 0000 1100 |  000 0000 0011 0000 1100 xxxx  | BG RAM WRITE UPPER             |
-| 0x0d |     13 | 0000 1101 |  000 0000 0011 0000 1101 xxxx  | BG RAM WRITE BOTH              |
-| 0x0e |     14 | 0000 1110 |  000 0000 0011 0000 1110 xxxx  | FG RAM ADDRESS                 |
-| 0x0f |     15 | 0000 1111 |  000 0000 0011 0000 1111 xxxx  | FG RAM DATA LOWER              |
-| 0x10 |     16 | 0001 0000 |  000 0000 0011 0001 0000 xxxx  | FG RAM DATA UPPER              |
-| 0x11 |     17 | 0001 0001 |  000 0000 0011 0001 0001 xxxx  | FG RAM DATA BOTH               |
-| 0x12 |     18 | 0001 0010 |  000 0000 0011 0001 0010 xxxx  | FG RAM MARCH LOWER             |
-| 0x13 |     19 | 0001 0011 |  000 0000 0011 0001 0011 xxxx  | FG RAM MARCH UPPER             |
-| 0x14 |     20 | 0001 0100 |  000 0000 0011 0001 0100 xxxx  | FG RAM MARCH BOTH              |
-| 0x15 |     21 | 0001 0101 |  000 0000 0011 0001 0101 xxxx  | FG RAM OUTPUT LOWER            |
-| 0x16 |     22 | 0001 0110 |  000 0000 0011 0001 0110 xxxx  | FG RAM OUTPUT UPPER            |
-| 0x17 |     23 | 0001 0111 |  000 0000 0011 0001 0111 xxxx  | FG RAM OUTPUT BOTH             |
-| 0x18 |     24 | 0001 1000 |  000 0000 0011 0001 1000 xxxx  | FG RAM WRITE LOWER             |
-| 0x19 |     25 | 0001 1001 |  000 0000 0011 0001 1001 xxxx  | FG RAM WRITE UPPER             |
-| 0x1a |     26 | 0001 1010 |  000 0000 0011 0001 1010 xxxx  | FG RAM WRITE BOTH              |
+| 0x01 |      1 | 0000 0001 |  000 0000 0011 0000 0001 xxxx  | BG TILE RAM ADDRESS            |
+| 0x02 |      2 | 0000 0010 |  000 0000 0011 0000 0010 xxxx  | BG TILE RAM DATA LOWER         |
+| 0x03 |      3 | 0000 0011 |  000 0000 0011 0000 0011 xxxx  | BG TILE RAM DATA UPPER         |
+| 0x04 |      4 | 0000 0100 |  000 0000 0011 0000 0100 xxxx  | BG TILE RAM DATA BOTH          |
+| 0x05 |      5 | 0000 0101 |  000 0000 0011 0000 0101 xxxx  | BG TILE RAM MARCH LOWER        |
+| 0x06 |      6 | 0000 0110 |  000 0000 0011 0000 0110 xxxx  | BG TILE RAM MARCH UPPER        |
+| 0x07 |      7 | 0000 0111 |  000 0000 0011 0000 0111 xxxx  | BG TILE RAM MARCH BOTH         |
+| 0x08 |      8 | 0000 1000 |  000 0000 0011 0000 1000 xxxx  | BG TILE RAM OUTPUT LOWER       |
+| 0x09 |      9 | 0000 1001 |  000 0000 0011 0000 1001 xxxx  | BG TILE RAM OUTPUT UPPER       |
+| 0x0a |     10 | 0000 1010 |  000 0000 0011 0000 1010 xxxx  | BG TILE RAM OUTPUT BOTH        |
+| 0x0b |     11 | 0000 1011 |  000 0000 0011 0000 1011 xxxx  | BG TILE RAM WRITE LOWER        |
+| 0x0c |     12 | 0000 1100 |  000 0000 0011 0000 1100 xxxx  | BG TILE RAM WRITE UPPER        |
+| 0x0d |     13 | 0000 1101 |  000 0000 0011 0000 1101 xxxx  | BG TILE RAM WRITE BOTH         |
+| 0x0e |     14 | 0000 1110 |  000 0000 0011 0000 1110 xxxx  | FG TILE RAM ADDRESS            |
+| 0x0f |     15 | 0000 1111 |  000 0000 0011 0000 1111 xxxx  | FG TILE RAM DATA LOWER         |
+| 0x10 |     16 | 0001 0000 |  000 0000 0011 0001 0000 xxxx  | FG TILE RAM DATA UPPER         |
+| 0x11 |     17 | 0001 0001 |  000 0000 0011 0001 0001 xxxx  | FG TILE RAM DATA BOTH          |
+| 0x12 |     18 | 0001 0010 |  000 0000 0011 0001 0010 xxxx  | FG TILE RAM MARCH LOWER        |
+| 0x13 |     19 | 0001 0011 |  000 0000 0011 0001 0011 xxxx  | FG TILE RAM MARCH UPPER        |
+| 0x14 |     20 | 0001 0100 |  000 0000 0011 0001 0100 xxxx  | FG TILE RAM MARCH BOTH         |
+| 0x15 |     21 | 0001 0101 |  000 0000 0011 0001 0101 xxxx  | FG TILE RAM OUTPUT LOWER       |
+| 0x16 |     22 | 0001 0110 |  000 0000 0011 0001 0110 xxxx  | FG TILE RAM OUTPUT UPPER       |
+| 0x17 |     23 | 0001 0111 |  000 0000 0011 0001 0111 xxxx  | FG TILE RAM OUTPUT BOTH        |
+| 0x18 |     24 | 0001 1000 |  000 0000 0011 0001 1000 xxxx  | FG TILE RAM WRITE LOWER        |
+| 0x19 |     25 | 0001 1001 |  000 0000 0011 0001 1001 xxxx  | FG TILE RAM WRITE UPPER        |
+| 0x1a |     26 | 0001 1010 |  000 0000 0011 0001 1010 xxxx  | FG TILE RAM WRITE BOTH         |
 | 0x1b |     27 | 0001 1011 |  000 0000 0011 0001 1011 xxxx  | PALETTE RAM ADDRESS            |
 | 0x1c |     28 | 0001 1100 |  000 0000 0011 0001 1100 xxxx  | PALETTE RAM DATA LOWER         |
 | 0x1d |     29 | 0001 1101 |  000 0000 0011 0001 1101 xxxx  | PALETTE RAM DATA UPPER         |
@@ -150,19 +150,19 @@ high or low, but 99% of the time.
 | 0x32 |     50 | 0011 0010 |  000 0000 0011 0011 0010 xxxx  | SPRITE RAM WRITE LOWER         |
 | 0x33 |     51 | 0011 0011 |  000 0000 0011 0011 0011 xxxx  | SPRITE RAM WRITE UPPER         |
 | 0x34 |     52 | 0011 0100 |  000 0000 0011 0011 0100 xxxx  | SPRITE RAM WRITE BOTH          |
-| 0x35 |     53 | 0011 0101 |  000 0000 0011 0011 0101 xxxx  | TXT RAM ADDRESS                |
-| 0x36 |     54 | 0011 0110 |  000 0000 0011 0011 0110 xxxx  | TXT RAM DATA LOWER             |
-| 0x37 |     55 | 0011 0111 |  000 0000 0011 0011 0111 xxxx  | TXT RAM DATA UPPER             |
-| 0x38 |     56 | 0011 1000 |  000 0000 0011 0011 1000 xxxx  | TXT RAM DATA BOTH              |
-| 0x39 |     57 | 0011 1001 |  000 0000 0011 0011 1001 xxxx  | TXT RAM MARCH LOWER            |
-| 0x3a |     58 | 0011 1010 |  000 0000 0011 0011 1010 xxxx  | TXT RAM MARCH UPPER            |
-| 0x3b |     59 | 0011 1011 |  000 0000 0011 0011 1011 xxxx  | TXT RAM MARCH BOTH             |
-| 0x3c |     60 | 0011 1100 |  000 0000 0011 0011 1100 xxxx  | TXT RAM OUTPUT LOWER           |
-| 0x3d |     61 | 0011 1101 |  000 0000 0011 0011 1101 xxxx  | TXT RAM OUTPUT UPPER           |
-| 0x3e |     62 | 0011 1110 |  000 0000 0011 0011 1110 xxxx  | TXT RAM OUTPUT BOTH            |
-| 0x3f |     63 | 0011 1111 |  000 0000 0011 0011 1111 xxxx  | TXT RAM WRITE LOWER            |
-| 0x40 |     64 | 0100 0000 |  000 0000 0011 0100 0000 xxxx  | TXT RAM WRITE UPPER            |
-| 0x41 |     65 | 0100 0001 |  000 0000 0011 0100 0001 xxxx  | TXT RAM WRITE BOTH             |
+| 0x35 |     53 | 0011 0101 |  000 0000 0011 0011 0101 xxxx  | TXT TILE RAM ADDRESS           |
+| 0x36 |     54 | 0011 0110 |  000 0000 0011 0011 0110 xxxx  | TXT TILE RAM DATA LOWER        |
+| 0x37 |     55 | 0011 0111 |  000 0000 0011 0011 0111 xxxx  | TXT TILE RAM DATA UPPER        |
+| 0x38 |     56 | 0011 1000 |  000 0000 0011 0011 1000 xxxx  | TXT TILE RAM DATA BOTH         |
+| 0x39 |     57 | 0011 1001 |  000 0000 0011 0011 1001 xxxx  | TXT TILE RAM MARCH LOWER       |
+| 0x3a |     58 | 0011 1010 |  000 0000 0011 0011 1010 xxxx  | TXT TILE RAM MARCH UPPER       |
+| 0x3b |     59 | 0011 1011 |  000 0000 0011 0011 1011 xxxx  | TXT TILE RAM MARCH BOTH        |
+| 0x3c |     60 | 0011 1100 |  000 0000 0011 0011 1100 xxxx  | TXT TILE RAM OUTPUT LOWER      |
+| 0x3d |     61 | 0011 1101 |  000 0000 0011 0011 1101 xxxx  | TXT TILE RAM OUTPUT UPPER      |
+| 0x3e |     62 | 0011 1110 |  000 0000 0011 0011 1110 xxxx  | TXT TILE RAM OUTPUT BOTH       |
+| 0x3f |     63 | 0011 1111 |  000 0000 0011 0011 1111 xxxx  | TXT TILE RAM WRITE LOWER       |
+| 0x40 |     64 | 0100 0000 |  000 0000 0011 0100 0000 xxxx  | TXT TILE RAM WRITE UPPER       |
+| 0x41 |     65 | 0100 0001 |  000 0000 0011 0100 0001 xxxx  | TXT TILE RAM WRITE BOTH        |
 | 0x42 |     66 | 0100 0010 |  000 0000 0011 0100 0010 xxxx  | WORK RAM ADDRESS               |
 | 0x43 |     67 | 0100 0011 |  000 0000 0011 0100 0011 xxxx  | WORK RAM DATA LOWER            |
 | 0x44 |     68 | 0100 0100 |  000 0000 0011 0100 0100 xxxx  | WORK RAM DATA UPPER            |
@@ -179,7 +179,7 @@ high or low, but 99% of the time.
 | 0x7e |    126 | 0111 1110 |  000 0000 0011 0111 1110 xxxx  | MAD ROM ADDRESS                |
 | 0x7f |    127 | 0111 1111 |  000 0000 0011 0111 1111 xxxx  | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-05-11 @ 22:26 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-28 @ 18:51 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU
@@ -212,7 +212,7 @@ On z80 the error address is `$2000 | error_code << 7`.  Error codes on z80 are 6
 | 0x3e |     62 |      0011 1111 0xxx xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 |      0011 1111 1xxx xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-03-22 @ 19:01 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-18 @ 01:29 UTC</sup>
 <!-- ec_table_sound_end -->
 
 ## MAD Notes

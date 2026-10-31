@@ -15,11 +15,11 @@ debug_hardware_menu:
 	align 1
 
 d_menu_list:
-	MENU_ENTRY fix_tile_debug, d_str_fix_tile_debug, ME_FLAG_NONE
 	MENU_ENTRY sprite_debug, d_str_sprite_debug, ME_FLAG_NONE
+	MENU_ENTRY txt_tile_debug, d_str_txt_tile_debug, ME_FLAG_NONE
 	MENU_LIST_END
 
 d_str_menu_title:		STRING "DEBUG HARDWARE MENU"
 
-d_str_fix_tile_debug:		STRING "FIX TILE DEBUG"
 d_str_sprite_debug:		STRING "SPRITE DEBUG"
+d_str_txt_tile_debug:		STRING "TXT TILE DEBUG"

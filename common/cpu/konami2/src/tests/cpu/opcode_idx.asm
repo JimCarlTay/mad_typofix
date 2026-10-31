@@ -107,7 +107,7 @@ run_opcode_test:
 		; Stack may have changed, backup and re-init.
 		; This is going to screw up whatever cc was
 		sts	r_stack
-		lds	#(WORK_RAM + WORK_RAM_SIZE)
+		lds	#(WORK_RAM_BASE + WORK_RAM_SIZE)
 
 		pshs	cc
 		pshs	dp

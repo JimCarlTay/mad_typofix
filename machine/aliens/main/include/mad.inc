@@ -1,4 +1,4 @@
-MAD_ROM_START		equ $c000
+MAD_ROM_BASE		equ $c000
 MAD_ROM_SIZE		equ $4000
 
 CURSOR_CHAR		equ $0a ; (c)
@@ -16,7 +16,7 @@ SOUND_NUM_BIT_ONE	equ $0c ; slash
 ; There aren't enough registers to save the number of passes
 ; work ram tests have run and we can't store it in work ram.
 ; Instead we need to store it in some other location..
-R_WORK_RAM_PASSES	equ TILE_RAM
+R_WORK_RAM_PASSES	equ TXT_TILE_BASE
 
 ; video dac
 VD_NUM_COLORS		equ $4		; includes all/combined

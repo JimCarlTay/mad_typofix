@@ -15,7 +15,7 @@
 ## MAD Pictures
 ![mad the main event main menu](docs/images/mad_the_main_event_main_menu.png)
 ![mad the main event video dac test](docs/images/mad_the_main_event_video_dac_test.png)<br>
-![mad the main event fix tile viewer](docs/images/mad_the_main_event_fix_tile_viewer.png)
+![mad the main event txt tile viewer](docs/images/mad_the_main_event_txt_tile_viewer.png)
 ![mad the main event sprite viewer](docs/images/mad_the_main_event_sprite_viewer.png)
 
 ## PCB Pictures
@@ -100,7 +100,7 @@ still be viable to use with a logic probe.  It just means address lines not be
 | 0x3e |     62 | 0011 1110 |      1111 0011 1110 xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 | 0011 1111 |      1111 0011 1111 xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2025-06-02 @ 02:19 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-22 @ 01:08 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU
@@ -109,7 +109,7 @@ The sound CPU is a z80.  No MAD rom exists yet for the sound CPU.
 ## MAD Notes
 
 ### Tile Layers
-There are 3 tile layers (fix, layer a, and layer b).  They each use the same set
+There are 3 tile layers (txt, layer a, and layer b).  They each use the same set
 of tiles.  When you use the tile viewer for each they will display the same
 tiles, but are on the corresponding layer.
 

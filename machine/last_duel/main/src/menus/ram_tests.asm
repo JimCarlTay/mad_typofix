@@ -17,9 +17,9 @@ ram_tests_menu:
 d_menu_list:
 	MENU_ENTRY manual_bg_tile_ram_tests, d_str_bg_tile_ram_test, ME_FLAG_NONE
 	MENU_ENTRY manual_fg_tile_ram_tests, d_str_fg_tile_ram_test, ME_FLAG_NONE
-	MENU_ENTRY manual_fix_tile_ram_tests, d_str_fix_tile_ram_test, ME_FLAG_NONE
 	MENU_ENTRY manual_palette_ram_tests, d_str_palette_ram_test, ME_FLAG_NONE
 	MENU_ENTRY manual_sprite_ram_tests, d_str_sprite_ram_test, ME_FLAG_NONE
+	MENU_ENTRY manual_txt_tile_ram_tests, d_str_txt_tile_ram_test, ME_FLAG_NONE
 	MENU_ENTRY manual_work_ram_tests, d_str_work_ram_test, ME_FLAG_NONE
 	MENU_LIST_END
 
@@ -27,7 +27,7 @@ d_str_menu_title:		STRING "RAM TESTS"
 
 d_str_bg_tile_ram_test:		STRING "BG TILE RAM TEST"
 d_str_fg_tile_ram_test:		STRING "FG TILE RAM TEST"
-d_str_fix_tile_ram_test:	STRING "FIX TILE RAM TEST"
 d_str_palette_ram_test:		STRING "PALETTE RAM TEST"
 d_str_sprite_ram_test:		STRING "SPRITE RAM TEST"
+d_str_txt_tile_ram_test:	STRING "TXT TILE RAM TEST"
 d_str_work_ram_test:		STRING "WORK RAM TEST"

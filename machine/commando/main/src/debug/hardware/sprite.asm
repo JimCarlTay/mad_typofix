@@ -8,7 +8,7 @@
 HIGHLIGHT_PALETTE_NUM	equ $6
 
 sprite_debug:
-		ld	hl, FIX_TILE_ATTR
+		ld	hl, TXT_TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 
 		; setup initial values
@@ -28,8 +28,8 @@ sprite_debug:
 		; zero out what we changed, and request a copy
 		; to remove the sprite from the screen
 		ld	bc, $0
-		ld	(SPRITE_RAM), bc
-		ld	(SPRITE_RAM + 2), bc
+		ld	(SPRITE_BASE), bc
+		ld	(SPRITE_BASE + 2), bc
 		call	wait_sprite_copy_request
 		ret
 
@@ -48,7 +48,7 @@ highlight_cb:
 		ret
 
 write_memory_cb:
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 		call	memory_write_generic_write
 
 		ld	a, $1

@@ -33,9 +33,9 @@ tile_scroll_test:
 		lda	#$a0
 		sta	REG_CONTROL
 		ldd	#$1f
-		std	LAYER_A_TILE_PALETTE + $16
+		std	LAYER_A_TILE_PALETTE_BASE + $16
 		ldd	#$3e0
-		std	LAYER_B_TILE_PALETTE + $16
+		std	LAYER_B_TILE_PALETTE_BASE + $16
 		lda	#$80
 		sta	REG_CONTROL
 

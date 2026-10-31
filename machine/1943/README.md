@@ -14,7 +14,7 @@
 
 ## MAD Pictures
 ![mad 1943 main menu](docs/images/mad_1943_main_menu.png)
-![mad 1943 fix tile viewer](docs/images/mad_1943_fix_tile_viewer.png)
+![mad 1943 txt tile viewer](docs/images/mad_1943_txt_tile_viewer.png)
 ![mad 1943 sprite viewer](docs/images/mad_1943_sprite_viewer.png)
 
 ## PCB Pictures
@@ -61,11 +61,11 @@ Z80 CPU are are 6 bits.
 <!-- ec_table_main_start -->
 | Hex  | Number | Beep Code |     Error Address (A15..A0)    |           Error Text           |
 | ---: | -----: | --------: | :----------------------------: | :----------------------------- |
-| 0x01 |      1 | 0000 0001 |      0110 0000 1xxx xxxx       | TILE RAM ADDRESS               |
-| 0x02 |      2 | 0000 0010 |      0110 0001 0xxx xxxx       | TILE RAM DATA                  |
-| 0x03 |      3 | 0000 0011 |      0110 0001 1xxx xxxx       | TILE RAM MARCH                 |
-| 0x04 |      4 | 0000 0100 |      0110 0010 0xxx xxxx       | TILE RAM OUTPUT                |
-| 0x05 |      5 | 0000 0101 |      0110 0010 1xxx xxxx       | TILE RAM WRITE                 |
+| 0x01 |      1 | 0000 0001 |      0110 0000 1xxx xxxx       | TXT TILE RAM ADDRESS           |
+| 0x02 |      2 | 0000 0010 |      0110 0001 0xxx xxxx       | TXT TILE RAM DATA              |
+| 0x03 |      3 | 0000 0011 |      0110 0001 1xxx xxxx       | TXT TILE RAM MARCH             |
+| 0x04 |      4 | 0000 0100 |      0110 0010 0xxx xxxx       | TXT TILE RAM OUTPUT            |
+| 0x05 |      5 | 0000 0101 |      0110 0010 1xxx xxxx       | TXT TILE RAM WRITE             |
 | 0x06 |      6 | 0000 0110 |      0110 0011 0xxx xxxx       | WORK RAM ADDRESS               |
 | 0x07 |      7 | 0000 0111 |      0110 0011 1xxx xxxx       | WORK RAM DATA                  |
 | 0x08 |      8 | 0000 1000 |      0110 0100 0xxx xxxx       | WORK RAM MARCH                 |
@@ -74,7 +74,7 @@ Z80 CPU are are 6 bits.
 | 0x3e |     62 | 0011 1110 |      0111 1111 0xxx xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 | 0011 1111 |      0111 1111 1xxx xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2026-01-19 @ 02:40 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-15 @ 01:20 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU

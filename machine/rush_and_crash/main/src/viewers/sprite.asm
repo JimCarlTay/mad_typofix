@@ -31,8 +31,8 @@ sprite_viewer:
 
 
 		ldd	#$0
-		std	SPRITE_RAM
-		std	SPRITE_RAM + 2
+		std	SPRITE_BASE
+		std	SPRITE_BASE + 2
 		rts
 
 ; Per MAME (reformattd)
@@ -49,7 +49,7 @@ sprite_viewer:
 value_changed_cb:
 
 		ldd	r_sprite_num
-		stb	SPRITE_RAM
+		stb	SPRITE_BASE
 
 		asla
 		asla
@@ -64,11 +64,11 @@ value_changed_cb:
 
 	.skip_sprite_flip_y:
 		ora	r_sprite_pos_x
-		sta	SPRITE_RAM + 1
+		sta	SPRITE_BASE + 1
 		lda	r_sprite_pos_x + 1
-		sta	SPRITE_RAM + 3
+		sta	SPRITE_BASE + 3
 		lda	r_sprite_pos_y
-		sta	SPRITE_RAM + 2
+		sta	SPRITE_BASE + 2
 		rts
 
 loop_input_cb:
@@ -79,9 +79,9 @@ sprite_viewer_palette_setup:
 
 		ldd	#d_palette_data
 		std	r_vblank_copy_src
-		ldd	#SPRITE_PALETTE
+		ldd	#SPRITE_PALETTE_BASE
 		std	r_vblank_copy_dst
-		ldd	#SPRITE_PALETTE_SIZE
+		ldd	#SPRITE_PALETTE_ENTRY_SIZE
 		std	r_vblank_copy_size
 
 		jsr	wait_vblank_copy

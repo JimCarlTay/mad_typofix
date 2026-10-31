@@ -16,23 +16,23 @@ k051960_zoom2_debug:
 		jsr	print_b2_return_to_menu
 
 		; sprite palette
-		ldx	#SPRITE_PALETTE + (7 * PALETTE_SIZE) + $2
+		ldx	#SPRITE_PALETTE_BASE + (7 * PALETTE_ENTRY_SIZE) + $2
 		ldd	#$ffff
 		ldw	#$f
 		RSUB	memory_fill_word
 
 		ldx	#d_sprite_data
-		ldy	#SPRITE_RAM
+		ldy	#SPRITE_BASE
 		ldd	#(4 * 8)
 		jsr	memory_copy
 
 		; grid color
-		ldx	#FIX_TILE_PALETTE + (2 * PALETTE_SIZE) + $2
+		ldx	#TXT_TILE_PALETTE_BASE + (2 * PALETTE_ENTRY_SIZE) + $2
 		ldd	#$1f
 		ldw	#$f
 		RSUB	memory_fill_word
 		clrd
-		std	FIX_TILE_PALETTE + (2 * PALETTE_SIZE) + $18
+		std	TXT_TILE_PALETTE_BASE + (2 * PALETTE_ENTRY_SIZE) + $18
 
 		ldd	#$8d62
 		lde	#SCREEN_START_Y + 3
@@ -59,15 +59,15 @@ k051960_zoom2_debug:
 		lda	r_zoom
 		lsla
 		lsla
-		sta	SPRITE_RAM + 6
-		sta	SPRITE_RAM + 14
-		sta	SPRITE_RAM + 22
-		sta	SPRITE_RAM + 30
+		sta	SPRITE_BASE + 6
+		sta	SPRITE_BASE + 14
+		sta	SPRITE_BASE + 22
+		sta	SPRITE_BASE + 30
 
-		sta	SPRITE_RAM + 4
-		sta	SPRITE_RAM + 12
-		sta	SPRITE_RAM + 20
-		sta	SPRITE_RAM + 28
+		sta	SPRITE_BASE + 4
+		sta	SPRITE_BASE + 12
+		sta	SPRITE_BASE + 20
+		sta	SPRITE_BASE + 28
 
 	.loop_input:
 		WATCHDOG
@@ -102,7 +102,7 @@ draw_grid:
 		clra
 		ldb	r_y_offset
 		RSUB	screen_seek_xy
-		leax	$800, x		; jump from fix to layer a
+		leax	$800, x		; jump from txt to layer a
 
 		ldf	#$1c
 		ldd	r_scratch

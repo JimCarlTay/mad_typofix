@@ -8,10 +8,10 @@
 sprite_debug:
 		jsr	sprite_viewer_palette_setup
 
-		move.w	#$f00f, FIX_TILE_PALETTE + FIX_TILE_PALETTE_SIZE + 2
-		move.w	#$f00f, FIX_TILE_PALETTE + FIX_TILE_PALETTE_SIZE + 4
+		move.w	#$f00f, TXT_TILE_PALETTE_BASE + TXT_TILE_PALETTE_ENTRY_SIZE + 2
+		move.w	#$f00f, TXT_TILE_PALETTE_BASE + TXT_TILE_PALETTE_ENTRY_SIZE + 4
 
-		move.l	#FIX_TILE_RAM, r_old_highlight
+		move.l	#TXT_TILE_BASE, r_old_highlight
 
 		move.w	#$00a3, r_mw_buffer
 		move.w	#$0000, r_mw_buffer + 2
@@ -36,7 +36,7 @@ highlight_cb:
 		rts
 
 write_memory_cb:
-		lea	SPRITE_RAM + $800, a0
+		lea	SPRITE_BASE, a0
 		jsr	memory_write_generic_write
 
 		move.w	#$0, REG_SPRITE_COPY_REQUEST

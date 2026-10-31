@@ -15,15 +15,15 @@ ram_tests_menu:
 	align 1
 
 d_menu_list:
-	MENU_ENTRY manual_fix_sprite_ram_tests, d_str_fix_sprite_ram_test, ME_FLAG_NONE
 	MENU_ENTRY manual_palette_ram_tests, d_str_palette_ram_test, ME_FLAG_NONE
 	MENU_ENTRY manual_tile_ram_tests, d_str_tile_ram_test, ME_FLAG_NONE
+	MENU_ENTRY manual_txt_tile_sprite_ram_tests, d_str_txt_tile_sprite_ram_test, ME_FLAG_NONE
 	MENU_ENTRY manual_work_ram_tests, d_str_work_ram_test, ME_FLAG_NONE
 	MENU_LIST_END
 
 d_str_menu_title:		STRING "RAM TESTS"
 
-d_str_fix_sprite_ram_test:	STRING "FIX/SPRITE RAM TEST"
 d_str_palette_ram_test:		STRING "PALETTE RAM TEST"
 d_str_tile_ram_test:		STRING "TILE RAM TEST"
+d_str_txt_tile_sprite_ram_test:	STRING "TXT/SPRITE RAM TEST"
 d_str_work_ram_test:		STRING "WORK RAM TEST"

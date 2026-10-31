@@ -213,6 +213,12 @@ print_string_dsub:
 		bra	.do_print
 
 	.not_dash:
+		cmpa	#'_'
+		bne	.not_underscore
+		lda	$0
+		bra	.do_print
+
+	.not_underscore:
 		cmpa	#'0'
 		blt	.do_print
 

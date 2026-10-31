@@ -9,8 +9,8 @@ sprite_debug:
 		jsr	sprite_viewer_palette_setup
 
 		; highlight color on 2nd pallette
-		move.b	#$1f, FIX_TILE_PALETTE + $100 + $3f
-		move.l	#FIX_TILE, r_old_highlight
+		move.b	#$1f, TXT_TILE_PALETTE_BASE + $100 + $3f
+		move.l	#TXT_TILE_BASE, r_old_highlight
 
 		move.l	#$ce660680, r_mw_buffer
 		move.l	#$00b00110, r_mw_buffer + 4
@@ -33,7 +33,7 @@ highlight_cb:
 		rts
 
 write_memory_cb:
-		lea	SPRITE_RAM, a0
+		lea	SPRITE_BASE, a0
 		jsr	memory_write_generic_write
 loop_cb:
 		rts

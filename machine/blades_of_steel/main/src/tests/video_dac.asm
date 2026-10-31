@@ -17,25 +17,25 @@ video_dac_test:
 		; Palette Layout
 		;  xBBB BBGG GGGR RRRR
 		; red palette setup
-		ldx	#LAYER_A_TILE_PALETTE
+		ldx	#LAYER_A_TILE_PALETTE_BASE
 		ldy	#d_palette_offsets_color0
 		ldd	#$001f
 		jsr	palette_color_setup
 
 		; green palette setup
-		ldx	#LAYER_A_TILE_PALETTE
+		ldx	#LAYER_A_TILE_PALETTE_BASE
 		ldy	#d_palette_offsets_color1
 		ldd	#$03e0
 		jsr	palette_color_setup
 
 		; blue palette setup
-		ldx	#LAYER_B_TILE_PALETTE
+		ldx	#LAYER_B_TILE_PALETTE_BASE
 		ldy	#d_palette_offsets_color0
 		ldd	#$7c00
 		jsr	palette_color_setup
 
 		; combined/all palette setup
-		ldx	#LAYER_B_TILE_PALETTE
+		ldx	#LAYER_B_TILE_PALETTE_BASE
 		ldy	#d_palette_offsets_color1
 		ldd	#$7fff
 		jsr	palette_color_setup
@@ -96,7 +96,7 @@ full_screen:
 		beq	.fill_layer_a
 
 		andd	#$fff
-		ldx	#LAYER_B_TILE
+		ldx	#LAYER_B_TILE_BASE
 		jsr	fill_tile_layer
 
 		; layer a is on top of layer b
@@ -104,7 +104,7 @@ full_screen:
 		ldd	#$0f10
 
 	.fill_layer_a:
-		ldx	#LAYER_A_TILE
+		ldx	#LAYER_A_TILE_BASE
 		jsr	fill_tile_layer
 		pulsw
 

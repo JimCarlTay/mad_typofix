@@ -8,8 +8,8 @@
 bg_tile_viewer:
 		bsr	bg_tile_viewer_palette_setup
 
-		move.w	#$8, REG_BG_SCROLL_Y
-		move.w	#$0, REG_BG_SCROLL_X
+		move.w	#$8, REG_BG_TILE_SCROLL_Y
+		move.w	#$0, REG_BG_TILE_SCROLL_X
 
 		moveq	#0, d0
 		move.w	#$7ff, d1
@@ -17,8 +17,8 @@ bg_tile_viewer:
 		lea	draw_tile_cb, a1
 		bsr	tile_8x8_viewer_handler
 
-		move.w	#$0, REG_BG_SCROLL_Y
-		move.w	#$0, REG_BG_SCROLL_X
+		move.w	#$0, REG_BG_TILE_SCROLL_Y
+		move.w	#$0, REG_BG_TILE_SCROLL_X
 
 		rts
 
@@ -27,8 +27,8 @@ bg_tile_viewer_palette_setup:
 		CPU_INTS_ENABLE
 
 		move.l	#d_palette_data, r_vblank_copy_src
-		move.l	#BG_TILE_PALETTE, r_vblank_copy_dst
-		move.w	#(BG_TILE_PALETTE_SIZE / 2), r_vblank_copy_size
+		move.l	#BG_TILE_PALETTE_BASE, r_vblank_copy_dst
+		move.w	#(BG_TILE_PALETTE_ENTRY_SIZE / 2), r_vblank_copy_size
 		jsr	wait_vblank_copy
 
 		CPU_INTS_DISABLE

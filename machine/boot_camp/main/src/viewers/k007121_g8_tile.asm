@@ -9,7 +9,7 @@ TILE_OFFSET_MASK	equ $3fff
 k007121_g8_tile_viewer:
 		RSUB	screen_init
 
-		ldy	#K007121_G8_TILE_A_PALETTE
+		ldy	#K007121_G8_LAYER_A_TILE_PALETTE_BASE
 		jsr	tvc_init
 
 		SEEK_XY	SCREEN_START_X, SCREEN_START_Y

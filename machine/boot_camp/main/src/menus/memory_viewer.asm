@@ -11,40 +11,40 @@ memory_viewer_menu:
 		jsr	menu_handler
 		rts
 
+view_k007121_g8_layer_a_tile_ram:
+		ldx	#K007121_G8_LAYER_A_TILE_BASE
+		ldy	#memory_read_k007121_g8
+		bra	view_memory_cb
+
+view_k007121_g8_layer_b_tile_ram:
+		ldx	#K007121_G8_LAYER_B_TILE_BASE
+		ldy	#memory_read_k007121_g8
+		bra	view_memory_cb
+
 view_k007121_g8_reg:
 		ldx	#$0
 		ldy	#memory_read_k007121_g8
 		bra	view_memory_cb
 
 view_k007121_g8_sprite_ram:
-		ldx	#K007121_G8_SPRITE
+		ldx	#K007121_G8_SPRITE_BASE
 		ldy	#memory_read_k007121_g8
 		bra	view_memory_cb
 
-view_k007121_g8_tile_a_ram:
-		ldx	#K007121_G8_TILE_A
-		ldy	#memory_read_k007121_g8
-		bra	view_memory_cb
+view_k007121_g15_layer_a_tile_ram:
+		ldx	#K007121_G15_LAYER_A_TILE_BASE
+		bra	view_memory
 
-view_k007121_g8_tile_b_ram:
-		ldx	#K007121_G8_TILE_B
-		ldy	#memory_read_k007121_g8
-		bra	view_memory_cb
+view_k007121_g15_layer_b_tile_ram:
+		ldx	#K007121_G15_LAYER_B_TILE_BASE
+		bra	view_memory
 
 view_k007121_g15_reg:
 		ldx	#$0
 		bra	view_memory
 
 view_k007121_g15_sprite_ram:
-		ldx	#K007121_G15_SPRITE
-		bra	view_memory
-
-view_k007121_g15_tile_a_ram:
-		ldx	#K007121_G15_TILE_A
-		bra	view_memory
-
-view_k007121_g15_tile_b_ram:
-		ldx	#K007121_G15_TILE_B
+		ldx	#K007121_G15_SPRITE_BASE
 		bra	view_memory
 
 view_mmio_input:
@@ -52,11 +52,11 @@ view_mmio_input:
 		bra	view_memory
 
 view_palette_ram:
-		ldx	#PALETTE_RAM
+		ldx	#PALETTE_BASE
 		bra	view_memory
 
 view_rom_space:
-		ldx	#$8000
+		ldx	#ROM_BASE
 		bra	view_memory
 
 view_rom_bank_space:
@@ -64,7 +64,7 @@ view_rom_bank_space:
 		bra	view_memory
 
 view_work_ram:
-		ldx	#WORK_RAM
+		ldx	#WORK_RAM_BASE
 		bra	view_memory
 
 view_memory:
@@ -91,14 +91,14 @@ memory_read_k007121_g8:
 	section data
 
 d_menu_list:
+	MENU_ENTRY view_k007121_g8_layer_a_tile_ram, d_str_k007121_g8_layer_a_tile, ME_FLAG_NONE
+	MENU_ENTRY view_k007121_g8_layer_b_tile_ram, d_str_k007121_g8_layer_b_tile, ME_FLAG_NONE
 	MENU_ENTRY view_k007121_g8_reg, d_str_k007121_g8_reg, ME_FLAG_NONE
 	MENU_ENTRY view_k007121_g8_sprite_ram, d_str_k007121_g8_sprite, ME_FLAG_NONE
-	MENU_ENTRY view_k007121_g8_tile_a_ram, d_str_k007121_g8_tile_a, ME_FLAG_NONE
-	MENU_ENTRY view_k007121_g8_tile_b_ram, d_str_k007121_g8_tile_b, ME_FLAG_NONE
+	MENU_ENTRY view_k007121_g15_layer_a_tile_ram, d_str_k007121_g15_layer_a_tile, ME_FLAG_NONE
+	MENU_ENTRY view_k007121_g15_layer_b_tile_ram, d_str_k007121_g15_layer_b_tile, ME_FLAG_NONE
 	MENU_ENTRY view_k007121_g15_reg, d_str_k007121_g15_reg, ME_FLAG_NONE
 	MENU_ENTRY view_k007121_g15_sprite_ram, d_str_k007121_g15_sprite, ME_FLAG_NONE
-	MENU_ENTRY view_k007121_g15_tile_a_ram, d_str_k007121_g15_tile_a, ME_FLAG_NONE
-	MENU_ENTRY view_k007121_g15_tile_b_ram, d_str_k007121_g15_tile_b, ME_FLAG_NONE
 	MENU_ENTRY view_mmio_input, d_str_mmio_input, ME_FLAG_NONE
 	MENU_ENTRY view_palette_ram, d_str_palette_ram, ME_FLAG_NONE
 	MENU_ENTRY view_rom_space, d_str_rom_space, ME_FLAG_NONE
@@ -108,14 +108,14 @@ d_menu_list:
 
 d_str_menu_title:		STRING "MEMORY VIEWER MENU"
 
+d_str_k007121_g8_layer_a_tile:	STRING "K007121 G8 LAYER A TILE"
+d_str_k007121_g8_layer_b_tile:	STRING "K007121 G8 LAYER B TILE"
 d_str_k007121_g8_reg:		STRING "K007121 G8 REG"
 d_str_k007121_g8_sprite:	STRING "K007121 G8 SPRITE"
-d_str_k007121_g8_tile_a:	STRING "K007121 G8 TILE A"
-d_str_k007121_g8_tile_b:	STRING "K007121 G8 TILE B"
+d_str_k007121_g15_layer_a_tile:	STRING "K007121 G15 LAYER A TILE"
+d_str_k007121_g15_layer_b_tile:	STRING "K007121 G15 LAYER B TILE"
 d_str_k007121_g15_reg:		STRING "K007121 G15 REG"
 d_str_k007121_g15_sprite:	STRING "K007121 G15 SPRITE"
-d_str_k007121_g15_tile_a:	STRING "K007121 G15 TILE A"
-d_str_k007121_g15_tile_b:	STRING "K007121 G15 TILE B"
 d_str_mmio_input:		STRING "MMIO INPUT"
 d_str_palette_ram:		STRING "PALETTE RAM"
 d_str_rom_space:		STRING "ROM SPACE"

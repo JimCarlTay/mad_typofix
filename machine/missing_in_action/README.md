@@ -19,7 +19,7 @@ user that does have the board.
 ## MAD Pictures
 ![mad missing_in_action main menu](docs/images/mad_missing_in_action_main_menu.png)
 ![mad missing_in_action video dac test](docs/images/mad_missing_in_action_video_dac_test.png)<br>
-![mad missing_in_action fix tile viewer](docs/images/mad_missing_in_action_fix_tile_viewer.png)
+![mad missing_in_action txt tile viewer](docs/images/mad_missing_in_action_txt_tile_viewer.png)
 ![mad missing_in_action sprite viewer](docs/images/mad_missing_in_action_sprite_viewer.png)
 
 ## PCB Pictures
@@ -108,7 +108,7 @@ still be viable to use with a logic probe.  It just means address lines not be
 | 0x7e |    126 | 0111 1110 |  000 0000 0011 0111 1110 xxxx  | MAD ROM ADDRESS                |
 | 0x7f |    127 | 0111 1111 |  000 0000 0011 0111 1111 xxxx  | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-06 @ 01:05 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-28 @ 03:51 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU
@@ -130,7 +130,7 @@ etc
 ```
 
 ### Tile Layers
-There are 3 tile layers (fix, layer a, and layer b).  They each use the same set
+There are 3 tile layers (txt, layer a, and layer b).  They each use the same set
 of tiles.  When you use the tile viewer for each they will display the same
 tiles, but are on the corresponding layer.
 
@@ -150,4 +150,4 @@ the player should be correct, but maybe completely wrong for other sprites.
 ## MAME vs Hardware
 Nothing that required a MAME specific build
 
-**TODO** validate MAME's palette code for the fix layer, seems weird.
+**TODO** validate MAME's palette code for the txt layer, seems weird.

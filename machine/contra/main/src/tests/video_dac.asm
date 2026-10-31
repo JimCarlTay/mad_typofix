@@ -83,9 +83,9 @@ full_screen:
 		; tile layers to fill the screen with the blue or white
 		; color
 		pshs	y
-		ldf	#PALETTE_SIZE
-		ldx	#K007121_10E_TILE_A_PALETTE
-		ldy	#K007121_18E_TILE_A_PALETTE
+		ldf	#PALETTE_ENTRY_SIZE
+		ldx	#K007121_10E_LAYER_A_TILE_PALETTE_BASE
+		ldy	#K007121_18E_LAYER_A_TILE_PALETTE_BASE
 
 	.loop_next_palette_byte:
 		lde	, y+
@@ -97,10 +97,10 @@ full_screen:
 		ord	#$30
 
 	.tile_a_10e:
-		ldx	#K007121_10E_TILE_A
+		ldx	#K007121_10E_LAYER_A_TILE_BASE
 		jsr	fill_tile_layer
 
-		ldx	#K007121_10E_TILE_B
+		ldx	#K007121_10E_LAYER_B_TILE_BASE
 		jsr	fill_tile_layer
 		pulsw
 
@@ -152,7 +152,7 @@ full_screen:
 ;  a = data for LAYER_X_TILE_ATTR
 ;  b = data for LAYER_X_TILE
 fill_tile_layer:
-		ldw	#K007121_10E_TILE_A_SIZE
+		ldw	#K007121_10E_LAYER_A_TILE_SIZE
 	.loop_next_address:
 		sta	-$400, x
 		stb	, x+
@@ -267,25 +267,25 @@ palette_setup:
 		; Palette Layout
 		;  xBBB BBGG GGGR RRRR
 		; red palette setup
-		ldx	#K007121_10E_TILE_A_PALETTE
+		ldx	#K007121_10E_LAYER_A_TILE_PALETTE_BASE
 		ldy	#d_palette_offsets_color0
 		ldd	#$001f
 		jsr	palette_color_setup
 
 		; green palette setup
-		ldx	#K007121_10E_TILE_A_PALETTE
+		ldx	#K007121_10E_LAYER_A_TILE_PALETTE_BASE
 		ldy	#d_palette_offsets_color1
 		ldd	#$03e0
 		jsr	palette_color_setup
 
 		; blue palette setup
-		ldx	#K007121_18E_TILE_A_PALETTE
+		ldx	#K007121_18E_LAYER_A_TILE_PALETTE_BASE
 		ldy	#d_palette_offsets_color0
 		ldd	#$7c00
 		jsr	palette_color_setup
 
 		; combined/all palette setup
-		ldx	#K007121_18E_TILE_A_PALETTE
+		ldx	#K007121_18E_LAYER_A_TILE_PALETTE_BASE
 		ldy	#d_palette_offsets_color1
 		ldd	#$7fff
 		jsr	palette_color_setup

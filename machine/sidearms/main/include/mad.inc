@@ -11,7 +11,7 @@ SOUND_NUM_BIT_ONE	equ $06
 ; There aren't enough registers to save the number of passes
 ; work ram tests have run and we can't store it in work ram.
 ; Instead we need to store it in some other location..
-R_WORK_RAM_PASSES	equ TILE_RAM
+R_WORK_RAM_PASSES	equ TXT_TILE_BASE
 
 	; we are only allowed to use a/de registers
 	macro SOUND_BIT_DELAY

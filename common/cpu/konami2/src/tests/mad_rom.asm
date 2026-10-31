@@ -64,14 +64,14 @@ mad_rom_crc16_test_dsub:
 		ldy	#d_str_testing_mad_rom_crc16
 		PSUB	print_string
 
-		ldy	#MAD_ROM_START
+		ldy	#MAD_ROM_BASE
 
 		; vasm doesnt seem to like doing
-		; ldx	#(MAD_ROM_MIRROR_ADDRESS - MAD_ROM_START)
+		; ldx	#(MAD_ROM_MIRROR_ADDRESS - MAD_ROM_BASE)
 		ldx	#MAD_ROM_MIRROR_ADDRESS
 		; and no tfr d
-		leax	-MAD_ROM_START/2, x
-		leax	-MAD_ROM_START/2, x
+		leax	-MAD_ROM_BASE/2, x
+		leax	-MAD_ROM_BASE/2, x
 		ldd	#$0
 
 	.loop_next_byte:

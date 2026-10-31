@@ -26,7 +26,7 @@ sprite_debug:
 		ld	a, CTRL_ENABLE_SPRITE_ROMS|CTRL_ENABLE_TILE_ROMS
 		out	(IO_CONTROL), a
 
-		ld	hl, TILE_ATTR_RAM
+		ld	hl, TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 
 		; setup initial values
@@ -88,7 +88,7 @@ write_memory_cb:
 		out	(IO_VIDEO_BANK), a
 
 		ld	iy, r_mw_buffer
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 
 		ld	b, $4
 	.loop_next_byte_sprite:

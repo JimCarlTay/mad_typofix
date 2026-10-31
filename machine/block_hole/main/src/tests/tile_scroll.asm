@@ -32,9 +32,9 @@ tile_scroll_test:
 		; setup text color on layer a/b
 		setln	#(SETLN_WATCHDOG_POLL|SETLN_SELECT_RAM_PALETTE)
 		ldd	#$1f
-		std	LAYER_A_TILE_PALETTE + $16
+		std	LAYER_A_TILE_PALETTE_BASE + $16
 		ldd	#$3e0
-		std	LAYER_B_TILE_PALETTE + $16
+		std	LAYER_B_TILE_PALETTE_BASE + $16
 		setln	#(SETLN_WATCHDOG_POLL|SETLN_SELECT_RAM_WORK)
 
 	.loop_test:

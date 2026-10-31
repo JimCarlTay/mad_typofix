@@ -27,10 +27,10 @@ fg_tile_viewer:
 ;  xxxx BBBB (palette ext ram)
 fg_palette_setup:
 
-		lea	PALETTE_RAM+(PALETTE_SIZE*PALETTE_NUM), a0
-		lea	PALETTE_EXT_RAM+(PALETTE_SIZE*PALETTE_NUM), a1
+		lea	PALETTE_BASE+(PALETTE_ENTRY_SIZE*PALETTE_NUM), a0
+		lea	PALETTE_EXT_BASE+(PALETTE_ENTRY_SIZE*PALETTE_NUM), a1
 		lea	d_palette_data, a2
-		moveq	#(PALETTE_SIZE/2 - 1), d0
+		moveq	#(PALETTE_ENTRY_SIZE/2 - 1), d0
 
 	.loop_next_color:
 		move.w	(a2)+, d1
@@ -65,4 +65,4 @@ d_palette_data:
 	dc.w	$06c4, $0c64, $0b39, $02cb, $0e94, $036b, $04d8
 	dc.w	$064c, $050d
 
-d_str_title: 	STRING "FG TILE VIEWER"
+d_str_title:	STRING "FG TILE VIEWER"

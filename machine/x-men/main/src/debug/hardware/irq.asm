@@ -10,9 +10,9 @@ irq_debug:
 		RSUB	print_xy_string_list
 
 		; highlight color on 2nd pallette
-		move.w	#$1f, FIX_TILE_PALETTE + PALETTE_SIZE + $10
-		move.w	#$1f, FIX_TILE_PALETTE + PALETTE_SIZE + $12
-		move.l	#FIX_TILE_PALETTE, r_old_highlight
+		move.w	#$1f, TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $10
+		move.w	#$1f, TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $12
+		move.l	#TXT_TILE_PALETTE_BASE, r_old_highlight
 
 		move.w	#$0, r_irq3_count
 		move.w	#$0, r_irq5_count

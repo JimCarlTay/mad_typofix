@@ -12,21 +12,21 @@ sprite_debug:
 
 		ld	hl, d_palette_data
 		ld	(r_nmi_copy_src), hl
-		ld	hl, FIX_TILE_PALETTE + (FIX_TILE_PALETTE_SIZE / 2)
+		ld	hl, TXT_TILE_PALETTE_BASE + (TXT_TILE_PALETTE_ENTRY_SIZE / 2)
 		ld	(r_nmi_copy_dst), hl
-		ld	a, FIX_TILE_PALETTE_SIZE / 2
+		ld	a, TXT_TILE_PALETTE_ENTRY_SIZE / 2
 		ld	(r_nmi_copy_size), a
 		call	wait_nmi_copy
 
 		ld	hl, d_palette_ext_data
 		ld	(r_nmi_copy_src), hl
-		ld	hl, FIX_TILE_PALETTE_EXT + (FIX_TILE_PALETTE_SIZE / 2)
+		ld	hl, TXT_TILE_PALETTE_EXT_BASE + (TXT_TILE_PALETTE_ENTRY_SIZE / 2)
 		ld	(r_nmi_copy_dst), hl
-		ld	a, FIX_TILE_PALETTE_SIZE / 2
+		ld	a, TXT_TILE_PALETTE_ENTRY_SIZE / 2
 		ld	(r_nmi_copy_size), a
 		call	wait_nmi_copy
 
-		ld	hl, FIX_TILE_ATTR
+		ld	hl, TXT_TILE_ATTR_BASE
 		ld	(r_old_highlight), hl
 
 		RS_SD_SETUP
@@ -38,8 +38,8 @@ sprite_debug:
 		call	memory_write_handler
 
 		ld	bc, $f8
-		ld	(SPRITE_RAM), bc
-		ld	(SPRITE_RAM + 2), bc
+		ld	(SPRITE_BASE), bc
+		ld	(SPRITE_BASE + 2), bc
 
 		ld	bc, $3ff
 		RSUB	delay
@@ -64,7 +64,7 @@ highlight_cb:
 		ret
 
 write_memory_cb:
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
 		call	memory_write_generic_write
 loop_cb:
 		ret

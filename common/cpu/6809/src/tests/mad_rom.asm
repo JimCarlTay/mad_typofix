@@ -77,12 +77,12 @@ mad_rom_crc16_test_dsub:
 		PSUB	print_string
 	endif
 
-		ldy	#MAD_ROM_START
+		ldy	#MAD_ROM_BASE
 
 		; vasm doesnt seem to like doing
-		; ldx	#(MAD_ROM_MIRROR_ADDRESS - MAD_ROM_START)
+		; ldx	#(MAD_ROM_MIRROR_ADDRESS - MAD_ROM_BASE)
 		ldd	#MAD_ROM_MIRROR_ADDRESS
-		subd	#MAD_ROM_START
+		subd	#MAD_ROM_BASE
 		tfr	d, x
 		ldd	#$0
 

@@ -12,36 +12,36 @@ memory_viewer_menu:
 		ret
 
 view_bg_tile_ram:
-		ld	ix, BG_TILE
+		ld	ix, BG_TILE_BASE
 		jr	view_memory
 
 view_bg_tile_attr_ram:
-		ld	ix, BG_TILE_ATTR
+		ld	ix, BG_TILE_ATTR_BASE
 		jr	view_memory
 
-
-view_fix_tile_ram:
-		ld	ix, FIX_TILE
-		jr	view_memory
-
-view_fix_tile_attr_ram:
-		ld	ix, FIX_TILE_ATTR
-		jr	view_memory
 
 view_rom_space:
-		ld	ix, $0
+		ld	ix, ROM_BASE
 		jr	view_memory
 
 view_sprite_ram:
-		ld	ix, SPRITE_RAM
+		ld	ix, SPRITE_BASE
+		jr	view_memory
+
+view_txt_tile_ram:
+		ld	ix, TXT_TILE_BASE
+		jr	view_memory
+
+view_txt_tile_attr_ram:
+		ld	ix, TXT_TILE_ATTR_BASE
 		jr	view_memory
 
 view_work_ram:
-		ld	ix, WORK_RAM
+		ld	ix, WORK_RAM_BASE
 		jr	view_memory
 
 view_work_high_ram:
-		ld	ix, WORK_HIGH_RAM
+		ld	ix, WORK_HIGH_RAM_BASE
 
 view_memory:
 		ld	iy, $0			; no callback
@@ -53,20 +53,20 @@ view_memory:
 d_menu_list:
 	MENU_ENTRY view_bg_tile_ram, d_str_bg_tile_ram, ME_FLAG_NONE
 	MENU_ENTRY view_bg_tile_attr_ram, d_str_bg_tile_attr_ram, ME_FLAG_NONE
-	MENU_ENTRY view_fix_tile_ram, d_str_fix_tile_ram, ME_FLAG_NONE
-	MENU_ENTRY view_fix_tile_attr_ram, d_str_fix_tile_attr_ram, ME_FLAG_NONE
+	MENU_ENTRY view_txt_tile_ram, d_str_txt_tile_ram, ME_FLAG_NONE
+	MENU_ENTRY view_txt_tile_attr_ram, d_str_txt_tile_attr_ram, ME_FLAG_NONE
 	MENU_ENTRY view_rom_space, d_str_rom_space, ME_FLAG_NONE
 	MENU_ENTRY view_sprite_ram, d_str_sprite_ram, ME_FLAG_NONE
 	MENU_ENTRY view_work_ram, d_str_work_ram, ME_FLAG_NONE
 	MENU_ENTRY view_work_high_ram, d_str_work_high_ram, ME_FLAG_NONE
 	MENU_LIST_END
 
-d_str_menu_title:	STRING "MEMORY VIEWER MENU"
+d_str_menu_title:		STRING "MEMORY VIEWER MENU"
 
 d_str_bg_tile_ram:		STRING "BG TILE RAM"
 d_str_bg_tile_attr_ram:		STRING "BG TILE ATTR RAM"
-d_str_fix_tile_ram:		STRING "FIX TILE RAM"
-d_str_fix_tile_attr_ram:	STRING "FIX TILE ATTR RAM"
+d_str_txt_tile_ram:		STRING "TXT TILE RAM"
+d_str_txt_tile_attr_ram:	STRING "TXT TILE ATTR RAM"
 d_str_rom_space:		STRING "ROM SPACE"
 d_str_sprite_ram:		STRING "SPRITE RAM"
 d_str_work_ram:			STRING "WORK RAM"

@@ -19,7 +19,7 @@ bg_tile_scroll_test:
 		ld	(REG_BG_SCROLL_Y_HIGH), a
 
 		ld	a, $02
-		ld	(BG_TILE_RAM + $107), a
+		ld	(BG_TILE_BASE + $107), a
 
 	.loop_test:
 		WATCHDOG
@@ -45,6 +45,13 @@ bg_tile_scroll_test:
 
 		bit	INPUT_B2_BIT, a
 		jr	z, .b2_not_pressed
+
+		ld	a, $0
+		ld	(REG_BG_SCROLL_X_LOW), a
+		ld	(REG_BG_SCROLL_X_HIGH), a
+		ld	(REG_BG_SCROLL_Y_LOW), a
+		ld	(REG_BG_SCROLL_Y_HIGH), a
+
 		ret
 
 	.b2_not_pressed:

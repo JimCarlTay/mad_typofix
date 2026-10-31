@@ -65,7 +65,7 @@ work_ram_address_test_dsub:
 		ldd	#$1		; offset
 		ldy	#$1		; counter (lower byte)
 
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 		stb	, x+		; 0 address requires special processing
 
 	.loop_next_write_address:
@@ -81,10 +81,10 @@ work_ram_address_test_dsub:
 		rola
 
 		; setup x
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 		leax	d, x
 
-		cmpx	#(WORK_RAM + WORK_RAM_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		blt	.loop_next_write_address
 
 
@@ -92,7 +92,7 @@ work_ram_address_test_dsub:
 		ldd	#$1
 		ldy	#$1
 
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 		cmpb	, x		; 0 address requires special processing
 		bne	.test_failed
 
@@ -112,10 +112,10 @@ work_ram_address_test_dsub:
 		rola
 
 		; setup x
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 		leax	d, x
 
-		cmpx	#(WORK_RAM + WORK_RAM_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		blt	.loop_next_read_address
 		DSUB_RETURN
 
@@ -165,10 +165,10 @@ work_ram_address_test_dsub:
 		SEEK_XY	0, SCREEN_B2_Y
 		PSUB	print_clear_line
 
-		lda	#EC_WORK_RAM_ADDRESS
+		lda	#EC_WORK_RC_ADDRESS
 		PSUB	sound_play_byte
 
-		lda	#EC_WORK_RAM_ADDRESS
+		lda	#EC_WORK_RC_ADDRESS
 		jmp	error_address
 
 work_ram_data_test_dsub:
@@ -178,17 +178,17 @@ work_ram_data_test_dsub:
 		WATCHDOG
 		lda	,y+
 
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 	.loop_next_write_address:
 		sta	,x+
-		cmpx	#(WORK_RAM + WORK_RAM_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		bne	.loop_next_write_address
 
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 	.loop_next_read_address:
 		cmpa	,x+
 		bne	.test_failed
-		cmpx	#(WORK_RAM + WORK_RAM_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		bne	.loop_next_read_address
 
 		cmpa	#$ff	; last pattern
@@ -245,10 +245,10 @@ work_ram_data_test_dsub:
 		SEEK_XY	0, SCREEN_B2_Y
 		PSUB	print_clear_line
 
-		lda	#EC_WORK_RAM_DATA
+		lda	#EC_WORK_RC_DATA
 		PSUB	sound_play_byte
 
-		lda	#EC_WORK_RAM_DATA
+		lda	#EC_WORK_RC_DATA
 		jmp	error_address
 
 ; This is testing for dead output from whatever
@@ -260,7 +260,7 @@ work_ram_data_test_dsub:
 ; we loop $64 times trying to catch 2 different
 ; optargs being placed into 'a' in a row.
 work_ram_output_test_dsub:
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 		tfr	x, y
 		ldb	#$64
 
@@ -290,32 +290,32 @@ work_ram_output_test_dsub:
 		SEEK_XY	0, SCREEN_B2_Y
 		PSUB	print_clear_line
 
-		lda	#EC_WORK_RAM_OUTPUT
+		lda	#EC_WORK_RC_OUTPUT
 		PSUB	sound_play_byte
 
-		lda	#EC_WORK_RAM_OUTPUT
+		lda	#EC_WORK_RC_OUTPUT
 		jmp	error_address
 
 work_ram_march_test_dsub:
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 		lda	#$0
 
 	.loop_fill_zero:
 		sta	, x+
-		cmpx	#(WORK_RAM + WORK_RAM_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		bne	.loop_fill_zero
 		WATCHDOG
 
 		lda	#$0
 		ldb	#$ff
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 
 	.loop_up_test:
 		cmpa	, x
 		bne	.test_failed_up
 
 		stb	, x+
-		cmpx	#(WORK_RAM + WORK_RAM_SIZE)
+		cmpx	#(WORK_RC_BASE + WORK_RC_SIZE)
 		bne	.loop_up_test
 		WATCHDOG
 
@@ -325,7 +325,7 @@ work_ram_march_test_dsub:
 		cmpb	, x
 		bne	.test_failed_down
 		leax	-1, x
-		cmpx	#(WORK_RAM - 1)
+		cmpx	#(WORK_RC_BASE - 1)
 		bne	.loop_down_test
 		WATCHDOG
 		DSUB_RETURN
@@ -377,10 +377,10 @@ work_ram_march_test_dsub:
 		SEEK_XY	0, SCREEN_B2_Y
 		PSUB	print_clear_line
 
-		lda	#EC_WORK_RAM_MARCH
+		lda	#EC_WORK_RC_MARCH
 		PSUB	sound_play_byte
 
-		lda	#EC_WORK_RAM_MARCH
+		lda	#EC_WORK_RC_MARCH
 		jmp	error_address
 
 ; - reads a byte from the memory address
@@ -391,7 +391,7 @@ work_ram_march_test_dsub:
 work_ram_write_test_dsub:
 		WATCHDOG
 
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 		lda	, x
 		tfr	a, b
 		comb
@@ -409,10 +409,10 @@ work_ram_write_test_dsub:
 		SEEK_XY	0, SCREEN_B2_Y
 		PSUB	print_clear_line
 
-		lda	#EC_WORK_RAM_WRITE
+		lda	#EC_WORK_RC_WRITE
 		PSUB	sound_play_byte
 
-		lda	#EC_WORK_RAM_WRITE
+		lda	#EC_WORK_RC_WRITE
 		jmp	error_address
 
 	.test_passed:

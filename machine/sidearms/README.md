@@ -16,7 +16,7 @@
 
 ## MAD Pictures
 ![mad sidearms main menu](docs/images/mad_sidearms_main_menu.png)
-![mad sidearms fix tile viewer](docs/images/mad_sidearms_fix_tile_viewer.png)<bnr>
+![mad sidearms txt tile viewer](docs/images/mad_sidearms_txt_tile_viewer.png)<bnr>
 ![mad sidearms sprite viewer](docs/images/mad_sidearms_sprite_viewer.png)
 ![mad sidearms starfield viewer](docs/images/mad_sidearms_starfield_viewer.png)
 
@@ -82,7 +82,7 @@ Z80 CPU are are 6 bits.
 | 0x3e |     62 | 0011 1110 |      0111 1111 0xxx xxxx       | MAD ROM ADDRESS                |
 | 0x3f |     63 | 0011 1111 |      0111 1111 1xxx xxxx       | MAD ROM CRC32                  |
 
-<sup>Table last updated by gen-error-codes-markdown-table on 2026-01-25 @ 03:21 UTC</sup>
+<sup>Table last updated by gen-error-codes-markdown-table on 2026-10-17 @ 17:18 UTC</sup>
 <!-- ec_table_main_end -->
 
 ### Sound CPU
@@ -106,7 +106,7 @@ there was a write.  When a write happens it will cause the starfield to scroll
 to the left or up depending how which register (X or Y) is written to.
 
 ### No Video DAC Test
-It should be possible to make one, but will be a pita to do.  Fix tile only has
+It should be possible to make one, but will be a pita to do.  TXT tile only has
 3 colors per palette and there are only 3 solid blocks.
 
 ## MAME vs Hardware

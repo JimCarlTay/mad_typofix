@@ -1,27 +1,33 @@
-ROM_START			equ $0
+ROM_BASE			equ $0
 ROM_SIZE			equ $4000
 
-SPRITE_RAM			equ $d000
-SPRITE_RAM_SIZE			equ $200
+; RAM CHIPS
+; scroll ram seems to be $40 in size, but only the first $20 can be read
+SCROLL_RC_BASE			equ $e000
+SCROLL_RC_SIZE			equ $20
+SCROLL_RC_ADDR_LINES		equ 5
 
-TILE_RAM			equ $c800
-TILE_RAM_SIZE			equ $800
-TILE_ATTR_RAM			equ $c000
-TILE_ATTR_RAM_SIZE		equ $800
+WORK_RC_BASE			equ $c000
+WORK_RC_SIZE			equ $2000
+WORK_RC_ADDR_LINES		equ 13
 
-; scroll ram seems to be $40 in size, but
-; only the first $20 can be read
-SCROLL_RAM			equ $e000
-SCROLL_RAM_SIZE			equ $20
-SCROLL_RAM_ADDRESS_LINES	equ 5
+; MEMORY REGIONS
+SCROLL_BASE			equ $e000
+SCROLL_SIZE			equ $20
 
-WORK_RAM			equ $d200
+SPRITE_BASE			equ WORK_RC_BASE + $1000
+SPRITE_SIZE			equ $200
+
+TILE_BASE			equ WORK_RC_BASE + $800
+TILE_SIZE			equ $800
+
+TILE_ATTR_BASE			equ WORK_RC_BASE
+TILE_ATTR_SIZE			equ $800
+
+WORK_RAM_BASE			equ WORK_RC_BASE + $1200
 WORK_RAM_SIZE			equ $300
 
-WORK_RAM_CHIP			equ $c000
-WORK_RAM_CHIP_SIZE		equ $2000
-WORK_RAM_CHIP_ADDRESS_LINES	equ 13
-
+; REG/IO
 REG_CONTROL			equ $e044
 REG_WATCHDOG			equ $f600
 

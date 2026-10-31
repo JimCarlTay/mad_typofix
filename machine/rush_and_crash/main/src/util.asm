@@ -13,8 +13,8 @@ sprite_ram_clear:
 
 		jsr	wait_irq
 
-		ldd	#SPRITE_RAM_SIZE / $80
-		ldy	#SPRITE_RAM
+		ldd	#SPRITE_SIZE / $80
+		ldy	#SPRITE_BASE
 
 	.loop_next_block:
 		pshs	d, y

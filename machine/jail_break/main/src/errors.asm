@@ -7,16 +7,16 @@
 	section data
 
 d_ec_list:
-	EC_ENTRY EC_SCROLL_RAM_ADDRESS, PRINT_ERROR_MEMORY, d_str_scroll_ram_address
-	EC_ENTRY EC_SCROLL_RAM_DATA, PRINT_ERROR_MEMORY, d_str_scroll_ram_data
-	EC_ENTRY EC_SCROLL_RAM_MARCH, PRINT_ERROR_MEMORY, d_str_scroll_ram_march
-	EC_ENTRY EC_SCROLL_RAM_OUTPUT, PRINT_ERROR_ADDRESS, d_str_scroll_ram_output
-	EC_ENTRY EC_SCROLL_RAM_WRITE, PRINT_ERROR_ADDRESS, d_str_scroll_ram_write
+	EC_ENTRY EC_TILE_SCROLL_RC_ADDRESS, PRINT_ERROR_MEMORY, d_str_tile_scroll_ram_address
+	EC_ENTRY EC_TILE_SCROLL_RC_DATA, PRINT_ERROR_MEMORY, d_str_tile_scroll_ram_data
+	EC_ENTRY EC_TILE_SCROLL_RC_MARCH, PRINT_ERROR_MEMORY, d_str_tile_scroll_ram_march
+	EC_ENTRY EC_TILE_SCROLL_RC_OUTPUT, PRINT_ERROR_ADDRESS, d_str_tile_scroll_ram_output
+	EC_ENTRY EC_TILE_SCROLL_RC_WRITE, PRINT_ERROR_ADDRESS, d_str_tile_scroll_ram_write
 	EC_LIST_END
 
-d_str_scroll_ram_address:	STRING "SCROLL RAM ADDRESS"
-d_str_scroll_ram_data:		STRING "SCROLL RAM DATA"
-d_str_scroll_ram_march:		STRING "SCROLL RAM MARCH"
-d_str_scroll_ram_output:	STRING "SCROLL RAM DEAD OUTPUT"
-d_str_scroll_ram_write:		STRING "SCROLL RAM WRITE"
+d_str_tile_scroll_ram_address:		STRING "TILE SCROLL RAM ADDRESS"
+d_str_tile_scroll_ram_data:		STRING "TILE SCROLL RAM DATA"
+d_str_tile_scroll_ram_march:		STRING "TILE SCROLL RAM MARCH"
+d_str_tile_scroll_ram_output:		STRING "TILE SCROLL RAM DEAD OUTPUT"
+d_str_tile_scroll_ram_write:		STRING "TILE SCROLL RAM WRITE"
 

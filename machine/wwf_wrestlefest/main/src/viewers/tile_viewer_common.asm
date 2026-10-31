@@ -8,7 +8,7 @@
 ;  a0 = palette ram start address
 tvc_palette_setup:
 		lea	d_palette_data, a1
-		moveq	#(PALETTE_SIZE/8 - 1), d0
+		moveq	#(PALETTE_ENTRY_SIZE/8 - 1), d0
 
 	.loop_next_color:
 		move.w	(a1)+, (a0)+

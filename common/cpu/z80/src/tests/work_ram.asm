@@ -23,45 +23,45 @@ auto_work_ram_tests_dsub:
 		PSUB	print_string
 	endif
 
-		ld	hl, WORK_RAM_CHIP
+		ld	hl, WORK_RC_BASE
 		PSUB	memory_output_test
 		jp	nz, .test_failed_output
 
-		ld	hl, WORK_RAM_CHIP
+		ld	hl, WORK_RC_BASE
 		PSUB	memory_write_test
 		jp	nz, .test_failed_write
 
-		ld	hl, WORK_RAM_CHIP
-		ld	de, WORK_RAM_CHIP_SIZE
+		ld	hl, WORK_RC_BASE
+		ld	de, WORK_RC_SIZE
 		ld	b, $00
 		PSUB	memory_data_pattern_test
 		jp	nz, .test_failed_data
 
-		ld	hl, WORK_RAM_CHIP
-		ld	de, WORK_RAM_CHIP_SIZE
+		ld	hl, WORK_RC_BASE
+		ld	de, WORK_RC_SIZE
 		ld	b, $55
 		PSUB	memory_data_pattern_test
 		jp	nz, .test_failed_data
 
-		ld	hl, WORK_RAM_CHIP
-		ld	de, WORK_RAM_CHIP_SIZE
+		ld	hl, WORK_RC_BASE
+		ld	de, WORK_RC_SIZE
 		ld	b, $aa
 		PSUB	memory_data_pattern_test
 		jp	nz, .test_failed_data
 
-		ld	hl, WORK_RAM_CHIP
-		ld	de, WORK_RAM_CHIP_SIZE
+		ld	hl, WORK_RC_BASE
+		ld	de, WORK_RC_SIZE
 		ld	b, $ff
 		PSUB	memory_data_pattern_test
 		jp	nz, .test_failed_data
 
-		ld	hl, WORK_RAM_CHIP
-		ld	b, WORK_RAM_CHIP_ADDRESS_LINES
+		ld	hl, WORK_RC_BASE
+		ld	b, WORK_RC_ADDR_LINES
 		PSUB	memory_address_test
 		jp	nz, .test_failed_address
 
-		ld	hl, WORK_RAM_CHIP
-		ld	de, WORK_RAM_CHIP_SIZE
+		ld	hl, WORK_RC_BASE
+		ld	de, WORK_RC_SIZE
 		PSUB	memory_march_test
 		jp	nz, .test_failed_march
 		DSUB_RETURN
@@ -80,11 +80,11 @@ auto_work_ram_tests_dsub:
 		ld	de, d_str_work_ram_address
 		PSUB	print_string
 
-		ld	b, EC_WORK_RAM_ADDRESS
+		ld	b, EC_WORK_RC_ADDRESS
 		PSUB	sound_play_byte
 	endif
 
-		ld	a, EC_WORK_RAM_ADDRESS
+		ld	a, EC_WORK_RC_ADDRESS
 		jp	error_address
 
 	.test_failed_data:
@@ -96,11 +96,11 @@ auto_work_ram_tests_dsub:
 		ld	de, d_str_work_ram_data
 		PSUB	print_string
 
-		ld	b, EC_WORK_RAM_DATA
+		ld	b, EC_WORK_RC_DATA
 		PSUB	sound_play_byte
 	endif
 
-		ld	a, EC_WORK_RAM_DATA
+		ld	a, EC_WORK_RC_DATA
 		jp	error_address
 
 	.test_failed_march:
@@ -111,11 +111,11 @@ auto_work_ram_tests_dsub:
 		ld	de, d_str_work_ram_march
 		PSUB	print_string
 
-		ld	b, EC_WORK_RAM_MARCH
+		ld	b, EC_WORK_RC_MARCH
 		PSUB	sound_play_byte
 	endif
 
-		ld	a, EC_WORK_RAM_MARCH
+		ld	a, EC_WORK_RC_MARCH
 		jp	error_address
 
 	.test_failed_output:
@@ -124,11 +124,11 @@ auto_work_ram_tests_dsub:
 		ld	de, d_str_work_ram_output
 		PSUB	print_string
 
-		ld	b, EC_WORK_RAM_OUTPUT
+		ld	b, EC_WORK_RC_OUTPUT
 		PSUB	sound_play_byte
 	endif
 
-		ld	a, EC_WORK_RAM_OUTPUT
+		ld	a, EC_WORK_RC_OUTPUT
 		jp	error_address
 
 	.test_failed_write:
@@ -137,11 +137,11 @@ auto_work_ram_tests_dsub:
 		ld	de, d_str_work_ram_write
 		PSUB	print_string
 
-		ld	b, EC_WORK_RAM_WRITE
+		ld	b, EC_WORK_RC_WRITE
 		PSUB	sound_play_byte
 	endif
 
-		ld	a, EC_WORK_RAM_WRITE
+		ld	a, EC_WORK_RC_WRITE
 		jp	error_address
 
 

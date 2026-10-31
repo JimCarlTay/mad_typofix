@@ -14,29 +14,29 @@ video_dac_test:
 		; Palette Layout (8 bit only ram)
 		;  xxxx xxxx xBBB BBGG xxxx xxxx GGGR RRRR
 		; red palette setup
-		lea	LAYER_A_TILE_PALETTE+PALETTE_SIZE, a0
+		lea	LAYER_A_TILE_PALETTE_BASE+PALETTE_ENTRY_SIZE, a0
 		move.l	#$1f, d0
 		bsr	palette_setup_color
 
 		; green palette setup
-		lea	LAYER_A_TILE_PALETTE+(PALETTE_SIZE*2), a0
+		lea	LAYER_A_TILE_PALETTE_BASE+(PALETTE_ENTRY_SIZE*2), a0
 		move.l	#$300e0, d0
 		bsr	palette_setup_color
 
 		; blue palette setup
-		lea	LAYER_A_TILE_PALETTE+(PALETTE_SIZE*3), a0
+		lea	LAYER_A_TILE_PALETTE_BASE+(PALETTE_ENTRY_SIZE*3), a0
 		move.l	#$7c0000, d0
 		bsr	palette_setup_color
 
 		; combined/all palette setup
-		lea	LAYER_A_TILE_PALETTE+(PALETTE_SIZE*4), a0
+		lea	LAYER_A_TILE_PALETTE_BASE+(PALETTE_ENTRY_SIZE*4), a0
 		move.l	#$ff00ff, d0
 		bsr	palette_setup_color
 
 		moveq	#$6, d0
-		move.b	d0, REG_LAYER_A_SCROLL_X_LOW
+		move.b	d0, REG_LAYER_A_TILE_SCROLL_X_LOW
 		moveq	#$0, d0
-		move.b	d0, REG_LAYER_A_SCROLL_X_HIGH
+		move.b	d0, REG_LAYER_A_TILE_SCROLL_X_HIGH
 
 		bsr	generate_tiles_table
 		bsr	draw_colors
@@ -63,14 +63,14 @@ MAX_COLOR_INDEX		equ (VD_NUM_COLORS - 1)
 MAX_COLOR_BIT_INDEX	equ (VD_NUM_BITS_PER_COLOR - 1)
 full_screen:
 
-		; we need to clear our fix tiles, since we are going
+		; we need to clear our txt tiles, since we are going
 		; to fill the screen with layer a tiles for the color
-		lea	FIX_TILE, a0
-		move.w	#(FIX_TILE_SIZE / 2) - 1, d0
-	.loop_next_fix_address:
+		lea	TXT_TILE_BASE, a0
+		move.w	#(TXT_TILE_SIZE / 2) - 1, d0
+	.loop_next_txt_address:
 		move.b	#$0, (a0)+
 		move.b	#$20, (a0)+
-		dbra	d0, .loop_next_fix_address
+		dbra	d0, .loop_next_txt_address
 
 		; Treat r_tiles_table as a multidimensional array of
 		;  long[VD_NUM_COLORS][VD_NUM_BITS_PER_COLOR]
@@ -94,7 +94,7 @@ full_screen:
 
 		move.b	(a1, d4.w), d5
 		move.b	1(a1, d4.w), d6
-		lea	LAYER_A_TILE, a0
+		lea	LAYER_A_TILE_BASE, a0
 		move.w	#(LAYER_A_TILE_SIZE / 2) - 1, d0
 
 		; hardware requires byte writes for tile ram

@@ -8,12 +8,12 @@
 k051733_math_debug:
 		; highlight color
 		ldd	#$001f
-		std	FIX_TILE_PALETTE + PALETTE_SIZE + $2
+		std	TXT_TILE_PALETTE_BASE + PALETTE_ENTRY_SIZE + $2
 
 		ldy	#d_xys_screen_list
 		jsr	print_xy_string_list
 
-		ldd	#FIX_TILE
+		ldd	#TXT_TILE_BASE
 		std	r_old_highlight
 
 		; setup initial values
@@ -28,7 +28,7 @@ k051733_math_debug:
 		rts
 
 ; params:
-;  x = fix ram location to set highlight
+;  x = txt ram location to set highlight
 ; we are also on the hook for clearing out the
 ; previous highlight
 highlight_cb:

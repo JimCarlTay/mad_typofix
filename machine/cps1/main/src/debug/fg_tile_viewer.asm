@@ -31,9 +31,9 @@ fg_tile_viewer:
 ;  b = brightness value (applies to all colors)
 fg_palette_setup:
 
-		lea	PALETTE_RAM+(PALETTE_SIZE*PALETTE_NUM), a0
+		lea	PALETTE_BASE+(PALETTE_ENTRY_SIZE*PALETTE_NUM), a0
 		lea	d_palette_data, a1
-		moveq	#(PALETTE_SIZE/2 - 1), d0
+		moveq	#(PALETTE_ENTRY_SIZE/2 - 1), d0
 
 	.loop_next_color:
 		move.w	(a1)+, d1
@@ -68,4 +68,4 @@ d_palette_data:
 	dc.w	$f6c4, $fc64, $fb39, $f2cb, $fe94, $f36b, $f4d8
 	dc.w	$f64c, $f50d
 
-d_str_title: 	STRING "FG TILE VIEWER"
+d_str_title:	STRING "FG TILE VIEWER"

@@ -16,7 +16,7 @@ memory_viewer_menu:
 ; we are telling the cps-a chip to point at those locations
 ; for them.
 view_gfx_ram:
-		lea	GFX_RAM, a0
+		lea	GFX_RC_BASE, a0
 		bra	view_memory
 
 view_cps_a_reg:
@@ -32,35 +32,35 @@ view_mmio:
 		bra	view_memory
 
 view_object_ram:
-		lea	OBJECT_RAM, a0
+		lea	OBJECT_BASE, a0
 		bra	view_memory
 
 view_palette_ram:
-		lea	PALETTE_RAM, a0
+		lea	PALETTE_BASE, a0
 		bra	view_memory
 
 view_rom_space:
-		lea	$0, a0
+		lea	ROM_BASE, a0
 		bra	view_memory
 
 view_row_scroll_ram:
-		lea	ROW_SCROLL_RAM, a0
+		lea	ROW_SCROLL_BASE, a0
 		bra	view_memory
 
 view_scroll1_ram:
-		lea	SCROLL1_RAM, a0
+		lea	SCROLL1_BASE, a0
 		bra	view_memory
 
 view_scroll2_ram:
-		lea	SCROLL2_RAM, a0
+		lea	SCROLL2_BASE, a0
 		bra	view_memory
 
 view_scroll3_ram:
-		lea	SCROLL3_RAM, a0
+		lea	SCROLL3_BASE, a0
 		bra	view_memory
 
 view_work_ram:
-		lea	WORK_RAM, a0
+		lea	WORK_RAM_BASE, a0
 
 view_memory:
 		lea	$0, a1			; no callback

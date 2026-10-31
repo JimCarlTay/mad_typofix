@@ -16,7 +16,7 @@ bg_tile_scroll_test:
 		ld	(REG_BG_SCROLL_Y), bc
 
 		ld	a, $02
-		ld	(BG_TILE_RAM + $109), a
+		ld	(BG_TILE_BASE + $109), a
 
 	.loop_test:
 		WATCHDOG

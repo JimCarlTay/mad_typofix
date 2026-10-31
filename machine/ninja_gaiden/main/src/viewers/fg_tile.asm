@@ -11,8 +11,8 @@ TILE_OFFSET_MASK	equ $7ff
 fg_tile_viewer:
 		bsr	fg_tile_viewer_palette_setup
 
-		move.w	#$3fc, REG_FG_SCROLL_X
-		move.w	#$4, REG_FG_SCROLL_Y
+		move.w	#$3fc, REG_FG_TILE_SCROLL_X
+		move.w	#$4, REG_FG_TILE_SCROLL_Y
 
 		moveq	#$0, d0
 		move.w	#TILE_OFFSET_MASK, d1
@@ -25,9 +25,9 @@ fg_tile_viewer:
 ;  xxxx BBBB GGGG RRRR
 fg_tile_viewer_palette_setup:
 
-		lea	FG_PALETTE + (PALETTE_SIZE * PALETTE_NUM), a0
+		lea	FG_TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * PALETTE_NUM), a0
 		lea	d_palette_data, a1
-		moveq	#(PALETTE_SIZE/2 - 1), d0
+		moveq	#(PALETTE_ENTRY_SIZE/2 - 1), d0
 
 	.loop_next_color:
 		move.w	(a1)+, d1

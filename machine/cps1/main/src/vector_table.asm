@@ -18,7 +18,7 @@
 
 ; vblank
 irq2_handler:
-		move.w	#PALETTE_RAM / 256, REGA_PALETTE_RAM_BASE
+		move.w	#PALETTE_BASE / 256, REGA_PALETTE_BASE
 		rte
 
 irq1_handler:

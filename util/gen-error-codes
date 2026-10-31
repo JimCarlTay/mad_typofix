@@ -22,12 +22,12 @@ def main() -> int:
 
     def write_ram_ec(name: str, ec_types: list) -> None:
         nonlocal error_code
-        ec_base = f'{name}_BASE_EC' if name == "RAM" else f'{name}_RAM_BASE_EC'
+        ec_base = f'EC_{name}_BASE' if name == "RAM" else f'EC_{name}_RC_BASE'
         inc_fd.write(f'{ec_base: <30} equ ${error_code:02x}\n')
 
         for ec_type in ec_types:
             if ec_type != 'SKIP':
-                ec_name = f'EC_{name}_{ec_type}' if name == "RAM" else f'EC_{name}_RAM_{ec_type}'
+                ec_name = f'EC_{name}_{ec_type}' if name == "RAM" else f'EC_{name}_RC_{ec_type}'
                 inc_fd.write(f'{ec_name: <30} equ ${error_code:02x} ; {error_code:0{args.bits}b}\n')
             error_code = error_code + 1
 

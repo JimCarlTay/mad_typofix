@@ -22,8 +22,8 @@ screen_init_dsub:
 		ld	bc, $7ff
 		NSUB	delay
 
-		ld	hl, PALETTE_RAM
-		ld	de, PALETTE_RAM_SIZE
+		ld	hl, PALETTE_BASE
+		ld	de, PALETTE_SIZE
 		ld	c, $0
 		NSUB	memory_fill
 
@@ -32,8 +32,8 @@ screen_init_dsub:
 		ld	a, CTRL_ENABLE_SPRITE_ROMS|CTRL_ENABLE_TILE_ROMS
 		out	(IO_CONTROL), a
 
-		ld	hl, TILE_RAM
-		ld	de, TILE_RAM_SIZE
+		ld	hl, TILE_BASE
+		ld	de, TILE_SIZE
 
 	ifd _MGAKUEN_TEXT_
 		ld	bc, $3000
@@ -45,16 +45,16 @@ screen_init_dsub:
 		; color index 0 on the first palette is the background
 		; color.  However some games use that index for part of the
 		; text color.  So we are using the 2nd palette for text
-		ld	hl, TILE_ATTR_RAM
-		ld	de, TILE_ATTR_RAM_SIZE
+		ld	hl, TILE_ATTR_BASE
+		ld	de, TILE_ATTR_SIZE
 		ld	c, $1
 		NSUB	memory_fill
 
 		ld	a, VIDEO_BANK_SPRITE
 		out	(IO_VIDEO_BANK), a
 
-		ld	hl, SPRITE_RAM
-		ld	de, SPRITE_RAM_SIZE
+		ld	hl, SPRITE_BASE
+		ld	de, SPRITE_SIZE
 		ld	c, $00
 		NSUB	memory_fill
 

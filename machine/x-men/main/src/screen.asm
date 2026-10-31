@@ -6,34 +6,34 @@
 	section code
 
 screen_init_dsub:
-		lea	TILE_RAM, a0
-		move.l	#TILE_RAM_SIZE, d0
+		lea	TILE_RC_BASE, a0
+		move.l	#TILE_RC_SIZE, d0
 		move.w	#$0, d1
 		DSUB	memory_fill
 
-		lea	TILE_ATTR_RAM, a0
-		move.l	#TILE_ATTR_RAM_SIZE, d0
+		lea	TILE_ATTR_RC_BASE, a0
+		move.l	#TILE_ATTR_RC_SIZE, d0
 		move.w	#$0, d1
 		DSUB	memory_fill
 
-		lea	TILE_EXT_RAM, a0
-		move.l	#TILE_EXT_RAM_SIZE, d0
+		lea	TILE_EXT_RC_BASE, a0
+		move.l	#TILE_EXT_RC_SIZE, d0
 		move.w	#$0, d1
 		DSUB	memory_fill
 
-		lea	SPRITE_RAM, a0
-		move.l	#SPRITE_RAM_SIZE, d0
+		lea	SPRITE_BASE, a0
+		move.l	#SPRITE_SIZE, d0
 		moveq	#$0, d1
 		DSUB	memory_fill
 
-		lea	PALETTE_RAM, a0
-		move.l	#PALETTE_RAM_SIZE, d0
+		lea	PALETTE_BASE, a0
+		move.l	#PALETTE_SIZE, d0
 		moveq	#$0, d1
 		DSUB	memory_fill
 
 		; text color
-		move.w	#$ffff, FIX_TILE_PALETTE + $10
-		move.w	#$ffff, FIX_TILE_PALETTE + $12
+		move.w	#$ffff, TXT_TILE_PALETTE_BASE + $10
+		move.w	#$ffff, TXT_TILE_PALETTE_BASE + $12
 
 		SEEK_XY 10, 0
 		lea	d_str_version, a0

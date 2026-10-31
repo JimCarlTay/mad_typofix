@@ -14,18 +14,18 @@ palette_init_dsub:
 
 		move.w	#ROMSET_LAYER_CTRL, REGB_LAYER_CTRL
 		move.w	#ROMSET_PALETTE_CTRL, REGB_PALETTE_CTRL
-		move.w	#PALETTE_RAM / 256, REGA_PALETTE_RAM_BASE
+		move.w	#PALETTE_BASE / 256, REGA_PALETTE_BASE
 		move.w	#ROMSET_VIDEO_CTRL, REGA_VIDEO_CONTROL
 		DSUB_RETURN
 
 ; The ram block we use for palette data is suppose to get copied to
-; the palette ram whenever we write to REGA_PALETTE_RAM_BASE, however
+; the palette ram whenever we write to REGA_PALETTE_BASE, however
 ; this doesn't seem to be the case 100% of the time.  It appears a
-; number of games write to REGA_PALETTE_RAM_BASE within the vblank
+; number of games write to REGA_PALETTE_BASE within the vblank
 ; interrupt handler to get around this issue? Using an interrupt
 ; handler isn't something we can do before work ram is tested.  From
 ; testing it appears we can trigger the copy just by looping over
-; clearing ram and writing to REGA_PALETTE_RAM_BASE a 3+ times.
+; clearing ram and writing to REGA_PALETTE_BASE a 3+ times.
 screen_init_workaround_dsub:
 		moveq	#1, d2
 	.loop_workaround:
@@ -66,12 +66,12 @@ cps_a_init_dsub:
 		move.b	#$80, REG_COIN_CTRL
 		move.b	#0, REG_COIN_CTRL
 
-		move.w	#OBJECT_RAM / 256, REGA_OBJECT_RAM_BASE
-		move.w	#SCROLL1_RAM / 256, REGA_SCROLL1_RAM_BASE
-		move.w	#SCROLL2_RAM / 256, REGA_SCROLL2_RAM_BASE
-		move.w	#SCROLL3_RAM / 256, REGA_SCROLL3_RAM_BASE
-		move.w	#ROW_SCROLL_RAM / 256, REGA_ROW_SCROLL_RAM_BASE
-		move.w	#PALETTE_RAM / 256, REGA_PALETTE_RAM_BASE
+		move.w	#OBJECT_BASE / 256, REGA_OBJECT_BASE
+		move.w	#SCROLL1_BASE / 256, REGA_SCROLL1_BASE
+		move.w	#SCROLL2_BASE / 256, REGA_SCROLL2_BASE
+		move.w	#SCROLL3_BASE / 256, REGA_SCROLL3_BASE
+		move.w	#ROW_SCROLL_BASE / 256, REGA_ROW_SCROLL_BASE
+		move.w	#PALETTE_BASE / 256, REGA_PALETTE_BASE
 		DSUB_RETURN
 
 ; in cases where we need to goto x, y location at runtime
@@ -102,10 +102,10 @@ d_memory_fill_list
 	; this first one being $20 is a bit of a hack for now, its
 	; because mercs uses tile_group $0 so filling with $0 results
 	; in the screen being filled with "0" tiles.
-	MEMORY_FILL_ENTRY SCROLL1_RAM, SCROLL1_RAM_SIZE, $20
-	MEMORY_FILL_ENTRY SCROLL2_RAM, SCROLL2_RAM_SIZE, $0
-	MEMORY_FILL_ENTRY SCROLL3_RAM, SCROLL3_RAM_SIZE, $0
-	MEMORY_FILL_ENTRY OBJECT_RAM, OBJECT_RAM_SIZE, $0
-	MEMORY_FILL_ENTRY ROW_SCROLL_RAM, ROW_SCROLL_RAM_SIZE, $0
-	MEMORY_FILL_ENTRY PALETTE_RAM, PALETTE_RAM_SIZE, $f0f0
+	MEMORY_FILL_ENTRY SCROLL1_BASE, SCROLL1_SIZE, $20
+	MEMORY_FILL_ENTRY SCROLL2_BASE, SCROLL2_SIZE, $0
+	MEMORY_FILL_ENTRY SCROLL3_BASE, SCROLL3_SIZE, $0
+	MEMORY_FILL_ENTRY OBJECT_BASE, OBJECT_SIZE, $0
+	MEMORY_FILL_ENTRY ROW_SCROLL_BASE, ROW_SCROLL_SIZE, $0
+	MEMORY_FILL_ENTRY PALETTE_BASE, PALETTE_SIZE, $f0f0
 	MEMORY_FILL_LIST_END

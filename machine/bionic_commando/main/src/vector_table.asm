@@ -29,7 +29,7 @@
 ; vblank
 irq2_handler:
 		addq.w	#$1, r_irq2_count
-		;move.w	#$ffff, FIX_TILE_PALETTE + 2
+		;move.w	#$ffff, TXT_TILE_PALETTE_BASE + 2
 
 		tst.w	r_vblank_copy_size
 		beq	.skip_vblank_copy

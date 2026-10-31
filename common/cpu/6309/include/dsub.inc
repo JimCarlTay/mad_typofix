@@ -12,7 +12,7 @@
 
 	macro DSUB_MODE_RSUB
 		ldu	#$0
-		lds	#(WORK_RAM + WORK_RAM_SIZE - 2)
+		lds	#(WORK_RAM_BASE + WORK_RAM_SIZE - 2)
 	endm
 
 	; Based on what mode we are in do the right

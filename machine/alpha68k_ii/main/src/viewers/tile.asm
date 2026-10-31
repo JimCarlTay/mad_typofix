@@ -25,9 +25,9 @@ tile_viewer:
 ;  xxxx RRRR GGGG BBBB
 tile_viewer_palette_setup:
 
-		lea	TILE_PALETTE + (PALETTE_SIZE * PALETTE_NUM), a0
+		lea	TILE_PALETTE_BASE + (PALETTE_ENTRY_SIZE * PALETTE_NUM), a0
 		lea	d_palette_data, a1
-		moveq	#(PALETTE_SIZE/2 - 1), d0
+		moveq	#(PALETTE_ENTRY_SIZE/2 - 1), d0
 
 	.loop_next_color:
 		move.w	(a1)+, d1

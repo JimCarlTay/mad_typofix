@@ -14,52 +14,52 @@ auto_work_ram_tests_dsub:
 		ldy	#d_str_testing_work_ram
 		PSUB	print_string
 
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 		PSUB	memory_output_test
 		tsta
 		lbne	.test_failed_output
 
-		ldx	#WORK_RAM
+		ldx	#WORK_RC_BASE
 		PSUB	memory_write_test
 		tsta
 		lbne	.test_failed_write
 
-		ldx	#WORK_RAM
-		ldd	#WORK_RAM_SIZE
+		ldx	#WORK_RC_BASE
+		ldd	#WORK_RC_SIZE
 		lde	#$00
 		PSUB	memory_data_test
 		tsta
 		lbne	.test_failed_data
 
-		ldx	#WORK_RAM
-		ldd	#WORK_RAM_SIZE
+		ldx	#WORK_RC_BASE
+		ldd	#WORK_RC_SIZE
 		lde	#$55
 		PSUB	memory_data_test
 		tsta
 		lbne	.test_failed_data
 
-		ldx	#WORK_RAM
-		ldd	#WORK_RAM_SIZE
+		ldx	#WORK_RC_BASE
+		ldd	#WORK_RC_SIZE
 		lde	#$aa
 		PSUB	memory_data_test
 		tsta
 		lbne	.test_failed_data
 
-		ldx	#WORK_RAM
-		ldd	#WORK_RAM_SIZE
+		ldx	#WORK_RC_BASE
+		ldd	#WORK_RC_SIZE
 		lde	#$ff
 		PSUB	memory_data_test
 		tsta
 		lbne	.test_failed_data
 
-		ldx	#WORK_RAM
-		lda	#WORK_RAM_ADDRESS_LINES
+		ldx	#WORK_RC_BASE
+		lda	#WORK_RC_ADDR_LINES
 		PSUB	memory_address_test
 		tsta
 		bne	.test_failed_address
 
-		ldx	#WORK_RAM
-		ldd	#WORK_RAM_SIZE
+		ldx	#WORK_RC_BASE
+		ldd	#WORK_RC_SIZE
 		PSUB	memory_march_test
 		tsta
 		bne	.test_failed_march
@@ -77,7 +77,7 @@ auto_work_ram_tests_dsub:
 		ldy	#d_str_work_ram_address
 		PSUB	print_string
 
-		lda	#EC_WORK_RAM_ADDRESS
+		lda	#EC_WORK_RC_ADDRESS
 		lbra	.do_error_code
 
 	.test_failed_data:
@@ -87,7 +87,7 @@ auto_work_ram_tests_dsub:
 		ldy	#d_str_work_ram_data
 		PSUB	print_string
 
-		lda	#EC_WORK_RAM_DATA
+		lda	#EC_WORK_RC_DATA
 		bra	.do_error_code
 
 	.test_failed_march:
@@ -97,7 +97,7 @@ auto_work_ram_tests_dsub:
 		ldy	#d_str_work_ram_march
 		PSUB	print_string
 
-		lda	#EC_WORK_RAM_MARCH
+		lda	#EC_WORK_RC_MARCH
 		bra	.do_error_code
 
 	.test_failed_output:
@@ -108,7 +108,7 @@ auto_work_ram_tests_dsub:
 		SEEK_XY	0, SCREEN_B2_Y
 		PSUB	print_clear_line
 
-		lda	#EC_WORK_RAM_OUTPUT
+		lda	#EC_WORK_RC_OUTPUT
 		bra	.do_error_code
 
 	.test_failed_write:
@@ -119,7 +119,7 @@ auto_work_ram_tests_dsub:
 		SEEK_XY	0, SCREEN_B2_Y
 		PSUB	print_clear_line
 
-		lda	#EC_WORK_RAM_WRITE
+		lda	#EC_WORK_RC_WRITE
 
 	.do_error_code:
 		tfr	a, f		; backup error code
@@ -207,7 +207,7 @@ d_screen_xys_list:
 	XY_STRING_LIST_END
 
 ; These are padded so we fully overwrite "TESTING WORK RAM"
-d_str_work_ram_address:		STRING "WORK RAM ADDRESS"
+d_str_work_ram_address:		STRING "WORK RAM ADDR"
 d_str_work_ram_data:		STRING "WORK RAM DATA   "
 d_str_work_ram_march:		STRING "WORK RAM MARCH  "
 d_str_work_ram_output:		STRING "WORK RAM OUTPUT "
