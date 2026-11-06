@@ -47,11 +47,11 @@ d_str_k005849_reg_debug:	STRING "K005849 REG DEBUG"
 d_str_sprite_debug:		STRING "SPRITE DEBUG"
 d_str_tile_debug:		STRING "TILE DEBUG"
 
-d_str_ram_find_none:		STRING "BASE FIND NONE"
-d_str_ram_find_sprite:		STRING "BASE FIND SPRITE"
-d_str_ram_find_tile:		STRING "BASE FIND TILE"
-d_str_ram_find_tile_scroll:	STRING "BASE FIND TILE SCROLL"
-d_str_ram_find_work:		STRING "BASE FIND WORK"
+d_str_ram_find_none:		STRING "RAM FIND NONE"
+d_str_ram_find_sprite:		STRING "RAM FIND SPRITE"
+d_str_ram_find_tile:		STRING "RAM FIND TILE"
+d_str_ram_find_tile_scroll:	STRING "RAM FIND TILE SCROLL"
+d_str_ram_find_work:		STRING "RAM FIND WORK"
 
 	section bss
 
