@@ -183,6 +183,9 @@ Support boards
 ### X-Men (xmen)
 ![xmen](machine/x-men/docs/images/mad_xmen_main_menu.png)
 
+### Yie Ar Kung-Fu (yiear)
+![yiear](machine/yie_ar_kung-fu/docs/images/mad_yie_ar_kung-fu_main_menu.png)
+
 ## Building
 I've been doing most of my development in Windows Subsystem for Linux (WSL).
 This makes it easy to compile, test in MAME, and then burn to an EPROM for
